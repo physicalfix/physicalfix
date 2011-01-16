@@ -1,0 +1,36 @@
+#navigation
+  #inner
+    %ul#signupprogress
+      %li
+        %a Personal Info
+      %li.active
+        %a Equipment
+      - if session[:plan] == 'basic'
+        %li
+          %a Workout Type
+      - if session[:plan] == 'premium'
+        %li
+          %a Medical History
+      - if session[:plan] != 'free'
+        %li
+          %a Billing Info
+
+#openbox
+  #inner
+    %h2 What kind of workout equipment do you have at home?
+    %p If you own any of the exercise equipment listed below and have access to it at home, please check the items so that they can be included in your personal workouts.
+    #enterequipinfo
+      - form_for @user, :url => account_path do |f|
+        - @equipment.each do |group, array|
+          %h3= group
+          %ul
+            - for item in array
+              %li
+                %label
+                  = check_box_tag "user[equipment][]", "#{item}"
+                  = item
+        %h3 Other Equpiment
+        %p Enter any other equipment you have below:
+        = text_area_tag "user[equipment][]", @ue, :size => "40x10"
+        = hidden_field_tag :stage, 2
+        = submit_tag "Move on to next step", :class => 'confirm' 

@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<style>
+	/* hide from ie5 mac \*/
+		html {
+		  height: 100%;
+		  overflow: hidden;
+		}
+		#player2 {
+		  height: 100%;
+		}
+		/* end hide */
+		body {
+		  height: 100%;
+		  margin: 0;
+		  padding: 0;
+		  background-color: #eee;
+		}
+	</style>
+	
+	<script>
+		function workoutComplete() {
+			document.location = '<%=  comment_workout_path(params[:id], :workout_session => @workout_session.id)%>';
+		}
+	</script>
+</head>
+<body>
+<%= javascript_include_tag "swfobject" %>
+<div style='width:100%' id="player2"><a href="http://www.macromedia.com/go/getflashplayer">Get the Flash Player</a> to see this player.</div>
+<script type="text/javascript">
+	var s2 = new SWFObject("/swf/Player.swf","playlist","100%","100%","9");
+	s2.addParam("allowfullscreen","true");
+	s2.addVariable("file","<%= playlist_workout_path(params[:id]) %>");
+	s2.addVariable('workoutSession', '<%= @workout_session.id %>');
+	<% if @workout_session.last_played != nil %>
+	s2.addVariable('lastPlayed', '<%= @workout_session.last_played %>');
+	<% end %>
+	s2.write("player2");
+</script>
+<script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    try {
+        var pageTracker = _gat._getTracker("UA-301641-18");
+        pageTracker._trackPageView();
+    } catch(err) {}
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+yummy_food:
+    id: 1001
+    food_group_id: "0100"
+    long_desc: "Butter, salted"
+    short_desc: "BUTTER,WITH SALT"
+    common_name: nil
+    manufac_name: nil
+    survey: "Y"
+    ref_desc: nil
+    refuse: 0
+    scientific_name: nil
+    n_factor: 6.38
+    pro_factor: 4.27
+    fat_factor: 8.79
+    cho_factor: 3.87
+no_fat:
+    id: 1002
+    food_group_id: "0100"
+    long_desc: "Butter, salted"
+    short_desc: "BUTTER,WITH SALT"
+    common_name: nil
+    manufac_name: nil
+    survey: "Y"
+    ref_desc: nil
+    refuse: 0
+    scientific_name: nil
+    n_factor: 6.38
+    pro_factor: 4.27
+    cho_factor: 3.87

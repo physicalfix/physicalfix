@@ -1,0 +1,7 @@
+Calories:
+    id: 208
+    units: "kcal"
+    tagname: "ENERC_KCAL"
+    desc: "Energy"
+    num_dec: 0
+    sr_order: 300

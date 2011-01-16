@@ -1,0 +1,2 @@
+<li id="<%= list_exercise.id %>" class="list exercise <%= list_exercise.musclegroup.name.downcase %>"><%= list_exercise.name %></li>
+<%= draggable_element "#{list_exercise.id}", :revert => true, :ghosting => true %>

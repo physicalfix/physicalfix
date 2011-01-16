@@ -1,0 +1,53 @@
+= javascript_include_tag :all
+= javascript_include_tag 'control_suite/object.event.1.0.0.js'
+= javascript_include_tag 'control_suite/control.modal.2.2.3.js'
+
+#weighttracker
+  %h2 Weight Tracker
+  = link_to 'Add New Weight', '#add_form', :id => 'add_link', :class => 'addweight'
+  
+  #graph
+    = inline_annotated_timeline @graph[:weights], 825, 300, 'weightGraph', @options
+
+.bevelsmall.target
+  %h2 Target Weight
+  %p #{@user.target_weight} Pounds
+
+.bevelsmall.changemonth
+  %h2 Change This Month
+  %p
+    #{@stats[:mtd][:lbs]} Pounds
+    %span #{@stats[:mtd][:percent]} %
+
+.bevelsmall.changeyear
+  %h2 Change This Year
+  %p
+    #{@stats[:ytd][:lbs]} Pounds
+    %span #{@stats[:ytd][:percent]} %
+
+.bevelsmall.changetime
+  %h2 Change All-Time
+  %p
+    #{@stats[:all][:lbs]} Pounds
+    %span #{@stats[:all][:percent]} %
+
+#add_form
+  .window_header
+    .window_close#window_close(onClick="modal.close();")
+    .window_title Add New Weight
+  %div{:class => 'window contents'}
+    - form_for :weight_tracker, :html => { :multipart => true, :onsubmit => 'return checkWeight(this);' } do |f|
+      %p
+        = f.text_field :weight, :size => 3, :style => "font-size: 30px; text-align: center;"
+        %span(style="font-size:30px") Pounds
+      %br
+      %h3 Add a picture for this weight
+      %label File:
+      = f.file_field :weight_image
+      %br
+      %br
+      = submit_tag 'Add Weight', :class => 'addweight', :style => 'float:none; top:0; display: inline'
+      %br
+
+%script
+  modal = new Control.Modal('add_link',{containerClassName: 'window', width: 400});

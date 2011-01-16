@@ -1,0 +1,6 @@
+%h2
+    = @uw.created_at.to_date.to_s(:long)
+    -
+    = @uw.weight
+    Lbs
+= image_tag @uw.weight_image.url(:screen)

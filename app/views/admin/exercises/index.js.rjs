@@ -1,0 +1,5 @@
+if @user_bucket
+  page[:exercise_list].replace_html :partial => '/admin/user_buckets/list_exercise', :collection => @exercises
+else
+  page[:exercise_list].replace_html :partial => '/admin/workouts/list_exercise', :collection => @exercises
+end

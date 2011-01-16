@@ -1,0 +1,13 @@
+#thank_you
+  %div{:style=>'float:right'}=image_tag('thank_you.png')
+  %h2 Thanks for signing up for physicalfix.com!
+  - if @subscription_plan == Subscription::TRIAL_SUBSCRIPTION
+    %h3 Here are just a few of the things you can do with your 14-Day Trial:
+  - else
+    %h3 Here are just a few of the things you can do with your account:s
+  - if @subscription_plan != Subscription::FREE_SUBSCRIPTION
+    %p= link_to('Start a workout &raquo;', workouts_path)
+  %p= link_to('Track your calories with the Food Journal &raquo;', food_log_index_path)
+  %p= link_to("Log your activities and calories burned &raquo;", activity_log_index_path)
+  %p= link_to("Track your weight with the Weight Tracker &raquo;", weight_tracker_index_path)
+

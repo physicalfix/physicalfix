@@ -1,0 +1,30 @@
+- u = @current_user || @user
+%h2.smaller How difficult would you like your workouts?
+%ul
+  %li
+    %label
+      = f.radio_button(:workout_difficulty, 'easy')
+      Easy
+  %li
+    %label
+      = f.radio_button(:workout_difficulty, 'hard')
+      Hard
+
+- if @user_buckets['true']
+  %h2.smaller Pick the type of workouts you'd like to receive:
+  .buckets
+    - @user_buckets['true'].each do |ub|
+      .user_bucket
+        %label.title
+          = f.radio_button(:user_bucket_id, ub.id)
+          = ub.name
+        .desc= ub.description
+- if @user_buckets['false']
+  %h2.smaller With more equipment you would have access to the following types of workouts
+  .buckets
+    - @user_buckets['false'].each do |ub|
+      .user_bucket.unavailable
+        %label.title
+          = ub.name
+        .desc= ub.description
+        .equip= "Needed Equipment: #{ub.needed_equipment(u.equipment).join(', ')}"

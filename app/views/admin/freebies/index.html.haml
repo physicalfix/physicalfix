@@ -1,0 +1,15 @@
+%h2 Freebies
+%p
+  = image_tag '/images/icons/add.png', :align => 'absmiddle'
+  = link_to 'New Freebie', new_admin_freeby_path
+
+%table.list
+  %thead
+    %tr
+      %th ID
+      %th Email
+      %th Key
+      %th Used
+      %th Type
+  %tbody
+    = render :partial => 'freeby', :collection => @freebies

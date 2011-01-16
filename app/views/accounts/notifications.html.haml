@@ -1,0 +1,17 @@
+= render :partial => 'account_menu', :locals => {:section => :notifications}
+#usernotify
+  - form_for @user, :url => account_path do |f|
+    .buckets
+      .user_bucket
+        %label.title
+          = f.check_box :reminder_emails
+          Reminder Emails
+        .desc
+          Receive emails to remind you when your workouts are ready, to enter food in your food journal, to record your weight, and to enter your activities. 
+      .user_bucket
+        %label.title 
+          = f.check_box :promotional_emails
+          Promotional Emails
+        .desc
+          Receive promotional emails from PhysicalFix about new features or promotions.
+    %a.form_submit(href="\#" onclick="document.forms[0].submit()") Save Notification Settings

@@ -1,0 +1,6 @@
+workout_activity:
+  user: valid_user
+  duration: 0
+  calories_burned: 0
+  name: "foo"
+  activity_date: Time.zone.now

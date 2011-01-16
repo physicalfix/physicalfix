@@ -1,0 +1,82 @@
+body
+  background-color: #333
+  text-shadow: 0 1px 0 #fff
+  font: 100% "Helvetica Neue", Helvetica, Arial, sans-serif
+  
+  #container
+    width: 740px
+    margin: 0 auto
+    margin-top: 50px
+  #logo
+    background: transparent url('/images/wait_list/logo.png') no-repeat
+    width: 212px
+    height: 42px
+    margin-bottom: 30px
+  #email
+    background: transparent url('/images/wait_list/background.png') no-repeat
+    height: 315px
+    
+    #wait_list_form
+      position: relative
+      top: 225px
+      margin: 0 auto
+      
+      #errors
+        color: #FFF
+        background-color: #E77471
+        border: 1px solid #C24641
+        margin: 10px auto
+        font-weight: bold
+        font-size: 12px
+        text-align: center
+        -webkit-border-radius: 10px
+        -moz-border-radius: 10px
+        font-size: 1.4em
+        text-shadow: 0 1px 0 #000
+        
+
+      
+      width: 650px
+      
+      input.pre
+        color: #999
+      
+      input[type='text']
+        background: transparent url('/images/wait_list/emailsprite.png') no-repeat scroll left top
+        border: 0
+        height: 44px
+        width: 455px
+        text-align: center
+        font-size: 2em
+        padding-top: 5px
+        float: left
+        margin-right: 20px
+        
+      
+      input[type='text']:focus
+        background: transparent url('/images/wait_list/emailsprite.png') no-repeat scroll left bottom
+      
+      input[type='submit']
+        background: transparent url('/images/wait_list/buttonsprite.png') no-repeat scroll left top
+        width: 172px
+        height: 50px
+        border: 0
+        cursor: pointer
+        margin: 0
+        padding: 0
+      
+      input[type='submit']:hover
+        background: transparent url('/images/wait_list/buttonsprite.png') no-repeat scroll left bottom
+      
+    .signed_up
+      background-color: #CCFFCC
+      border: 1px solid #99CC99
+      margin: 10px auto
+      font-weight: bold
+      font-size: 12px
+      text-align: center
+      -webkit-border-radius: 10px
+      -moz-border-radius: 10px
+      font-size: 2em
+    #wait_list_form.error
+      top: 210px

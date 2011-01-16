@@ -1,0 +1,19 @@
+%tr(class="#{cycle('odd', 'even')} #{activity_class(activity)}")
+  %td.date= activity.activity_date.strftime("%I:%M %p")
+  %td.activity
+    - if activity.activity
+      = activity.activity.name
+    - else
+      = activity.name
+  %td.duration
+    -if activity.duration
+      #{activity.duration.round} Minutes
+  %td.burned= activity.calories 
+  %td.modify{:align => :center}
+    = image_tag("pixel.gif", :width => 16, :height => 16, :style => 'float:left; margin-right: 10px')
+    //= link_to('', '#', {:class => 'edit'})
+    - unless activity.name && (activity.name == 'Daily Energy Expenditure' ||activity.name.starts_with?('Workout'))
+      = link_to('', activity_log_path(activity.id, {:date => @date}), :method => :delete, :confirm =>'Are you sure you want to delete this activity?', :class => 'delete')
+    -if activity.activity
+      %span(id="favorite-#{activity.activity.id}")
+        = render :partial => 'activity_log/favorite_link', :object => activity.activity

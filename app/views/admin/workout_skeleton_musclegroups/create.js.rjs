@@ -1,0 +1,8 @@
+page[:workout_list].replace_html(
+  :partial => 'workout_skeleton_musclegroup', 
+  :collection => @workout_skeleton.workout_skeleton_musclegroups.all(:order => 'display_order ASC')
+)
+page.sortable(
+  :workout_list, 
+  :url => update_order_admin_workout_skeleton_musclegroup_path(@workout_skeleton)
+)

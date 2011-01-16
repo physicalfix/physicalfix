@@ -1,0 +1,87 @@
+valid_medical_history_1:
+    user: valid_user
+    p_name: Dr. John Doe
+    p_number: 5555555555
+    health: Good-Fair
+    fitness: Good-Fair
+    exercise: no
+    contact_p: yes
+    illness: no
+    problems: no
+    bone: no
+    pain: no
+    medication: no
+    routine: no
+    p_visit: 2009-01-25
+    p_visit_text: n/a
+
+valid_medical_history_2:
+    user: user_without_workouts
+    p_name: Dr. John Doe
+    p_number: 5555555555
+    health: Good-Fair
+    fitness: Good-Fair
+    exercise: no
+    contact_p: yes
+    illness: no
+    problems: no
+    bone: no
+    pain: no
+    medication: no
+    routine: no
+    p_visit: 2009-01-25
+    p_visit_text: n/a
+
+valid_medical_history_3:
+    user: user_with_workouts
+    p_name: Dr. John Doe
+    p_number: 5555555555
+    health: Good-Fair
+    fitness: Good-Fair
+    exercise: no
+    contact_p: yes
+    illness: no
+    problems: no
+    bone: no
+    pain: no
+    medication: no
+    routine: no
+    p_visit: 2009-01-25
+    p_visit_text: n/a
+
+valid_medical_history43:
+    user: free_user
+    p_name: Dr. John Doe
+    p_number: 5555555555
+    health: Good-Fair
+    fitness: Good-Fair
+    exercise: no
+    contact_p: yes
+    illness: no
+    problems: no
+    bone: no
+    pain: no
+    medication: no
+    routine: no
+    p_visit: 2009-01-25
+    p_visit_text: n/a
+    
+premium_medical_history:
+    user: premium_user
+    p_name: Dr. John Doe
+    p_number: 5555555555
+    health: Good-Fair
+    fitness: Good-Fair
+    exercise: no
+    contact_p: yes
+    illness: no
+    problems: no
+    bone: no
+    pain: no
+    medication: no
+    routine: no
+    p_visit: 2009-01-25
+    p_visit_text: n/a
+
+
+

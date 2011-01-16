@@ -1,0 +1,11 @@
+%tr
+  %td= user_bucket.id
+  %td= user_bucket.name
+  %td= user_bucket.description
+  %td= user_bucket.workout_skeletons.size
+  %td= user_bucket.approved
+  %td= user_bucket.display_order
+  %td= link_to image_tag('/images/icons/page_white.png'), admin_user_bucket_path(user_bucket)
+  %td= link_to image_tag('/images/icons/pencil.png'), edit_admin_user_bucket_path(user_bucket)
+  %td= link_to image_tag('/images/icons/delete.png'), admin_user_bucket_path(user_bucket),  :confirm => "Are you sure?", :method => :delete
+	

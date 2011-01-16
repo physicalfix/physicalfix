@@ -1,0 +1,14 @@
+---
+    environment: production
+    chdir: /data/physicalfix/current/lib/vid2s3
+    address: 0.0.0.0
+    user: root
+    group: root
+    port: 80
+    pid: /data/physicalfix/shared/pids/vid2s3.pid
+    rackup: /data/physicalfix/current/lib/vid2s3/config.ru
+    log: /data/physicalfix/current/log/vid2s3.log
+    max_conns: 1024
+    timeout: 30
+    max_persistent_conns: 512
+    daemonize: true

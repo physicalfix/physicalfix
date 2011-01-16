@@ -1,0 +1,2358 @@
+*
+  margin: 0
+  padding: 0
+
+
+body
+  background: #232323
+  font: 62.5% "Helvetica Neue", Helvetica, Arial, sans-serif
+  color: #FFF
+
+
+a img
+  border: none
+
+/* HEADER! */
+#header
+  background: #2B2B2B url(/images/headerbg.png) top center repeat-x
+  height: 70px
+
+  #inner
+    display: block
+    margin: 0 auto
+    width: 940px
+    position: relative
+
+    h1
+      background: transparent url(/images/logo.png) top left no-repeat
+      width: 170px
+      height: 140px
+      position: absolute
+      top: 15px
+      left: 0px
+
+      span
+        display: none
+
+    img
+      background: transparent url(/images/smallprofilepic.png) top left no-repeat
+      width: 24px
+      height: 24px
+      padding: 2px
+      margin: 2px
+      position: relative
+      top: 0px
+      left: 0px
+      vertical-align: middle
+      margin-right: 10px
+
+    p
+      position: absolute
+      top: 21px
+      right: 100px
+      width: 300px
+      height: 28px
+      text-align: right
+      font-size: 14px
+      color: #c0c0c0
+
+    span
+      color: #fff
+
+    a.logout
+      display: block
+      text-align: center
+      text-decoration: none
+      height: 20px
+      padding-top: 8px
+      position: absolute
+      top: 21px
+      right: 0px
+      background: transparent url(/images/topbutton.png) top left no-repeat
+      width: 85px
+      border: 0
+      font-size: 11px
+      font-weight: bold
+      color: #181818
+      text-transform: uppercase
+      text-shadow: 0 1px 0 #FFFFFF
+
+    a.logout:hover, .topsearchbutton:hover
+      background: transparent url(../images/topbutton.png) bottom left no-repeat
+
+    a.logout:active, .topsearchbutton:active
+      margin-top: 1px
+
+    #search
+      width: 270px
+      height: 28px
+      position: absolute
+      top: 21px
+      right: 0px
+      overflow: hidden
+
+    input.topsearch
+      background: transparent url(../images/greysearchbox.png) top left no-repeat
+      width: 203px
+      border: 0
+      padding: 7px 10px
+      color: #484848
+      font-size: 12px
+
+    .topsearchbutton
+      background: transparent url(../images/topbutton.png) top left no-repeat
+      width: 85px
+      border: 0
+      font-size: 11px
+      font-weight: bold
+      color: #181818
+      text-transform: uppercase
+      text-shadow: 0 1px 0 #FFFFFF
+
+    &:focus
+      background-position-x: -203px
+      outline: none
+      color: #ffffff
+
+    .topsearchbutton
+      position: absolute
+      top: 0px
+      right: 0px
+      height: 28px
+
+/* navbar ! */
+#navigation
+  background: #1F5084 url(/images/navbg.png) top center repeat-x
+  height: 65px
+
+  #inner
+    display: block
+    margin: 0 auto
+    width: 940px
+    position: relative
+
+  ul
+    list-style-type: none
+    position: absolute
+    top: 24px
+    left: 0px
+
+  li
+    display: list-item
+    float: left
+
+    a
+      background: transparent url(/images/navtabs.png) top right no-repeat
+      font-size: 14px
+      font-weight: bold
+      width: 110px
+      height: 44px
+      margin-right: 10px
+      text-align: center
+      vertical-align: center
+      text-transform: uppercase
+      text-decoration: none
+      color: #fff
+      text-shadow: 0 -1px 0 #285F8E
+      line-height: 43px
+      display: block
+
+      &:hover
+        background: transparent url(/images/navtabs.png) bottom right no-repeat
+
+    &.active a
+      color: #181818
+      text-shadow: 0 1px 0 #FFFFFF
+      background: transparent url(/images/navtabs.png) top left no-repeat
+
+      &:hover
+        background: transparent url(/images/navtabs.png) bottom left no-repeat
+#main
+  background: #7FBFCF url(/images/mainbg.png) top center repeat-x
+  min-height: 400px
+
+  #inner
+    display: block
+    margin: 0 auto
+    width: 940px
+    position: relative
+    padding-top: 40px
+    overflow: hidden
+  h2
+    color: #2C2C2C
+    font-size: 16px
+    text-shadow: 0 1px 0 #D0E7ED
+    padding-left: 20px
+    width: 190px
+
+#footer
+  background: #232323 url(/images/footerbg.png) top center repeat-x
+  height: 250px
+
+  #inner
+    display: block
+    margin: 0 auto
+    width: 940px
+    position: relative
+    padding-top: 30px
+    overflow: hidden
+
+    h4
+      font-size: 15px
+      color: #63C7D1
+      text-transform: uppercase
+      margin-bottom: 15px
+
+    p
+      color: #636363
+      font-size: 13px
+      margin-bottom: 15px
+
+      &.quote
+        font-family: Georgia
+        font-size: 14px
+        font-style: italic
+
+      &.supportlinks
+        margin-bottom: 2px
+
+    a
+      font-size: 13px
+      font-weight: bold
+      color: #377697
+      text-decoration: none
+
+    &:hover
+      color: #4895BD
+
+
+    #blogpost
+      width: 320px
+      margin-right: 60px
+      height: 170px
+      float: left
+
+
+    #tweet
+      width: 240px
+      margin-right: 60px
+      height: 190px
+      float: left
+
+      p.quote
+        padding-right: 55px
+        background: transparent url(/images/twitterbird.png) center right no-repeat
+
+
+    #support
+      width: 220px
+      height: 170px
+      float: left
+
+
+    #fullfooter
+      clear: both
+      height: 55px
+      position: relative
+      border-top: 1px solid #636363
+      margin-bottom: 10px
+
+      ul
+        list-style-type: none
+        position: absolute
+        top: 10px
+        right: 0px
+
+        li
+          display: list-item
+          float: left
+          margin-left: 30px
+
+      p
+        position: absolute
+        top: 30px
+        right: 0px
+
+      span
+        color: #999
+
+
+      h6
+        width: 124px
+        height: 30px
+        background: transparent url(/images/footerlogo.png) top left no-repeat
+        position: absolute
+        top: 15px
+        left: 0px
+
+        span
+          display: none
+
+/* WORKOUTS */
+#trainer
+  width: 300px
+  margin-right: 80px
+  margin-bottom: 50px
+  float: left
+
+  h2
+    background: transparent url(/images/icons/speechbubble.png) center left no-repeat
+
+  .webcam_preplay, .webcam
+    margin: 20px 0px
+    float: left
+    position: relative
+
+    p
+      z-index: 1
+      position: absolute
+      top: 0px
+      left: 0px
+      width: 298px
+      height: 260px
+
+    span
+      display: none
+
+  .webcam_preplay
+    p
+      background: transparent url(/images/trainerplay.png) center no-repeat
+    &:hover
+      opacity: 0.7
+
+
+  span.speech
+    background: transparent url(/images/trainerspeech.png) top left no-repeat
+    float: left
+    height: 21px
+    margin-left: 30px
+    width: 370px
+
+  p#message
+    -webkit-border-radius: 10px
+    -moz-border-radius: 10px
+    font-size: 13px
+    color: #232323
+    text-shadow: 0 1px 0 #fff
+    padding: 10px
+    background: #B2E1E7 url(/images/trainerspeech.png) top left no-repeat
+    background-position: 0px -12px
+    line-height: 20px
+    float: left
+    margin-bottom: 30px
+
+  a#commence, a#resume
+    display: block
+    float: left
+    width: 240px
+    height: 15px
+    margin-bottom: 10px
+    padding: 20px 0px 20px 60px
+    font-size: 18px
+    font-weight: bold
+    text-transform: uppercase
+    text-decoration: none
+    color: #fff
+    line-height: 14px
+
+    &:hover
+      background: transparent url(/images/workoutsbutton.png) bottom left no-repeat
+
+  a#commence
+    background: transparent url(/images/workoutsbutton.png) top left no-repeat
+    text-shadow: 0 -2px 0 #285F8E
+
+  a#resume
+    background: transparent url(/images/workoutsbutton2.png) top left no-repeat
+    text-shadow: 0 -2px 0 #3D8518
+
+  a#commence:hover
+    background: transparent url(/images/workoutsbutton.png) bottom left no-repeat
+
+  a#resume:hover
+    background: transparent url(/images/workoutsbutton2.png) bottom left no-repeat
+
+#plan
+  width: 320px
+  margin-right: 80px
+  float: left
+  margin-bottom: 50px
+
+  h2
+    background: transparent url(/images/icons/greylist.png) center left no-repeat
+    margin-bottom: 20px
+
+  .exercise
+    background: transparent url(/images/workouttypes.png) top left no-repeat
+    height: 46px
+    width: 320px
+    float: left
+    margin-bottom: 5px
+    display: block
+    position: relative
+
+    p
+      font-weight: 600
+      font-size: 17px
+      color: #2B2E33
+      padding: 5px 0px 0px 10px
+      line-height: 18px
+      font-size: 15px
+
+    span
+      &.reps
+        display: block
+        color: #fff
+
+      &.type
+        position: absolute
+        top: 12px
+        right: 0px
+        width: 78px
+        text-align: center
+        color: #fff
+        text-shadow: 0 2px 0 #000
+        font-size: 15px
+
+
+  .chest
+    background-position: 0 0
+
+
+  .back
+    background-position: 0 -46px
+
+
+  .shoulders
+    background-position: 0 -92px
+
+
+  .legs
+    background-position: 0 -138px
+
+
+  .biceps
+    background-position: 0 -184px
+
+
+  .triceps
+    background-position: 0 -230px
+
+
+  .abs
+    background-position: 0 -276px
+
+
+  .core
+    background-position: 0 -322px
+
+
+  .power
+    background-position: 0 -368px
+
+
+  .cardio
+    background-position: 0 -414px
+#stats
+  width: 160px
+  float: left
+  margin-bottom: 50px
+
+
+  .bevelside
+    height: 120px
+    width: 220px
+    margin: 0px 15px 30px 0px
+    float: left
+    position: relative
+
+    p
+      width: 124px
+      height: 75px
+      position: absolute
+      bottom: 0
+      left: 0
+      background: transparent url(/images/bevels.png) top left no-repeat
+      display: block
+      text-align: center
+      font-size: 23px
+      font-weight: 600
+      text-shadow: 0 -1px 0 #000
+      padding: 8px 18px 0px 18px
+      line-height: 32px
+
+
+  .burned
+    h2
+      background: transparent url(/images/icons/burn.png) center left no-repeat
+
+    p
+      background-position: 0 -83px
+
+  .duration
+    h2
+      background: transparent url(/images/icons/alarm.png) center left no-repeat
+    p
+      background-position: 0 0
+
+  #equipment
+    float: left
+
+    p
+      width: 90px
+      height: 46px
+      background: transparent url(/images/equipmentbevel.png) top left no-repeat
+      font-size: 18px
+      color: #232323
+      text-shadow: 0 1px 0 #fff
+      margin-bottom: 10px
+      text-align: center
+      font-weight: 500
+      padding: 7px 35px
+
+  h2
+    background: transparent url(/images/icons/checkboard.png) center left no-repeat
+    margin-bottom: 20px
+#food_top
+  overflow: hidden
+  margin: 0
+  padding: 0
+#bigsearch
+  :width 495px
+  :margin-right 80px
+  :float left
+  :position relative
+  :margin-top 20px
+
+  input.bigsearchbox
+    :width 331px
+    :height 42px
+    :background transparent url(/images/bigsearch.png) top left no-repeat
+    :color #7FBFCD
+    :font-size 30px
+    :padding 3px 145px 0px 15px
+    :border 0
+    :outline none
+
+  input.bigsearchbox:focus
+    :color #fff
+
+  input.bigsearchbutton
+    :position absolute
+    :top 0px
+    :right 0px
+    :width 136px
+    :height 45px
+    :background transparent url(/images/bigbuttonsearch.png) top left no-repeat
+    :border 0
+    :color #fff
+    :text-transform uppercase
+    :font-size 16px
+    :font-weight bold
+    :text-shadow 0 -2px 0 #285F8E
+    :padding-left 30px
+
+  input.bigsearchbutton:hover
+    :background transparent url(/images/bigbuttonsearch.png) bottom left no-repeat
+#add_custom, #suggestion, #no_results
+  padding: 10px
+  font-size: 17px
+  text-align: center
+  text-shadow: 0 1px 0 #000
+  a
+    font-weight: bold
+    margin-left: 8px
+    color: #1B4A82
+    text-decoration: none
+    border-bottom: 1px dashed #1B4A82
+    text-shadow: none
+
+  a:hover
+    color: #1B4A82
+    border-bottom: 1px solid #1B4A82
+
+#suggestion, #no_results
+  text-align: left
+  
+ul#foodsearch
+  :float left
+  :display block
+  :width 940px
+  //:margin-top -20px
+  :list-style-type none
+  :clear both
+
+  li
+    :margin-bottom 10px
+    :display block
+    :padding 10px
+    :overflow hidden
+    :-webkit-border-radius 10px
+    :-moz-border-radius 10px
+    :position relative
+    :min-height 74px
+
+    .info, .select
+      :float left
+      :display block
+
+    .info
+      :width 470px
+      :padding-right 10px
+
+    .select
+      :width 360px
+
+    p.title
+      :display block
+      :margin-bottom 6px
+
+    p.title
+      :font-size 20px
+      :color #232323
+      :text-shadow 0 1px 0 #fff
+      :font-weight bold
+      :min-height 26px
+
+      span
+        :color #2A6A9D
+        :font-weight normal
+        :margin-left 5px
+
+      span.servingsize
+        :background-color #266697
+        :color #fff
+        :font-weight bold
+        :padding 5px 7px
+        :font-size 16px
+        :text-shadow none
+        :-webkit-border-radius 5px
+        :-moz-border-radius 5px
+        :text-shadow 0 -1px 0 #000
+
+    div.details
+      :font-size 15px
+      :font-weight bold
+      :text-shadow 0 -1px 0 #000
+      :margin-top 14px
+      :overflow hidden
+
+      a
+        :display block
+        :width 16px
+        :height 22px
+        :float left
+        :margin-right 5px
+
+      a.information
+        :background transparent url(/images/icons/info.png) center center no-repeat
+
+      a.favorite
+        :background transparent url(/images/icons/star.png) center center no-repeat
+
+      a.unfavorite
+        background: transparent url(/images/icons/star2.png) center center no-repeat
+
+      span
+        :display block
+        :float left
+        :margin-right 10px
+        :padding 5px 7px
+        :-webkit-border-radius 5px
+        :-moz-border-radius 5px
+        
+      span.favoritelink
+        :padding 0
+
+      span.calories
+        :background-color #31AC37
+        :margin-left 10px
+
+      span.carbs
+        :background-color #DAC42D
+
+      span.fat
+        :background-color #BA2F2C
+
+      span.protein
+        :background-color #9235B9
+
+      span.sugars
+        :background-color #0971C2
+
+    p.entry
+      :font-size 14px
+      :font-weight bold
+      :margin-right 20px
+      :display block
+      :clear both
+      :padding-top 5px
+      :width 920px
+
+      span
+        :padding 2px 0px
+        :display block
+        :margin-bottom 2px
+        :font-size 12px
+      .serving_desc
+        label
+          :margin-right 30px
+        select
+          :width 200px
+      .eaten
+        label
+          :margin-right 44px
+      .date
+        margin-bottom: 0px
+        label
+          margin-right: 44px
+      label
+        :background-color #232323
+        :color #fff
+        :margin-right 10px
+        :-webkit-border-radius 5px
+        :-moz-border-radius 5px
+        :padding 3px 5px
+        :margin-right 20px
+
+      input
+        :text-align center
+        :margin-left 5px
+        :width 30px
+        //:height 18px
+        :text-align center
+        //:margin-right 20px
+      input.default_value
+        :color #CCC
+
+    #submit
+      :position absolute
+      :top 10px
+      :right 10px
+      :height 78px
+      :width 80px
+      :display block
+      :background transparent url(/images/foodsearchsubmit.png) top center no-repeat
+      :border 0
+      :color #fff
+      :font-size 20px
+      :font-weight bold
+      :text-transform uppercase
+      :text-shadow 0 -2px 0 #306A25
+      :cursor pointer
+
+    #submit:hover
+      :background transparent url(/images/foodsearchsubmit.png) bottom center no-repeat
+
+  li.odd
+    :background-color #B1E3E8
+
+  li.even
+    :background-color #8FD6DD
+
+#favorites
+  :width 365px
+  :float left
+  :font-size 15px
+  :margin-bottom 50px
+  :height 100px
+
+  h2
+    :background transparent url(/images/icons/star.png) center left no-repeat
+    :margin-bottom 20px
+    span
+      :font-size 10px
+      a
+        font-weight: bold
+        color: #1B4A82
+        text-decoration: none
+        border-bottom: 1px dashed #1B4A82
+        text-shadow: none
+
+      a:hover
+        color: #1B4A82
+        border-bottom: 1px solid #1B4A82
+
+  table#favoritetable
+    border: 2px solid transparent
+    height: 100px
+    overflow: auto
+    display: block
+    tr
+      min-height: 23px
+    td.item
+      width: 270px
+      padding: 6px 5px 6px 5px
+      color: #232323
+      background: #C6E9ED
+      p:nth-of-type(odd)
+        background: #B1E3E8
+    td.add
+      width: 39px
+      background: #8CCEC1
+      a
+        background: transparent url(../images/icons/plus.png)
+        background-repeat: no-repeat
+        background-position: 4px center
+        display: block
+        text-decoration: none
+        font-weight: bold
+        padding: 5px 5px 5px 23px
+        color: #177D17
+        height: 100%
+    td.add:hover
+      background-color: #B6DECF
+  ul
+    :height 100px
+    :overflow auto
+    :list-style none
+
+    p
+      :width 270px
+      :height 22px
+      :padding 6px 5px 0px 5px
+      :margin 0px 2px 2px 0px
+      :background #C6E9ED
+      :color #232323
+      :float left
+
+    p:nth-of-type(odd)
+      :background #B1E3E8
+
+    a
+      :width 38px
+      :height 23px
+      :padding 5px 5px 0px 23px
+      :margin-bottom 2px
+      :background #8CCEC1 url(/images/icons/plus.png)
+      :background-repeat no-repeat
+      :background-position 4px center
+      :color #177D17
+      :float left
+      :text-decoration none
+      :font-weight bold
+
+    a:nth-of-type(odd)
+      :background-color #8ACAB2
+
+    a:hover
+      :background-color #B6DECF
+
+#tabledata
+  :float left
+  :margin 50px 0px 30px 0px
+
+  h2
+    :background transparent url(/images/icons/calendar.png) center left no-repeat
+    :width 300px
+    :margin-bottom 10px
+
+#favorite_foods, #favorite_activities
+  h2.back
+    padding-left: 0
+    
+    a
+      font-weight: bold
+      color: #1B4A82
+      text-decoration: none
+      border-bottom: 1px dashed #1B4A82
+      text-shadow: none
+
+    a:hover
+      color: #1B4A82
+      border-bottom: 1px solid #1B4A82
+  #tabledata
+    margin-top: 40px
+    h2
+      :background url(/images/icons/star.png) center left no-repeat
+
+    
+#intakesummary
+  :width 940px
+  :float left
+
+  h2
+    :background transparent url(/images/icons/graphhoriz.png) center left no-repeat
+    :margin-bottom 20px
+    :width 300px
+
+  .intakeprogress
+    :width 160px
+    :height 107px
+    :background-color #232323
+    :-webkit-border-radius 10px
+    :-moz-border-radius 10px
+    :position relative
+    :float left
+    :margin-right 35px
+    :z-index 0
+
+    div.bigprogress
+      :position absolute
+      :top 0px
+      :left 0px
+      :height 107px
+      :-webkit-border-radius 10px
+      :-moz-border-radius 10px
+      :z-index 1
+
+      p
+        :z-index 0
+        :width 160px
+        :text-align center
+        :color #fff
+        :text-shadow 0 -1px 0 #000
+        :font-size 52px
+        :font-weight bold
+        :z-index 2
+        :line-height 46px
+        :padding-top 10px
+
+      span
+        :color #c0c0c0
+        :font-size 18px
+        :display block
+
+#intakelog
+  :width 940px
+  :font-size 16px
+  :color #232323
+
+  tr
+    :height 32px
+
+  thead
+    tr
+      :font-weight bold
+      :color #fff
+      :text-shadow 0 1px 0 #000
+
+    th.time
+      :background transparent url(/images/tablebar.png) top left no-repeat
+      :width 90px
+
+    th.activity, th.item, th.servings
+      :background transparent url(/images/tablebar.png) top center no-repeat
+
+    th.calories
+      :background transparent url(/images/greenbar.png) top center repeat-x
+
+    th.carbohydrates
+      :background transparent url(/images/yellowbar.png) top center repeat-x
+
+    th.fat
+      :background transparent url(/images/redbar.png) top center repeat-x
+
+    th.protein
+      :background transparent url(/images/purplebar.png) top center repeat-x
+
+    th.sugar
+      :background transparent url(/images/bluebar.png) top center repeat-x
+
+    th.modify
+      :background transparent url(/images/tablebar.png) top right no-repeat
+
+    th.time, th.item
+      :text-align left
+      :padding-left 10px
+  tbody
+    tr.totals
+      :background-color #346B99
+      :text-align center
+      :color #fff
+      :font-weight bold
+      :text-shadow 0 1px 0 #000
+
+      td.description
+        :background-image url(/images/icons/reddot.png)
+        :padding-left 32px
+        :background-repeat no-repeat
+        :background-position 10px center
+        :text-align left
+
+      td.calories
+        :background-color #39923B
+
+      td.carbohydrates
+        :background-color #A79634
+
+      td.fat
+        :background-color #902D2D
+
+      td.protein
+        :background-color #6D3B84
+
+      td.sugar
+        :background-color #18568B
+      
+    tr.odd
+      :background-color #B1E3E8
+      :text-align center
+
+    tr.even
+      :background-color #8FD6DD
+      :text-align center
+
+      td.calories
+        :background-color #7CD29D
+
+      td.carbohydrates
+        :background-color #CCCF7E
+
+      td.fat
+        :background-color #D59078
+
+      td.protein
+        :background-color #B47CD1
+
+      td.sugar
+        :background-color #3F95CD
+
+    td.time, td.item
+      :padding-left 25px
+      :background-repeat no-repeat
+      :background-position 6px center
+      :text-align left
+
+    td.time
+      :background-image url(/images/icons/clock.png)
+
+    td.item
+      background-image: url(/images/icons/bluelist.png)
+
+    td.calories
+      :width 55px
+      :background-color #87D4C1
+
+    td.carbohydrates
+      :width 70px
+      :background-color #B5D188
+
+    td.fat
+      :width 50px
+      :background-color #C2817F
+
+    td.protein
+      :width 80px
+      :background-color #9A87D2
+
+    td.sugar
+      :width 70px
+      :background-color #59AAD2
+
+    td.modify, td.servings
+      :width 90px
+
+
+table
+  a.edit, a.delete, a.favorite, a.unfavorite
+    :display block
+    :height 16px
+    :width 16px
+    :float left
+    :margin-right 5px
+
+  a.edit
+    :background transparent url(/images/icons/wrench.png) center no-repeat
+    :margin-left 14px
+
+  a.delete
+    :background transparent url(/images/icons/cross.png) center no-repeat
+
+  a.favorite
+    :background transparent url(/images/icons/star.png) center no-repeat
+
+  a.unfavorite
+    :background transparent url(/images/icons/star2.png) center no-repeat
+
+.complete, .incomplete, .waiting
+  :float left
+  :display block
+  :font-size 45px
+  :font-weight bold
+  :text-shadow 0 1px 0 #000
+  :text-align center
+  :margin-top 85px
+
+  a
+    :height 140px
+    :width 300px
+    :position relative
+    :padding-top 10px
+    :line-height 65px
+    :display block
+    :text-decoration none
+    :color #fff
+    :margin-right 10px
+
+  span
+    :padding-left 55px
+    :font-size 30px
+
+.complete
+  a
+    :background transparent url(/images/completedbox.png) top left no-repeat
+  a:hover
+    :background transparent url(/images/completedbox.png) bottom left no-repeat
+  span
+    :background transparent url(/images/completedtick.png) bottom left no-repeat	
+
+.incomplete
+  a
+    :background transparent url(/images/uncompletedbox.png) top left no-repeat
+  a:hover
+    :background transparent url(/images/uncompletedbox.png) bottom left no-repeat
+  span
+    :background transparent url(/images/uncompletedcross.png) bottom left no-repeat
+
+.waiting
+  a
+    :background transparent url(/images/waitingbox.png) top left no-repeat
+  a:hover
+    :background transparent url(/images/waitingbox.png) bottom left no-repeat
+  span
+    :background transparent url(/images/waitingcircle.png) bottom left no-repeat
+
+p.burntab, p.durationtab
+  :position absolute
+  :display block
+  :font-size 16px
+  :top -35px
+  :width 85px
+  :height 35px
+  :line-height 38px
+  :padding-left 35px
+  :text-align left
+p.burntab
+  :background transparent url(/images/burntab.png) top left no-repeat
+  :left 20px
+p.durationtab
+  :background transparent url(/images/durationtab.png) top left no-repeat
+  :left 160px
+
+a.prevdate, a.nextdate
+  :text-shadow 0 -2px 0 #285F8E
+  :margin-bottom 30px
+  :display block
+  :width 172px
+  :height 31px
+  :font-size 14px
+  :font-weight bold
+  :text-decoration none
+  :text-transform uppercase
+  :color #fff
+
+
+a.prevdate
+  :float left
+  :padding 11px 0px 0px 48px
+  :text-align left
+  :background transparent url(/images/nextprevbuttons.png) top left no-repeat
+
+a.prevdate:hover
+  :background transparent url(/images/nextprevbuttons.png) bottom left no-repeat
+
+a.nextdate
+  :float right
+  :padding 11px 48px 0px 0px
+  :text-align right
+  :background transparent url(/images/nextprevbuttons.png) top right no-repeat
+
+a.nextdate:hover
+  :background transparent url(/images/nextprevbuttons.png) bottom right no-repeat
+
+.pagination
+  :padding 3px
+  :overflow hidden
+  :margin-bottom 10px
+  //:height 30px
+  :clear both
+  :float right
+  :font-size 16px
+  
+  .disabled
+    :background-color #CCC
+    :color #333
+    :text-shadow none
+  
+  a, a:visited, span
+    :background-color #266697
+    :color #fff
+    :padding 4px 6px
+    :text-shadow none
+    :-webkit-border-radius 5px
+    :-moz-border-radius 5px
+    :text-shadow 0 -1px 0 #000
+    :text-decoration none
+  
+  a:hover, a:active
+    :color #000
+    :background-color #FFFFFF
+    :text-shadow 0 -1px 0 #999
+  
+  .current 
+    :background-color #232323
+    :color #FFFFFF !important
+    :cursor default
+
+#addactivity
+  :width 495px
+  :margin-right 80px
+  :float left
+  :position relative
+
+  h2
+    :background transparent url(/images/icons/plus.png) center left no-repeat
+    :margin-bottom 20px
+
+  form
+    :background-color #B1E3E8
+    :-webkit-border-radius 10px
+    :-moz-border-radius 10px
+    :font-size 14px
+    :color #232323
+    :padding 10px
+    :font-weight bold
+    :line-height 26px
+    :position relative
+
+    input
+      :text-align center
+      :width 24px
+    select
+      :margin-right 5px
+    label
+      :background-color #232323
+      :color #fff
+      :-webkit-border-radius 3px
+      :-moz-border-radius 3px
+      :padding 2px 5px
+      :width 100px
+      :margin-right 20px
+
+    #submit
+      :position absolute
+      :top 10px
+      :right 10px
+      :height 80px
+      :width 80px
+      :display block
+      :background transparent url(/images/searchsubmit.png) top center no-repeat
+      :border 0
+      :color #fff
+      :font-size 20px
+      :font-weight bold
+      :text-shadow 0 -2px 0 #306A25
+      :cursor pointer
+
+    #submit:hover
+      :background transparent url(/images/searchsubmit.png) bottom center no-repeat
+
+.bevel, .bevelsmall
+  :width 220px
+  :margin 0px 15px 50px 0px
+  :float left
+  :position relative
+
+.bevel
+  :height 130px	
+
+.bevelsmall
+  :height 116px
+
+.bevel, .bevelsmall, .bevelreg, .bevelright
+  p
+    :width 124px
+    :height 75px
+    :position absolute
+    :bottom 0
+    :left 0
+    :background transparent url(/images/bevels.png) center left no-repeat
+    :display block
+    :text-align center
+    :font-size 23px
+    :font-weight 600
+    :text-shadow 0 -1px 0 #000
+    :padding 8px 18px 0px 18px
+    :line-height 32px
+
+.bevelreg
+  :width 160px
+  :float left
+  :position relative
+  :height 130px
+
+.expenditure
+  p
+    :background-position 0 -166px
+  h2
+    :background transparent url(/images/icons/lightning.png) center left no-repeat
+
+span.equation
+  :float left
+  :height 50px
+  :width 80px
+  :text-align center
+  :color #1F548A
+  :font-size 50px
+  :margin-top 53px
+
+.burned
+  h2
+    :background transparent url(/images/icons/burn.png) center left no-repeat
+  p
+    :background-position 0 -83px
+
+.outtake
+  h2
+    :background transparent url(/images/icons/reddot.png) center left no-repeat
+  p
+    :background-position 0 -249px
+
+.table
+  :width 940px
+  :font-size 16px
+  :color #232323
+
+  tr
+    :height 32px
+  thead
+    tr
+      :font-weight bold
+      :color #ffffff
+      :text-shadow 0 1px 0 #000000
+    th
+      :background transparent url(/images/tablebar.png) top center no-repeat
+    th.left
+      :background transparent url(/images/tablebar.png) top left no-repeat
+    th.right
+      :background transparent url(/images/tablebar.png) top right no-repeat
+    th.food, th.activity
+      :text-align left
+      :padding-left 6px
+    th.time
+      :width 210px
+    th.times_eaten, th.times_used
+      :width 110px
+    th.modify
+      :width 80px
+
+  tbody
+    tr.odd
+      :background-color #B1E3E8
+    tr.even
+      :background-color #8FD6DD
+    td
+      :padding-left 5px
+    td.times_eaten, td.modify, td.time, td.times_used
+      :text-align center
+  a.delete
+    :float none
+    :align 0 auto
+    :width auto
+
+#expenditurelog
+  :width 940px
+  :font-size 16px
+  :color #232323
+
+  tr
+    :height 32px
+  thead
+    tr
+      :font-weight bold
+      :color #fff
+      :text-shadow 0 1px 0 #000
+    th.date
+      :background transparent url(/images/tablebar.png) top left no-repeat
+      :width 115px
+
+    th.activity, th.duration, th.burned
+      :background transparent url(/images/tablebar.png) top center no-repeat
+
+    th.modify
+      :background transparent url(/images/tablebar.png) top right no-repeat
+
+    th.date, th.activity
+      :text-align left
+      :padding-left 10px
+
+    th.activity
+      :width 445px
+
+    th.duration
+      :width 140px
+
+    th.burned
+      :width 120px
+
+    th.modify
+      :width 90px
+  tbody
+    tr.odd
+      :background-color #B1E3E8
+  tr.even
+    :background-color #8FD6DD
+
+  tr.totals td.date
+    :background-image url(/images/icons/reddot.png)
+
+  td.activity, td.date
+    :padding-left 32px
+    :background-repeat no-repeat
+    :background-position 10px center
+
+  td.date
+    :background-image url(/images/icons/calendar2.png)
+
+  td.activity
+    :background-image url(/images/icons/bluelist.png)
+
+  td.duration, td.burned, td.modify
+    :text-align center
+
+  tr.totals
+    :background-color #4A9AC0
+    :font-weight bold
+    :text-shadow 0 1px 0 #B1E3E8
+
+    td.activity
+      :background-image none
+
+  tr.weektotals
+    :background-color #346B99
+    :color #fff
+    :font-weight bold
+    :text-shadow 0 1px 0 #000
+
+    td.activity
+      :background-image none
+
+  tr.empty
+    :background-image none
+
+  tr.tdee
+    td.activity
+      :background-image url(/images/icons/lightning.png)
+
+  tr.workout 
+    td.activity
+      :background-image url(/images/icons/flag.png)
+
+#weighttracker
+  :float left
+  :width 920px
+  :margin-bottom 30px
+
+  h2
+    :background transparent url(/images/icons/graphhoriz.png) center left no-repeat
+    :display inline
+    :float left
+    :margin-right -40px
+
+
+  #graph
+    :padding 10px
+    :background transparent url(/images/chartbevel.png) top left no-repeat
+    :margin 10px 0px
+    :float left
+    :width 845px
+    :height 320px
+
+.addweight, .addphoto
+  :width 136px
+  :height 28px
+  :display block
+  :float left
+  :font-size 11px
+  :font-weight bold
+  :text-decoration none
+  :text-transform uppercase
+  :line-height 27px
+  :top -3px
+  :position relative
+  :border 0
+
+.addweight
+  :background transparent url(/images/weighttrackerbuttons.png) top left no-repeat
+  :color #003300
+  :text-shadow 0 1px 0 #71D771
+  :padding-left 27px
+
+.target
+  h2
+    :background transparent url(/images/icons/target.png) center left no-repeat 
+  p
+    :background-position 0 -498px
+
+.changemonth
+  h2
+    :background transparent url(/images/icons/arrowright.png) center left no-repeat
+  p
+    :background-position 0 -581px
+
+.changeyear
+  h2
+    :background transparent url(/images/icons/arrowdiag.png) center left no-repeat
+  p
+    :background-position 0 -664px	
+
+.changetime
+  h2
+    :background transparent url(/images/icons/arrowup.png) center left no-repeat
+  p
+    :background-position 0 -747px
+
+
+#modal_overlay
+  :background-color #000
+
+.window
+  :background-image url("/images/window_background.png")
+  :background-position top left
+  :-moz-border-radius 10px
+  :-webkit-border-radius 10px
+  :padding 10px
+  :font-family "Lucida Grande",Verdana
+  :font-size 13px
+  :font-weight bold
+  :color #fff
+  :min-width 150px
+  :min-height 100px
+  :text-shadow 0 1px 0 #999
+
+  .window_contents
+    :margin-top 10px
+    :width 100%
+    :height 100%
+
+    h3
+      :padding-left 20px
+      :background transparent url(/images/icons/camera.png) center left no-repeat
+      :margin-bottom 5px
+      :margin-right 5px
+
+  .window_header
+    :text-align center
+
+  .window_title
+    :margin-top -7px
+    :margin-bottom 7px
+    :font-size 11px
+    :text-transform uppercase
+
+  .window_close
+    :display block
+    :top 4px
+    :float right
+    :height 13px
+    :width 13px
+    :background-image url("/images/window_close.gif")
+    :cursor pointer
+    :cursor hand
+  
+  label
+    display: block
+    width: 70px
+    float: left
+
+#userinfo, #userequip, #usersub
+  :width 450px
+  :float left
+  :margin-bottom 30px
+  :margin-left 100px
+
+  h2
+    :margin-bottom 20px
+  ul
+    :list-style-type none
+    :margin-bottom 20px
+
+#userinfo, #userequip
+  :margin-right 30px
+
+#userinfo
+  h2
+    :background transparent url(/images/icons/userinfo.png) center left no-repeat
+
+#userequip
+  h2
+    :background transparent url(/images/icons/checkboard.png) center left no-repeat
+
+#usersub
+  h2
+    :background transparent url(/images/icons/bill.png) center left no-repeat
+
+#userinfo, #userequip, #usersub
+  ul
+    :list-style-type none
+    :margin-bottom 20px
+
+#userinfo, #usersub
+  ul
+    :font-size 13px
+
+#userinfo, #usersub
+  li
+    p.type
+      :display block
+      :height 17px
+      :background #232323
+      :-webkit-border-radius 5px
+      :-moz-border-radius 5px
+      :font-weight bold
+      :margin 0px 5px 5px 0px
+      :float left
+    p.data
+      :background #B1E3E8
+      :min-height 17px
+      :margin 0px 0px 5px 0px
+      :-webkit-border-radius 5px
+      :-moz-border-radius 5px
+      :color #232323
+      :font-weight normal
+      :float left
+
+
+
+#userinfo
+  li
+    p.type
+      :width 90px
+      :padding 3px 5px 3px 5px
+    p.data
+      :width 175px
+      :padding 3px 5px 3px 5px
+
+#usersub
+  :margin-left 100px
+  
+  li
+    p.type
+      :width 100px
+      :padding 3px 5px 3px 5px
+    p.data
+      :width 165px
+      :padding 3px 5px 3px 5px
+
+#userinfo, #userequip, #usersub, #updateuserinfo, #updatebilling, #updatepassword, #entermealinfo, #usernotify, #updateequipinfo
+  a
+    :width 290px
+    :float left
+    :margin-top 15px
+    :height 35px
+    :display block
+    :color #fff
+    :text-transform uppercase
+    :font-weight bold
+    :font-size 16px
+    :text-decoration none
+    :text-shadow 0 -1px 0 #285F8E
+    :background transparent url(/images/accountbuttons.png) top left no-repeat
+    :text-align center
+    :line-height 33px
+
+  a:hover
+    :background transparent url(/images/accountbuttons.png) bottom left no-repeat
+
+#userequip
+  li
+    :display block
+    :width 290px
+    :color #232323
+    :background transparent url(/images/userequip.png) center center repeat-x
+    :-webkit-border-radius 5px
+    :-moz-border-radius 5px
+    :font-weight bold
+    :margin 0px 0px 5px 0px
+    :padding 8px 5px 8px 5px
+    :float left
+    :text-align center
+    :text-shadow 0 -1px 0 #fff
+    :font-size 19px
+
+#updateuserinfo, #updatepassword, #entermealinfo
+  :float left
+  :margin-bottom 30px
+  :width 350px
+  :margin-right 60px
+
+  h2
+    :background transparent url(/images/icons/userinfo.png) center left no-repeat
+
+  li
+    :display block
+    :float left
+
+  p.type
+    :width 90px
+#updateuserinfo, #updateequipinfo, #updatepassword,  #entermealinfo
+  ul
+    :list-style-type none
+    :margin-top 20px
+
+#updatepassword, #entermealinfo
+  li p.type
+    width: 155px
+
+#updateuserinfo, #updatebilling, #updatepassword, #entermealinfo
+  li p.type
+    :display block
+    :height 17px
+    :background #232323
+    :-webkit-border-radius 5px
+    :-moz-border-radius 5px
+    :font-weight bold
+    :margin 0px 10px 5px 0px
+    :float left
+    :padding 3px 5px 3px 5px
+    :font-size 13px
+  li
+    &.checkbox label, &.option label
+      width: 195px
+      //float: left
+      display: block
+      font-size: 14px
+      margin: 0px 0px 10px 0px
+      color: #232323
+      background: transparent url(/images/userequip.png) center center repeat-x
+      padding: 10px 10px 10px 10px
+      text-transform: capitalize
+      text-shadow: 0 -1px 0 #fff
+      -webkit-border-radius: 5px
+      -moz-border-radius: 5px
+
+    &.checkbox input, &.option input
+      width: 20px
+      margin: 0px 5px 0px 0px
+      padding: 0px
+
+    &.checkbox p.extra
+      color: #232323
+      font-size: 14px
+      margin: 20px 0px 10px 0px
+      display: block
+      float: left
+      text-align: center
+      width: 460px
+    p.type
+      height: auto
+
+#updateuserinfo, #updatebilling, #updatepassword, #entermealinfo
+  input
+    :float left
+    :margin-bottom 5px
+    :width 200px
+    :height 17px
+    :padding 0px 5px
+    :font-size 13px
+
+#updateuserinfo #user_weight, #updateuserinfo #user_target_weight
+  :width 35px
+  :text-align center
+
+span.annote
+  :font-size 13px
+  :color #232323
+  :font-weight bold
+  :padding 8px 5px 0px 5px
+
+
+#updateuserinfo, #entermealinfo
+  select
+    :font-size 13px
+    :margin 2px 0px
+
+  textarea
+    :float left
+    :margin-bottom 5px
+    :width 200px
+    :height 150px
+    :padding 0px 5px
+    :font-size 13px
+
+#updateequipinfo
+  :float left
+  :margin-bottom 30px
+  :width 440px
+
+  h2
+    :background transparent url(/images/icons/checkboard.png) center left no-repeat
+    :width 300px
+    :margin-bottom 5px
+  ul
+    :margin-bottom 20px
+
+  h3
+    :width 440px
+    :float left
+    :margin 10px 0px 20px 0px
+    :font-size 15px
+    :text-shadow 0 -1px 0 #285F8E
+
+  li
+    :display block
+    :width 190px
+    :color #232323
+    :background transparent url(/images/userequip.png) center center repeat-x
+    :-webkit-border-radius 5px
+    :-moz-border-radius 5px
+    :font-weight bold
+    :margin 0px 20px 5px 0px
+    :padding 6px 5px 6px 5px
+    :float left
+    :text-align center
+    :text-shadow 0 -1px 0 #fff
+    :font-size 15px
+  p
+    :display block
+    :float left
+    :width 440px
+    :font-size 14px
+    :color #232323
+    :margin-bottom 10px
+
+  textarea
+    :padding 10px
+    :width 420px
+    :font-size 14px
+    :height 100px
+
+#updatepassword
+  width: 500px
+
+  h2
+    background: transparent url(/images/icons/password.png) center left no-repeat
+
+#entermealinfo
+  h2
+    :background transparent
+    margin-bottom: 5px
+    padding-left: 0
+  h3
+    font-size: 15px
+    color: #232323
+    margin: 10px 0 0 0
+    text-shadow: 0 1px 0 #D0E7ED
+  .errorExplanation
+    font-size: 12px
+    h2
+      width: auto
+      font-size: 14px
+      color: #BA2F2C
+    p
+      color: #232323
+    ul
+      li
+        float: none
+        color: #BA2F2C
+  .fieldWithErrors
+    float: left
+    input
+      border-color: #FF0000
+  width: auto
+  .left
+    float: left
+    margin-right: 10px
+  .last
+    margin-right: 0px
+  ul
+    width: 400px
+    overflow: hidden
+    margin-top: 5px
+  ul.nut
+    width: 230px
+    input
+      width: 35px
+      text-align: center
+    li
+      p
+        width: 130px
+      p.nut
+        :text-shadow 0 -1px 0 #000
+        color: #FFFFFF
+      p.calories
+        :background-color #31AC37
+      p.carbs
+        :background-color #DAC42D
+      p.fat
+        :background-color #BA2F2C
+      p.protein
+        :background-color #9235B9
+      p.sugars
+        :background-color #0971C2
+       
+#comment
+  width: 600px
+
+  h2
+    width: 500px
+    background: transparent url(/images/icons/info.png) center left no-repeat
+
+  h3
+    font-size: 15px
+    color: #232323
+    margin: 10px 0px
+    font-weight: normal
+
+  form
+    margin: 0px 20px 50px 0px
+    width: 380px
+
+    p
+      color: #232323
+      font-size: 13px
+      line-height: 20px
+      margin-bottom: 0px
+
+      span, label
+        -webkit-border-radius: 5px
+        -moz-border-radius: 5px
+        padding: 5px
+        display: block
+
+      span
+        background: #232323
+        color: #fff
+        font-weight: bold
+        margin: 20px 0px 10px 0px
+
+      label
+        background: transparent url(/images/userequip.png) center center repeat-x
+        margin-bottom: 5px
+
+      #workout_where_pain
+        height: 16px
+        width: 150px
+        margin-top: 5px
+
+      textarea
+        width: 370px
+        height: 100px
+        font-size: 13px
+        padding: 5px
+
+      #submitcomment
+        margin-top: 20px
+        padding: 5px 10px
+        font-size: 13px
+#sudobanner-bg
+  position: fixed
+  top: 0
+  padding-top: 10px
+  background-color: #FF0000
+  width: 100%
+  z-index: 100
+  opacity: .75
+  height: 30px
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=75)"
+  filter: alpha(opacity=75)
+  
+#sudobanner
+  position: fixed
+  top: 0
+  padding-top: 10px
+  width: 100%
+  z-index: 101
+  font-size: 15px
+  height: 30px
+  border-bottom: 2px solid #FFF
+  
+  .close
+    float: right
+    margin-right: 30px
+    a
+      text-decoration: none
+      color: #000
+  .inner
+    margin: 0 auto
+    width: 250px
+    text-shadow: 0 1px 0 #000
+#sudopadding    
+  height: 40px
+
+#workout_header
+  overflow: hidden
+  color: #000
+
+  h2
+    float: left
+    margin-top: 5px
+    padding-left: 0
+
+#current_workout_type
+  font-size: 1.4em
+  text-shadow: 0 1px 0 #FFF
+  float: right
+  margin-top: 5px
+
+#workouttype, #usernotify
+  h2
+    display: block
+    font-size: 36px
+    font-weight: 500
+    margin-bottom: 15px
+    width: auto
+    padding-left: 0
+    
+  .smaller
+    font-size: 22px
+  .buckets
+    overflow: hidden
+  .user_bucket
+    float: left
+    width: 280px
+    height: 120px
+    font-size: 14px
+    margin: 0px 10px 10px 0px
+    color: #232323
+    background: #f3f3f3 url(/images/userequip.png) center bottom repeat-x
+    padding: 10px 10px 10px 10px
+    text-shadow: 0 -1px 0 #fff
+    -webkit-border-radius: 5px
+    -moz-border-radius: 5px
+
+    .title
+      font-weight: bold
+    .desc 
+      margin-top: 4px
+  .user_bucket.unavailable 
+    color: #777
+    height: 155px
+    
+    .equip
+      margin-top: 4px
+      color: #232323
+    
+  ul
+    overflow: hidden
+    margin-bottom: 20px
+  li
+    list-style: none
+    float: left
+    width: 280px
+    font-size: 14px
+    margin: 0px 10px 10px 0px
+    color: #232323
+    background: #f3f3f3 url(/images/userequip.png) center bottom repeat-x
+    padding: 10px 10px 10px 10px
+    text-shadow: 0 -1px 0 #fff
+    -webkit-border-radius: 5px
+    -moz-border-radius: 5px
+  input.confirm
+    width: 290px !important
+    float: left !important
+    margin: 20px 70px
+    height: 35px
+    display: block
+    color: #fff
+    text-transform: uppercase
+    font-weight: bold
+    font-size: 16px !important
+    text-decoration: none
+    text-shadow: 0 -1px 0 #285F8E
+    background: transparent url(/images/accountbuttons.png) top left no-repeat
+    text-align: center
+    line-height: 33px
+    border: 0px
+
+    &:hover
+      background: transparent url(/images/accountbuttons.png) bottom left no-repeat
+a.small_button
+  float: right
+  margin: 0 10px
+  width: 124px
+  height: 28px
+  text-align: center
+  line-height: 28px
+  color: #fff
+  text-shadow: 0 -1px 0 #285F8E
+  text-decoration: none
+  background: transparent url(/images/splash/buttons.png) top center no-repeat
+  font-size: 1.5em
+
+  &:hover
+    background: transparent url(/images/splash/buttons.png) bottom center no-repeat
+
+ul.account_tabs
+  position: relative
+  margin: 10px 0 15px 0
+  height: 26px
+  padding: 6px 10px
+  background: url(/images/userequip.png) 0 0   repeat-x
+  -webkit-border-radius: 5px
+  -moz-border-radius: 5px
+  
+  li
+    list-style-type: none
+    margin: 0
+    display: inline 
+    
+    a
+      float: left
+      margin-right: 10px
+      height: 26px
+      padding: 0 8px
+      line-height: 26px
+      font-size: 14px
+      color: #666
+      text-shadow: 1px 1px 0 rgba(255,255,255,0.7)
+      -webkit-border-radius: 4px
+      -moz-border-radius: 4px
+      text-decoration: none
+      
+      &:hover
+        color: #333
+        background-color: #ccc
+        text-decoration: none
+  li.selected
+    a
+      position: relative
+      top: -1px
+      font-weight: bold
+      color: #333
+      background: #fff
+      border: 1px solid #ccc
+      border-right-color: #eee
+      border-bottom-color: #eee
+
+.info_flash
+  background-color: #CCFFCC
+  border: 1px solid #99CC99
+  margin: 10px auto
+  font-weight: bold
+  font-size: 12px
+  text-align: center
+  -webkit-border-radius: 5px
+  -moz-border-radius: 5px
+  font-size: 2em
+  color: #333
+  height: 26px
+  padding: 6px 10px
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.7)
+
+.error_flash
+  background-color: #E77471
+  border: 1px solid #C24641
+  margin: 10px auto
+  font-weight: bold
+  font-size: 12px
+  text-align: center
+  -webkit-border-radius: 5px
+  -moz-border-radius: 5px
+  font-size: 2em
+  color: #FFF
+  height: 26px
+  padding: 6px 10px
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.7)
+  
+  
+
+table.upgrades
+  margin: 0
+  width: 100%
+  border-spacing: 0
+  border-collapse: collapse
+  color: #000
+  
+  #org_plans
+    margin: 15px 0
+  
+  th
+    padding: 2px 5px
+    text-transform: uppercase
+    text-align: left
+    font-size: 10px
+    font-weight: bold
+    color: #333
+    border-bottom: 1px solid #ddd
+  
+  td
+    padding: 8px 5px
+    font-size: 14px
+    font-weight: bold
+    border-bottom: 1px solid #ddd
+    background: url(/images/modules/account/billing_bevel.gif) 0 0 repeat-x #f5f5f5
+    
+  tr:hover 
+    td
+      background-color: #d2f4f4
+      
+  tr.selected
+    td
+      background-color: #333
+      color: #fff
+      
+  tr.current
+    td
+      background-color: #fdffce
+      color: #000
+  
+  td.num, td.bool, th.num, th.bool
+    text-align: center
+  
+  td.action
+    text-align: center
+    font-size: 12px
+    color: #999
+    
+  td.name
+    em
+      font-style: normal
+      color: #666
+table.upgrades.selected 
+  td
+    padding-top: 4px
+    padding-bottom: 4px
+    opacity: .5
+    font-size: 12px
+  tr.selected 
+    td
+      padding-top: 8px
+      padding-bottom: 8px
+      opacity: 1.0
+      font-size: 16px
+#thank_you
+  h2
+    display: block
+    font-size: 36px
+    font-weight: 500
+    color: #fff
+    text-shadow: 0 3px 0 #19467D
+    margin-bottom: 15px
+    width: auto
+    padding: 0px
+
+
+  h3
+    display: block
+    font-size: 19px
+    font-weight: 400
+    color: #153E6A
+    text-shadow: 0 -1px 0 #58B4C5
+    line-height: 26px
+    margin-bottom: 15px
+  p
+    margin: 10px
+  a
+    color: #FFF
+    font-size: 16px
+    font-weight: bold
+
+#enteruserinfo
+  .fieldWithErrors
+    float: left
+  h2
+    background: transparent url(/images/icons/userinfo.png) center left no-repeat
+
+  ul
+    list-style-type: none
+    margin-top: 20px
+    li
+      &.checkbox label, &.option label
+        width: 275px
+        //float: left
+        display: block
+        font-size: 14px
+        margin: 0px 0px 10px 0px
+        color: #232323
+        background: transparent url(/images/userequip.png) center center repeat-x
+        padding: 10px 10px 10px 10px
+        text-transform: capitalize
+        text-shadow: 0 -1px 0 #fff
+        -webkit-border-radius: 5px
+        -moz-border-radius: 5px
+
+      &.checkbox input, &.option input
+        width: 20px
+        margin: 0px 5px 0px 0px
+        padding: 0px
+
+      &.checkbox p.extra
+        color: #232323
+        font-size: 14px
+        margin: 20px 0px 10px 0px
+        display: block
+        float: left
+        text-align: center
+        width: 460px
+#enteruserinfo li, #enterbillinginfo li
+  display: block
+  float: left
+
+
+#enteruserinfo li p.type, #enterbillinginfo li p.type
+  width: 120px
+  position: relative
+
+
+#enteruserinfo li p.type span, #enterbillinginfo li p.type span
+  display: none
+
+#enteruserinfo li p.error, #enterbillinginfo li p.error
+  background-color: #d40108 !important
+
+#enteruserinfo li p.type span.error, #enterbillinginfo li p.type span.error, #entermedicalhistory li p.type span.error
+  display: block
+  position: absolute
+  left: -110px
+  background: none
+  color: #fff
+  width: 100px
+  font-size: 12px
+  text-shadow: 0 1px 0 #000000
+
+#enteruserinfo li p.type span.error, #enterbillinginfo li p.type span.error
+  top: 0px
+
+#enteruserinfo li p.type, #enterbillinginfo li p.type
+  display: block
+  background: #232323
+  -webkit-border-radius: 5px
+  -moz-border-radius: 5px
+  font-weight: bold
+  margin: 0px 10px 10px 0px
+  float: left
+  padding: 6px 10px 6px 10px
+  font-size: 16px
+  text-align: right
+
+
+#enteruserinfo input, #enterbillinginfo input
+  float: left
+  margin-bottom: 5px
+  width: 250px
+  padding: 3px 5px 4px 5px
+  font-size: 15px
+
+
+#enteruserinfo
+  #user_weight, #user_target_weight
+    width: 35px
+    text-align: center
+
+
+span.annote
+  font-size: 13px
+  color: #232323
+  font-weight: bold
+  padding: 8px 5px 0px 5px
+
+
+#enteruserinfo select, #enterbillinginfo select
+  font-size: 13px
+  margin: 2px 0px
+  height: 30px
+  padding: 2px 10px 3px 2px
+
+
+#enteruserinfo textarea, #enterbillinginfo textarea
+  float: left
+  margin-bottom: 10px
+  padding: 3px 5px
+  font-size: 16px
+
+
+#enteruserinfo textarea
+  width: 280px
+  height: 180px

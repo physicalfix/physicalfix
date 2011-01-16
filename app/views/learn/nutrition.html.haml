@@ -1,0 +1,23 @@
+#navigation
+  #inner
+    %p
+      Reasons to join:
+      %ul.tabs#tabs
+        %li= link_to('About Us', '/learn/about')
+        %li= link_to('Workouts', '/learn/workouts')
+        %li= link_to('Nutrition', '/learn/nutrition', :class => 'active')
+#learn
+  #inner
+    %h3 Maintaining a balanced and nutritious diet is the best thing we can do for ourselves. And when it comes to weight loss – it’s a must! Controlling calories, combined with regular exercise, is the fastest and safest way to lose weight. It’s also the foundation of a healthy lifestyle. That’s why the physicalfix.com system wouldn’t be complete without a nutrition tracking component. 
+
+    %h4 How can physicalfix.com help me eat smarter?
+    %p Based on the information you provide, physicalfix.com will use a standard formula to calculate how many calories you should be consuming each day. Your total calories will then be broken down by type of food – carbohydrates, proteins, fats, and sugar. 
+    =link_to('Sign Up Now', plans_path, :class => 'signup', :style => 'float: none;')
+    
+    %h4 How will I know if my calorie consumption is on track?
+    %p physicalfix.com provides you with an easy-to-use food journal as well as an extensive food database. Simply enter what you ate and physicalfix.com will calculate how many and which type of calories you’ve eaten. Total calories consumed and calories remaining will be displayed so you can always see where you stand. 
+    =link_to('Sign Up Now', plans_path, :class => 'signup', :style => 'float: none;')
+    
+    %h4 Can I keep track of my weight loss with physicalfix.com?
+    %p Yes! physicalfix.com offers a weight tracker that allows you to keep a close eye on your progress. When you begin the program you’ll enter your starting weight and your goal weight. Then you’ll log your weight daily or weekly. A detailed graph will show you how close you are to reaching your goal. In addition, you’ll have the opportunity to upload photos of yourself – so you can actually see your transformation.
+    =link_to('Sign Up Now', plans_path, :class => 'signup', :style => 'float: none;')

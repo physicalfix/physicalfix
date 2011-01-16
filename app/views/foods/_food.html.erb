@@ -1,0 +1,227 @@
+<style>
+div.NutritionLabel {
+    border: 1px solid #000000;
+    padding: 3px;
+    width: 230px;
+}
+div.NutritionLabel td {
+  font-family: Arial Black;
+  font-size: 8pt;
+}
+div.NutritionLabel div.NutritionHeader {
+  font-family:Franklin Gothic Heavy,Arial Black;
+  font-size:28px;
+  white-space:nowrap;
+}
+div.NutritionLabel div.Serving {
+  font-family:Arial;
+  font-size:8pt;
+  padding-left:1pt;
+}
+div.NutritionLabel div.Line {
+  border-top:1px solid black;
+}
+
+div.NutritionLabel div.Label {
+  float:left;
+  font-family:Arial Black;
+}
+
+div.NutritionLabel div.Weight {
+  display:inline;
+  font-family:Arial;
+  padding-left:1px;
+}
+div.NutritionLabel div.LabelLight {
+  float:left;
+  font-family:Arial;
+}
+div.NutritionLabel div.DVLabel {
+  font-family:Arial Black;
+  font-size:7pt;
+  text-align:right;
+}
+div.NutritionLabel div.DV {
+  display:inline;
+  float:right;
+  font-family:Arial Black;
+}
+
+div.NutritionLabel td.Indent {
+  padding-left:10px;
+}
+
+div.NutritionLabel table.Vitamins {
+  border-collapse:collapse;
+  margin-bottom:3px;
+  width:100%;
+}
+div.NutritionLabel table.Vitamins td {
+  font-family:Arial;
+  white-space:nowrap;
+  width:33%;
+}
+</style>
+<script type="text/javascript">
+function update_info() {
+	var url = '<%= food_path(food['food_id']) %>?meal[serving_id]=' + $('meal_serving_id').value;
+	console.log(url);
+	new Ajax.Request(url, {method: 'get'});
+}
+</script>
+<div class="NutritionLabel">
+<table width="150" cellspacing="0" cellpadding="0">
+  <tr>
+    <td>
+      <div class="NutritionHeader">Nutrition Facts</div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Serving">
+      <% form_for :meal, :url => '/food_log' do |f| -%>
+      <label>Serving Size: </label>
+      <%= select_tag 'meal[serving_id]', options_for_select(
+        @servings,
+        :selected => @serving['serving_id']),
+        {:onchange => "update_info()"} %>
+	  	<label>Servings</label>
+		<%= f.select :servings, options_for_select((1..10).collect{|i| [pluralize(i, 'serving'),i]}) %>
+		<label>Meal: </label><%= f.select :meal_name, %w[Breakfast Lunch Dinner Snacks] %><br/>
+		<%= f.hidden_field :food_id, :value => food['food_id']%>
+		<%= submit_tag "Add to meal" %>
+	<%  end -%>
+      </div>
+    </td>
+  </tr>
+  <tr style="height: 7pt">
+    <td style="background-color: #000000;"/>
+  </tr>
+  <tr>
+    <td style="font-size:7pt">Amount per Serving</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Line">
+       <div class="Label">Calories <div class="weight"><%= @serving['calories'] %></div></div>
+       <div class="LabelLight" style="float:right; padding-top:1px">Calories from fat <div class="weight"><%=  @serving['fat'].to_i*9 %></div></div>
+      </div>
+    </td>
+  </tr>
+  <tr style="height: 5px">
+    <td style="background-color: #000000"/>
+  </tr>
+  <tr>
+    <td><div class="DVLabel">% Daily Value*</div></td>
+  </tr>
+  <tr>
+    <td>
+      <div class="line">
+        <div class="Label">Total Fat <div class="Weight"><%= @serving['fat'] %>g</div></div>
+        <div class="DV"><%= Food.nutrient_value_daily(:total_fat, @serving['fat']).round -%>&#37;</div>
+      </div>
+  </tr>
+  <tr>
+    <td class="Indent">
+      <div class="Line">
+        <div class="LabelLight">Saturated Fat <div class="Weight"><%= @serving['saturated_fat'] %> g</div></div>
+        <div class="DV"><%= (Food.nutrient_value_daily(:saturated_fat, @serving['saturated_fat']) * 100).round -%>&#37;</div>
+      </div>
+      </td>
+  </tr>
+  <tr>
+    <td class="Indent">
+      <div class="Line">
+        <div class="LabelLight">Polyunsaturated Fat <div class="Weight"><%= @serving['polyunsaturated_fat'] %> g</div></div>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td class="Indent">
+      <div class="Line">
+        <div class="LabelLight">Monosaturated Fat <div class="Weight"><%= @serving['monounsaturated_fat'] %> g</div></div>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Line">
+        <div class="Label">Cholesterol <div class="Weight"><%= @serving['cholesterol'] %>g</div></div>
+        <div class="DV"><%= (Food.nutrient_value_daily(:cholesterol, @serving['cholesterol']) * 100).round %>&#37;</div>
+      </div>
+     </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Line">
+        <div class="Label">Sodium <div class="Weight"><%= @serving['sodium'] %>mg</div></div>
+        <div class="DV"><%= (Food.nutrient_value_daily(:sodium, @serving['sodium']) * 100).round -%>&#37;</div>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Line">
+        <div class="Label">Potasium <div class="Weight"><%= @serving['potassium'] %>g</div></div>
+        <div class="DV"><%= (Food.nutrient_value_daily(:potassium, @serving['potassium']) * 100).round -%>&#37;</div>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Line">
+        <div class="Label">Total Carbohydrate <div class="Weight"><%= @serving['carbohydrate'] %>g</div></div>
+        <div class="DV"><%= (Food.nutrient_value_daily(:carbohydrates, @serving['carbohydrate']) * 100).round %>%</div>
+     </div>
+    </td>
+  </tr>
+  <tr>
+    <td class="Indent">
+      <div class="Line">
+        <div class="LabelLight">Dietary Fiber <div class="Weight"><%= @serving['fiber'] %>g</div></div>
+        <div class="DV"><%= (Food.nutrient_value_daily(:dietary_fiber, @serving['fiber']) * 100).round %>%</div>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td class="Indent">
+      <div class="Line">
+        <div class="LabelLight">Sugars <div class="Weight"><%= @serving['sugar'] %>g</div></div>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="Line">
+        <div class="Label">Protein <div class="Weight"><%= @serving['protein'] %>g</div></div>
+        <div class="DV"><%= (Food.nutrient_value_daily(:protein, @serving['protein']) * 100).round %>%</div>
+      </div>
+    </td>
+  </tr>
+  <tr style="height:7pt;">
+    <td style="background-color:#000000"/>
+  </tr>
+  <tr>
+    <td>
+      <table class="Vitamins">
+        <tr>
+          <td>Vitamin A <div class="Weight"><%= (Food.nutrient_value_daily(:vitamin_a, @serving['vitamin_a']) * 100).round%>%</div></td>
+          <td style="text-align:center;">•</td>
+          <td>Vitamin C <div class="Weight"><%= (Food.nutrient_value_daily(:vitamin_c, @serving['vitamin_c']) * 100).round%>%</div></td>
+        </tr>
+        <tr style="height: 1pt;">
+          <td style="background-color: black;" colspan="3"/>
+        </tr>
+        <tr>
+          <td>Calcium <div class="Weight"><%= (Food.nutrient_value_daily(:calcium, @serving['calcium']) * 100).round%>%</div></td>
+          <td style="text-align:center;">•</td>
+          <td>Iron <div class="Weight"><%= (Food.nutrient_value_daily(:iron, @serving['iron']) * 100).round%>%</div></td>
+        </tr>
+        <tr style="height: 1pt;">
+          <td style="background-color: black;" colspan="3"/>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+</div>

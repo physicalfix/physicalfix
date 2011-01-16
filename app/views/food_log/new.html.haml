@@ -1,0 +1,101 @@
+- form_for @meal, :url => food_log_index_path do |f|
+  #entermealinfo
+    %h2 Create Custom Meal
+    = error_messages_for 'meal'
+    .left
+      %h3 Meal Info
+      %ul
+        %li
+          %p.type Food Name
+          = f.text_field :food_name
+        %li
+          %p.type Brand
+          = f.text_field :brand_name
+        %li
+          %p.type Serving Description
+          = f.text_field :serving_description
+        %li
+          %p.type Serving Amount
+          = f.text_field :servings
+        %li
+          %p.type Meal
+          = f.select :meal_name, %w[Breakfast Lunch Dinner Snacks]
+        %li
+          %p.type Date
+          = f.date_select :eaten_at
+      %a.form_submit(href="\#" onclick="document.forms[0].submit()") Add Custom Food
+    .left
+      %h3 Required Nutritional Info
+      %ul.nut
+        %li
+          %p.type.nut.calories Calories
+          = f.text_field :calories
+        %li
+          %p.type.nut.carbs Carbohydrates
+          = f.text_field :carbohydrate
+          %span.annote g
+        %li
+          %p.type.nut.protein Protein
+          = f.text_field :protein
+          %span.annote g
+        %li
+          %p.type.nut.fat Fat
+          = f.text_field :fat
+          %span.annote g
+        %li
+          %p.type.nut.sugars Sugar
+          = f.text_field :sugar
+          %span.annote g
+    .left.last
+      %h3 Optional Nutritional Info
+      %ul.nut
+        %li
+          %p.type Saturated Fat
+          = f.text_field :saturated_fat
+          %span.annote g
+        %li
+          %p.type Polyunsaturated Fat
+          = f.text_field :polyunsaturated_fat
+          %span.annote g
+        %li
+          %p.type Monosaturated Fat
+          = f.text_field :monosaturated_fat
+          %span.annote g
+        %li
+          %p.type Trans Fat
+          = f.text_field :trans_fat
+          %span.annote g
+        %li
+          %p.type Cholesterol
+          = f.text_field :cholesterol
+          %span.annote mg
+        %li
+          %p.type Sodium
+          = f.text_field :sodium
+          %span.annote mg
+        %li
+          %p.type Potassium
+          = f.text_field :potassium
+          %span.annote mg
+        %li
+          %p.type Fiber
+          = f.text_field :fiber
+          %span.annote g
+        %li
+          %p.type Vitamin A
+          = f.text_field :vitamin_a
+          %span.annote %
+        %li
+          %p.type Vitamin C
+          = f.text_field :vitamin_c
+          %span.annote %
+        %li
+          %p.type Calcium
+          = f.text_field :calcium
+          %span.annote %
+        %li
+          %p.type Iron
+          = f.text_field :iron
+          %span.annote %
+
+

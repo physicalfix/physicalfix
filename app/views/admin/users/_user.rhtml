@@ -1,0 +1,24 @@
+<tr <% if user.has_role?('Admin') %>class='admin'<%elsif user.medical_history == nil && user.subscription && user.subscription.product == Subscription::PREMIUM_SUBSCRIPTION%>class='user_problem'<%end%>>
+	<td>
+		<%= link_to user.first_name + ' ' + user.last_name, admin_user_path(user) %>
+	</td>
+	<td>
+		<%=user.email%>
+	</td>
+	<td>
+		<% if !user.roles_string.empty? %>
+		<%= user.roles_string %>
+		<% elsif user.subscription %>
+		<%= user.subscription.product %>
+		<% end %>
+	</td>
+	<td>
+		<%=user.created_at.to_s :long%>
+	</td>
+    <td>
+      <%= "#{user.last_logged_in_at.to_s(:long)} (#{time_ago_in_words(user.last_logged_in_at)} ago)" if user.last_logged_in_at %>
+    </td>
+	<td>
+		<%= link_to_unless user.has_role?('Admin'), 'Login', {:controller => '/sessions', :action => 'sudo', :user_id => user.id}, :method => 'post' %>
+	</td>
+</tr>

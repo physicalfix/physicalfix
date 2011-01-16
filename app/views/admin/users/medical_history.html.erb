@@ -1,0 +1,53 @@
+<style>
+fieldset{
+	width: 550px;
+}
+</style>
+<fieldset>
+<legend>Medical History</legend>
+<table>
+	<tr><th>1) Name of physician</th></tr>
+	<tr><td><%= @mh.p_name %></td></tr>
+	<tr><th>2) Physician's phone number</th></tr>
+	<tr><td><%= @mh.p_number %></td></tr>
+	<tr><th>3) Date of last visit</th></tr>
+	<tr><td><%= @mh.p_visit%></td></tr>
+	<tr><th>4) Reason for last visit</th></tr>
+	<tr><td><%= @mh.p_visit_text %></td></tr>
+	<tr><th>5) Has your physician ever advised you against exercising?</th></tr>
+	<tr><td><%= @mh.exercise%><br/><%=@mh.exercise_text%></td></tr>
+
+	<tr><th>6) After reviewing your questionnaire, it may be necessary for me to obtain medical clearance from your physician before beginning an exercise program with you. If it is necessary to contact your physician regarding your health status, may I have your permission?</th></tr>
+	<tr><td><%= @mh.contact_p %></td></tr>
+	<tr><th>7) Do you now or have you ever experienced any of the following:</th></tr>
+	<tr><td><% if @mh.experience then for  item in @mh.experience.split('|') %><li><%= item %></li><% end end %></td></tr>
+	
+	<tr><th>8) Has a physician ever diagnosed you as having any of the following:</th></tr>
+	<tr><td><% if @mh.diagnose then for  item in @mh.diagnose.split('|') %><li><%= item %></li><% end end%></td></tr>
+
+	<tr><th>9) Have you had any major illnesses and/or surgeries?</th></tr>
+	<tr><td><%= @mh.illness%><br/><%=@mh.illness_text%></td></tr>
+	
+	<tr><th>10) Do you have any current medical problems or incompletely healed injuries?</th></tr>
+	<tr><td><%= @mh.problems%><br/><%=@mh.problems_text%></td></tr>
+	
+	<tr><th>11) Have you had or do you now have any bone, joint (including spine), or muscle injuries and or diseases?</th></tr>
+	<tr><td><%= @mh.bone%><br/><%=@mh.bone_text%></td></tr>
+
+	<tr><th>12) At present, do you have any pain in any part of your body?</th></tr>
+	<tr><td><%= @mh.pain%><br/><%=@mh.pain_text%></td></tr>
+
+	<tr><th>13) Are you presently taking any medications?</th></tr>
+	<tr><td><%= @mh.medication%><br/><%=@mh.medication_text%></td></tr>
+
+	<tr><th>14) Rate your general health:</th></tr>
+	<tr><td><%= @mh.health%></td></tr>
+	
+	<tr><th>15) Rate your general level of fitness:</th></tr>
+	<tr><td><%= @mh.fitness%></td></tr>
+
+	<tr><th>16) Do you exercise regularly (3-4 times per week)?</th></tr>
+	<tr><td><%= @mh.routine%><br><%=@mh.routine_text%></td></tr>
+	
+</table>
+</fieldset>

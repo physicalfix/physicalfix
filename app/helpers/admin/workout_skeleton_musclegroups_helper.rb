@@ -1,0 +1,2 @@
+module Admin::WorkoutSkeletonMusclegroupsHelper
+end

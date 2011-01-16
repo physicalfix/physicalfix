@@ -1,0 +1,92 @@
+!!! strict
+%html(xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml")
+  %head
+    %title PhysicalFix
+    %meta(http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8")
+    %meta(name="description" content="Meta description")
+    %meta(name="keywords" content="Meta keywords")
+    %link(rel="shortcut icon" href="#{image_path('favicon.ico')}" type="image/x-icon")
+    = stylesheet_link_tag 'splash'
+    :javascript
+      var _kmq = _kmq || [];
+      function _kms(u){
+        setTimeout(function(){
+          var s = document.createElement('script'); var f = document.getElementsByTagName('script')[0]; s.type = 'text/javascript'; s.async = true;
+          s.src = u; f.parentNode.insertBefore(s, f);
+        }, 1);
+      }
+      _kms('//i.kissmetrics.com/i.js');_kms('//doug1izaerwt3.cloudfront.net/59415b5b228b22a22adb65d03fbede39e95ef5ff.1.js');
+  %body(style="-webkit-text-size-adjust:none")
+    #wrapper
+      #header
+        #inner
+          %a(href="/")
+            %h1
+              %span PhysicalFix
+          - unless session[:uid]
+            - form_tag sessions_path, {:class => 'search'} do
+              %ul
+                %li
+                  %label(for="email") Email
+                  = text_field_tag :email, params[:email], :class => 'email'
+                %li
+                  %label(for="password") Password
+                  = password_field_tag :password, params[:password], :class => 'password'
+                  = link_to('Forgot?', forgot_password_path, {:class => 'forgot'})
+                %li
+                  %input.loginbutton(type="submit" value="Login")
+
+      = yield
+      
+      #footer
+        #inner
+          /#blogpost
+          /  %h5 Our Blog
+          /  %p.quote Curabitur eget mauris vel metus faucibus aliquet vitae eu ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam erat volutpat.
+          /  %p
+          /    By
+          /    %a Adam Podolnick
+          /    on 29/9
+
+          #tweet
+            %h5 Twitter
+            = twitter_post
+
+          #support
+            %h5 Support
+            %p Have a question or problem? You can find answers on our support page and FAQ, or contact us directly for assistance.
+            %p.supportlinks= link_to('Support Page &#0187;', 'http://physicalfix.tenderapp.com')
+            %p.supportlinks= link_to('Frequently Asked Questions &#0187;', 'http://physicalfix.tenderapp.com/faqs')
+
+          #fullfooter
+            %h6
+              %span PhysicalFix
+            %ul
+              %li= link_to('Privacy Policy', :controller => 'legal', :action => 'privacy_policy')
+              %li= link_to('Home', root_path)
+              %li= link_to('Sign Up', plans_path)
+              %li= link_to('Support', 'http://physicalfix.tenderapp.com')
+              //%li= link_to('Blog', '#')
+              %li= link_to('Contact', 'mailto://support@physicalfix.com')
+            %p
+              &copy; 2010 PhysicalFix. All rights reserved. PhysicalFix provides
+              %span fitness guidance
+              ,
+              %span nutrition tracking
+              and
+              %span exercise routines
+              \.
+    %script(type="text/javascript")
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      try {
+      var pageTracker = _gat._getTracker("UA-301641-18");
+      pageTracker._trackPageview();
+      } catch(err) {}
+    %script{:type=>"text/javascript", :src=>"//static.woopra.com/js/woopra.v2.js"}
+    %script{:type=>"text/javascript"}
+      -if session[:uid]
+        = "woopraTracker.addVisitorProperty('name', '#{current_user.first_name} #{current_user.last_name}');"
+        = "woopraTracker.addVisitorProperty('email', '#{current_user.email}');"     
+      woopraTracker.track(); 
+      

@@ -1,0 +1,56 @@
+<%= javascript_include_tag :defaults %>
+<%= javascript_include_tag 'control_suite/object.event.1.0.0.js' %>
+<%= javascript_include_tag 'control_suite/control.modal.2.2.3.js' %>
+<style>
+#modal_container {  
+ width: 400px;
+}
+span.clickEdit {
+	cursor: pointer;
+	border: 1px solid transparent;
+	padding: 5px;
+}
+span.clickEdit:hover {
+	border: 1px dashed #333333;
+	background-color: #F9FFEF;
+	color: #64992C;
+}
+</style>
+<script>
+function edit(id) {
+	$('week_' + id).hide();
+	$('ce_' + id).show();
+}
+function cancel(id) {
+	$('week_' + id).show();
+	$('ce_' + id).hide();
+    $('edit_workout_' + id).reset();
+}
+</script>
+<h2>Workouts</h2>
+<p><%= image_tag '/images/icons/add.png', :align => 'absmiddle'%> <%= link_to 'New Workout', admin_users_path(:unw=>'true') %></p>
+<p>
+  <%= link_to('All', admin_workouts_path) %> |
+  <%= link_to('Approved', admin_workouts_path(:approved => true)) %> |
+  <%= link_to('Unapproved', admin_workouts_path(:unapproved => true)) %> |
+  <%= link_to('Completed', admin_workouts_path(:completed => true)) %>
+</p>
+<table class="list">
+	<thead>
+		<tr>
+			<th width="16"></th>
+			<th width="20">ID</th>
+			<th>Week</th>
+			<th>User</th>
+			<th>Viewed</th>
+			<th>Completed</th>
+			<th width="16"></th>
+			<th width="16"></th>
+			<th width="16"></th>
+		</tr>
+	</thead>
+	<tbody>
+		<%= render :partial => 'workout', :collection => @workouts %>
+	</tbody>
+</table>
+<%= will_paginate @workouts %>

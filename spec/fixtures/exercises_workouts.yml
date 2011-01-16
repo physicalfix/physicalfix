@@ -1,0 +1,17 @@
+workout_exercise:
+  exercise_id: 1
+  exercise_clip_id: 1
+  workout_id: 10
+  weight: 20
+
+dumbbell_workout_exercise:
+  exercise_id: 2
+  exercise_clip_id: 1
+  workout_id: 10
+  weight: 20
+
+band_workout_exercise:
+  exercise_id: 1
+  exercise_clip_id: 1
+  workout_id: 10
+  weight: 20

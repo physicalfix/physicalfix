@@ -1,0 +1,16 @@
+= javascript_include_tag :defaults
+= link_to "Back to list", :action => :index
+%h2= @workout_skeleton.name
+= h(@workout_skeleton.description)
+%div(style="overflow:hidden;")
+  %div(style="float:left; width: 570px;")
+    %ul#exercise_list.workoutExerciseList
+      - @musclegroups.each do |mg|
+        %li(class="exercise list #{mg.name.downcase}" id="#{mg.id}")
+          =mg.name
+          = draggable_element "#{mg.id}", :revert => true, :ghosting => true
+  %div(style="float: left;")
+    %ul(id="workout_list" class="workoutWorkoutList" style="width:300px; margin-top:12px; border-width: 1px; height:auto")
+      = render :partial => '/admin/workout_skeleton_musclegroups/workout_skeleton_musclegroup', :collection =>  @workout_skeleton.workout_skeleton_musclegroups.all(:order =>'display_order ASC')
+= drop_receiving_element  :workout_list, :hoverclass => "list_hover", :url => admin_workout_skeleton_musclegroups_path(:workout_skeleton_id => params[:id], :format=> 'js'), :accept => 'list'
+= sortable_element :workout_list, :url => update_order_admin_workout_skeleton_musclegroup_path(:format => 'js')

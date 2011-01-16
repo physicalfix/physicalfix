@@ -1,0 +1,53 @@
+- form_for @credit_card , :url => subscriptions_path do |f|
+  #openbox
+    #inner{:style => 'width:970px'}
+      #box-wrapper
+        -if params[:plan] || session[:upgrade] == true
+          %h2 You're almost upgraded!
+        -else
+          %h2 You're almost Done!
+        %h3 We just need some billing information. 
+        %h4{:style => "text-align:center; margin-bottom:15px"} Please note: Your credit card will be billed on a monthly basis until you choose to cancel your membership.
+        #left-box
+          #enterbillinginfo
+            - if @subscription && @subscription.errors
+              .billing_error= @subscription.errors.errors["base"]
+            %ul
+              %li
+                - label('First Name', @credit_card, :first_name)
+                = f.text_field :first_name
+              %li
+                - label('Last Name', @credit_card, :last_name)
+                = f.text_field :last_name
+              %li
+                - label('Card Number', @credit_card, :card_number)
+                = f.text_field :card_number
+              %li
+                - label('CVV', @credit_card, :cvv)
+                = f.text_field :cvv
+              %li
+                - label('Expiration', @credit_card, :expiration)
+                = f.date_select :expiration, {:order => [:month, :year], :use_month_numbers => true, :start_year => Date.today.year}
+              - if @plan
+                =hidden_field_tag 'plan', @plan
+              =submit_tag('Sign Up!', :class => 'confirm') 
+          #right-box
+            #plan-box
+              %h4 
+                You're signing up for the 
+                %strong= @plan.upcase
+                plan 
+                -if @plan == 'basic'
+                  for $25/mo.
+                -if @plan == 'premium'
+                  for $100/mo.
+                which includes:
+              %ul
+                -if session[:plan] == 'basic' || session[:plan] == 'trial'
+                  %li 3 customized workouts each week
+                -elsif session[:plan] == 'premium'
+                  %li 24 hour access to a person trainer
+                  %li 3 videos a week crafted by your own personal trainer
+                %li Food Journal with Calorie Counter
+                %li Personalized Activity Tracker
+                %li Visual Weight Tracker

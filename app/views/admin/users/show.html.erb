@@ -1,0 +1,35 @@
+<h1><%= @user.first_name %> <%= @user.last_name %></h1>
+<p>
+<% if @user.medical_history != nil && @user.subscription.product == Subscription::PREMIUM_SUBSCRIPTION %>
+<%= link_to 'Show ' + @user.first_name + '\'s workouts', admin_workouts_path(:user_id => @user.id) %> | 
+<%= link_to 'Create new workout', new_admin_workout_path(:user_id => @user.id) %> | <%= link_to 'Medical History', medical_history_admin_user_path(@user) %> | <%= link_to_unless @user.has_role?('Admin'), 'Login as user', {:controller => '/sessions', :action => 'sudo', :user_id => @user.id}, :method => 'post' %> 
+<% elsif @user.subscription.product == Subscription::PREMIUM_SUBSCRIPTION %>
+<h3 style="color:#C24641">User has not filled out medical history!</h3>
+<% else %>
+<%= link_to_unless @user.has_role?('Admin'), 'Login as user', {:controller => '/sessions', :action => 'sudo', :user_id => @user.id}, :method => 'post' %>
+<% end %>
+<% if ENV['RAILS_ENV'] == 'development' %>
+<%= link_to_if @user.subscription && @user.subscription.chargify_id, 'View Subscription', "https://physicalfix-test.chargify.com/subscriptions/#{@user.subscription.chargify_id}"%>
+<% else %>
+<%= link_to_if @user.subscription && @user.subscription.chargify_id, 'View Subscription', "https://physicalfix.chargify.com/subscriptions/#{@user.subscription.chargify_id}"%>
+<% end %>
+</p>
+<%= render :partial => '/accounts/user',:object => @user %>
+<fieldset style="float: left">
+	<legend>User Stats</legend>
+	<table>
+		<tr>
+			<th>Total Workouts</th>
+			<td><%= @user.workouts.size %></td>
+		</tr>
+		<tr>
+			<th>Workouts Started</th>
+			<td><%= @user.started_workouts %></td>
+		</tr>
+		<tr>
+			<th>Workouts Completed</th>
+			<td><%= @user.completed_workouts%></td>
+		</tr>
+	</table>
+</fieldset>
+<div style="clear:both"></div>

@@ -1,0 +1,16 @@
+= javascript_include_tag :defaults
+:javascript
+  function onTabSelect(id) {
+    $(id).siblings().each(function(s, index) { s.removeClassName('selected');});
+    $(id).addClassName('selected');
+  }
+= link_to 'Back to list', :action => :index
+%h2= @user_bucket.name
+= h(@user_bucket.description)
+
+%div
+  .nav
+    %ul.mgTabs
+      = render :partial => 'mg_tab', :collection => @musclegroups
+  %ul#exercise_list.workoutExerciseList
+    = render :partial => 'list_exercise', :collection => @musclegroups[0].exercises

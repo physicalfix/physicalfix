@@ -1,0 +1,15 @@
+#favorite_activities
+  %h2.back
+    = link_to('&laquo; Back to Activity Log', activity_log_index_path)
+  #tabledata
+    %h2
+      Favorite Activities
+    %table.table(summary="Favorite Activities")
+      %thead
+        %tr
+          %th.left.activity(scope="col") Activity
+          %th.time(scope="col") Added On
+          %th.times_used(scope="col") Times Used
+          %th.right.modify(scope="col") Modify
+      %tbody
+        = render :partial => 'favorite_activity', :collection => @favorites

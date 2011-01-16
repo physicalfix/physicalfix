@@ -1,0 +1,73 @@
+#!/bin/sh
+#
+# This script starts and stops the a nodejs daemon
+# This script belongs in /engineyard/bin/dj
+#
+PATH=/bin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH
+CURDIR=`pwd`
+
+usage() {
+  echo "Usage: $0 {start|stop}"
+  exit 1
+}
+
+if [ $# -lt 1 ]; then usage; fi
+
+if [ "`whoami`" != "root" ]; then
+  logger -t `basename $0` -s "Must be run as root" 
+  exit 1
+fi
+
+PID_FILE=/data/physicalfix/shared/pids/rtmplite.pid
+
+if [ -d /data/physicalfix/current ]; then
+  cd /data/physicalfix/current/vendor/rtmplite
+
+  # handle the second param, don't start if already existing
+  case "$1" in
+    start)
+     echo "Starting rtmplite daemon"
+      if [ -f $PID_FILE ]; then
+        PID=`cat $PID_FILE`
+        if [ $PID -gt 0 ]; then
+          if [ -d /proc/$PID ]; then
+            echo "rtmplite daemon is already running."
+            exit 1
+          fi
+        fi
+        rm -f $PID_FILE
+      fi
+      echo $$ > $PID_FILE;
+      exec 2<&1 python rtmp.py -r /mnt/videos
+      ;;
+    stop)
+      echo "Stopping rtmplite daemon"
+      if [ -f $PID_FILE ]; then
+        for child in $(ps axo pid,ppid  |  awk "{ if ( \$2 == `cat $PID_FILE` ) { print \$1 }}"); 
+        do 
+          kill -15 $child; 
+          SLEEP_COUNT=0
+          while [ -e /proc/$child ]; do
+            sleep .25 
+            let "SLEEP_COUNT+=1"
+            if(( "$SLEEP_COUNT" > 240 )); then
+              kill -9 $child 2>/dev/null; true
+              break 
+            fi
+          done 
+          
+        done
+      fi
+
+      [ -e "$PID_FILE" ] && rm -f $PID_FILE
+      exit 0
+      ;;
+    *)
+      usage
+      ;;
+        esac
+else
+  echo "/data/physicalfix/current doesn't exist."
+  usage
+fi
+cd $CURDIR

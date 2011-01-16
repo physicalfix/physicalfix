@@ -1,0 +1,129 @@
+#openbox
+  #center
+    #headline 
+      %h2 
+        PhysicalFix offers the perfect workout to fit your lifestyle.
+        %br
+        Choose the plan that fits yours.
+    #pricebox
+      %table{:cellspacing=>0}
+        %tr.head
+          %th{:width => "200"}
+          %th{:width => "193"} 14-Day Trial
+          %th.centertop BASIC
+          %th{:width=>'193'} Premium
+        %tr.row
+          %th
+          %th.small_text
+            (no credit card needed)
+          %td.centerbg{:style => "height: 30px"}
+          %th
+        %tr.row
+          %td{:style => "height: 56px"}
+          %td.bg{:style => "height: 56px"}
+          %td.centerbg{:style => "height: 56px"}
+          %td.bg{:style => "height: 56px"}
+        %tr.row
+          %td Personalized Workouts
+          %td.bg 
+            %span.big 3 
+            videos a week 
+            %br
+            targeted to your goals
+          %td.centerbg 
+            %span.big 3 
+            videos a week 
+            %br
+            targeted to your goals
+          %td.bg 
+            %span.big 3 
+            videos a week crafted by your own personal trainer
+        %tr.row
+          %td 24 hour Access to a Personal Trainer
+          %td.bg
+          %td.centerbg
+          %td.bg
+            %img{:src => "/images/splash/signuptick.png"}
+        %tr.row
+          %td Visual Weight Tracker
+          %td.bg
+            %img{:src => "/images/splash/signuptick.png"}
+          %td.centerbg
+            %img{:src => "/images/splash/signuptick.png"}
+          %td.bg
+            %img{:src => "/images/splash/signuptick.png"}            
+        %tr.row
+          %td Personalized Activity Tracker
+          %td.bg
+            %img{:src => "/images/splash/signuptick.png"}
+          %td.centerbg
+            %img{:src => "/images/splash/signuptick.png"}
+          %td.bg
+            %img{:src => "/images/splash/signuptick.png"}
+        %tr.row
+          %td Food Journal with Calorie Counter
+          %td.bg 
+            %img{:src => "/images/splash/signuptick.png"} 
+          %td.centerbg
+            %img{:src => "/images/splash/signuptick.png"} 
+          %td.bg
+            %img{:src => "/images/splash/signuptick.png"} 
+        %tr.row
+          %td Cost per Month
+          %td.bg Free!
+          %td.centerbg 
+            %span.big $25
+            \/ month
+          %td.bg 
+            %span.big $100
+            \/ month
+        %tr.last
+          %td
+            
+          %td
+            =link_to('Sign up!', signup_path(:plan => 'trial'), {:class => 'signupbutton'})
+          %td.centerbottom
+            =link_to('Sign up!', signup_path(:plan => 'basic'), {:class => 'signupbutton'})
+          %td
+            - unless @num_pros >= 100
+              =link_to('Sign up!', signup_path(:plan => 'premium'), {:class => 'signupbutton'})
+            - else
+              Sold Out
+    #small_text
+      We also offer a
+      =link_to('free', signup_path(:plan => 'free'))
+      membership (with the free membership you will have access to: food journal, exercise log, weight tracker-the workouts are not included in the free membership).
+    #left
+      %h2 Frequently Asked Questions
+      
+      .faq.even
+        %h3 What is physicalfix.com?
+        %p physicalfix.com is a complete health and fitness system designed to help you reach your weight loss goals. physicalfix.com delivers customized workouts created specifically for you by a certified personal trainer. It provides a comprehensive food database containing the nutritional value of thousands of foods. And it offers an easy-to-use food journal so you can keep track of your caloric intake. Plus, physicalfix.com will chart your progress so you can see your hard work paying off.
+      .faq
+        %h3 What makes physicalfix.com different than other online personal training sites?
+        %p In addition to a focus on complete wellness, physicalfix.com offers you something no other online training site does. And that is an onscreen workout partner. You will be guided through every single repetition of every exercise. Not only will your partner be sweating with you, he’ll be offering tips on proper form the whole way through. This guarantees that you’ll get the most out of every exercise. And it minimizes the possibility of injuries. Check out the “Workouts” section of our website for more detailed information.
+      .faq.even
+        %h3 Who is physicalfix.com for?
+        %p physicalfix.com is for anyone that wants to change their life by maximizing their health and fitness. physicalfix.com makes it easy by offering you the freedom of exercising wherever and whenever you want. In the morning in your living room or in the afternoon in your hotel room – it’s up to you. All you have to do is log on and hit "play".
+      .faq
+        %h3 How are physicalfix.com workouts customized for me?
+        %p physicalfix.com has created hundreds of individual exercise videos. Each one takes you through all the repetitions of an exercise. Your personal trainer will select the best exercises for you based on information you provide. Each of those exercise videos will be placed back-to-back in the exact order necessary to achieve your goals. This creates a “movie style” workout. You simply have to hit “play” and follow along.
+      .faq.even
+        %h3 How many workouts will I receive?
+        %p Each week, when you log into the physicalfix.com site, you will have 3 different workouts waiting for you. You can do them at your convenience – as many times as you want. The following week you’ll receive 3 entirely new workouts. That’s 12 completely unique workouts every month.
+      .faq
+        %h3 How will I know if I’m doing the exercises correctly?
+        %p With physicalfix.com, you are never alone. Your workout partner is with you for every repetition of every exercise, every workout, everyday. He will not only show you proper form, but he will explain it. And then he will remind you along the way. This will help you see results faster and it will keep you injury free.
+      .faq.even
+        %h3 Why are physicalfix.com workouts so effective?
+        %p There are two key reasons why physicalfix.com users find success. First, physicalfix.com provides a highly personalized program. Unlike other online training sites, physicalfix.com takes every aspect of your life (goals, time, equipment) into account and designs every workout to fit your needs.
+        %p Second, physicalfix.com knows that workout variation is the quickest way to improve your physique. Our extensive database of exercises enables us to continually provide new and different workouts. This eliminates boredom and keeps you, and your body, constantly challenged.
+      .faq
+        %h3 How can physicalfix.com help me eat smarter?
+        %p Based on the information you provide, physicalfix.com will use a standard formula to calculate how many calories you should be consuming each day. Your total calories will then be broken down by type of food – carbohydrates, proteins, fats, and sugar.
+      .faq.even
+        %h3 How will I know if my calorie consumption is on track?
+        %p physicalfix.com provides you with an easy-to-use food journal as well as an extensive food database. Simply enter what you ate and physicalfix.com will calculate how many and which type of calories you’ve eaten. Total calories consumed and calories remaining will be displayed so you can always see where you stand.
+      .faq
+        %h3 Can I keep track of my weight loss with physicalfix.com?
+        %p Yes! physicalfix.com offers a weight tracker that allows you to keep a close eye on your progress. When you begin the program you’ll enter your starting weight and your goal weight. Then you’ll log your weight daily or weekly. A detailed graph will show you how close you are to reaching your goal. In addition, you’ll have the opportunity to upload photos of yourself – so you can actually see your transformation.

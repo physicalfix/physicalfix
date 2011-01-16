@@ -1,0 +1,20 @@
+<fieldset>
+	<legend>New Exercise Clip for <%= @exercise.name %></legend>
+  <%= error_messages_for 'exercise_clip' %>
+  <% form_for [:admin, @exercise_clip], :html => { :multipart => true } do |f| %>
+    <table>
+	    <tr>
+		    <th>Reps</th>
+		    <td><%= f.text_field :reps %></td>
+	    </tr>
+	    <tr>
+		    <th>Clip</th>
+		    <td><%= f.file_field :clip %></td>
+	    </tr>
+	  	<tr>
+		    <td colspan="2"><%= submit_tag %><%= link_to "Cancel", :action => "index" %></td>
+	    </tr>
+    </table>
+    <%= f.hidden_field :exercise_id %>
+    <% end %>
+</fieldset>

@@ -1,0 +1,11 @@
+yummy_meal:
+    food_id: 1001
+    servings: 1
+    eaten_at: <%= Time.parse('2008-10-10 14:00:00').to_datetime %>
+    user: valid_user
+    fat: 10
+    protein: 10
+    calories: 10
+    carbohydrate: 10
+    sugar: 10
+    food_name: yummy food

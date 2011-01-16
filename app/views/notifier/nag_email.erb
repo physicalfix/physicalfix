@@ -1,0 +1,7 @@
+Hey <%= @account.first_name %>,
+
+<%= h(@nags.gsub('{workout_link}', url_for(:host => "www.physicalfix.com", :controller => "workouts")).gsub('{weight_link}', url_for(:host => "www.physicalfix.com", :controller => 'weight_tracker')).gsub('{food_link}', url_for(:host => 'www.physicalfix.com', :controller => 'food_log')).gsub('{activity_link}', url_for(:host => 'www.physicalfix.com', :controller => 'activity_log'))) %>
+
+Have fun,
+Your Team Members at PhysicalFix
+<%= @home_page%>

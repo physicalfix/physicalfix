@@ -1,0 +1,19 @@
+= error_messages_for 'exercise'
+%fieldset
+  %legend New User Bucket
+  - form_for [:admin, @user_bucket] do |f|
+    %table
+      %tr
+        %th name
+        %td= f.text_field :name
+      %tr
+        %th description:
+        %td= f.text_area :description
+      %tr
+        %th display order:
+        %td= f.text_field :display_order
+      %tr
+        %td(colspan="2")
+          = submit_tag
+          = link_to "Cancel", :action => "index"
+ 

@@ -1,0 +1,70 @@
+<%= javascript_include_tag :defaults %>
+<%= javascript_include_tag 'control_suite/control.modal.2.2.3.js' %>
+<script>
+function onTabSelect(id) {
+	$(id).siblings().each(function(s, index) { s.removeClassName('selected');});
+	$(id).addClassName('selected');
+}
+</script>
+
+<h2>Workout Editor for <%= "#{@user.first_name} #{@user.last_name}" %></h2>
+<div style="float: left;">
+	<ul class="workoutWorkoutList" style="margin-right:10px; width:200px">
+		<% if @equipment != nil %>
+		<% for item in @equipment.split("|") %>
+		<li style="margin:5px; list-style:none;"><%= item %></li>
+		<% end %>
+		<% else %>
+		<li>No Equipment</li>
+		<% end %>
+	</ul>
+</div>
+
+<div style="float:left; width: 570px;">
+	<div class="nav">
+		<ul class="mgTabs">
+			<%= render :partial => 'mg_tab', :collection => @musclegroups %>
+		</ul>
+	</div>
+	<ul id="exercise_list" class="workoutExerciseList" >
+		<%= render :partial => 'list_exercise', :collection => @musclegroups[0].exercises %>
+	</ul>
+</div>
+
+<div style="float: left;">
+	<ul id="workout_list" class="workoutWorkoutList" style="width:300px">
+		<%= render :partial => '/admin/workout_lists/workout_exercise', :collection => @workout.workout_exercises %>
+	</ul>
+</div>
+<div style="clear:both;"></div>
+<div style="float:left; margin: 0 10px 0 10px; width: 210px;  text-align:center; border: 1px solid #999;  background-color: #EDF5FF">
+	<%= image_tag '/images/icons/play.png', :align => 'absmiddle'%>
+	<%= link_to 'preview', {:action => 'play', :id => params[:id]}, {:id=>'play_link'} %>
+	<script>new Control.Modal('play_link',{iframe: true, width: 850, height: 500});</script>
+</div>
+<div id="noteDIV" style="float:left; margin: 0 10px 0 0; width: 570px; text-align:center;  border: 1px solid #999;  background-color: #EDF5FF">
+	<%= image_tag '/images/icons/webcam.png', :align => 'absmiddle' %>
+	<%= link_to 'record message', record_note_admin_workout_path(@workout), {:id => 'record_link'} %>
+	<script>new Control.Modal('record_link',{iframe: true, width: 350, height: 280});</script>
+	<% remote_form_for :workout, @workout, :url => admin_workout_path(@workout, :format => 'js'), :html => {:method => :put}, :complete => visual_effect(:highlight, "noteDIV") do |f| %>
+	<b>Note</b><br/>
+	<%= f.text_area :note, :rows => 4 %><br/>
+	<%= hidden_field_tag 'workout[id]', params[:id] %>
+	<%= submit_tag "Save" %>
+	<% end %>
+</div>
+<div style="float:left; margin: 0; width: 280px; text-align:center;  border: 1px solid #999; background-color: #EDF5FF">
+<div style='font-weight: bold' id='total_time'>Workout Length: <%= short_split_time @workout.total_length %></div><br/>
+<% if !@workout.approved%>
+<div class="warning" id="readyStatusError" <%if @workout.ready? %>style="display:none"<%end%>>This workout isn't ready yet!</div>
+<div class="ready" id="readyStatusReady" style="height:40px; <%if !@workout.ready?%>display:none<%end%>">This workout is ready to be approved <%= button_to "Approve Workout", admin_workout_path(@workout, :approve => true),:method => 'put', :confirm => "Are you sure you want to approve this workout?\n\nOnce you approve the workout the user will be able to view it and it cannot be undone!"  %></div>
+<% else %>
+<div class="ready">This workout has been approved!</div>
+<% end %>
+</div>
+<div style="clear:both"></div>
+<%= drop_receiving_element  :workout_list,
+                            :hoverclass => "list_hover",
+                            :url => admin_workout_lists_path(:workout_id => params[:id], :format=> 'js'),
+                            :accept => 'list' %>
+<%= sortable_element :workout_list, :url => update_order_admin_workout_list_path(:format => 'js') %>

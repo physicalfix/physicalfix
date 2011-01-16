@@ -1,0 +1,20 @@
+#thank_you
+  %h2 In order to start receiving your workouts we'll need a bit more information from you. 
+  %h3 What type of equipment do you have where you will be doing your workouts?
+  #updateequipinfo
+    - form_for @current_user, :url => account_path do |f|
+      - @equipment.each do |group, array|
+        %h3= group
+        %ul
+          - for item in array
+            %li
+              %label
+                - has_item = (@current_user.equipment != nil && @current_user.equipment.index(item) != nil)
+                = check_box_tag "user[equipment][]", "#{item}", has_item
+                = item
+                - @ue.slice!(0..(item.length)) if has_item
+      %h3 Other Equpiment
+      %p Enter any other equipment you have below:
+      = text_area_tag "user[equipment][]", @ue, :size => "40x10"
+      = hidden_field_tag "update_user_bucket_on_workout", 'true'
+      %a.form_submit(href="\#" onclick="document.forms[0].submit()") Save Equipment

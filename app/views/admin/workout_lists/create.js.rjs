@@ -1,0 +1,17 @@
+page[:workout_list].replace_html(:partial => 'workout_exercise', :collection => @workout.workout_exercises)
+
+page[:total_time].replace_html "Workout Length:  #{short_split_time @workout.total_length}"
+if @workout.ready?
+	page[:readyStatusReady].show
+	page[:readyStatusError].hide
+else
+	page[:readyStatusReady].hide
+	page[:readyStatusError].show
+end
+
+page.sortable :workout_list, :url => update_order_admin_workout_list_path(:id => @workout.id, :format => 'js')
+
+if @workout_list && controller.action_name != 'destroy'
+  element_id = "workout_#{@workout_list.id}"
+  page[element_id].highlight
+end

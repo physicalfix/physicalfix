@@ -1,0 +1,20 @@
+#navigation
+  #inner
+    %ul#signupprogress
+      %li
+        %a Personal Info
+      %li
+        %a Equipment
+      %li.active
+        %a Workout Type
+      - if session[:plan] != 'free'
+        %li
+          %a Billing Info
+
+#openbox
+  #inner_wide
+    #workouttype
+      - form_for :user, :url => account_path do |f|
+        = render :partial => 'user_bucket_form', :locals => {:f => f}
+        = hidden_field_tag :stage, 3
+        = submit_tag "Sign Up!", :class => 'confirm', :style => "margin: 20px 0"

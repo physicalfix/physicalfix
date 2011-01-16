@@ -1,0 +1,154 @@
+- form_for :medical_history, :url => account_medical_history_path do |f|
+  #openbox
+    #inner
+      - if flash[:info]
+        .info_flash{:style=>'height:auto'}= flash[:info]
+      - if flash[:error]
+        .error_flash= flash[:error]
+      #entermedicalhistory
+        %p To give us a better idea of your fitness levels and what kind of workouts you should be doing, please fill out the medical form below.
+        %ul
+          %li
+            - label('1. Name of physician', @medical_history, :p_name)
+            = f.text_field :p_name
+          %li
+            - label('2. Physician\'s phone number', @medical_history, :p_number)
+            = f.text_field :p_number
+          %li
+            - label('3. Date of last visit', @medical_history, :p_visit)
+            = date_select :medical_history, :p_visit, :order => [:month, :day, :year], :start_year => 1900
+          %li
+            - label('4. Reason for last visit', @medical_history, :p_visit_text)
+            = f.text_area :p_visit_text, :rows => 4
+          %li.option
+            - label('5. Has your physician ever advised you against exercising?', @medical_history, :exercise)
+            %label
+              = f.radio_button :exercise, "yes"
+              Yes
+            %label
+              = f.radio_button :exercise, "no"
+              No
+          %li
+            - label('5a. If yes, please explain', @medical_history, :exercise_text)
+            =f.text_area :exercise_text, :rows=>4
+          %li.option
+            - label('6. After reviewing your questionnaire, it may be necessary for me to obtain medical clearance from your physician before beginning an exercise program with you. If it is necessary to contact your physician regarding your health status, may I have your permission?', @medical_history, :contact_p)
+            %label
+              = f.radio_button :contact_p, "yes"
+              Yes
+            %label
+              = f.radio_button :contact_p, "no"
+              No
+          %li.option
+            - label('7. Do you now or have you ever experienced any of the following:', @medical_history, :experience)
+            - for  item in @experience
+              %label
+                = check_box_tag "medical_history[experience][]", "#{item}"
+                = item
+          %li.option
+            - label('8. Has a physician ever diagnosed you as having any of the following:', @medical_history, :diagnose)
+            - for  item in @conditions
+              %label
+                = check_box_tag "medical_history[diagnose][]", "#{item}"
+                = item
+            %p.extra Conditions not listed
+            = text_area_tag "medical_history[diagnose][]", nil
+        %li.option
+          - label('9. Have you had any major illnesses and/or surgeries?', @medical_history, :illness)
+          %label
+            = f.radio_button :illness, "yes"
+            Yes
+          %label
+            = f.radio_button :illness, "no"
+            No
+        %li
+          - label('9a. If Yes, please explain:', @medical_history, :illness_text)
+          =f.text_area :illness_text, :rows=>4
+
+        %li.option
+          - label('10. Do you have any current medical problems or incompletely healed injuries?', @medical_history, :problems)
+          %label
+            = f.radio_button :problems, "yes"
+            Yes
+          %label
+            = f.radio_button :problems, "no"
+            No
+        %li
+          - label('10a. If Yes, please explain:', @medical_history, :problems_text)
+          =f.text_area :problems_text, :rows=>4
+
+        %li.option
+          - label('11. Have you had or do you now have any bone, joint (including spine), or muscle injuries and or diseases?', @medical_history, :bone)
+          %label
+            = f.radio_button :bone, "yes"
+            Yes
+          %label
+            = f.radio_button :bone, "no"
+            No
+        %li
+          - label('11a. If Yes, please explain:', @medical_history, :bone_text)
+          =f.text_area :bone_text, :rows=>4
+
+        %li.option
+          - label('12. At present, do you have any pain in any part of your body?', @medical_history, :pain)
+          %label
+            = f.radio_button :pain, "yes"
+            Yes
+          %label
+            = f.radio_button :pain, "no"
+            No
+        %li
+          - label('12a. If Yes, please explain:', @medical_history, :pain_text)
+          =f.text_area :pain_text, :rows=>4
+
+        %li.option
+          - label('13. Are you presently taking any medications?', @medical_history, :medication)
+          %label
+            = f.radio_button :medication, "yes"
+            Yes
+          %label
+            = f.radio_button :medication, 'no'
+            No
+        %li
+          - label('13a. If Yes, please list the names and reasons for taking and the dosage for each:', @medical_history, :medication_text)
+          =f.text_area :medication_text, :rows=>4
+
+        %li.option
+          - label('14. Rate your general health:', @medical_history, :health)
+          %label
+            = f.radio_button :health, "Excellent"
+            Excellent
+          %label
+            = f.radio_button :health, "Good-Fair"
+            Good-Fair
+          %label
+            = f.radio_button :health, "Poor"
+            Poor
+
+        %li.option
+          - label('15. Rate your general level of fitness:', @medical_history, :fitness)
+          %label
+            = f.radio_button :fitness, "Excellent"
+            Excellent
+          %label
+            = f.radio_button :fitness, "Good-Fair"
+            Good-Fair
+          %label
+            = f.radio_button :fitness, "Poor"
+            Poor
+
+        %li.option
+          - label('16. Do you exercise regularly (3-4 times per week)?', @medical_history, :routine)
+          %label
+            = f.radio_button :routine, "yes"
+            Yes
+          %label
+            = f.radio_button :routine, "no"
+            No
+
+        %li
+          - label('16a. Describe your routine (for example, type of activity, duration, frequency, intensity):', @medical_history, :routine_text)
+          =f.text_area :routine_text, :rows=>4
+        =submit_tag "Move on to next step", :class => "confirm"
+
+

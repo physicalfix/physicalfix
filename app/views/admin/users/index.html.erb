@@ -1,0 +1,90 @@
+<style>
+	table.list tr.admin td{
+		background-color: #f8f8ff;
+	}
+	
+	table.list tr.user_problem td {
+		background-color: #E77471;
+	}
+</style>
+<% unless params[:unw] %>
+    <strong>Enter a name or email address:</strong>
+    <% form_tag(admin_users_path, :method => :get) do %>
+        <%= text_field_tag('user_search', params[:user_search], :size => 50) %>
+        <%= submit_tag 'Find' %>
+        <%= link_to 'clear', admin_users_path %>
+    <% end %>
+<% end %>
+<h2>Users</h2>
+<table class="list">
+	<thead>
+		<tr>
+			<th>
+              <% if params[:unw] %>
+                  Name
+              <% else %>
+                  <%= link_to(
+                          'Name',
+                          admin_users_path(
+                                  :sort => 'last_name',
+                                  :direction => params[:sort] == 'last_name' && params[:direction] == 'DESC' ? 'ASC' : 'DESC',
+                                  :user_search => params[:user_search]
+                          )
+                  )
+                  %>
+              <% end %>
+            </th>
+			<th>
+              <% if params[:unw] %>
+                  Email
+              <% else %>
+                  <%= link_to(
+                          'Email',
+                          admin_users_path(
+                                  :sort => 'email',
+                                  :direction => params[:sort] == 'email' && params[:direction] == 'DESC' ? 'ASC' : 'DESC',
+                                  :user_search => params[:user_search]
+                          )
+                  )
+                  %>
+              <% end %>
+			</th>
+			<th>Roles</th>
+			<th>
+              <% if params[:unw] %>
+                  Sign Up Date
+              <% else %>
+                  <%= link_to(
+                          'Sign Up Date',
+                          admin_users_path(
+                                  :sort => 'created_at',
+                                  :direction => params[:sort] == 'created_at' && params[:direction] == 'DESC' ? 'ASC' : 'DESC',
+                                  :user_search => params[:user_search]
+                          )
+                  )
+                  %>
+              <% end %>
+			</th>
+            <th>
+              <% if params[:unw] %>
+                  Last Login
+              <% else %>
+                  <%= link_to(
+                          'Last Login',
+                          admin_users_path(
+                                  :sort => 'last_logged_in_at',
+                                  :direction => params[:sort] == 'last_logged_in_at' && params[:direction] == 'DESC' ? 'ASC' : 'DESC',
+                                  :user_search => params[:user_search]
+                          )
+                  )
+                  %>
+              <% end %>
+            </th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<%= render :partial => 'user', :collection => @users %>
+	</tbody>
+</table>
+<%= will_paginate @users %>

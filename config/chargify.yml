@@ -1,0 +1,11 @@
+development:
+  subdomain: physicalfix-test
+  api_key: doFKQcW9LfXHtYyIzEQN
+
+production:
+  subdomain: physicalfix
+  api_key: doFKQcW9LfXHtYyIzEQN
+
+test:
+  subdomain: physicalfix-test
+  api_key: doFKQcW9LfXHtYyIzEQN

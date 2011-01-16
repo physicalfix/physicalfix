@@ -1,0 +1,14 @@
+admin_user_role:
+    user: admin_user
+    role: admin_role
+
+free_user_role:
+    user: free_user
+    role: free_role
+
+premium_user_role:
+    user: premium_user
+    role: premium_role
+basic_user_role:
+    user: basic_user
+    role: basic_role

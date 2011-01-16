@@ -1,0 +1,22 @@
+%tr(class="#{cycle('odd', 'even')}" id="meal_#{meal.id}")
+  %td.time= meal.meal_name
+  %td.item= meal.food_name
+  %td.servings
+    = meal.serving_description
+    - if meal.servings != 1
+      (x #{meal.servings})
+  %td.calories= meal.total_calories
+  %td.carbohydrates= meal.total_carbohydrate
+  %td.fat= meal.total_fat
+  %td.protein= meal.total_protein
+  %td.sugar= meal.total_sugar
+  %td.modify
+    = image_tag("pixel.gif", :width => 16, :height => 16, :style => 'float:left; margin-right: 10px')
+    //= link_to('', '#', {:class => 'edit'})
+    = link_to('', food_log_path(meal.id,{:date => @date}), :method => :delete, :confirm =>'Are you sure you want to delete this meal?', :class => 'delete')
+    -if meal.food_id
+      %span(id="favorite-food-#{meal.food_id}")
+        = render :partial => 'foods/favorite_link', :object => {'food_id' => meal.food_id}
+    -else
+      %span(id="favorite-meal-#{meal.id}")    
+        = render :partial => 'foods/favorite_link', :object => {'meal_id' => meal.id}

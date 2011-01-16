@@ -1,0 +1,45 @@
+!!!
+%html{"xmlns" => "http://www.w3.org/1999/xhtml", "xmlns:v" => "urn:schemas-microsoft-com:vml"}
+  %head
+    %title fitstream
+    %meta{"http-equiv" => "Content-Type", "content" => "application/xhtml+xml; charset=utf-8"}
+    %meta{"name" => "description", "content" => "Meta description"}
+    %meta{"name" => "keywords", "content" => "Meta keywords"}
+    %link{"rel" => "shortcut icon", "href" => "#{image_path('favicon.ico')}", "type" => "image/x-icon"}
+    = javascript_include_tag :defaults
+    = stylesheet_link_tag 'wait_list'
+    :javascript
+      function clearField() {
+        var e = $('email_field')
+        if (e.value == 'Your email address') {
+          e.value = '';
+          e.removeClassName('pre');
+        }
+      }
+      function doBlur() {
+        var e = $('email_field');
+        if(e.value.trim() == '' || e.value == 'Your email address') {
+          e.value = 'Your email address';
+          e.addClassName('pre');
+        }
+      }
+  %body
+    #container
+      #logo
+      #email
+        #wait_list_form
+          #errors{:style => 'display:none;'}
+          - remote_form_for :wait_list_user, @wait_list_user, :url => '/welcome' do |f|
+            = f.text_field :email_address, :value => 'Your email address', :class => 'pre', :id => 'email_field', :onfocus => 'clearField()', :onBlur => 'doBlur()'
+            = submit_tag(' ')
+    %script(type="text/javascript")
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      try {
+      var pageTracker = _gat._getTracker("UA-301641-18");
+      - if flash[:analytics]
+        pageTracker._trackPageView("#{flash[:analytics]}")
+      - else
+        pageTracker._trackPageview();
+      } catch(err) {}
+  

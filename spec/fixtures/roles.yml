@@ -1,0 +1,11 @@
+admin_role:
+  name: Admin
+
+free_role:
+  name: Free
+
+basic_role:
+  name: Basic
+
+premium_role:
+  name: Premium

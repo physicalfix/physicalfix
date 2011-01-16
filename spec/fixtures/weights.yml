@@ -1,0 +1,16 @@
+yummy_food_weight:
+    food_id: 1001
+    sequence_number: 1
+    amount: 1.0
+    desc: "cup"
+    gram_weight: 227.0
+    data_points: nil
+    std_dev: nil
+    
+yummy_food_weight_two:
+    food_id: 1001
+    sequence_number: 2
+    amount: 1.0
+    desc: "tbsp"
+    gram_weight: 14.2
+    std_dev: nil

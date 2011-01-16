@@ -1,0 +1,8 @@
+%tr
+  %td= workout_skeleton.id
+  %td= workout_skeleton.user_bucket.name
+  %td= workout_skeleton.name
+  %td= workout_skeleton.description
+  %td= link_to image_tag('/images/icons/page_white.png'), admin_workout_skeleton_path(workout_skeleton)
+  %td= link_to image_tag('/images/icons/pencil.png'), edit_admin_workout_skeleton_path(workout_skeleton)
+  %td= link_to image_tag('/images/icons/delete.png'), admin_workout_skeleton_path(workout_skeleton),  :confirm => "Are you sure?", :method => :delete

@@ -1,0 +1,156 @@
+- form_for :user , :url => account_path do |f|
+  #openbox
+    #inner{:style => 'width:970px'}
+      #box-wrapper
+        / -if flash[:error]
+        /          .billing_error
+        /            = flash[:error]
+        
+        - if session[:plan] == 'trial'
+          %h2 Congrats! Your 14-day trial and a healthier lifestyle start here!
+        - else
+          %h2 Congrats! You've just taken the first step toward a healthier lifestyle!
+
+        #left-box
+          #enteruserinfo{:style => 'margin-right:10px;margin-left:100px;'}
+            %fieldset
+              %p.info We just need to get a bit of information that will help us help you meet your goals.
+              %ul
+                %li
+                  - label('First Name', @user, :first_name)
+                  = f.text_field :first_name
+                %li
+                  - label('Last Name', @user, :last_name)
+                  = f.text_field :last_name
+                %li
+                  - label('Email Address', @user, :email)
+                  = f.text_field :email
+                %li
+                  - label('Password', @user, :password)
+                  = f.password_field :password
+                %li
+                  - label('Confirm Password', @user, :password_confirmation)
+                  = f.password_field :password_confirmation
+                - if session[:plan] == 'premium'
+                  %li
+                    - label('Home Phone', @user, :home_phone)
+                    = f.text_field :home_phone
+                  %li
+                    - label('Cell Phone', @user, :cell_phone)
+                    = f.text_field :cell_phone
+                %li
+                  - label('Date of Birth', @user, :birthday)
+                  = date_select :user, :birthday, :order => [:month, :day, :year], :start_year => Date.current.year, :end_year => Date.current.year - 110, :prompt => true
+                %li
+                  - label('Sex', @user, :sex)
+                  = select :user, :sex, ['Male', 'Female']
+                %li
+                  - label('Height', @user, :height)
+                  %select(name="height_feet")
+                    = options_for_select((4..7), @height_feet)
+                  %span.annote Feet
+                  %select(name="height_inches")
+                    = options_for_select((0..11), @height_inches)
+                  %span.annote Inches
+                %li
+                  - label('Weight', @user, :weight)
+                  = f.text_field :weight, :size => 3
+                  %span.annote Lbs
+                %li
+                  - label('Target Weight', @user, :target_weight)
+                  = f.text_field :target_weight, :size => 3
+                  %span.annote Lbs
+                %li.option
+                  - label('Rate your general level of fitness:', @user, :fitness_level)
+                  %div{:style => 'float:left'}
+                    %label
+                      = f.radio_button :fitness_level, "Excellent"
+                      Excellent
+                    %label
+                      = f.radio_button :fitness_level, "Good-Fair"
+                      Good-Fair
+                    %label
+                      = f.radio_button :fitness_level, "Poor"
+                      Poor
+                %li
+                  - label('Fitness Goals', @user, :goals)
+                  = f.text_area :goals, :rows => 4
+                %li
+                  - label('Time Zone', @user, :time_zone)
+                  = f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones, {:default => "Eastern Time (US & Canada)"}, {:style => 'width:290px'}
+            - if session[:plan] != 'free' && session[:plan] != 'trial' && !session[:key]
+              %fieldset
+                = image_tag('lock.png', :id => 'lock')
+                %span#secure
+                  %strong SECURE
+                %h3 Your Billing Information
+                %p.info
+                  PhysicalFix currently accepts 
+                  %strong Visa
+                  , 
+                  %strong MasterCard
+                  , 
+                  %strong American Express
+                  and
+                  %strong Discover. 
+                %br
+                %p.info 
+                  Please note: Your credit card will be billed on a monthly basis until you choose to cancel your membership.
+                %ul
+                  - fields_for @credit_card do |c|
+                    %li
+                      - label('Card Number', @credit_card, :card_number)
+                      = c.text_field :card_number, {:autocomplete => 'off', :size => 16}
+                    %li
+                      - label('CVV', @credit_card, :cvv)
+                      = c.text_field :cvv
+                    %li
+                      - label('Expiration', @credit_card, :expiration)
+                      = c.date_select :expiration, {:order => [:month, :year], :user_month_numbers => true, :start_year => Time.now.year, :end_year => Time.now.year + 10}
+            %ul
+              %li.option
+                - label('Terms', @user, :terms)
+                %div{:style => 'float:left'}
+                  %label
+                    = f.check_box :terms
+                    I agree to the
+                    = link_to('Terms and Conditions', {:controller => 'legal', :action => 'terms_and_conditions'}, :target => '_blank')
+                    - if session[:plan] == 'premium'
+                      and the
+                      = link_to('User agreement', {:controller => 'legal', :action => 'user_agreement'}, :target => '_blank')
+
+            =submit_tag "Sign Up!", :class => "confirm"
+        - if !session[:key]
+          #right-box
+            #plan-box
+              %h4 
+                You're signing up for the
+                -if session[:plan] == 'trial'
+                  %strong 14-Day Trial
+                -else
+                  %strong= session[:plan].upcase
+                plan 
+                -if session[:plan] == 'basic'
+                  for $25/mo.
+                -if session[:plan] == 'premium'
+                  for $100/mo.
+                which includes:
+              %ul
+                -if session[:plan] == 'basic' || session[:plan] == 'trial'
+                  %li 3 video workouts a week targeted to your goals
+                -elsif session[:plan] == 'premium'
+                  %li 24 hour access to a person trainer
+                  %li 3 videos a week crafted by your own personal trainer
+                %li Food Journal with Calorie Counter
+                %li Personalized Activity Tracker
+                %li Visual Weight Tracker
+            -if session[:plan] == 'free'
+              #upgrade-box
+                =link_to('Upgrade to our BASIC plan', signup_path(:plan => 'basic'), :class => 'upgrade')
+                #up-outer
+                  #up-text
+                    Add
+                    %strong 3 personalized video workouts
+                    a week for just $25/mo.
+                  #up-img
+                    = image_tag('up_workout.png')

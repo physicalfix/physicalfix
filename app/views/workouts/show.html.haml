@@ -1,0 +1,56 @@
+=javascript_include_tag :all
+:javascript
+  function playMovie() {
+    $('webcam').removeClassName('webcam_preplay').addClassName('webcam');
+    if (navigator.appName.indexOf("Microsoft") != -1) {
+      window['workout_note'].playMovie();
+    } else {
+      document['workout_note'].playMovie();
+    }
+  }
+- confirm = "Before you proceed with this workout:\n\n1. By clicking \"OK\" below you are confirming that you have consulted with a qualified medical practitioner and have been given permission to exercise.\n\n2. Make sure you have all of your equipment ready and within reach before you start your workout."
+#trainer
+  %h2 Trainers Message
+  - if @current_user.subscription.product == Subscription::PREMIUM_SUBSCRIPTION
+    #webcam.webcam_preplay
+      %a{:href => "#", :onclick => "playMovie();"}
+        %object{ :height => 240, :classid => "clsid:D27CDB6E-AE6D-11cf-96B8-444553540000", :width => 320, :id => 'workout_note' }
+          %param{ :name => "movie", :value => "/swf/NotePlayer.swf" }
+          %param{:name=>'flashvars', :value =>"workout_id=#{params[:id]}"}
+          %embed{ :type => "application/x-shockwave-flash", :height => 240, :src => "/swf/NotePlayer.swf", :width => 320, :name => 'workout_note', :flashvars => "workout_id=#{params[:id]}" }
+        %p
+          %span Watch your personal trainer's message
+  %span.speech
+  %p#message
+    -if @current_user.subscription.product == Subscription::PREMIUM_SUBSCRIPTION
+      -if @workout.note
+        = @workout.note
+      -else
+        There are no notes for this workout
+    - else
+      = @workout.workout_skeleton.description
+  - if @workout_session.empty?
+    = link_to('Start This Workout', play_workout_path(@workout), :id => 'commence', :confirm => confirm)
+  - else
+    = link_to('Resume This Workout', play_workout_path(@workout, :resume => 't'), :id => 'commence', :confirm => confirm)
+    = link_to('Restart This Workout', play_workout_path(@workout, :resume => 'f'), :id => 'resume', :confirm => confirm)
+#plan
+  %h2 Workout Plan
+  = render :partial => 'workout_exercise.haml', :collection => @workout.workout_exercises
+
+#stats
+  %div(class="bevelside duration")
+    %h2 Duration
+    %p= split_time @workout.total_length
+
+  %div(class="bevelside burned")
+    %h2 Total Cals Burned
+    %p= "#{@workout.calories_burned.round} Calories"
+      
+  #equipment
+    %h2 Equipment
+    -if @equipment != nil
+      -for item in @equipment
+        %p= item
+    -else
+      No Equipment

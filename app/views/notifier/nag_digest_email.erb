@@ -1,0 +1,12 @@
+Lazy People
+
+<% @lazy_people.each do |key, array| %>
+
+<%= key %> (<%= array.size %> users):
+-----------------------------------------
+<% array.each do |user| %>
+<%= user.first_name %> <%= user.last_name %> <<%= user.email %>>
+  
+<% end %>
+
+<% end %>

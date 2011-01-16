@@ -1,0 +1,9 @@
+started_workout_session:
+    workout: started_workout
+    complete: false
+    created_at: <%= Time.zone.now.to_date - 1.week %>
+completed_workout_session:
+    workout: completed_workout
+    complete: true
+    created_at: <%= Time.zone.now.to_date - 1.week %>
+    updated_at: <%= Time.zone.now.to_date - 6.days %>

@@ -1,0 +1,19 @@
+= error_messages_for 'workout_skeleton'
+%fieldset
+  %legend New Workout Skeleton
+  - form_for [:admin, @workout_skeleton] do |f|
+    %table
+      %tr
+        %th user_bucket
+        %td= collection_select(:workout_skeleton, :user_bucket_id, UserBucket.all, :id, :name, {:prompt => true}, :selected => @workout_skeleton.user_bucket.id)
+      %tr
+        %th name
+        %td= f.text_field :name
+      %tr
+        %th description:
+        %td= f.text_area :description
+      %tr
+        %td(colspan="2")
+          = submit_tag
+          = link_to "Cancel", :action => "index"
+ 

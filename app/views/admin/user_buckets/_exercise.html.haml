@@ -1,0 +1,10 @@
+- included = @user_bucket.user_bucket_exercises.find_by_exercise_id(list_exercise.id)
+- if !!included
+  - func = remote_function(:url => {:controller => 'admin/user_bucket_exercises', :action => :destroy}, :with => "'user_bucket_exercise_id=#{included.id}'", :update => "exercise_#{list_exercise.id}")
+- else
+  - func = remote_function(:url => {:controller => 'admin/user_bucket_exercises', :action => :create}, :with => "'user_bucket_id=#{@user_bucket.id}&amp;exercise_id=#{list_exercise.id}'", :update => "exercise_#{list_exercise.id}")
+%div(class="list exercise #{list_exercise.musclegroup.name.downcase}" onclick="#{func}"  style="cursor:pointer;")
+  = list_exercise.name
+  - display = @user_bucket.exercises.include?(list_exercise) ? 'visible' : 'hidden'
+  %div(style="visibility:#{display}; float: right;" id="included_#{list_exercise.id}")
+    = image_tag('/images/icons/accept.png')

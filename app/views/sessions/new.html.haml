@@ -1,0 +1,12 @@
+#fitstream
+  %span Login to Fitstream
+- if flash[:error]
+  .error_flash= flash[:error]
+- form_tag sessions_path do
+  %label Email Address
+  = text_field_tag :email, params[:email]
+  %label Password
+  = password_field_tag :password, params[:password]
+  = submit_tag 'Login', :class => 'button'
+  = link_to "Don't have an account?", plans_path
+  = link_to "Forgot your password?", forgot_password_path

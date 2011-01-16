@@ -1,0 +1,7 @@
+= render :partial => 'account_menu', :locals => {:section => :workout_type}
+#workouttype
+  %h1{:style=>'color:#FF0000;'} Note: Your workouts won't change until the next workout cycle
+  - form_for :user, :url => account_path do |f|
+    = render :partial => '/accounts/user_bucket_form', :locals => {:f => f}
+    = hidden_field_tag :stage, 3
+    = submit_tag "Save Changes", :class => 'confirm', :style => "margin: 20px 0"

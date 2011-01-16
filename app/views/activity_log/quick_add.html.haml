@@ -1,0 +1,21 @@
+.window_header
+  .window_close#window_close(onclick="Control.Modal.close();")
+  .window_title Add Favorite Activity
+.window.contents
+  %h2= @activity.name
+  %br
+  - form_for :user_activity, :url => '/activity_log', :html =>{:onsubmit=>'return checkDuration(this);'} do |f|
+    .select
+      %p
+        %label Duration:
+        = f.text_field :duration, :size => 3
+        Minutes
+        %br
+        %br
+      %p
+        %label Date:
+        = f.date_select :activity_date
+        %br
+        %br
+      = f.hidden_field :activity_id, :value => @activity.id
+    %input.addweight{:value => "Add Activity", :type => "submit", :style =>"float:none; top:0; display: inline"}

@@ -1,0 +1,5 @@
+if params[:date]
+  page.call 'cancel', @workout.id
+  page.replace_html 'week_' + @workout.id.to_s, 'Week ' + @workout.week_of.cweek.to_s + ' for ' + @workout.week_of.year.to_s
+  page.visual_effect :highlight, 'week_' + @workout.id.to_s
+end

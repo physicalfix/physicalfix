@@ -1,0 +1,20 @@
+<h2>Exercises</h2>
+<p><%= image_tag '/images/icons/add.png', :align => 'absmiddle' %> <%= link_to 'New Exercise', new_admin_exercise_path %></p>
+
+<table class="list">
+	<thead>
+		<tr>
+			<th width="20">ID</th>
+			<th width="200">Name</th>
+			<th width="450">Description</th>
+			<th width="50">Musclegroup</th>
+			<th width="16"></th>
+			<th width="16"></th>
+			<th width="16"></th>
+		</tr>
+	</thead>
+	<tbody>
+		<%= render :partial => 'exercise', :collection => @exercises %>
+	</tbody>
+</table>
+	

@@ -1,0 +1,7 @@
+- if mg_tab[:id] == 1
+  %li.selected(id="tab_#{mg_tab.id}")
+    = link_to_remote '<span>'+mg_tab[:name]+'</span>', :url => admin_exercises_path(:muscle_group_id => mg_tab.id, :format => 'js', :user_bucket_id => @user_bucket.id), :method => 'get', :complete => "onTabSelect('tab_"+mg_tab[:id].to_s+"')"
+- else
+  %li(id="tab_#{mg_tab.id}")
+    = link_to_remote '<span>'+mg_tab[:name]+'</span>', :url => admin_exercises_path(:muscle_group_id => mg_tab.id, :format => 'js', :user_bucket_id => @user_bucket.id), :method => 'get', :complete => "onTabSelect('tab_"+mg_tab[:id].to_s+"')"
+
