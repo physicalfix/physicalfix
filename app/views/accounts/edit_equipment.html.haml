@@ -1,0 +1,19 @@
+= render :partial => 'account_menu', :locals => {:section => :equipment}
+- form_for @user, :url => account_path do |f|
+  #updateequipinfo
+    %h2 Update Equipment Information
+    - @ue = @user.equipment ? @user.equipment.clone : {}
+    - @equipment.each do |group, array|
+      %h3= group
+      %ul
+        - for item in array
+          %li
+            %label
+              - has_item = (@user.equipment != nil && @user.equipment.index(item) != nil)
+              = check_box_tag "user[equipment][]", "#{item}", has_item
+              = item
+              - @ue.slice!(0..(item.length)) if has_item
+    %h3 Other Equpiment
+    %p Enter any other equipment you have below:
+    = text_area_tag "user[equipment][]", @ue, :size => "40x10"
+    %a.form_submit(href="\#" onclick="document.forms[0].submit()") Save Equipment

@@ -1,0 +1,1157 @@
+Band_Bentover_Row-15_Reps:
+  id: 1
+  exercise_id: 1
+  reps: 15
+  seconds: 30
+
+exercise_clips_014: 
+  seconds: "37"
+  created_at: 2009-11-27 19:36:00
+  updated_at: 2009-11-27 19:36:00
+  reps: "15"
+  exercise_id: "3"
+  id: "18"
+  clip_content_type: video/mp4
+  clip_file_name: Band_Bentover_Row-15_Reps.mov.ff.mp4
+  clip_file_size: "2767218"
+  
+exercise_clips_070: 
+  seconds: "25"
+  created_at: 2009-11-27 20:24:56
+  updated_at: 2009-11-27 20:24:56
+  reps: "10"
+  exercise_id: "29"
+  id: "76"
+  clip_content_type: video/mp4
+  clip_file_name: Knee_Slides-10_Reps.mov.ff.mp4
+  clip_file_size: "1858169"
+exercise_clips_042: 
+  seconds: "70"
+  created_at: 2009-11-27 20:08:23
+  updated_at: 2009-11-27 20:08:23
+  reps: "15"
+  exercise_id: "18"
+  id: "47"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Lunge_to_Shoulder_Press-15_Reps.mov.ff.mp4
+  clip_file_size: "5297936"
+exercise_clips_015: 
+  seconds: "44"
+  created_at: 2009-11-27 19:36:40
+  updated_at: 2009-11-27 19:36:40
+  reps: "15"
+  exercise_id: "9"
+  id: "19"
+  clip_content_type: video/mp4
+  clip_file_name: Crunches-15_Reps.mov.ff.mp4
+  clip_file_size: "3274896"
+exercise_clips_071: 
+  seconds: "30"
+  created_at: 2009-11-27 20:25:13
+  updated_at: 2009-11-27 20:25:13
+  reps: "12"
+  exercise_id: "29"
+  id: "77"
+  clip_content_type: video/mp4
+  clip_file_name: Knee_Slides-12_Reps.mov.ff.mp4
+  clip_file_size: "2277365"
+exercise_clips_043: 
+  seconds: "31"
+  created_at: 2009-11-27 20:08:59
+  updated_at: 2009-11-27 20:08:59
+  reps: "15"
+  exercise_id: "19"
+  id: "48"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Overhead_Squats-15_Reps.mov.ff.mp4
+  clip_file_size: "2372669"
+exercise_clips_016: 
+  seconds: "50"
+  created_at: 2009-11-27 19:36:58
+  updated_at: 2009-11-27 19:36:58
+  reps: "20"
+  exercise_id: "9"
+  id: "20"
+  clip_content_type: video/mp4
+  clip_file_name: Crunches-20_Reps.mov.ff.mp4
+  clip_file_size: "3720874"
+exercise_clips_072: 
+  seconds: "41"
+  created_at: 2009-11-27 20:25:34
+  updated_at: 2009-11-27 20:25:34
+  reps: "15"
+  exercise_id: "29"
+  id: "78"
+  clip_content_type: video/mp4
+  clip_file_name: Knee_Slides-15_Reps.mov.ff.mp4
+  clip_file_size: "3104628"
+exercise_clips_044: 
+  seconds: "38"
+  created_at: 2009-11-27 20:09:16
+  updated_at: 2009-11-27 20:09:16
+  reps: "20"
+  exercise_id: "19"
+  id: "49"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Overhead_Squats-20_Reps.mov.ff.mp4
+  clip_file_size: "2888476"
+exercise_clips_017: 
+  seconds: "42"
+  created_at: 2009-11-27 19:40:58
+  updated_at: 2009-11-27 19:40:58
+  reps: 30s
+  exercise_id: "10"
+  id: "21"
+  clip_content_type: video/mp4
+  clip_file_name: Double_Leg_Bridges-30_Seconds.mov.ff.mp4
+  clip_file_size: "3193948"
+exercise_clips_073: 
+  seconds: "44"
+  created_at: 2009-11-27 20:25:52
+  updated_at: 2009-11-27 20:25:52
+  reps: "20"
+  exercise_id: "29"
+  id: "79"
+  clip_content_type: video/mp4
+  clip_file_name: Knee_Slides-20_Reps.mov.ff.mp4
+  clip_file_size: "3319875"
+exercise_clips_045: 
+  seconds: "26"
+  created_at: 2009-11-27 20:10:09
+  updated_at: 2009-11-27 20:10:09
+  reps: "10"
+  exercise_id: "20"
+  id: "50"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Shoulder_Press-10_Reps.mov.ff.mp4
+  clip_file_size: "1949983"
+exercise_clips_100: 
+  seconds: "36"
+  created_at: 2009-11-27 21:18:46
+  updated_at: 2009-11-27 21:18:46
+  reps: "20"
+  exercise_id: "43"
+  id: "107"
+  clip_content_type: video/mp4
+  clip_file_name: Squats-20_Reps.mov.ff.mp4
+  clip_file_size: "2751245"
+exercise_clips_018: 
+  seconds: "78"
+  created_at: 2009-11-27 19:41:22
+  updated_at: 2009-11-27 19:41:22
+  reps: 60s
+  exercise_id: "10"
+  id: "22"
+  clip_content_type: video/mp4
+  clip_file_name: Double_Leg_Bridges-60_Seconds.mov.ff.mp4
+  clip_file_size: "5818505"
+exercise_clips_074: 
+  seconds: "49"
+  created_at: 2009-11-27 20:27:15
+  updated_at: 2009-11-27 20:27:15
+  reps: "10"
+  exercise_id: "30"
+  id: "80"
+  clip_content_type: video/mp4
+  clip_file_name: Lunges-10_Reps.mov.ff.mp4
+  clip_file_size: "3729795"
+exercise_clips_046: 
+  seconds: "28"
+  created_at: 2009-11-27 20:11:24
+  updated_at: 2009-11-27 20:11:24
+  reps: "12"
+  exercise_id: "20"
+  id: "52"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Shoulder_Press-12_Reps.mov.ff.mp4
+  clip_file_size: "2134734"
+exercise_clips_101: 
+  seconds: "51"
+  created_at: 2009-11-27 21:19:06
+  updated_at: 2009-11-27 21:19:06
+  reps: "30"
+  exercise_id: "43"
+  id: "108"
+  clip_content_type: video/mp4
+  clip_file_name: Squats-30_Reps.mov.ff.mp4
+  clip_file_size: "3889609"
+exercise_clips_019: 
+  seconds: "37"
+  created_at: 2009-11-27 19:45:26
+  updated_at: 2009-11-27 19:45:26
+  reps: "12"
+  exercise_id: "11"
+  id: "23"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Bentover_Reverse_Flyes-12_Reps.mov.ff.mp4
+  clip_file_size: "2773980"
+exercise_clips_075: 
+  seconds: "74"
+  created_at: 2009-11-27 20:27:37
+  updated_at: 2009-11-27 20:27:37
+  reps: "15"
+  exercise_id: "30"
+  id: "81"
+  clip_content_type: video/mp4
+  clip_file_name: Lunges-15_Reps.mov.ff.mp4
+  clip_file_size: "5605222"
+exercise_clips_047: 
+  seconds: "43"
+  created_at: 2009-11-27 20:11:40
+  updated_at: 2009-11-27 20:11:40
+  reps: "20"
+  exercise_id: "20"
+  id: "53"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Shoulder_Press-20_Reps.mov.ff.mp4
+  clip_file_size: "3267325"
+exercise_clips_102: 
+  seconds: "73"
+  created_at: 2009-11-27 21:19:27
+  updated_at: 2009-11-27 21:19:27
+  reps: "40"
+  exercise_id: "43"
+  id: "109"
+  clip_content_type: video/mp4
+  clip_file_name: Squats-40_Reps.mov.ff.mp4
+  clip_file_size: "5485103"
+exercise_clips_076: 
+  seconds: "74"
+  created_at: 2009-11-27 20:29:21
+  updated_at: 2009-11-27 20:29:21
+  reps: 60s
+  exercise_id: "31"
+  id: "82"
+  clip_content_type: video/mp4
+  clip_file_name: Mountain_Climbers-60_Seconds.mov.ff.mp4
+  clip_file_size: "5630462"
+exercise_clips_048: 
+  seconds: "59"
+  created_at: 2009-11-27 20:11:59
+  updated_at: 2009-11-27 20:11:59
+  reps: "30"
+  exercise_id: "20"
+  id: "54"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Shoulder_Press-30_Reps.mov.ff.mp4
+  clip_file_size: "4407483"
+exercise_clips_103: 
+  seconds: "79"
+  created_at: 2009-11-27 21:19:50
+  updated_at: 2009-11-27 21:19:50
+  reps: "50"
+  exercise_id: "43"
+  id: "110"
+  clip_content_type: video/mp4
+  clip_file_name: Squats-50_Reps.mov.ff.mp4
+  clip_file_size: "5917719"
+exercise_clips_077: 
+  seconds: "41"
+  created_at: 2009-11-27 20:36:19
+  updated_at: 2009-11-27 20:36:19
+  reps: 30s
+  exercise_id: "32"
+  id: "83"
+  clip_content_type: video/mp4
+  clip_file_name: Plank-30_Seconds.mov.ff.mp4
+  clip_file_size: "3107297"
+exercise_clips_049: 
+  seconds: "29"
+  created_at: 2009-11-27 20:12:30
+  updated_at: 2009-11-27 20:12:30
+  reps: "10"
+  exercise_id: "21"
+  id: "55"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Side_Shoulder_Raise-10_Reps_.mov.ff.mp4
+  clip_file_size: "2135529"
+exercise_clips_104: 
+  seconds: "40"
+  created_at: 2009-11-27 21:21:11
+  updated_at: 2009-11-27 21:21:11
+  reps: 30s
+  exercise_id: "44"
+  id: "111"
+  clip_content_type: video/mp4
+  clip_file_name: Thumbs-30_Seconds.mov.ff.mp4
+  clip_file_size: "3052972"
+exercise_clips_078: 
+  seconds: "72"
+  created_at: 2009-11-27 20:36:41
+  updated_at: 2009-11-27 20:36:41
+  reps: 60s
+  exercise_id: "32"
+  id: "84"
+  clip_content_type: video/mp4
+  clip_file_name: Plank-60_Seconds.mov.ff.mp4
+  clip_file_size: "5448877"
+exercise_clips_105: 
+  seconds: "56"
+  created_at: 2009-11-27 21:21:35
+  updated_at: 2009-11-27 21:21:35
+  reps: 45s
+  exercise_id: "44"
+  id: "112"
+  clip_content_type: video/mp4
+  clip_file_name: Thumbs-45_Seconds.mov.ff.mp4
+  clip_file_size: "4248930"
+exercise_clips_020: 
+  seconds: "42"
+  created_at: 2009-11-27 19:45:47
+  updated_at: 2009-11-27 19:45:47
+  reps: "15"
+  exercise_id: "11"
+  id: "24"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Bentover_Reverse_Flyes-15_Reps.mov.ff.mp4
+  clip_file_size: "3165917"
+exercise_clips_079: 
+  seconds: "35"
+  created_at: 2009-11-27 20:37:43
+  updated_at: 2009-11-27 20:37:43
+  reps: "20"
+  exercise_id: "33"
+  id: "85"
+  clip_content_type: video/mp4
+  clip_file_name: Plyo_Jax-20_Reps.mov.ff.mp4
+  clip_file_size: "2667828"
+exercise_clips_106: 
+  seconds: "39"
+  created_at: 2009-11-27 21:24:24
+  updated_at: 2009-11-27 21:24:24
+  reps: 30s
+  exercise_id: "45"
+  id: "113"
+  clip_content_type: video/mp4
+  clip_file_name: Toe_Taps-30_Seconds_.mov.ff.mp4
+  clip_file_size: "2997947"
+exercise_clips_107: 
+  seconds: "51"
+  created_at: 2009-11-27 21:25:38
+  updated_at: 2009-11-27 21:25:38
+  reps: 45s
+  exercise_id: "45"
+  id: "114"
+  clip_content_type: video/mp4
+  clip_file_name: Toe_Taps-45_Seconds.mov.ff.mp4
+  clip_file_size: "3873077"
+exercise_clips_021: 
+  seconds: "55"
+  created_at: 2009-11-27 19:46:08
+  updated_at: 2009-11-27 19:46:08
+  reps: "20"
+  exercise_id: "11"
+  id: "25"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Bentover_Reverse_Flyes-20_Reps.mov.ff.mp4
+  clip_file_size: "4124872"
+exercise_clips_108: 
+  seconds: "75"
+  created_at: 2009-11-27 21:27:30
+  updated_at: 2009-11-27 21:27:30
+  reps: 60s
+  exercise_id: "45"
+  id: "115"
+  clip_content_type: video/mp4
+  clip_file_name: Toe_Taps_60_Seconds.mov.ff.mp4
+  clip_file_size: "5648138"
+exercise_clips_050: 
+  seconds: "40"
+  created_at: 2009-11-27 20:13:00
+  updated_at: 2009-11-27 20:13:00
+  reps: "12"
+  exercise_id: "21"
+  id: "56"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Side_Shoulder_Raise-12_Reps.mov.ff.mp4
+  clip_file_size: "3049232"
+exercise_clips_022: 
+  seconds: "31"
+  created_at: 2009-11-27 19:47:13
+  updated_at: 2009-11-27 19:47:13
+  reps: "12"
+  exercise_id: "12"
+  id: "26"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Bentover_Row-12_Reps.mov.ff.mp4
+  clip_file_size: "2351005"
+exercise_clips_109: 
+  seconds: "29"
+  created_at: 2009-11-27 21:27:59
+  updated_at: 2009-11-27 21:27:59
+  reps: "12"
+  exercise_id: "46"
+  id: "116"
+  clip_content_type: video/mp4
+  clip_file_name: Toe_Touches-12_Reps.mov.ff.mp4
+  clip_file_size: "2215587"
+exercise_clips_051: 
+  seconds: "46"
+  created_at: 2009-11-27 20:13:50
+  updated_at: 2009-11-27 20:13:50
+  reps: "15"
+  exercise_id: "21"
+  id: "57"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Side_Shoulder_Raise-15_Reps.mov.ff.mp4
+  clip_file_size: "3458558"
+exercise_clips_023: 
+  seconds: "39"
+  created_at: 2009-11-27 19:47:36
+  updated_at: 2009-11-27 19:47:36
+  reps: "15"
+  exercise_id: "12"
+  id: "27"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Bentover_Row-15_Reps.mov.ff.mp4
+  clip_file_size: "2950540"
+exercise_clips_080: 
+  seconds: "69"
+  created_at: 2009-11-27 20:38:02
+  updated_at: 2009-11-27 20:38:02
+  reps: 60s
+  exercise_id: "33"
+  id: "86"
+  clip_content_type: video/mp4
+  clip_file_name: Plyo_Jax-60_Seconds.mov.ff.mp4
+  clip_file_size: "5208997"
+exercise_clips_052: 
+  seconds: "56"
+  created_at: 2009-11-27 20:14:37
+  updated_at: 2009-11-27 20:14:37
+  reps: "20"
+  exercise_id: "21"
+  id: "58"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Side_Shoulder_Raise-20_Reps.mov.ff.mp4
+  clip_file_size: "4128790"
+exercise_clips_024: 
+  seconds: "52"
+  created_at: 2009-11-27 19:48:58
+  updated_at: 2009-11-27 19:48:58
+  reps: "20"
+  exercise_id: "12"
+  id: "29"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Bentover_Row-20_Reps.mov.ff.mp4
+  clip_file_size: "3908805"
+exercise_clips_081: 
+  seconds: "36"
+  created_at: 2009-11-27 20:38:34
+  updated_at: 2009-11-27 20:38:34
+  reps: "12"
+  exercise_id: "34"
+  id: "87"
+  clip_content_type: video/mp4
+  clip_file_name: Pushups-12_Reps.mov.ff.mp4
+  clip_file_size: "2693318"
+exercise_clips_053: 
+  seconds: "32"
+  created_at: 2009-11-27 20:15:26
+  updated_at: 2009-11-27 20:15:26
+  reps: "12"
+  exercise_id: "22"
+  id: "59"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Squat_to_Shoulder_Press-12_Reps.mov.ff.mp4
+  clip_file_size: "2449120"
+exercise_clips_025: 
+  seconds: "60"
+  created_at: 2009-11-27 19:49:32
+  updated_at: 2009-11-27 19:49:32
+  reps: "25"
+  exercise_id: "12"
+  id: "30"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Bentover_Row-25_Reps.mov.ff.mp4
+  clip_file_size: "4476527"
+exercise_clips_082: 
+  seconds: "29"
+  created_at: 2009-11-27 20:38:46
+  updated_at: 2009-11-27 20:38:46
+  reps: "15"
+  exercise_id: "34"
+  id: "88"
+  clip_content_type: video/mp4
+  clip_file_name: Pushups-15_Reps.mov.ff.mp4
+  clip_file_size: "2181047"
+exercise_clips_054: 
+  seconds: "40"
+  created_at: 2009-11-27 20:15:44
+  updated_at: 2009-11-27 20:15:44
+  reps: "15"
+  exercise_id: "22"
+  id: "60"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Squat_to_Shoulder_Press-15_Reps.mov.ff.mp4
+  clip_file_size: "2997291"
+exercise_clips_026: 
+  seconds: "36"
+  created_at: 2009-11-27 20:00:46
+  updated_at: 2009-11-27 20:00:46
+  reps: "12"
+  exercise_id: "13"
+  id: "31"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Biceps_Curls-12_Reps.mov.ff.mp4
+  clip_file_size: "2737897"
+exercise_clips_083: 
+  seconds: "35"
+  created_at: 2009-11-27 20:39:00
+  updated_at: 2009-11-27 20:39:00
+  reps: "20"
+  exercise_id: "34"
+  id: "89"
+  clip_content_type: video/mp4
+  clip_file_name: Pushups-20_Reps.mov.ff.mp4
+  clip_file_size: "2689570"
+exercise_clips_055: 
+  seconds: "35"
+  created_at: 2009-11-27 20:16:15
+  updated_at: 2009-11-27 20:16:15
+  reps: "15"
+  exercise_id: "23"
+  id: "61"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Squats-15_Reps.mov.ff.mp4
+  clip_file_size: "2692785"
+exercise_clips_110: 
+  seconds: "34"
+  created_at: 2009-11-27 21:28:13
+  updated_at: 2009-11-27 21:28:13
+  reps: "15"
+  exercise_id: "46"
+  id: "117"
+  clip_content_type: video/mp4
+  clip_file_name: Toe_Touches-15_Reps.mov.ff.mp4
+  clip_file_size: "2586701"
+exercise_clips_027: 
+  seconds: "39"
+  created_at: 2009-11-27 20:01:04
+  updated_at: 2009-11-27 20:01:04
+  reps: "15"
+  exercise_id: "13"
+  id: "32"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Biceps_Curls-15_Reps.mov.ff.mp4
+  clip_file_size: "2930493"
+exercise_clips_056: 
+  seconds: "33"
+  created_at: 2009-11-27 20:17:21
+  updated_at: 2009-11-27 20:17:21
+  reps: "12"
+  exercise_id: "24"
+  id: "62"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Tricep_Kickbacks-12_Reps.mov.ff.mp4
+  clip_file_size: "2479338"
+exercise_clips_111: 
+  seconds: "49"
+  created_at: 2009-11-27 21:28:31
+  updated_at: 2009-11-27 21:28:31
+  reps: "20"
+  exercise_id: "46"
+  id: "118"
+  clip_content_type: video/mp4
+  clip_file_name: Toe_Touches-20_Reps.mov.ff.mp4
+  clip_file_size: "3685643"
+exercise_clips_028: 
+  seconds: "48"
+  created_at: 2009-11-27 20:01:35
+  updated_at: 2009-11-27 20:01:35
+  reps: "12"
+  exercise_id: "14"
+  id: "33"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Chest_Flyes-12_Reps.mov.ff.mp4
+  clip_file_size: "3611485"
+exercise_clips_084: 
+  seconds: "40"
+  created_at: 2009-11-27 20:39:16
+  updated_at: 2009-11-27 20:39:16
+  reps: "25"
+  exercise_id: "34"
+  id: "90"
+  clip_content_type: video/mp4
+  clip_file_name: Pushups-25_Reps.mov.ff.mp4
+  clip_file_size: "3034476"
+exercise_clips_057: 
+  seconds: "44"
+  created_at: 2009-11-27 20:17:45
+  updated_at: 2009-11-27 20:17:45
+  reps: "15"
+  exercise_id: "24"
+  id: "63"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Tricep_Kickbacks-15_Reps.mov.ff.mp4
+  clip_file_size: "3297836"
+exercise_clips_112: 
+  seconds: "58"
+  created_at: 2009-11-27 21:29:17
+  updated_at: 2009-11-27 21:29:17
+  reps: "12"
+  exercise_id: "47"
+  id: "119"
+  clip_content_type: video/mp4
+  clip_file_name: X-Overs-12_Reps.mov.ff.mp4
+  clip_file_size: "4369215"
+exercise_clips_029: 
+  seconds: "56"
+  created_at: 2009-11-27 20:01:53
+  updated_at: 2009-11-27 20:01:53
+  reps: "15"
+  exercise_id: "14"
+  id: "34"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Chest_Flyes-15_Reps.mov.ff.mp4
+  clip_file_size: "4182795"
+exercise_clips_085: 
+  seconds: "46"
+  created_at: 2009-11-27 20:39:34
+  updated_at: 2009-11-27 20:39:34
+  reps: "30"
+  exercise_id: "34"
+  id: "91"
+  clip_content_type: video/mp4
+  clip_file_name: Pushups-30_Reps.mov.ff.mp4
+  clip_file_size: "3500245"
+exercise_clips_058: 
+  seconds: "55"
+  created_at: 2009-11-27 20:18:05
+  updated_at: 2009-11-27 20:18:05
+  reps: "20"
+  exercise_id: "24"
+  id: "64"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Tricep_Kickbacks-20_Reps.mov.ff.mp4
+  clip_file_size: "4142989"
+exercise_clips_113: 
+  seconds: "74"
+  created_at: 2009-11-27 21:29:35
+  updated_at: 2009-11-27 21:29:35
+  reps: 60s
+  exercise_id: "47"
+  id: "120"
+  clip_content_type: video/mp4
+  clip_file_name: X-Overs-60_Seconds.mov.ff.mp4
+  clip_file_size: "5528673"
+exercise_clips_086: 
+  seconds: "44"
+  created_at: 2009-11-27 20:40:18
+  updated_at: 2009-11-27 20:40:18
+  reps: "12"
+  exercise_id: "35"
+  id: "92"
+  clip_content_type: video/mp4
+  clip_file_name: Reverse_Lunges-12_Reps.mov.ff.mp4
+  clip_file_size: "3370019"
+exercise_clips_059: 
+  seconds: "32"
+  created_at: 2009-11-27 20:18:52
+  updated_at: 2009-11-27 20:18:52
+  reps: "10"
+  exercise_id: "11"
+  id: "65"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbell_Bentover_Reverse_Flyes-10_Reps.mov.ff.mp4
+  clip_file_size: "2446069"
+exercise_clips_114: 
+  seconds: "45"
+  created_at: 2009-11-27 21:30:59
+  updated_at: 2009-11-27 21:30:59
+  reps: "12"
+  exercise_id: "48"
+  id: "121"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Curl_to_Press-12_Reps.mov.ff.mp4
+  clip_file_size: "3389603"
+exercise_clips_087: 
+  seconds: "75"
+  created_at: 2009-11-27 20:40:39
+  updated_at: 2009-11-27 20:40:39
+  reps: "20"
+  exercise_id: "35"
+  id: "93"
+  clip_content_type: video/mp4
+  clip_file_name: Reverse_Lunges-20_Reps.mov.ff.mp4
+  clip_file_size: "5662022"
+exercise_clips_115: 
+  seconds: "57"
+  created_at: 2009-11-27 21:31:18
+  updated_at: 2009-11-27 21:31:18
+  reps: "15"
+  exercise_id: "48"
+  id: "122"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Curl_to_Press-15_Reps.mov.ff.mp4
+  clip_file_size: "4315571"
+exercise_clips_088: 
+  seconds: "59"
+  created_at: 2009-11-27 20:41:36
+  updated_at: 2009-11-27 20:41:36
+  reps: 45s
+  exercise_id: "36"
+  id: "94"
+  clip_content_type: video/mp4
+  clip_file_name: Seated_Rotations-45_Seconds.mov.ff.mp4
+  clip_file_size: "4468324"
+exercise_clips_001: 
+  seconds: "49"
+  created_at: 2009-11-27 19:12:11
+  updated_at: 2009-11-27 19:12:11
+  reps: "20"
+  exercise_id: "3"
+  id: "5"
+  clip_content_type: video/mp4
+  clip_file_name: Band_Bentover_Row-20_Reps.mov.ff.mp4
+  clip_file_size: "3665763"
+exercise_clips_030: 
+  seconds: "74"
+  created_at: 2009-11-27 20:02:22
+  updated_at: 2009-11-27 20:02:22
+  reps: "20"
+  exercise_id: "14"
+  id: "35"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Chest_Flyes-20_Reps.mov.ff.mp4
+  clip_file_size: "5541423"
+exercise_clips_089: 
+  seconds: "53"
+  created_at: 2009-11-27 21:07:11
+  updated_at: 2009-11-27 21:07:11
+  reps: "12"
+  exercise_id: "37"
+  id: "95"
+  clip_content_type: video/mp4
+  clip_file_name: Side_Lunges-12_Reps_.mov.ff.mp4
+  clip_file_size: "3967113"
+exercise_clips_002: 
+  seconds: "73"
+  created_at: 2009-11-27 19:13:00
+  updated_at: 2009-11-27 19:13:00
+  reps: 60s
+  exercise_id: "3"
+  id: "6"
+  clip_content_type: video/mp4
+  clip_file_name: Band_Bentover_Row-60_Seconds.mov.ff.mp4
+  clip_file_size: "5493773"
+exercise_clips_031: 
+  seconds: "83"
+  created_at: 2009-11-27 20:02:46
+  updated_at: 2009-11-27 20:02:46
+  reps: "25"
+  exercise_id: "14"
+  id: "36"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Chest_Flyes-25_Reps.mov.ff.mp4
+  clip_file_size: "6170478"
+exercise_clips_003: 
+  seconds: "33"
+  created_at: 2009-11-27 19:24:47
+  updated_at: 2009-11-27 19:24:47
+  reps: "12"
+  exercise_id: "4"
+  id: "7"
+  clip_content_type: video/mp4
+  clip_file_name: Band_Curls-12_Reps.mov.ff.mp4
+  clip_file_size: "2521135"
+exercise_clips_060: 
+  seconds: "26"
+  created_at: 2009-11-27 20:20:01
+  updated_at: 2009-11-27 20:20:01
+  reps: "12"
+  exercise_id: "25"
+  id: "66"
+  clip_content_type: video/mp4
+  clip_file_name: Floor_Dips-12_Reps.mov.ff.mp4
+  clip_file_size: "2021590"
+exercise_clips_032: 
+  seconds: "33"
+  created_at: 2009-11-27 20:03:26
+  updated_at: 2009-11-27 20:03:26
+  reps: "12"
+  exercise_id: "15"
+  id: "37"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Chest_Press-12_Reps.mov.ff.mp4
+  clip_file_size: "2487597"
+exercise_clips_004: 
+  seconds: "71"
+  created_at: 2009-11-27 19:25:10
+  updated_at: 2009-11-27 19:25:10
+  reps: 60s
+  exercise_id: "4"
+  id: "8"
+  clip_content_type: video/mp4
+  clip_file_name: Band_Bicep_Curls-60_Seconds.mov.ff.mp4
+  clip_file_size: "5320562"
+exercise_clips_061: 
+  seconds: "26"
+  created_at: 2009-11-27 20:20:17
+  updated_at: 2009-11-27 20:20:17
+  reps: "15"
+  exercise_id: "25"
+  id: "67"
+  clip_content_type: video/mp4
+  clip_file_name: Floor_Dips-15_Reps.mov.ff.mp4
+  clip_file_size: "1960744"
+exercise_clips_033: 
+  seconds: "40"
+  created_at: 2009-11-27 20:03:51
+  updated_at: 2009-11-27 20:03:51
+  reps: "15"
+  exercise_id: "15"
+  id: "38"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Chest_Press-15_Reps.mov.ff.mp4
+  clip_file_size: "3050841"
+exercise_clips_005: 
+  seconds: "39"
+  created_at: 2009-11-27 19:27:09
+  updated_at: 2009-11-27 19:27:09
+  reps: "10"
+  exercise_id: "5"
+  id: "9"
+  clip_content_type: video/mp4
+  clip_file_name: Band_Front_Shoulder_Raise-10_Reps.mov.ff.mp4
+  clip_file_size: "2913922"
+exercise_clips_062: 
+  seconds: "30"
+  created_at: 2009-11-27 20:20:30
+  updated_at: 2009-11-27 20:20:30
+  reps: "20"
+  exercise_id: "25"
+  id: "68"
+  clip_content_type: video/mp4
+  clip_file_name: Floor_Dips-20_Reps.mov.ff.mp4
+  clip_file_size: "2285951"
+exercise_clips_034: 
+  seconds: "52"
+  created_at: 2009-11-27 20:04:08
+  updated_at: 2009-11-27 20:04:08
+  reps: "20"
+  exercise_id: "15"
+  id: "39"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Chest_Press-20_Reps.mov.ff.mp4
+  clip_file_size: "3878473"
+exercise_clips_006: 
+  seconds: "34"
+  created_at: 2009-11-27 19:28:39
+  updated_at: 2009-11-27 19:28:39
+  reps: "12"
+  exercise_id: "5"
+  id: "10"
+  clip_content_type: video/mp4
+  clip_file_name: Band_Front_Shoulder_Raise-12_Reps.mov.ff.mp4
+  clip_file_size: "2568972"
+exercise_clips_090: 
+  seconds: "75"
+  created_at: 2009-11-27 21:10:01
+  updated_at: 2009-11-27 21:10:01
+  reps: "15"
+  exercise_id: "37"
+  id: "96"
+  clip_content_type: video/mp4
+  clip_file_name: Side_Lunges-15_Reps.mov.ff.mp4
+  clip_file_size: "5606950"
+exercise_clips_035: 
+  seconds: "63"
+  created_at: 2009-11-27 20:04:31
+  updated_at: 2009-11-27 20:04:31
+  reps: "25"
+  exercise_id: "15"
+  id: "40"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Chest_Press-25_Reps.mov.ff.mp4
+  clip_file_size: "4681337"
+exercise_clips_007: 
+  seconds: "33"
+  created_at: 2009-11-27 19:30:08
+  updated_at: 2009-11-27 19:30:08
+  reps: "10"
+  exercise_id: "6"
+  id: "11"
+  clip_content_type: video/mp4
+  clip_file_name: Band_Side_Shoulder_Raise-10_Reps.mov.ff.mp4
+  clip_file_size: "2522608"
+exercise_clips_091: 
+  seconds: "44"
+  created_at: 2009-11-27 21:11:51
+  updated_at: 2009-11-27 21:11:51
+  reps: "12"
+  exercise_id: "38"
+  id: "97"
+  clip_content_type: video/mp4
+  clip_file_name: Single_Leg_Squats-12_Reps.mov.ff.mp4
+  clip_file_size: "3286886"
+exercise_clips_063: 
+  seconds: "42"
+  created_at: 2009-11-27 20:21:08
+  updated_at: 2009-11-27 20:21:08
+  reps: "15"
+  exercise_id: "26"
+  id: "69"
+  clip_content_type: video/mp4
+  clip_file_name: Heel_Touches-15_Reps.mov.ff.mp4
+  clip_file_size: "3178197"
+exercise_clips_036: 
+  seconds: "28"
+  created_at: 2009-11-27 20:05:13
+  updated_at: 2009-11-27 20:05:13
+  reps: "10"
+  exercise_id: "16"
+  id: "41"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Front_Shoulder_Raise-10_Reps.mov.ff.mp4
+  clip_file_size: "2083529"
+exercise_clips_008: 
+  seconds: "37"
+  created_at: 2009-11-27 19:30:45
+  updated_at: 2009-11-27 19:30:45
+  reps: "12"
+  exercise_id: "6"
+  id: "12"
+  clip_content_type: video/mp4
+  clip_file_name: Band_Side_Shoulder_Raise-12_Reps.mov.ff.mp4
+  clip_file_size: "2798912"
+exercise_clips_092: 
+  seconds: "63"
+  created_at: 2009-11-27 21:12:12
+  updated_at: 2009-11-27 21:12:12
+  reps: "15"
+  exercise_id: "38"
+  id: "98"
+  clip_content_type: video/mp4
+  clip_file_name: Single_Leg_Squats-15_Reps.mov.ff.mp4
+  clip_file_size: "4740574"
+exercise_clips_064: 
+  seconds: "55"
+  created_at: 2009-11-27 20:21:29
+  updated_at: 2009-11-27 20:21:29
+  reps: "20"
+  exercise_id: "26"
+  id: "70"
+  clip_content_type: video/mp4
+  clip_file_name: Heel_Touches-20_Reps.mov.ff.mp4
+  clip_file_size: "4148441"
+exercise_clips_037: 
+  seconds: "32"
+  created_at: 2009-11-27 20:05:29
+  updated_at: 2009-11-27 20:05:29
+  reps: "12"
+  exercise_id: "16"
+  id: "42"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Front_Shoulder_Raise-12_Reps.mov.ff.mp4
+  clip_file_size: "2398626"
+exercise_clips_009: 
+  seconds: "44"
+  created_at: 2009-11-27 19:31:06
+  updated_at: 2009-11-27 19:31:06
+  reps: "15"
+  exercise_id: "6"
+  id: "13"
+  clip_content_type: video/mp4
+  clip_file_name: Band_Side_Shoulder_Raise-15_Reps.mov.ff.mp4
+  clip_file_size: "3289207"
+exercise_clips_093: 
+  seconds: "50"
+  created_at: 2009-11-27 21:13:04
+  updated_at: 2009-11-27 21:13:04
+  reps: 45s
+  exercise_id: "39"
+  id: "99"
+  clip_content_type: video/mp4
+  clip_file_name: Speed_Jax-45_Seconds.mov.ff.mp4
+  clip_file_size: "3810404"
+exercise_clips_065: 
+  seconds: "71"
+  created_at: 2009-11-27 20:21:50
+  updated_at: 2009-11-27 20:21:50
+  reps: 60s
+  exercise_id: "26"
+  id: "71"
+  clip_content_type: video/mp4
+  clip_file_name: Heel_Touches-60_Seconds.mov.ff.mp4
+  clip_file_size: "5334638"
+exercise_clips_038: 
+  seconds: "46"
+  created_at: 2009-11-27 20:05:44
+  updated_at: 2009-11-27 20:05:44
+  reps: "15"
+  exercise_id: "16"
+  id: "43"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Front_Shoulder_Raise-15_Reps.mov.ff.mp4
+  clip_file_size: "3475329"
+exercise_clips_094: 
+  seconds: "51"
+  created_at: 2009-11-27 21:14:30
+  updated_at: 2009-11-27 21:14:30
+  reps: "20"
+  exercise_id: "40"
+  id: "100"
+  clip_content_type: video/mp4
+  clip_file_name: Squat_Front_Shouler_Raise-_20_Reps.MOV.ff.mp4
+  clip_file_size: "3807706"
+exercise_clips_066: 
+  seconds: "53"
+  created_at: 2009-11-27 20:22:26
+  updated_at: 2009-11-27 20:22:26
+  reps: 45s
+  exercise_id: "27"
+  id: "72"
+  clip_content_type: video/mp4
+  clip_file_name: High_Knees-45_Seconds.mov.ff.mp4
+  clip_file_size: "4000098"
+exercise_clips_039: 
+  seconds: "50"
+  created_at: 2009-11-27 20:06:01
+  updated_at: 2009-11-27 20:06:01
+  reps: "20"
+  exercise_id: "16"
+  id: "44"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Front_Shoulder_Raise-20_Reps.mov.ff.mp4
+  clip_file_size: "3786910"
+exercise_clips_095: 
+  seconds: "38"
+  created_at: 2009-11-27 21:16:23
+  updated_at: 2009-11-27 21:16:23
+  reps: 30s
+  exercise_id: "41"
+  id: "102"
+  clip_content_type: video/mp4
+  clip_file_name: Squat_Jumps-30_Seconds.mov.ff.mp4
+  clip_file_size: "2908987"
+exercise_clips_067: 
+  seconds: "39"
+  created_at: 2009-11-27 20:23:11
+  updated_at: 2009-11-27 20:23:11
+  reps: 30s
+  exercise_id: "28"
+  id: "73"
+  clip_content_type: video/mp4
+  clip_file_name: Jax-30_Seconds.mov.ff.mp4
+  clip_file_size: "2961610"
+exercise_clips_096: 
+  seconds: "53"
+  created_at: 2009-11-27 21:16:48
+  updated_at: 2009-11-27 21:16:48
+  reps: 45s
+  exercise_id: "41"
+  id: "103"
+  clip_content_type: video/mp4
+  clip_file_name: Squat_Jumps-_45_Seconds.MOV.ff.mp4
+  clip_file_size: "4005376"
+exercise_clips_068: 
+  seconds: "53"
+  created_at: 2009-11-27 20:23:47
+  updated_at: 2009-11-27 20:23:47
+  reps: 45s
+  exercise_id: "28"
+  id: "74"
+  clip_content_type: video/mp4
+  clip_file_name: Jax-45_Seconds.mov.ff.mp4
+  clip_file_size: "4039839"
+exercise_clips_097: 
+  seconds: "68"
+  created_at: 2009-11-27 21:17:08
+  updated_at: 2009-11-27 21:17:08
+  reps: 60s
+  exercise_id: "41"
+  id: "104"
+  clip_content_type: video/mp4
+  clip_file_name: Squat_Jumps-60_Seconds.mov.ff.mp4
+  clip_file_size: "5096842"
+exercise_clips_010: 
+  seconds: "71"
+  created_at: 2009-11-27 19:32:27
+  updated_at: 2009-11-27 19:32:27
+  reps: 60s
+  exercise_id: "7"
+  id: "14"
+  clip_content_type: video/mp4
+  clip_file_name: Band_Tricep_Extension_From_Chest-60_Seconds.mov.ff.mp4
+  clip_file_size: "5323590"
+exercise_clips_069: 
+  seconds: "68"
+  created_at: 2009-11-27 20:24:09
+  updated_at: 2009-11-27 20:24:09
+  reps: 60s
+  exercise_id: "28"
+  id: "75"
+  clip_content_type: video/mp4
+  clip_file_name: Jax-60_Seconds.mov.ff.mp4
+  clip_file_size: "5117346"
+exercise_clips_098: 
+  seconds: "42"
+  created_at: 2009-11-27 21:17:55
+  updated_at: 2009-11-27 21:17:55
+  reps: 30s
+  exercise_id: "42"
+  id: "105"
+  clip_content_type: video/mp4
+  clip_file_name: Squat_Stutter_Steps-30_Seconds.mov.ff.mp4
+  clip_file_size: "3171672"
+exercise_clips_011: 
+  seconds: "32"
+  created_at: 2009-11-27 19:34:48
+  updated_at: 2009-11-27 19:34:48
+  reps: "12"
+  exercise_id: "8"
+  id: "15"
+  clip_content_type: video/mp4
+  clip_file_name: Band_Triceps_Kickbacks-12_Reps.mov.ff.mp4
+  clip_file_size: "2439102"
+exercise_clips_040: 
+  seconds: "80"
+  created_at: 2009-11-27 20:07:00
+  updated_at: 2009-11-27 20:07:00
+  reps: "15"
+  exercise_id: "17"
+  id: "45"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Lunge_to_Curl-15_Reps.mov.ff.mp4
+  clip_file_size: "6049159"
+exercise_clips_099: 
+  seconds: "58"
+  created_at: 2009-11-27 21:18:12
+  updated_at: 2009-11-27 21:18:12
+  reps: 45s
+  exercise_id: "42"
+  id: "106"
+  clip_content_type: video/mp4
+  clip_file_name: Squat_Stutter_Steps-45_Seconds.mov.ff.mp4
+  clip_file_size: "4355218"
+exercise_clips_012: 
+  seconds: "37"
+  created_at: 2009-11-27 19:35:12
+  updated_at: 2009-11-27 19:35:12
+  reps: "15"
+  exercise_id: "8"
+  id: "16"
+  clip_content_type: video/mp4
+  clip_file_name: Band_Triceps_Kickbacks-15_Reps.mov.ff.mp4
+  clip_file_size: "2800632"
+exercise_clips_041: 
+  seconds: "51"
+  created_at: 2009-11-27 20:08:03
+  updated_at: 2009-11-27 20:08:03
+  reps: "10"
+  exercise_id: "18"
+  id: "46"
+  clip_content_type: video/mp4
+  clip_file_name: Dumbbell_Lunge_to_Shoulder_Press-10_Reps.mov.ff.mp4
+  clip_file_size: "3853770"
+exercise_clips_013: 
+  seconds: "48"
+  created_at: 2009-11-27 19:35:33
+  updated_at: 2009-11-27 19:35:33
+  reps: "20"
+  exercise_id: "8"
+  id: "17"
+  clip_content_type: video/mp4
+  clip_file_name: Band_Triceps_Kickbacks-20_Reps.mov.ff.mp4
+  clip_file_size: "3670485"

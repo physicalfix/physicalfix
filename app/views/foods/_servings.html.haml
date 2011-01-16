@@ -1,0 +1,5 @@
+= options_for_select @servings
+:javascript
+  $('servings-#{params[:food_id]}-span').onmouseover = null;
+  $('servings-#{params[:food_id]}').onfocus = null;
+  $('servings-#{params[:food_id]}').onchange();

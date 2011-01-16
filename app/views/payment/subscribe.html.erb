@@ -1,0 +1,40 @@
+<div class="error_flash"><%= error_messages_for 'credit_card' %></div>
+<% form_for 'credit_card' do |f| %>
+<fieldset>
+	<legend>Subscription Plan</legend>
+	<% @subtypes.each {|subtype| %>
+		<label><%= radio_button(:subscription ,'subscription_type_id', subtype.id.to_s) %><%= subtype.name %> - <%= number_to_currency(subtype.amount)%></label>
+	<% } %>
+</fieldset>
+
+<fieldset>
+	<legend>Credit Card</legend>
+	
+	<table>
+		<tr>
+			<th>Name on Credit Card</th>
+			<td><%= f.text_field :first_name %></td>
+		</tr>
+		<tr>
+			<th>Credit Card Type</th>
+			<td><%= f.select :type, {'Visa' => 'visa', 'Mastercard' => 'master'}%></td>
+		</tr>
+		<tr>
+			<th>Credit Card Number</th>
+			<td><%= f.text_field :number %></td>
+		</tr>
+		<tr>
+			<th>Expiration Date</th>
+			<td><%= select_month Date.today, :add_month_numbers => true %> <%= select_year Date.today, :start_year => Date.today.year%></td>
+		</tr>
+		<tr>
+			<th>CVV</th>
+			<td><%= f.text_field :verification_value, :size => 3 %></td>
+		</tr>
+		<tr>
+			<td colspan="2"><%= submit_tag "Subscribe!" %></td>
+		</tr>
+				
+	</table>
+	<% end %>
+</fieldset>

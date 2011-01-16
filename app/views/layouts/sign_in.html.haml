@@ -1,0 +1,27 @@
+!!! strict
+%html(xmlns="http://www.w3.org/1999/xhtml" xmlns:V="urn:schemas-microsoft-com:vml")
+  %head
+    %title PhysicalFix
+    %meta(http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8")
+    %meta(name="description" content="Meta description")
+    %meta(name="keywords" content="Meta keywords")
+    %link(rel="shortcut icon" href="#{image_path('favicon.ico')}" type="image/x-icon")
+    = stylesheet_link_tag 'sign_in'
+  %body(style="-webkit-text-size-adjust:none")
+    = yield
+    %script(type="text/javascript")
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      try {
+      var pageTracker = _gat._getTracker("UA-301641-18");
+      - if flash[:analytics]
+        pageTracker._trackPageView("#{flash[:analytics]}")
+      - else
+        pageTracker._trackPageview();
+      } catch(err) {}
+    %script{:type=>"text/javascript", :src=>"//static.woopra.com/js/woopra.v2.js"}
+    %script{:type=>"text/javascript"}
+      -if session[:uid]
+        = "woopraTracker.addVisitorProperty('name', '#{current_user.first_name} #{current_user.last_name}');"
+        = "woopraTracker.addVisitorProperty('email', '#{current_user.email}');"
+      woopraTracker.track();

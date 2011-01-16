@@ -1,0 +1,11 @@
+<li id="exercise_<%= workout_exercise_counter + 1 %>" class="exercise <%= Musclegroup.find(Exercise.find(workout_exercise.exercise_id).musclegroup_id).name.downcase %>">
+	<div style="float: left;">
+		<b><%= Exercise.find(workout_exercise.exercise_id).name %></b>
+	</div>
+		<div style="float:right; display:none;">
+		<%= image_tag('icons/play.png')%>
+	</div>
+	<div style="clear:both">
+		<% if workout_exercise.weight? %> Weight: <b><%= workout_exercise.weight %></b> lbs | <%end%>Reps: <b><%= ExerciseClip.find(workout_exercise.exercise_clip_id).reps %></b>
+	</div>
+</li>

@@ -1,0 +1,9 @@
+<tr <%if exercise.id % 2 == 0%>class="odd_row"<%end%>>
+	<td><%= exercise.id %></td>
+	<td><%= exercise.name %></td>
+	<td><%= exercise.description %></td>
+	<td><%= Musclegroup.find(exercise.musclegroup_id).name %></td>
+	<td><%= link_to image_tag('/images/icons/page_white.png'), admin_exercise_path(exercise) %></td>
+	<td><%= link_to image_tag('/images/icons/pencil.png'), edit_admin_exercise_path(exercise) %></td>
+	<td><%= link_to image_tag('/images/icons/delete.png'), admin_exercise_path(exercise),  :confirm => "Are you sure?", :method => :delete %></td>
+</tr>

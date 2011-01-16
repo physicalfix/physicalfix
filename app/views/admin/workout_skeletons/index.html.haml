@@ -1,0 +1,17 @@
+%h2 Workout Skeletons
+%p
+  = image_tag '/images/icons/add.png', :align => 'absmiddle'
+  = link_to 'New Workout Skeleton', new_admin_workout_skeleton_path
+
+%table.list
+  %thead
+    %tr
+      %th ID
+      %th User Bucket
+      %th Name
+      %th Description
+      %th
+      %th
+      %th
+  %tbody
+    = render :partial => 'workout_skeleton', :collection => @workout_skeletons

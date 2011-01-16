@@ -1,0 +1,27 @@
+= javascript_include_tag :defaults
+= error_messages_for 'user_bucket'
+%fieldset
+  %legend Edit User Bucket
+  - form_for [:admin, @user_bucket] do |f|
+    %table
+      %tr
+        %th name
+        %td= f.text_field :name
+      %tr
+        %th description:
+        %td= f.text_area :description
+      %tr
+        %th display order:
+        %td= f.text_field :display_order
+      %tr
+        %th approved:
+        %td
+          - if @user_bucket.exercises.size > 0 && @user_bucket.workout_skeletons.size > 0
+            = f.check_box :approved
+          -else
+            = f.check_box :approved, :disabled => true
+      %tr
+        %td(colspan="2")
+          = submit_tag
+          = link_to "Cancel", :action => "index"
+ 

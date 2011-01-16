@@ -1,0 +1,82 @@
+<fieldset style="float: left">
+	<legend>User Info</legend>
+<table>
+	<tr>
+		<th>First Name</th>
+		<td><%= user.first_name %></td>
+	</tr>
+	<tr>
+		<th>Last Name</th>
+		<td><%= user.last_name %></td>
+	</tr>
+	<tr>
+		<th>Email</th>
+		<td><%= mail_to user.email %></td>
+	</tr>
+	<tr>
+		<th>Signed Up</th>
+		<td><%= user.created_at.to_s(:long) %></td>
+	</tr>
+	<tr>
+	  <th>Roles</th>
+	  <td><%= user.roles_string %></td>	   
+	</tr>
+	<tr>
+		<th>Home Phone</th>
+		<td><%= number_to_phone user.home_phone, :area_code => true %></td>
+	</tr>
+	<tr>
+		<th>Cell Phone</th>
+		<td><%= number_to_phone user.cell_phone, :area_code => true %></td>
+	</tr>
+	<tr>
+		<th>Age</th>
+		<td><%= age user.birthday %> (<%=  user.birthday.to_s(:long) %>)</td>
+	</tr>
+	<tr>
+		<th>Sex</th>
+		<td><%= user.sex %></td>
+	</tr>
+	<tr>
+	  <th>Height</th>
+	  <td><%= user.height %></td>
+	</tr>
+	<tr>
+		<th>Weight</th>
+		<td><%= user.weight %> Lbs</td>
+	</tr>
+	<tr>
+		<th>Target Weight</th>
+		<td><%= user.target_weight %> Lbs</td>
+	<tr>
+		<th>Fitness Goals</th>
+		<td><%= user.goals %></td>
+	</tr>
+  <tr>
+    <th>Time Zone</th>
+    <td><%= user.time_zone %></td>
+  </tr>
+  <% if user.subscription.product == Subscription::BASIC_SUBSCRIPTION %>
+  <tr>
+    <th>User Bucket</th>
+    <td><%= user.user_bucket.name unless user.user_bucket.nil? %></td>
+  </tr>
+  <tr>
+    <th>Workout Difficulty</th>
+    <td><%= user.workout_difficulty unless user.workout_difficulty.nil? %></td>
+  </tr>
+  <% end %>
+	<tr>
+		<th>Equipment</th>
+		<td>
+		  <ul>
+		  <% if user.equipment %>
+		  <% for item in user.equipment.split("|") %>
+		    <li><%= item %></li>
+		  <% end %>
+		  <% end %>
+		  </ul>
+		</td>
+	</tr>
+</table>
+</fieldset>

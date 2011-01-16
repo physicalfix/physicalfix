@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-type" 
+			content="text/html; charset=utf-8" />
+		<title>FitStream <%if @title%> :: <%= @title%> <% end %></title>
+		<%= javascript_include_tag :all %>
+		<%= stylesheet_link_tag 'style' %>
+		<script>
+			function hideFlashes() {
+				try {
+					$('info_flash').visualEffect('fade');
+				} catch (e) {}
+			}
+		</script>
+	</head>
+	<body>
+	  <div id="header">
+			<h1 style="padding-left:15px; float: left;"><%= link_to image_tag('logo_video.png', :align => 'absmiddle', :border => 0 ), :controller => '/welcome' %> FitStream<sup style="font-size:12px; color:#888">Beta</sup></h1>
+			<%= login_box %>
+			<div style="clear:both"></div>
+			</div>
+		<div id="content">
+			<div style="text-align: right;">
+			<b>
+		<% if session[:uid] && controller.controller_path.split('/')[0] != 'admin'  %>
+		<%= link_to 'My Workouts', :controller => workouts_path %> | <%= link_to 'Food Log', food_log_index_path %>  | <%= link_to 'Activity Tracker', activity_log_index_path %>   | <%= link_to 'Weight Tracker', weight_tracker_index_path %> | <%= link_to 'My Account', account_path %>
+		<% elsif controller.controller_path.split('/')[0] == 'admin' %>
+		<%= link_to 'Home', '/admin' %>  | <%= link_to 'Users', admin_users_path %> | <%= link_to 'Exercises', admin_exercises_path %> | <%= link_to 'Workouts', admin_workouts_path %> | <%= link_to 'Activities', admin_activities_path%> | <%= link_to 'User Buckets', admin_user_buckets_path %> | <%= link_to 'Workout Skeletons', admin_workout_skeletons_path %> | <%= link_to 'Freebies', admin_freebies_path %>
+		<% end %>
+		</b>
+		</div>
+		<% flash.each do |key, msg| %>
+		  <%= content_tag :div, msg, :id => "#{key}_flash" %>
+		<% end %>
+		<% if flash[:info] %>
+		<script>
+			setTimeout(hideFlashes, 3000);
+		</script>
+		<% end %>
+		<%= yield %>
+		</div>
+	</body>
+</html>

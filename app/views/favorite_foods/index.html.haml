@@ -1,0 +1,15 @@
+#favorite_foods
+  %h2.back
+    = link_to('&laquo; Back to Food Log', food_log_index_path)
+  #tabledata
+    %h2
+      Favorite Foods
+    %table.table(summary="Favorite Foods")
+      %thead
+        %tr
+          %th.left.food(scope="col") Food
+          %th.time(scope="col") Added On
+          %th.times_eaten(scope="col") Times Eaten
+          %th.right.modify(scope="col") Modify
+      %tbody
+        = render :partial => 'favorite_food', :collection => @favorites

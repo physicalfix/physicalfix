@@ -1,0 +1,13 @@
+<%= render :partial => 'workout_exercise', :collection => @workout.workout_exercises %>
+<%= sortable_element :workout_list, :url => { :action => 'order_exercise', :id => '1'} %>
+<script>
+$('total_time').update('Workout Length: <%= short_split_time @workout.total_length %>');
+<% if @workout.ready? %>
+	$('edit_<%= params[:id] %>').visualEffect('highlight');
+	$('readyStatusReady').show();
+	$('readyStatusError').hide();
+<%else%>
+	$('readyStatusReady').hide();
+	$('readyStatusError').show();
+<%end%>
+</script>

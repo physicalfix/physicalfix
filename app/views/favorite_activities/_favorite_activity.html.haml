@@ -1,0 +1,9 @@
+%tr(class="#{cycle('odd', 'even')}" id="favorite_activity_#{favorite_activity.id}")
+  %td.item
+    = favorite_activity.activity.name
+  %td.time
+    = favorite_activity.created_at.to_s(:long)
+  %td.times_used
+    = current_user.user_activities.count(:conditions => ['activity_id = ?', favorite_activity.activity_id])
+  %td.modify
+    = link_to('', favorite_activity_path(favorite_activity.id, :manage => true), :method => :delete, :confirm =>'Are you sure you want to delete this activity?', :class => 'delete')

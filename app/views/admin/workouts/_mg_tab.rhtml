@@ -1,0 +1,7 @@
+<li id="tab_<%= mg_tab.id %>" <% if mg_tab[:id] == 1 %> class="selected" <% end %>>
+	<%= link_to_remote '<span>'+mg_tab[:name]+'</span>', 
+		:url => admin_exercises_path(:muscle_group_id => mg_tab.id, :format => 'js'),
+        :method => 'get',
+	 	:complete => "onTabSelect('tab_"+mg_tab[:id].to_s+"')"
+	%>
+</li>

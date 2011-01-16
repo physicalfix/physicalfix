@@ -1,0 +1,9 @@
+%tr(class="#{cycle('odd', 'even')}" id="favorite_food_#{favorite_food.id}")
+  %td.item
+    = favorite_food.name
+  %td.time
+    = favorite_food.created_at.to_s(:long)
+  %td.item.times_eaten
+    = current_user.meals.count(:conditions => ['food_id = ?', favorite_food.food_items[0].food_id])
+  %td.modify
+    = link_to('', favorite_food_path(favorite_food.id, :manage => true), :method => :delete, :confirm =>'Are you sure you want to delete this food?', :class => 'delete')

@@ -1,0 +1,45 @@
+wsmg_one:
+  workout_skeleton: workout_skeleton_two
+  musclegroup_id: "2"
+  display_order: 0
+wsmg_two:
+  workout_skeleton: workout_skeleton_two
+  musclegroup_id: "1"
+  display_order: 1
+wsmg_three:
+  workout_skeleton: workout_skeleton_two
+  musclegroup_id: "7"
+  display_order: 2
+wsmg_four:
+  workout_skeleton: workout_skeleton_two
+  musclegroup_id: "4"
+  display_order: 3
+wsmg_five:
+  workout_skeleton: workout_skeleton_two
+  musclegroup_id: "6"
+  display_order: 4
+wsmg_six:
+  workout_skeleton: workout_skeleton_two
+  musclegroup_id: "9"
+  display_order: 5
+wsmg_seven:
+  workout_skeleton: workout_skeleton_two
+  musclegroup_id: "10"
+  display_order: 6
+wsmg_eight:
+  workout_skeleton: workout_skeleton_two
+  musclegroup_id: "1"
+  display_order: 7
+wsmg_nine:
+  workout_skeleton: workout_skeleton_two
+  musclegroup_id: "7"
+  display_order: 8
+wsmg_ten:
+  workout_skeleton: workout_skeleton_two
+  musclegroup_id: "2"
+  display_order: 9
+
+dumbell_bukcet_mg:
+  workout_skeleton: workout_skeleton_one
+  musclegroup_id: "3"
+  display_order: 0

@@ -1,0 +1,40 @@
+= javascript_include_tag :all
+= javascript_include_tag 'control_suite/object.event.1.0.0.js'
+= javascript_include_tag 'control_suite/control.modal.2.2.3.js'
+
+#food_top
+  - form_tag(foods_path, :method => 'get', :id => 'bigsearch') do
+    = text_field_tag 'food', params[:food], {:class => 'bigsearchbox'}
+    = submit_tag 'Search', {:class => 'bigsearchbutton'}
+    #add_custom
+      Can't find the food you're looking for?
+      = link_to('Add your own!', new_food_log_path)
+
+  #favorites
+    %h2
+      Favorite Foods
+      %span
+        (
+        = link_to('Edit', favorite_foods_path)
+        )
+    %table#favoritetable
+      = render :partial => 'favorite', :collection => @favorites
+
+- if @foods.length == 0
+  #no_results
+    %h1 There were no results for "#{params[:food]}".
+
+- if @suggestion
+  #suggestion
+    %h1
+      Did you mean
+      = link_to(@suggestion, foods_path(:food => @suggestion))
+      ?
+
+= render :partial => '/shared/paginate'
+
+%ul#foodsearch
+  = render :partial =>'food_listing.html.haml', :collection => @foods
+
+
+= render :partial => '/shared/paginate'

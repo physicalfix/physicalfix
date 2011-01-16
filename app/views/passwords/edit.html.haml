@@ -1,0 +1,17 @@
+#updatepassword
+  %h2 Change Password
+  -form_for :user, :url => password_path, :html => { :method => :put } do |f|
+    %ul
+      - unless params[:id]
+        %li
+          %p.type Old Password
+          = password_field_tag :old_password
+      - else
+        = hidden_field_tag 'id', params[:id]
+      %li
+        %p.type New Password
+        = f.password_field :password
+      %li
+        %p.type Confirm New Password
+        = f.password_field :password_confirmation
+    %a.form_submit(href="\#" onclick="document.forms[0].submit()") Save New Password

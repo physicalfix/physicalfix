@@ -1,0 +1,38 @@
+<%= javascript_include_tag "swfobject" %>
+<script>
+function playvid(url, autoplay)
+{
+	var s2 = new SWFObject("/swf/mediaplayer.swf","playlist","640","360","7");
+	s2.addParam("allowfullscreen","true");
+	s2.addVariable("file", url);
+	//s2.addVariable("displayheight","270");
+	s2.addVariable("backcolor","0x000000");
+	s2.addVariable("frontcolor","0xCCCCCC");
+	s2.addVariable("lightcolor","0x557722");
+	if(autoplay) s2.addVariable("autostart", "true");
+	s2.write("player2");	
+}
+</script>
+<div style="float:left">
+<H2><%= @exercise.name %></H2>
+<%= image_tag '/images/icons/add.png', :align => 'absmiddle' %> <%= link_to 'Add Clip', new_admin_exercise_clip_path(:exercise_id => @exercise.id) %>
+<p id="player2"><a href="http://www.macromedia.com/go/getflashplayer">Get the Flash Player</a> to see this player.</p>
+</div>
+<div style="float: left; padding: 15px;">
+<h2>Clips</h2>
+<div style="font-size: large; font-weight:bold">
+  <%@exercise.exercise_clips.each do |clip|%>
+  <%= link_to_function("#{clip.reps} Reps", "playvid('#{clip.clip.url}', true)") %><br/>
+  <%end%>
+</div>
+</div>
+<div style="float: left; padding: 15px;">
+<h2>Times</h2>
+<div style="font-size: large; font-weight:bold">
+<%@exercise.exercise_clips.each do |clip|%>
+<%= short_split_time clip.seconds %><br/>
+<%end%>
+</div>
+</div>
+<div style="clear:both"></div>
+<%= link_to "Back to list", :action => "index" %>

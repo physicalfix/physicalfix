@@ -1,0 +1,84 @@
+= javascript_include_tag :all
+= javascript_include_tag 'control_suite/object.event.1.0.0.js'
+= javascript_include_tag 'control_suite/control.modal.2.2.3.js'
+#addactivity
+  %h2 Add an activity
+  -form_for(@user_activity, :url => activity_log_index_path) do |f|
+
+    %label Activity:
+    = f.collection_select(:activity_id, @activities_list, :id, :name, {:prompt => true})
+
+    %br
+
+    %label Duration:
+    = f.text_field :duration, :size => 3
+    Minutes
+
+    %br
+
+    %label Date:
+    = f.datetime_select :activity_date, :use_short_month => true,:order => [:month, :day, :year]
+
+    = submit_tag "Add", {:id => 'submit'}
+
+#favorites
+  %h2
+    Favorite Activities
+    %span
+      (
+      = link_to('Edit', favorite_activities_path)
+      )
+  %table#favoritetable
+    = render :partial => '/activity_log/favorite', :collection => @favorites
+
+.bevelreg.expenditure  
+  %h2 Total Daily Energy Expenditure
+  %p #{@user.tdee.round} Calories
+
+%span.equation +
+
+.bevelreg.burned
+  %h2
+    -if @date == Time.zone.now.to_date
+      Today's Activity Expenditure
+    -else
+      Activity Expenditure for #{@date.to_s(:long)} 
+  %p #{@activity_calorie_total.round} Calories
+
+%span.equation =
+
+.bevelreg.outtake
+  %h2
+    -if @date == Time.zone.now.to_date
+      Today's' Total Expenditure
+    -else
+      Total Expenditure for #{@date.to_s(:long)}
+  %p #{(@user.tdee + @activity_calorie_total).round}  Calories
+
+#tabledata
+  %h2
+    -if @date == Time.zone.now.to_date
+      Today's Expenditure Log
+    -else
+      Expenditure log for #{@date.to_s(:long)}
+  %table#expenditurelog(summary="This week's expenditure log")
+    %thead
+      %tr
+        %th.date(scope="col") Date
+        %th.activity(scope="col") Activity
+        %th.duration(scope="col") Duration (min.)
+        %th.burned(scope="col") Cals. Burned
+        %th.modify(scope="col") Modify
+    %tbody
+      = render :partial => 'activity', :collection => @activities
+      %tr.totals
+        %td.date Total
+        %td.activity
+        %td.duration #{@activity_duration_total.round} Minutes
+        %td.burned  #{@total_calories.round}
+        %td.modify
+
+= link_to((@date - 1.day).to_s(:long), activity_log_path((@date - 1.day).to_s), {:class => 'prevdate'})
+
+- if @date < Time.zone.now.to_date
+  = link_to((@date + 1.day).to_s(:long), activity_log_path((@date + 1.day).to_s), {:class => 'nextdate'})

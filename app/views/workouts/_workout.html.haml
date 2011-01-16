@@ -1,0 +1,6 @@
+%div(class="#{workout_class(workout)}")
+  %a(href="#{workout_path(workout)}")
+    Workout ##{workout_counter+1}
+    %span= workout_state(workout)
+    %p.burntab #{workout.calories_burned.round} Cals
+    %p.durationtab= short_split_time(workout.duration)

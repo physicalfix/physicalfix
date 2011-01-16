@@ -1,0 +1,164 @@
+= javascript_include_tag :defaults
+= javascript_include_tag 'control_suite/object.event.1.0.0.js'
+= javascript_include_tag 'control_suite/control.modal.2.2.3.js'
+= javascript_include_tag 'control_suite/control.tabs.2.1.1'
+#navigation
+  .inner{:style => 'width:984px;'}
+    %p.navtabs
+      Reasons to join:
+      %ul.tabs#tabs
+        %li= link_to('About Us', '#about')
+        %li= link_to('Your Trainer', '#trainer')
+        %li= link_to('Workouts', '#workouts')
+        %li= link_to('Nutrition', '#nutrition')
+        %li= link_to('Activities', '#activities')
+        %li= link_to('Weight Chart', '#weight_chart')
+#items
+  .inner
+    .panes
+      #about
+        .screenshot
+          %a#demo_link(href="#demo_video")
+            = image_tag('splash/viewdemo.png')
+            %p
+              %span View physicalfix demonstration
+        .description
+          %h2 physicalfix.com
+          %h4 Fitness that Fits
+          %h3
+            PhysicalFix provides you with customized video workouts tailored to your fitness goals, a food journal to keep track of your calorie intake, an activity journal to keep track of calories burned, and an interactive weight chart to view your progress.
+          =link_to('Sign Up Now', plans_path, :class => 'signup', :style => "margin-bottom:10px;")
+        =link_to('Or try us free for 14 days!', signup_path + "?plan=trial", :style => "color: #ffffff;font-size: 18px;font-weight: bold; position: relative; right: 7px;")
+      #trainer{:style => 'display:none'}
+        .screenshot
+          = image_tag('splash/josh.png')
+        .description
+          %h2 physicalfix.com
+          %h4 Josh Zitomer
+          %h3
+            Hi, I'm Josh and my goal is to help you reach your goal. Whether it be losing the last of the "baby weight" or training for a triathlon.  I want you to think of me as your Training Partner - and together we will get you wherever you want to go. You can feel completely comfortable putting your fitness future in my hands.  Let me tell you why.
+          =link_to('Learn More', '#bio', :class => 'signup', :id => 'bio_link')
+      #workouts{:style => 'display:none'}
+        .screenshot
+          %a(href="#")
+            =image_tag('splash/workoutscreen.png')
+        .description
+          %h2 physicalfix.com 
+          %h4 Workouts
+          %h3
+            You'll receive three separate PhysicalFix workouts every week, each designed to suit your individual needs. That’s twelve customized workouts per month! With PhysicalFix, you’ll have your own workout partner to guide you, encourage you, and sweat with you through each repetition of every exercise along the way.
+          =link_to('Watch', '#watch_sample', :class => 'signup', :id => 'watch_link')
+      #nutrition{:style => 'display:none'}
+        .screenshot
+          %a(href="#")
+            =image_tag('splash/foodscreen.png')
+        .description
+          %h2 physicalfix.com
+          %h4 Nutrition
+          %h3 When it comes to fitness, a healthy diet is just as important as regular exercise. Eating right means feeling satisfied while making smart food choices and controlling portion sizes. We understand how difficult that can be. We help make that easier by calculating your daily food allowance while our customized food journal will ensure that you stay on top of your diet, no matter where you are.
+          =link_to('Sign Up Now', plans_path, :class => 'signup')
+      #activities{:style=>'display:none'}
+        .screenshot
+          %a(href="#")
+            =image_tag('splash/activityscreen.png')
+        .description
+          %h2 physicalfix.com
+          %h4 Activities
+          %h3
+            In addition to our customized food journal, we also offer an Activity tracker. This makes it easy for you to keep track of all of the exercise you've done. Just pick an activity and tell us how long you spent doing it, and we'll calculate how many calories you burned.
+          =link_to('Sign Up Now', plans_path, :class => 'signup')
+      #weight_chart{:style => 'display:none'}
+        .screenshot
+          %a(href="#")
+            =image_tag('splash/weightscreen.png')
+        .description
+          %h2 physicalfix.com
+          %h4 Weight Chart
+          %h3
+            Being able to keep track of your progress is a very important motivational tool. That is why PhysicalFix offers an interactive weight chart that allows you to track your achievements. You can even upload photos of yourself so you can literally see how you are improving.
+          =link_to('Sign Up Now', plans_path, :class => 'signup')
+        
+        
+
+#boxes
+  #inner
+    %h4 Video Testimonials
+    .testimonial
+      %a#testimonial_1(href="#test1")
+        = image_tag('splash/testimonial1.png')
+        %p
+          %span Julie
+    .testimonial
+      %a#testimonial_2(href="#test2")
+        = image_tag('splash/testimonial2.png')
+        %p
+          %span Alicia
+    .testimonial
+      %a#testimonial_3(href="#test3")
+        = image_tag('splash/testimonial3.png')
+        %p
+          %span Nikki
+
+#demo_video{:style => 'display:none'}
+  .window_header
+    .window_close#window_close(onclick="Control.Modal.close();")
+    .window_title &nbsp;
+  :plain
+    <object id="video-1c98d2bb1413e1c894" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="630" height="354"><param name="movie" value="http://www.sproutvideo.com/flash/MediaPlayer.swf" /><param name="allowScriptAccess" value="always"><param name="allowFullscreen" value="true"><param name="flashvars" value="id=1c98d2bb1413e1c894&st=065dceaa432eacae&type=sd&autoplay=true"><!--[if !IE]>--><object type="application/x-shockwave-flash" allowScriptAccess="always" allowFullscreen="true" data="http://www.sproutvideo.com/flash/MediaPlayer.swf" width="630" height="354" flashvars="id=1c98d2bb1413e1c894&st=065dceaa432eacae&type=sd&autoplay=true"><!--<![endif]--><video width="630" height="354" poster="http://sproutvideo.s3.amazonaws.com/3d5944db5f9674463ce0e4ab256c39b5/posterframes/ab01d422a4ebacb265cb383f73e2e83f/frame_0000.png" controls preload="none"><source src="http://sproutvideo.s3.amazonaws.com/3d5944db5f9674463ce0e4ab256c39b5/videos/iphone/ab01d422a4ebacb265cb383f73e2e83f.mp4" type="video/mp4; codecs="avc1.42E01E, mp4a.40.2""/></video><!--[if !IE]>--></object><!--<![endif]--></object>
+    
+#bio{:style => 'display:none'}
+  .window_header
+    .window_close#window_close(onclick="Control.Modal.close();")
+    .window_title &nbsp;
+  %p Having been involved in sports and athletics my entire life, I understand the importance of hard work, determination, and commitment.  I take pride in practicing what I teach.  I am currently a sponsored triathlete, adventure racer, and ultra-marathoner. I have completed several 50-mile runs, 100-mile runs, and 24-hour adventure races. Most recently I completed my second “Triple Ironman.” This is a 7.2-mile swim, followed by a 336-mile bike ride, finishing with a 78.6-mile run.  I crossed the finish line in 51 hours and did so without any sleep.  I’ve recently begun training for a “Quintuple Ironman" (12 mile swim, 560 mile bike, 131 mile run).
+  %br
+    %u My Background
+  %p I received my Bachelor’s degree in Sports Medicine with a minor in Athletic Training from the University of Rhode Island. My first job was with the New York Jets, as an Assistant Strength and Conditioning Coach and part of the Sports Medicine Staff.  After several years, and with a wealth of knowledge gained, I decided to branch out on my own. Since then I have earned numerous nationally recognized certifications covering everything from injury rehabilitation and prevention to pre- and postnatal training to sports specific enhancement.
+  %br
+    %u My Clients 
+  %p Over the years, I've worked on-set with actors and traveled with musicians on tour.  I've worked with clients ranging in age from 20-70. I've taken novice runners to their first marathon - and marathoners to their first triathlon. I've trained women through pregnancies and athletes through injuries.  The diversity of my clientele not only keeps me on my toes, it's taught me to be adaptable and flexible.  
+  %br
+    %u My Training Style
+  %p When it comes to fitness, one size does not fit all! Every individual I work with is different. That's why every program I write is different; tailored to meet their specific needs, body type, fitness level and overall goals. I've spent the last 10 years perfecting this concept and developing my own unique training style.  I have found success by keeping a few core principals top-of-mind. 1. Personalization is my goal for every client and every workout. 2. Variety is key to success and injury prevention. 3. I believe that fitness must, and can, fit within your lifestyle.  These elements are critical to a successful workout regimen. And each has been incorporated into the physicalfix.com system.
+  %br
+    %u Sharing what I've learned
+  %p Helping people reach their fitness goals is what drives me every day. Occasionally I have the opportunity to do that on a large scale.  I have appeared on many local and national television shows including Live! With Regis and Kelly, Good Day New York and the Fox 5 Morning Show.  I’ve also consulted for ABC, CBS and NBC news programs. In addition, I’ve been featured as a fitness expert in several national magazines including US News & World Report, Fitness for Men, Exercise for Men and Cosmopolitan. Most recently, physicalfix.com (previously known as myfitstream.com) was highlighted in OK! Magazine. (March 8, 2010)
+  
+#watch_sample{:style => 'display:none'}
+  .window_header
+    .window_close#window_close(onclick="Control.Modal.close();")
+    .window_title &nbsp;
+  :plain
+    <iframe class='sproutvideo-player' type='text/html' src='http://videos.sproutvideo.com/embed/1898d2ba191fe1c590/69bbf5c769893055?type=sd&autoplay=true' width='630' height='352' frameborder='0'></iframe>
+
+#test1{:style => 'display:none'}
+  .window_header
+    .window_close#window_close(onclick="Control.Modal.close();")
+    .window_title &nbsp;
+  :plain
+    <object id="video-a098d2bb1413e1c328" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="630" height="354"><param name="movie" value="http://www.sproutvideo.com/flash/MediaPlayer.swf" /><param name="allowScriptAccess" value="always"><param name="allowFullscreen" value="true"><param name="flashvars" value="id=a098d2bb1413e1c328&st=7ca00d66da2a8e8d&type=sd&autoplay=true"><!--[if !IE]>--><object type="application/x-shockwave-flash" allowScriptAccess="always" allowFullscreen="true" data="http://www.sproutvideo.com/flash/MediaPlayer.swf" width="630" height="354" flashvars="id=a098d2bb1413e1c328&st=7ca00d66da2a8e8d&type=sd&autoplay=true"><!--<![endif]--><video width="630" height="354" poster="http://sproutvideo.s3.amazonaws.com/3d5944db5f9674463ce0e4ab256c39b5/posterframes/d2746e08d99b1ba8d72da272bc4f553d/frame_0000.png" controls preload="none"><source src="http://sproutvideo.s3.amazonaws.com/3d5944db5f9674463ce0e4ab256c39b5/videos/iphone/d2746e08d99b1ba8d72da272bc4f553d.mp4" type="video/mp4; codecs="avc1.42E01E, mp4a.40.2""/></video><!--[if !IE]>--></object><!--<![endif]--></object>
+#test2{:style => 'display:none'}
+  .window_header
+    .window_close#window_close(onclick="Control.Modal.close();")
+    .window_title &nbsp;
+  :plain
+    <object id="video-e898d2bb1413e1c960" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="630" height="354"><param name="movie" value="http://www.sproutvideo.com/flash/MediaPlayer.swf" /><param name="allowScriptAccess" value="always"><param name="allowFullscreen" value="true"><param name="flashvars" value="id=e898d2bb1413e1c960&st=01b52a69a96ffe3e&type=sd&autoplay=true"><!--[if !IE]>--><object type="application/x-shockwave-flash" allowScriptAccess="always" allowFullscreen="true" data="http://www.sproutvideo.com/flash/MediaPlayer.swf" width="630" height="354" flashvars="id=e898d2bb1413e1c960&st=01b52a69a96ffe3e&type=sd&autoplay=true"><!--<![endif]--><video width="630" height="354" poster="http://sproutvideo.s3.amazonaws.com/3d5944db5f9674463ce0e4ab256c39b5/posterframes/30d82ac1c4da385e40dc6a43e2a86e7b/frame_0000.png" controls preload="none"><source src="http://sproutvideo.s3.amazonaws.com/3d5944db5f9674463ce0e4ab256c39b5/videos/iphone/30d82ac1c4da385e40dc6a43e2a86e7b.mp4" type="video/mp4; codecs="avc1.42E01E, mp4a.40.2""/></video><!--[if !IE]>--></object><!--<![endif]--></object>
+#test3{:style => 'display:none'}
+  .window_header
+    .window_close#window_close(onclick="Control.Modal.close();")
+    .window_title &nbsp;
+  :plain
+    <object id="video-1898d2bb1413e1c590" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="630" height="421"><param name="movie" value="http://www.sproutvideo.com/flash/MediaPlayer.swf" /><param name="allowScriptAccess" value="always"><param name="allowFullscreen" value="true"><param name="flashvars" value="id=1898d2bb1413e1c590&st=a6363fb7c5c17e1d&type=sd&autoplay=true"><!--[if !IE]>--><object type="application/x-shockwave-flash" allowScriptAccess="always" allowFullscreen="true" data="http://www.sproutvideo.com/flash/MediaPlayer.swf" width="630" height="421" flashvars="id=1898d2bb1413e1c590&st=a6363fb7c5c17e1d&type=sd&autoplay=true"><!--<![endif]--><video width="630" height="421" poster="http://sproutvideo.s3.amazonaws.com/3d5944db5f9674463ce0e4ab256c39b5/posterframes/3c8ccd1e0e9a113f134dab060d20e9bc/frame_0000.png" controls preload="none"><source src="http://sproutvideo.s3.amazonaws.com/3d5944db5f9674463ce0e4ab256c39b5/videos/iphone/3c8ccd1e0e9a113f134dab060d20e9bc.mp4" type="video/mp4; codecs="avc1.42E01E, mp4a.40.2""/></video><!--[if !IE]>--></object><!--<![endif]--></object>
+
+:javascript
+  Event.observe(window, 'load', function() {
+        var tabs = new Control.Tabs($('tabs'));
+        tabs.first();
+        new Control.Modal($('demo_link'), {containerClassName: 'window', width: 630, opacity: 0.75});
+        new Control.Modal($('bio_link'), {containerClassName: 'window', width: 630, opacity: 0.75});
+        new Control.Modal($('watch_link'), {containerClassName: 'window', width: 630, opacity: 0.75});
+        new Control.Modal($('testimonial_1'), {containerClassName: 'window', width:630, opacity:0.75});
+        new Control.Modal($('testimonial_2'), {containerClassName: 'window', width:630, opacity:0.75});
+        new Control.Modal($('testimonial_3'), {containerClassName: 'window', width:630, opacity:0.75});
+    });
+

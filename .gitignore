@@ -1,0 +1,11 @@
+log/*.log
+log/**/*
+tmp/**/*
+.DS_Store
+nbproject/
+coverage/
+public/system/clips/**/*
+public/vids/*
+.idea
+.idea/*
+solr/data

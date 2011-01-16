@@ -1,0 +1,21 @@
+<%= javascript_include_tag :all %>
+<script>
+	function resume(r) {
+		var rf = $('resumeForm');
+		rf['resume'].value = r;
+		rf.submit();
+	}
+</script>
+
+<h1>Resume Workout</h1>
+<h2>It looks like you didn't complete this workout the last time you started it.</h2>
+
+<h2>Would you like to:</h2>
+<% form_for :workout, :url => {:action => 'play', :id => @workout_id}, :html => {:id => 'resumeForm'} do |f| %>
+<input type="hidden" name="resume">
+<% end %>
+<p><button onclick='resume("t");'><h2>Continue the workout where you left off</h2></button></p>
+
+<p>-- Or --</p>
+
+<p><button onclick='resume("f");'><h2>Restart the workout from the beginning</h2></button></p>

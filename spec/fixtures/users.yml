@@ -1,0 +1,145 @@
+valid_user:
+    first_name: Bob
+    last_name: Roberts
+    email: bob@example.com
+    cell_phone: 5555555555
+    weight: 140
+    target_weight: 160
+    height: 5'11"
+    birthday: <%= Time.zone.now %>
+    goals: hi!
+    password_salt: 2ah/O/zB
+    password_hash: 740233129e237234de717ba80e0fa28a
+    created_at: <%= Time.zone.now - 2.weeks %>
+    sex: Male
+    time_zone: 'Eastern Time (US & Canada)'
+    fitness_level: Good-Fair
+
+admin_user:
+    first_name: Bill
+    last_name: Roberts
+    email: bill@example.com
+    cell_phone: 5555555555
+    weight: 140
+    target_weight: 160
+    height: 5'11"
+    birthday: <%= Time.zone.now %>
+    goals: hi!
+    password_salt: 2ah/O/zB
+    password_hash: 740233129e237234de717ba80e0fa28a
+    created_at: <%= Time.zone.now - 2.weeks %>
+    time_zone: 'Eastern Time (US & Canada)'
+    fitness_level: Good-Fair
+
+user_without_medical_history:
+    first_name: Jim
+    last_name: Roberts
+    email: jim@example.com
+    cell_phone: 5555555555
+    weight: 140
+    target_weight: 160
+    height: 5'11"
+    birthday: <%= Time.zone.now %>
+    goals: hi!
+    password_salt: 2ah/O/zB
+    password_hash: 740233129e237234de717ba80e0fa28a
+    created_at: <%= Time.zone.now - 2.weeks %>
+    fitness_level: Good-Fair
+
+user_without_workouts:
+    first_name: Greg
+    last_name: Roberts
+    email: greg@example.com
+    cell_phone: 5555555555
+    weight: 140
+    target_weight: 160
+    height: 5'11"
+    birthday: <%= Time.zone.now %>
+    goals: hi!
+    password_salt: 2ah/O/zB
+    password_hash: 740233129e237234de717ba80e0fa28a
+    created_at: <%= Time.zone.now - 2.weeks %>
+    fitness_level: Good-Fair
+
+user_with_workouts:
+    first_name: Tim
+    last_name: Roberts
+    email: tim@example.com
+    cell_phone: 5555555555
+    weight: 140
+    target_weight: 160
+    height: 5'11"
+    birthday: <%= Time.zone.now %>
+    goals: hi!
+    password_salt: 2ah/O/zB
+    password_hash: 740233129e237234de717ba80e0fa28a
+    created_at: <%= Time.zone.now - 2.weeks %>
+    time_zone: 'Eastern Time (US & Canada)'
+    fitness_level: Good-Fair
+
+user_needs_to_login:
+    first_name: Lazy
+    last_name: Roberts
+    email: lazy@example.com
+    cell_phone: 5555555555
+    weight: 140
+    target_weight: 160
+    height: 5'11"
+    birthday: <%= Time.zone.now %>
+    goals: hi!
+    password_salt: 2ah/O/zB
+    password_hash: 740233129e237234de717ba80e0fa28a
+    created_at: <%= Time.zone.now - 2.weeks %>
+    last_logged_in_at: <%= Time.zone.now - 3.days %>
+    fitness_level: Good-Fair
+
+
+free_user:
+  first_name: Jill
+  last_name: Roberts
+  email: bill@example.com
+  cell_phone: 5555555555
+  weight: 140
+  target_weight: 160
+  height: 5'11"
+  birthday: <%= Time.zone.now %>
+  goals: hi!
+  password_salt: 2ah/O/zB
+  password_hash: 740233129e237234de717ba80e0fa28a
+  created_at: <%= Time.zone.now - 2.weeks %>
+  time_zone: 'Eastern Time (US & Canada)'
+  fitness_level: Good-Fair
+
+premium_user:
+  first_name: Jack
+  last_name: Roberts
+  email: jack@example.com
+  cell_phone: 5555555555
+  weight: 140
+  target_weight: 160
+  height: 5'11"
+  birthday: <%= Time.zone.now %>
+  goals: hi!
+  password_salt: 2ah/O/zB
+  password_hash: 740233129e237234de717ba80e0fa28a
+  created_at: <%= Time.zone.now - 2.weeks %>
+  time_zone: 'Eastern Time (US & Canada)'
+  fitness_level: Good-Fair
+
+basic_user:
+  first_name: Peter
+  last_name: Roberts
+  email: peter@example.com
+  cell_phone: 5555555555
+  weight: 140
+  target_weight: 160
+  height: 5'11"
+  birthday: <%= Time.zone.now %>
+  goals: hi!
+  password_salt: 2ah/O/zB
+  password_hash: 740233129e237234de717ba80e0fa28a
+  created_at: <%= Time.zone.now - 2.weeks %>
+  time_zone: 'Eastern Time (US & Canada)'
+  fitness_level: Good-Fair
+  user_bucket: big_bucket
+  equipment: '5lb Dumbbells|Red Band'

@@ -1,0 +1,104 @@
+<workout> 
+  <totaltime>531</totaltime> 
+  <exercises> 
+    <exercise> 
+      <name>Jumping Jax</name> 
+      <musclegroup>cardio</musclegroup> 
+      <delay>5</delay> 
+      <weight></weight> 
+      <reps>30s</reps> 
+      <time>39</time> 
+      <src>http://s3.amazonaws.com/myfitstream/exercise_clips/73.mp4</src> 
+    </exercise> 
+    <exercise> 
+      <name>Dumbbell Bent Over Row</name> 
+      <musclegroup>back</musclegroup> 
+      <delay>5</delay> 
+      <weight>8</weight> 
+      <reps>15</reps> 
+      <time>39</time> 
+      <src>http://s3.amazonaws.com/myfitstream/exercise_clips/27.mp4</src> 
+    </exercise> 
+    <exercise> 
+      <name>High Knees</name> 
+      <musclegroup>cardio</musclegroup> 
+      <delay>5</delay> 
+      <weight></weight> 
+      <reps>45s</reps> 
+      <time>53</time> 
+      <src>http://s3.amazonaws.com/myfitstream/exercise_clips/72.mp4</src> 
+    </exercise> 
+    <exercise> 
+      <name>Heel Touches</name> 
+      <musclegroup>abs</musclegroup> 
+      <delay>5</delay> 
+      <weight></weight> 
+      <reps>15</reps> 
+      <time>42</time> 
+      <src>http://s3.amazonaws.com/myfitstream/exercise_clips/69.mp4</src> 
+    </exercise> 
+    <exercise> 
+      <name>Lunges</name> 
+      <musclegroup>legs</musclegroup> 
+      <delay>5</delay> 
+      <weight></weight> 
+      <reps>10</reps> 
+      <time>49</time> 
+      <src>http://s3.amazonaws.com/myfitstream/exercise_clips/80.mp4</src> 
+    </exercise> 
+    <exercise> 
+      <name>Dumbbell Chest Press</name> 
+      <musclegroup>chest</musclegroup> 
+      <delay>5</delay> 
+      <weight>10</weight> 
+      <reps>12</reps> 
+      <time>33</time> 
+      <src>http://s3.amazonaws.com/myfitstream/exercise_clips/37.mp4</src> 
+    </exercise> 
+    <exercise> 
+      <name>Speed Jax</name> 
+      <musclegroup>cardio</musclegroup> 
+      <delay>5</delay> 
+      <weight></weight> 
+      <reps>45s</reps> 
+      <time>50</time> 
+      <src>http://s3.amazonaws.com/myfitstream/exercise_clips/99.mp4</src> 
+    </exercise> 
+    <exercise> 
+      <name>Cross Overs</name> 
+      <musclegroup>abs</musclegroup> 
+      <delay>5</delay> 
+      <weight></weight> 
+      <reps>12</reps> 
+      <time>58</time> 
+      <src>http://s3.amazonaws.com/myfitstream/exercise_clips/119.mp4</src> 
+    </exercise> 
+    <exercise> 
+      <name>Squats</name> 
+      <musclegroup>legs</musclegroup> 
+      <delay>5</delay> 
+      <weight></weight> 
+      <reps>20</reps> 
+      <time>36</time> 
+      <src>http://s3.amazonaws.com/myfitstream/exercise_clips/107.mp4</src> 
+    </exercise> 
+    <exercise> 
+      <name>Pushups</name> 
+      <musclegroup>chest</musclegroup> 
+      <delay>5</delay> 
+      <weight></weight> 
+      <reps>12</reps> 
+      <time>36</time> 
+      <src>http://s3.amazonaws.com/myfitstream/exercise_clips/87.mp4</src> 
+    </exercise> 
+    <exercise> 
+      <name>Plank</name> 
+      <musclegroup>core</musclegroup> 
+      <delay>5</delay> 
+      <weight></weight> 
+      <reps>30s</reps> 
+      <time>41</time> 
+      <src>http://s3.amazonaws.com/myfitstream/exercise_clips/83.mp4</src> 
+    </exercise> 
+  </exercises> 
+</workout> 

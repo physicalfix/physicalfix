@@ -1,0 +1,19 @@
+%h2 User Buckets
+%p
+  = image_tag '/images/icons/add.png', :align => 'absmiddle'
+  = link_to 'New User Bucket', new_admin_user_bucket_path
+
+%table.list
+  %thead
+    %tr
+      %th(width="20") ID
+      %th Name
+      %th Description
+      %th # Skeletons
+      %th Approved
+      %th display order
+      %th
+      %th
+      %th
+  %tbody
+    = render :partial => 'user_bucket', :collection => @user_buckets

@@ -1,0 +1,11 @@
+big_bucket:
+  name: big_bucket!
+  approved: true
+    
+no_equipment_bucket:
+  name: no_equipemnt
+  approved: true
+
+dumbell_bucket:
+  name: dumbbells
+  approved: true

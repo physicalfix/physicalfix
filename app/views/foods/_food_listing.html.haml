@@ -1,0 +1,45 @@
+%li(class="#{cycle('even', 'odd')}" id="food-#{food_listing.id}")
+  - form_for :meal, :url => '/food_log', :html =>{:onSubmit => "return checkMeal(this);"} do |f|
+    - serving = food_listing.servings.first
+    .info
+      %p.title
+        #{food_listing.category} : #{food_listing.name}
+        - if food_listing.brand != 'generic'
+          %span by #{food_listing.brand}
+        //%span.servingsize
+        //  %nobr= food_listing['food_description'].split(' - ')[0].split('Per ')[1].strip
+
+
+      %div.details{:id => "food_details_#{food_listing.id}"}
+        = link_to "", "#", {:class => 'information'}
+        %span(id="favorite-food-#{food_listing.id}" class="favoritelink")
+          - if ff = @favorite_ids[food_listing.id]
+            = link_to_remote "", {:method => :delete, :url => favorite_food_path(:id => ff.id), :with => "'food_id=#{food_listing.id}'",  :confirm => 'Are you sure you want to unfavorite this food?'}, {:class => 'favorite'}
+          - else
+            = link_to_remote "", {:method => :post, :url => favorite_foods_path, :with => "'id=#{food_listing.id}'" }, {:class => 'unfavorite'}
+        %span.calories #{serving.calories ? serving.calories.round : 0} Cals
+        %span.carbs  #{serving.carbohydrates ? serving.carbohydrates.round : 0}g Carbs
+        %span.fat  #{serving.fat ? serving.fat.round : 0}g Fat
+        %span.protein #{serving.protein ? serving.protein.round : 0}g Protein
+
+    .select
+      %p.entry
+        %span.serving_desc
+          %label Serving:
+          = f.text_field :servings, {:class => 'meal_servings default_value', :value => 1, :id => "serving_input_#{food_listing.id}", :onfocus => "$('serving_input_#{food_listing.id}').removeClassName('default_value')"}
+          X
+          //- func = remote_function(:update => "servings-#{food_listing.id}", :with => "'food_id=#{food_listing.id}'", :before => "$('servings-#{food_listing.id}').childElements()[0].update('Loading...');",:url => { :action => :food_servings })
+          %span{:id => "servings-#{food_listing.id}-span", :style => 'display:inline'}
+            - count = -1
+            = f.select(:serving_id, food_listing.servings.map{|fl| [fl.description, count+=1] }, {}, {:onchange => remote_function(:update => "food_details_#{food_listing.id}", :url => { :action => :food_details }, :with => "'serving_id='+value+'&food_id=#{food_listing.id}'"), :id => "servings-#{food_listing.id}"})
+                                                                                                                                                                                                                                                                                                                                              
+        %span.eaten
+          %label Meal:
+          = f.select :meal_name, %w[Breakfast Lunch Dinner Snacks]
+        %span.date
+          %label Date:
+          = f.date_select :eaten_at
+        = f.hidden_field :food_id, :value => food_listing.id
+        //= f.hidden_field :serving_description, :value => serving_description
+
+    %input#submit(value ="Add" type="submit")

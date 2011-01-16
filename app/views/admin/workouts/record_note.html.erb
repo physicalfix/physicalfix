@@ -1,0 +1,62 @@
+<%= javascript_include_tag "swfobject" %>
+<%= javascript_include_tag :defaults %>
+<%= stylesheet_link_tag "style" %>
+<script>
+	function thisMovie(movieName) {
+		if (navigator.appName.indexOf("Microsoft") != -1) return window[movieName];
+		else return document[movieName];
+	}
+	
+	function record() {
+		thisMovie('recorder').recordVid();
+	}
+	function stop() {
+		thisMovie('recorder').stopVid();
+	}
+	function review() {
+		thisMovie('recorder').reviewVid();
+	}
+	
+	function setRecording(val) {
+		var e = document.getElementById('rTxt');
+		e.innerHTML = (val) ? 'Recording...' : 'Record';
+	}
+	
+	function processing(val) {
+	  if(val) {
+	    $("actions").hide();
+	    $("processing").show();
+	  } else {
+	    $("actions").show();
+	    $("processing").hide();
+	  }
+	}
+	
+	function error() {
+	  
+	}
+	
+</script>
+<style>
+	#vid a {
+		text-decoration: none;
+	}
+</style>
+<div style="text-align:center;" id="vid">
+	<div id="player" style="margin:0px; padding:0px;"><a href="http://www.macromedia.com/go/getflashplayer">Get the Flash Player</a> to see this player.</div>
+	<div style="width:320px;margin:auto; background: url(/images/hrow.gif) repeat-x;" id ="actions">
+		<a href="javascript:record();"><%= image_tag '/images/icons/stop.png', :align => 'absmiddle'%> <span id="rTxt">Record</span></a>
+	 	| <a href="javascript:stop();"><%= image_tag '/images/icons/control_stop.png', :align => 'absmiddle'%> Stop</a>
+		| <a href="javascript:review();"><%= image_tag '/images/icons/play.png', :align => 'absmiddle'%> Review</a> 
+		| <a href="javascript:window.parent.Control.Modal.close();"><%= image_tag '/images/icons/cross.png', :align => 'absmiddle' %> close</a>
+	</div>
+	
+	<div id="processing" style="display:none;"><strong>Processing...</strong></div>
+	
+	<div id="error" style="display:none;"><strong style="color:red">ERROR</strong></div>
+</div>
+<script type="text/javascript">
+	var so = new SWFObject("/swf/Recorder.swf","recorder","320","240","9");
+	so.addVariable('workout_id', '<%= @workout_id %>');
+	so.write("player");
+</script>

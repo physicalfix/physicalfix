@@ -1,0 +1,25 @@
+<%= error_messages_for 'exercise' %>
+<fieldset>
+	<legend>Edit Exercise</legend>
+    <% form_for [:admin, @exercise] do |f| %>
+<table>
+	<tr>
+		<th>name</th>
+		<td><%= f.text_field :name %></td>
+	</tr>
+	<tr>
+		<th>Musclegroup</th>
+		<td><%= f.select :musclegroup_id, Musclegroup.find(:all).collect{|p| [p.name, p.id]} %></td>
+	</tr>
+	<tr>
+		<th>description:</th>
+		<td><%= f.text_area :description %></td>
+	</tr>
+	<tr>
+		<td colspan="2"><%= submit_tag %><%= link_to "Cancel", :action => "index" %></td>
+	</tr>
+</table>
+<% end %>
+</fieldset>
+
+ 

@@ -1,0 +1,47 @@
+<tr>
+	<td>
+	<% if workout.approved %>
+	<%= image_tag 'icons/accept.png' %>
+	<% else %>
+	<%= image_tag 'icons/error.png' %>
+	<% end %>
+	</td>
+	<td><%= workout.id %></td>
+	<td>
+		<%if workout.viewed == 0 %><span class="clickEdit" id="week_<%=workout.id%>" onClick="edit(<%=workout.id%>);">
+			Week <%=workout.week_of.cweek %> for <%= workout.week_of.year %>
+		</span>
+		<span class="clickEditForm" id="ce_<%=workout.id%>" style="display:none">
+			<% remote_form_for :workout, workout, :url => admin_workout_path(workout,:format => 'js'), :html => {:method => :put, :id => "edit_workout_#{workout.id}"} do %>
+			Week <% h = Array.new %><% 52.times {|k| h[k] = k+1}%><select name="date[week]">
+			<%= options_for_select h, workout.week_of.cweek %></select> for <%= select_year workout.week_of, :start_year => Time.zone.now.to_date.year %>
+			<%= submit_tag 'Save' %><button onClick="cancel(<%=workout.id%>); return false;">Cancel</button>
+			<% end %>
+		</span>
+		<%else%>
+		<span id="week_<%=workout.id%>">
+			Week <%=workout.week_of.cweek %> for <%= workout.week_of.year %>
+		</span>
+		<%end%>
+	</td>
+	<td><%= link_to workout.user.email, admin_user_path(workout.user) %></td>
+	<td><%= workout.viewed %></td>
+	<td><%= workout.completed%></td>
+	<td><% if workout.comment != nil%><%= link_to image_tag('/images/icons/comment.png'), comment_admin_workout_path(workout), {:id => 'comment_link_'+workout.id.to_s, :onclick => "return false;"}  %><%end%></td>
+	<td><% if workout.viewed == 0 %><%=link_to image_tag('icons/pencil.png'), edit_admin_workout_path(workout) %><% end %></td>
+	<td><%= link_to image_tag('icons/delete.png'), admin_workout_path(workout),  :confirm => "Are you sure?", :method => :delete %></td>
+</tr>
+<script>
+	<% if workout.comment != nil %>
+	new Control.Modal('comment_link_<%=workout.id%>',{
+				hover: true,
+				position: 'relative',
+				offsetLeft: 20
+			});
+	<% end %>
+	/*new Control.Modal('play_link_<%=workout.id%>',{
+						iframe: true,
+						width: 850,
+						height: 500
+	});*/
+</script>

@@ -1,0 +1,7 @@
+workout_skeleton_one:
+  name: workout
+  user_bucket: dumbell_bucket
+
+workout_skeleton_two:
+  name: workout_two
+  user_bucket: big_bucket

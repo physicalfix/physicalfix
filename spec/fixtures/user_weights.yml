@@ -1,0 +1,5 @@
+weight_one:
+    user: valid_user
+    weight: 145
+    created_at: <%= Time.zone.now - 6.days %>
+    weight_image_file_name: NULL

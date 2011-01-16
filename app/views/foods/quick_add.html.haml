@@ -1,0 +1,28 @@
+.window_header
+  .window_close#window_close(onclick="Control.Modal.close();")
+  .window_title Add Favorite Food
+.window.contents
+  %h2= @display_name
+  %br
+  - form_for :meal, :url => '/food_log', :html => {:onsubmit=>'return checkMeal(this);'} do |f|
+    .select
+      %p
+        %label Servings:
+        = f.text_field :servings, {:class => 'meal_servings', :size => 3}
+        = f.select :serving_id, @servings
+        %br
+        %br
+      %p
+        %label Meal:
+        = f.select :meal_name, %w[Breakfast Lunch Dinner Snacks]
+        %br
+        %br
+      %p
+        %label Date:
+        = f.date_select :eaten_at
+      -if @food.is_a?(Meal)
+        = f.hidden_field :meal_id, :value => @food.id
+      -else
+        = f.hidden_field :food_id, :value => @food.id.to_s
+      %br
+    %input.addweight{:value => "Add Food", :type => "submit", :style => "float:none; top:0; display: inline"}

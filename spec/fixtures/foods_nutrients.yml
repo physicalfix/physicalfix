@@ -1,0 +1,39 @@
+yummy_food_calories:
+    id: 5
+    food_id: 1001
+    nutrient_id: 208
+    value: 717.0
+    data_points: 0.0
+    std_error: nil
+    source_id: 4
+    derivation_id: 0
+    ref_food_id: nil
+    add_nutr_mark: nil
+    num_studies: nil
+    min: nil
+    max: nil
+    dof: nil
+    low_eb: nil
+    up_eb: nil
+    stat_cmt: nil
+    confidence: nil
+
+yummy_food_sodium:
+    id: 18
+    food_id: 1001
+    nutrient_id: 307
+    value: 576.0
+    data_points: 18.0
+    std_error: 12.006
+    source_id: 1
+    derivation_id: 0
+    ref_food_id: nil
+    add_nutr_mark: nil
+    num_studies: 7
+    min: 491.0
+    max: 685.0
+    dof: 5
+    low_eb: 545.013
+    up_eb: 605.987
+    stat_cmt: "2, 3"
+    confidence: nil

@@ -1,0 +1,240 @@
+pushups:
+    id: 1
+    name: Pushups
+    musclegroup_id: 1
+
+dumbbells:
+  name: Dumbbell
+  id: 2
+  musclegroup_id: 1
+
+exercises_041: 
+  name: Squats
+  musclegroup_id: "6"
+  id: "43"
+  description: ""
+exercises_030: 
+  name: Plank
+  musclegroup_id: "8"
+  id: "32"
+  description: ""
+exercises_019: 
+  name: Dumbbell Side Shoulder Raise
+  musclegroup_id: "3"
+  id: "21"
+  description: ""
+exercises_008: 
+  name: Double Leg Bridges
+  musclegroup_id: "6"
+  id: "10"
+  description: ""
+exercises_042: 
+  name: Thumbs
+  musclegroup_id: "3"
+  id: "44"
+  description: ""
+exercises_031: 
+  name: Plyo Jax
+  musclegroup_id: "9"
+  id: "33"
+  description: ""
+exercises_020: 
+  name: Dumbbell Squat to Shoulder Press
+  musclegroup_id: "9"
+  id: "22"
+  description: ""
+exercises_009: 
+  name: Dumbbell Bent Over Reverse Fly
+  musclegroup_id: "2"
+  id: "11"
+  description: ""
+exercises_043: 
+  name: Toe Taps
+  musclegroup_id: "10"
+  id: "45"
+  description: ""
+exercises_032: 
+  name: Pushups
+  musclegroup_id: "1"
+  id: "34"
+  description: ""
+exercises_021: 
+  name: Dumbbell Squats
+  musclegroup_id: "6"
+  id: "23"
+  description: ""
+exercises_010: 
+  name: Dumbbell Bent Over Row
+  musclegroup_id: "2"
+  id: "12"
+  description: ""
+exercises_044: 
+  name: Toe Touches
+  musclegroup_id: "7"
+  id: "46"
+  description: ""
+exercises_033: 
+  name: Reverse Lunges
+  musclegroup_id: "6"
+  id: "35"
+  description: ""
+exercises_022: 
+  name: Dumbbell Triceps Kickback
+  musclegroup_id: "5"
+  id: "24"
+  description: ""
+exercises_011: 
+  name: Dumbbell Biceps Curl
+  musclegroup_id: "4"
+  id: "13"
+  description: ""
+exercises_045: 
+  name: Cross Overs
+  musclegroup_id: "7"
+  id: "47"
+  description: ""
+exercises_034: 
+  name: Seated Rotations
+  musclegroup_id: "7"
+  id: "36"
+  description: ""
+exercises_023: 
+  name: Floor Dips
+  musclegroup_id: "5"
+  id: "25"
+  description: ""
+exercises_012: 
+  name: Dumbbell Chest Fly
+  musclegroup_id: "1"
+  id: "14"
+  description: ""
+exercises_001: 
+  name: Band Bentover Row
+  musclegroup_id: "2"
+  id: "3"
+  description: ""
+exercises_046: 
+  name: Dumbbell Biceps Curl to Press
+  musclegroup_id: "9"
+  id: "48"
+  description: ""
+exercises_035: 
+  name: Side Lunges
+  musclegroup_id: "6"
+  id: "37"
+  description: ""
+exercises_024: 
+  name: Heel Touches
+  musclegroup_id: "7"
+  id: "26"
+  description: ""
+exercises_013: 
+  name: Dumbbell Chest Press
+  musclegroup_id: "1"
+  id: "15"
+  description: ""
+exercises_002: 
+  name: Band Biceps Curl
+  musclegroup_id: "4"
+  id: "4"
+  description: ""
+exercises_036: 
+  name: Single Leg Squats
+  musclegroup_id: "6"
+  id: "38"
+  description: ""
+exercises_025: 
+  name: High Knees
+  musclegroup_id: "10"
+  id: "27"
+  description: ""
+exercises_014: 
+  name: Dumbbell Front Shoulder Raise
+  musclegroup_id: "3"
+  id: "16"
+  description: ""
+exercises_003: 
+  name: Band Front Shoulder Raise
+  musclegroup_id: "3"
+  id: "5"
+  description: ""
+exercises_037: 
+  name: Speed Jax
+  musclegroup_id: "10"
+  id: "39"
+  description: ""
+exercises_026: 
+  name: Jumping Jax
+  musclegroup_id: "10"
+  id: "28"
+  description: ""
+exercises_015: 
+  name: Dumbbell Lunge to Curl
+  musclegroup_id: "9"
+  id: "17"
+  description: ""
+exercises_004: 
+  name: Band Side Shoulder Raise
+  musclegroup_id: "3"
+  id: "6"
+  description: ""
+exercises_038: 
+  name: Dumbbell Squat to Front Shoulder Raise
+  musclegroup_id: "9"
+  id: "40"
+  description: ""
+exercises_027: 
+  name: Knee Slides
+  musclegroup_id: "7"
+  id: "29"
+  description: ""
+exercises_016: 
+  name: Dumbbell Lunge to Shoulder Press
+  musclegroup_id: "9"
+  id: "18"
+  description: ""
+exercises_005: 
+  name: Band Triceps Extension
+  musclegroup_id: "5"
+  id: "7"
+  description: ""
+exercises_039: 
+  name: Squat Jumps
+  musclegroup_id: "9"
+  id: "41"
+  description: ""
+exercises_028: 
+  name: Lunges
+  musclegroup_id: "6"
+  id: "30"
+  description: ""
+exercises_017: 
+  name: Dumbbell Overhead Squats
+  musclegroup_id: "6"
+  id: "19"
+  description: ""
+exercises_006: 
+  name: Band Triceps Kickbacks
+  musclegroup_id: "5"
+  id: "8"
+  description: ""
+exercises_040: 
+  name: Squat Stutter Steps
+  musclegroup_id: "10"
+  id: "42"
+  description: ""
+exercises_029: 
+  name: Mountain Climbers
+  musclegroup_id: "10"
+  id: "31"
+  description: ""
+exercises_018: 
+  name: Dumbbell Shoulder Press
+  musclegroup_id: "3"
+  id: "20"
+  description: ""
+exercises_007: 
+  name: Crunches
+  musclegroup_id: "7"
+  id: "9"
+  description: ""

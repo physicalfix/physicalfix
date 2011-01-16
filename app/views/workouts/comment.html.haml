@@ -1,0 +1,29 @@
+#comment
+  %h2= @comment
+  %h3 Please help perfect your PhysicalFix experience. What did you think of this workout?
+  - form_for :workout do |f|
+    %p
+      %span How did you find the workout?
+      %label
+        = radio_button_tag 'workout[difficulty]', 'easy'
+        Too Easy
+      %label
+        = radio_button_tag 'workout[difficulty]', 'right', true
+        Just Right
+      %label
+        = radio_button_tag 'workout[difficulty]', 'hard'
+        Too Hard
+    %p
+      %span Did you notice any pain anywhere during the workout?
+      %label
+        = radio_button_tag 'workout[pain]', 'no', true
+        No
+      %label
+        = radio_button_tag 'workout[pain]', 'yes'
+        Yes
+      If yes, where?
+      = text_field_tag 'workout[where_pain]'
+    %p
+      %span Do you have any other comments?
+      = f.text_area :comment, :size => '40x20'
+      = submit_tag 'Submit Comment', :id => 'submitcomment'

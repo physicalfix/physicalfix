@@ -1,0 +1,9 @@
+development:
+    access_key_id: "06A2HE597A5MJA6S2ER2"
+    secret_access_key: "It8HX51Z59oXS++QN77j4TUe98c2FNRzpSCwqPA/"
+test:
+    access_key_id: "06A2HE597A5MJA6S2ER2"
+    secret_access_key: "It8HX51Z59oXS++QN77j4TUe98c2FNRzpSCwqPA/"
+production:
+    access_key_id: "06A2HE597A5MJA6S2ER2"
+    secret_access_key: "It8HX51Z59oXS++QN77j4TUe98c2FNRzpSCwqPA/"

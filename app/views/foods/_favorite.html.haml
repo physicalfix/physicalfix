@@ -1,0 +1,6 @@
+%tr
+  %td.item= favorite.name
+  %td.add
+    = link_to("Add", {:controller=>"foods", :action=>"quick_add", :id => favorite.id}, :id => "favorite_link_#{favorite.id}")
+    :javascript
+      var modal = new Control.Modal($('favorite_link_#{favorite.id}'), {containerClassName: 'window', width: 400});

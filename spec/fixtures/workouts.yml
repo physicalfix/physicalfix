@@ -1,0 +1,15 @@
+started_workout:
+  user: valid_user
+  approved: true
+  week_of: <%= (Time.zone.now - 1.week).beginning_of_week %>
+
+completed_workout:
+  user: valid_user
+  approved: true
+  week_of: <%= (Time.zone.now - 1.week).beginning_of_week %>
+
+workout_for_this_week:
+  id: 10
+  user: valid_user
+  approved: true
+  week_of: <%= (Time.zone.now + 1.week).beginning_of_week + 3.days %>

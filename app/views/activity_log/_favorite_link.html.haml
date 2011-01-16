@@ -1,0 +1,4 @@
+- if fa = current_user.favorite_activities.find_by_activity_id(favorite_link.id)
+  = link_to_remote "", {:method => :delete, :url => favorite_activity_path(:id => fa.id),  :confirm => 'Are you sure you want to unfavorite this activity?'}, {:class => 'favorite'}
+- else
+  = link_to_remote "", {:method => :post, :url => favorite_activities_path, :with => "'id=#{favorite_link.id}'" }, {:class => 'unfavorite'}

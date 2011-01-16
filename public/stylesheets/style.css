@@ -1,0 +1,611 @@
+a {
+	color: #CF2D4E;
+}
+body {
+	font-family: tahoma;
+	font-size: 12px;
+	padding: 0;
+	margin: 0;
+	background-color: #EDF5FF;
+}
+#error_flash,
+#info_flash {
+	background-image: url(/images/icons/accept.png);
+	background-repeat: no-repeat;
+	background-position: 1% 50%;
+	background-color: #CCFFCC;
+	border: 1px solid #99CC99;
+	width: 400px;
+	margin: 10px auto;
+	font-weight: bold;
+	font-size: 12px;
+	padding: 10px 10px 10px 25px;
+}
+DIV.errorExplanation {
+	background-color: #E77471;
+	border: 1px solid #C24641;
+	width: 400px;
+	padding: 10px;
+}
+#error_flash {
+	background-image: url(/images/icons/exclamation.png);
+	background-color: #E77471;
+	border: 1px solid #C24641;
+}
+
+#content {
+	margin: 15px;
+	border: 3px solid #F0F0F0;
+	background-color: #FFFFFF;
+	padding: 10px;
+}
+
+#header {
+	background-color: #FFF; 
+	margin: 0 15px 0 15px;
+	border-style: solid;
+	border-width: 0 3px 3px 3px;
+	border-color: #F0F0F0;
+}
+#header H1 {
+	bcolor: #28585E;
+}
+
+#login_logout {
+	float: right;
+	margin-right: 15px;
+	font-weight: bold;
+	padding: 20px 10px 10px 10px;
+}
+.nav {
+	float: left;
+	width: 100%;
+	font-size: 93%;
+	line-height: normal;
+	border-bottom: 1px solid #24618E;
+}
+
+UL.mgTabs
+{
+	margin: 0;
+	padding: 10px 10px 0 10px;
+	list-style: none;
+	clear: both;
+}
+
+UL.mgTabs LI {
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+
+Ul.mgTabs LI a {
+	float: left;
+	background: url("/images/tableft.gif") no-repeat left top;
+	margin: 0;
+	padding: 0 0 0 5px;
+	text-decoration: none;
+}
+
+UL.mgTabs LI a span {
+	float: left;
+	display: block;
+	background: url("/images/tabright.gif") no-repeat right top;
+	padding: 5px 15px 4px 6px;
+	color: #24618E;
+}
+
+UL.mgTabs LI a:hover span {
+	color:#000;
+	
+}
+UL.mgTabs LI.selected a, UL.mgTabs a.active {
+	color: #FFF;
+	background-position:0% -42px;
+}
+UL.mgTabs LI.selected a span, UL.mgTabs a.active span {
+	color: #FFF;
+	background-position:100% -42px;
+}
+
+.list_hover {
+	border: 2px dashed red !important; 
+	background-color: #DDD;
+}
+.exercise {
+	margin: 1px;
+	width: 260px;
+	list-style: none;
+	float: left;
+	cursor: move;
+	padding: 3px;
+}
+.exercise span.in_place_editor_field {
+	cursor: pointer;
+}
+.exercise div a{
+	cursor: pointer;
+}
+.exercise.chest {
+	background-color: #D1E6EC;
+	border: 1px solid #7EA6B2;
+}
+.exercise.back {
+	background-color: #D8D4E2;
+	border: 1px solid #6B4C86;
+}
+.exercise.shoulders {
+	background-color: #CCFFCC;
+	border: 1px solid #99CC99;
+}
+.exercise.legs {
+	background-color: #FFF8C6;
+	border: 1px solid #C8B560;
+}
+.exercise.biceps {
+	background-color: #E77471;
+	border: 1px solid #C24641;
+}
+.exercise.triceps {
+	background-color: #FFF;
+	border: 1px solid #AAA;
+}
+.exercise.abs {
+	background-color: #FFDA6D;
+	border: 1px solid #FFB66D;	
+}
+.exercise.core {
+	background-color: #B6FF91;
+	border: 1px solid #B6DA91;	
+}
+.exercise.power {
+	background-color: #E7D6A1;
+	border: 1px solid #B3A68B;	
+}
+.exercise.cardio {
+	background-color: #C0B9F0;
+	border: 1px solid #969FDF;	
+}
+
+table.list {
+	border-collapse: collapse;
+}
+
+table.list th {
+	background:#F9F9F9 url(../images/hrow.gif) repeat-x scroll 0pt bottom;
+	cursor:default;
+	padding:1px 0pt 0pt 5px;
+	line-height: 22px;
+	border-right: 1px solid #DEDEDE;
+	height: 22px;
+}
+table.list td {
+	border-width: 0 1px 1px 1px;
+	border-style: solid;
+	border-color: #DEDEDE;
+	padding: 5px;
+}
+
+table.list tr:hover td,
+table.list tr.odd_row:hover td {
+	background-color: #ffb;
+}
+
+table.list tr.odd_row td {
+	background-color: #F0F0F0;
+}
+#modal_container {  
+    padding:5px;  
+    background-color:#fff;  
+    border:1px solid #666;  
+    overflow:auto;  
+    font-size:12px;  
+    text-align:left;  
+} 
+ 
+#modal_overlay {  
+    background-color:#000;  
+}
+a img {
+	border: 0;
+}
+div.auto_complete {
+width: 350px;
+background: #fff;
+}
+div.auto_complete ul {
+border:1px solid #888;
+margin:0;
+padding:0;
+width:100%;
+list-style-type:none;
+}
+div.auto_complete ul li {
+margin:0;
+padding:3px;
+}
+div.auto_complete ul li.selected {
+background-color: #ffb;
+}
+div.auto_complete ul strong.highlight {
+color: #800;
+margin:0;
+padding:0;
+}
+th {
+	text-align:left;
+}
+fieldset {
+	width:400px;
+	/*background-color: #fff9d8;*/
+	/*border: 1px solid #ffe8cd;*/
+	border: none;
+	background: url(/images/fieldset.gif) left bottom repeat-x;
+}
+fieldset legend {
+	font-size:25px;
+	font-weight:bold; 
+	color: #333;
+}
+fieldset td, fieldset th{
+	border-bottom: 1px solid #ffe8cd;
+}
+
+.form_submit {
+	height:30px;
+	font-size: 15px;
+	width:420px;
+}
+DIV.fieldWithErrors {
+	display: inline;
+}
+DIV.fieldWithErrors input, DIV.fieldWithErrors textarea {
+	border: 1px inset red;
+	background-color: #FDEEF4;
+}
+
+div.workout_box {
+	width: 200px;
+	height: 100px;
+	float: left;
+	border: 2px solid #F0F0F0;
+	margin: 10px;
+	text-align: center;
+	background-color: #FFF;
+}
+div.viewed {
+	background-color: #F5F5F5;
+}
+.warning {
+	background: #FFF8C6 url('/images/icons/error.png') no-repeat;
+	padding-left: 5px;
+	font-weight: bold;
+	height: 16px;
+	width: 275px;
+}
+.ready {
+	background: #CCFFCC url('/images/icons/accept.png') no-repeat;
+	padding-left: 5px;
+	font-weight: bold;
+	height: 16px;
+	width: 275px;
+}
+form {
+	padding:0;
+	margin:0;
+}
+UL.workoutExerciseList {
+	clear:both; 
+	border: 1px solid;
+	border-color: #24618E #999 #999 #999; 
+	padding: 15px 5px 15px 5px; 
+	background-color: #EDF5FF;
+	height:400px
+}
+UL.workoutWorkoutList {
+	margin: 32px 0 0 10px;
+	border-width: 2px 1px 1px 1px;
+	border-style: solid;
+	border-color: #24618E #999 #999 #999;
+	background-color:#EDF5FF;
+	height:420px;
+	width: 270px;
+	padding:5px;
+	overflow:auto
+}
+
+#login_logout {
+	float: right;
+	margin-right: 15px;
+	font-weight: bold;
+	padding: 20px 10px 10px 10px;
+}
+.nav {
+	float: left;
+	width: 100%;
+	font-size: 93%;
+	line-height: normal;
+	border-bottom: 1px solid #24618E;
+}
+
+
+
+a {
+	color: #CF2D4E;
+}
+
+#error_flash,
+#info_flash {
+	background-image: url(/images/icons/accept.png);
+	background-repeat: no-repeat;
+	background-position: 1% 50%;
+	background-color: #CCFFCC;
+	border: 1px solid #99CC99;
+	width: 400px;
+	margin: 10px auto;
+	font-weight: bold;
+	font-size: 12px;
+	padding: 10px 10px 10px 25px;
+}
+DIV.errorExplanation {
+	background-color: #E77471;
+	border: 1px solid #C24641;
+	width: 400px;
+	padding: 10px;
+}
+#error_flash {
+	background-image: url(/images/icons/exclamation.png);
+	background-color: #E77471;
+	border: 1px solid #C24641;
+}
+
+
+
+UL.mgTabs
+{
+	margin: 0;
+	padding: 10px 10px 0 10px;
+	list-style: none;
+	clear: both;
+}
+
+UL.mgTabs LI {
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+
+Ul.mgTabs LI a {
+	float: left;
+	background: url("/images/tableft.gif") no-repeat left top;
+	margin: 0;
+	padding: 0 0 0 5px;
+	text-decoration: none;
+}
+
+UL.mgTabs LI a span {
+	float: left;
+	display: block;
+	background: url("/images/tabright.gif") no-repeat right top;
+	padding: 5px 15px 4px 6px;
+	color: #24618E;
+}
+
+UL.mgTabs LI a:hover span {
+	color:#000;
+	
+}
+UL.mgTabs LI.selected a {
+	color: #FFF;
+	background-position:0% -42px;
+}
+UL.mgTabs LI.selected a span {
+	color: #FFF;
+	background-position:100% -42px;
+}
+
+.list_hover {
+	border: 2px dashed red !important; 
+	background-color: #DDD;
+}
+li.exercise {
+	margin: 1px;
+	width: 260px;
+	list-style: none;
+	float: left;
+	cursor: move;
+	padding: 3px;
+}
+li.exercise span.in_place_editor_field {
+	cursor: pointer;
+}
+li.exercise div a{
+	cursor: pointer;
+}
+li.exercise.chest {
+	background-color: #D1E6EC;
+	border: 1px solid #7EA6B2;
+}
+li.exercise.back {
+	background-color: #D8D4E2;
+	border: 1px solid #6B4C86;
+}
+li.exercise.shoulders {
+	background-color: #CCFFCC;
+	border: 1px solid #99CC99;
+}
+li.exercise.legs {
+	background-color: #FFF8C6;
+	border: 1px solid #C8B560;
+}
+li.exercise.biceps {
+	background-color: #E77471;
+	border: 1px solid #C24641;
+}
+li.exercise.triceps {
+	background-color: #FFF;
+	border: 1px solid #AAA;
+}
+li.exercise.abs {
+	background-color: #FFDA6D;
+	border: 1px solid #FFB66D;	
+}
+li.exercise.core {
+	background-color: #B6FF91;
+	border: 1px solid #B6DA91;	
+}
+li.exercise.power {
+	background-color: #E7D6A1;
+	border: 1px solid #B3A68B;	
+}
+li.exercise.cardio {
+	background-color: #C0B9F0;
+	border: 1px solid #969FDF;	
+}
+
+table.list {
+	border-collapse: collapse;
+}
+
+table.list th {
+	background:#F9F9F9 url(../images/hrow.gif) repeat-x scroll 0pt bottom;
+	cursor:default;
+	padding:1px 0pt 0pt 5px;
+	line-height: 22px;
+	border-right: 1px solid #DEDEDE;
+	height: 22px;
+}
+table.list td {
+	border-width: 0 1px 1px 1px;
+	border-style: solid;
+	border-color: #DEDEDE;
+	padding: 5px;
+}
+
+table.list tr:hover td,
+table.list tr.odd_row:hover td {
+	background-color: #ffb;
+}
+
+table.list tr.odd_row td {
+	background-color: #F0F0F0;
+}
+#modal_container {  
+    padding:5px;  
+    background-color:#fff;  
+    border:1px solid #666;  
+    overflow:auto;  
+    font-size:12px;  
+    text-align:left;  
+} 
+ 
+#modal_overlay {  
+    background-color:#000;  
+}
+a img {
+	border: 0;
+}
+div.auto_complete {
+width: 350px;
+background: #fff;
+}
+div.auto_complete ul {
+border:1px solid #888;
+margin:0;
+padding:0;
+width:100%;
+list-style-type:none;
+}
+div.auto_complete ul li {
+margin:0;
+padding:3px;
+}
+div.auto_complete ul li.selected {
+background-color: #ffb;
+}
+div.auto_complete ul strong.highlight {
+color: #800;
+margin:0;
+padding:0;
+}
+th {
+	text-align:left;
+}
+fieldset {
+	width:400px;
+	/*background-color: #fff9d8;*/
+	/*border: 1px solid #ffe8cd;*/
+	border: none;
+	background: url(/images/fieldset.gif) left bottom repeat-x;
+}
+fieldset legend {
+	font-size:25px;
+	font-weight:bold; 
+	color: #333;
+}
+fieldset td, fieldset th{
+	border-bottom: 1px solid #ffe8cd;
+}
+
+.form_submit {
+	height:30px;
+	font-size: 15px;
+	width:420px;
+}
+DIV.fieldWithErrors {
+	display: inline;
+}
+DIV.fieldWithErrors input, DIV.fieldWithErrors textarea {
+	border: 1px inset red;
+	background-color: #FDEEF4;
+}
+
+div.workout_box {
+	width: 200px;
+	height: 100px;
+	float: left;
+	border: 2px solid #F0F0F0;
+	margin: 10px;
+	text-align: center;
+	background-color: #FFF;
+}
+div.viewed {
+	background-color: #F5F5F5;
+}
+.warning {
+	background: #FFF8C6 url('/images/icons/error.png') no-repeat;
+	padding-left: 5px;
+	font-weight: bold;
+	height: 16px;
+	width: 275px;
+}
+.ready {
+	background: #CCFFCC url('/images/icons/accept.png') no-repeat;
+	padding-left: 5px;
+	font-weight: bold;
+	height: 16px;
+	width: 275px;
+}
+form {
+	padding:0;
+	margin:0;
+}
+UL.workoutExerciseList {
+	clear:both; 
+	border: 1px solid;
+	border-color: #24618E #999 #999 #999; 
+	padding: 15px 5px 15px 5px; 
+	background-color: #EDF5FF;
+	height:400px
+}
+UL.workoutWorkoutList {
+	margin: 32px 0 0 10px;
+	border-width: 2px 1px 1px 1px;
+	border-style: solid;
+	border-color: #24618E #999 #999 #999;
+	background-color:#EDF5FF;
+	height:420px;
+	width: 270px;
+	padding:5px;
+	overflow:auto
+}

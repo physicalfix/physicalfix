@@ -1,0 +1,86 @@
+= javascript_include_tag :all
+= javascript_include_tag 'control_suite/object.event.1.0.0.js'
+= javascript_include_tag 'control_suite/control.modal.2.2.3.js'
+
+- form_tag(foods_path, :method => 'get', :id => 'bigsearch') do
+  = text_field_tag 'food', 'Log new item', {:class => 'bigsearchbox', :onFocus=>"if(this.value == 'Log new item'){this.value='';}"}
+  = submit_tag 'Search', {:class => 'bigsearchbutton'}
+  #add_custom
+    Can't find the food you're looking for?
+    = link_to('Add your own!', new_food_log_path)
+
+#favorites
+  %h2
+    Favorite Foods
+    %span
+      (
+      = link_to('Edit', favorite_foods_path)
+      )
+  %table#favoritetable
+    = render :partial => '/foods/favorite', :collection => @favorites
+
+#intakesummary
+  %h2
+    - if @date == Time.zone.now.to_date
+      Today's Intake Summary
+    - else
+      Intake for #{@date.to_s(:long)}
+
+  .intakeprogress
+    .bigprogress(style="width: #{(@calorie_percentage * 160).round}px; background-image: url(/images/greenprogress.png);")
+      %p
+        = (current_user.daily_calorie_allotment - @totals[:calories]).round
+        %span Calories Left
+
+  .intakeprogress
+    .bigprogress(style="width: #{(@carbo_percentage * 160).round}px; background-image: url(/images/yellowprogress.png);")
+      %p
+        #{(current_user.daily_carbohydrate_allotment - @totals[:carbohydrates]).round} g
+        %span Carbs Left
+
+  .intakeprogress
+    .bigprogress(style="width: #{(@fat_percentage*160).round}px; background-image: url(/images/redprogress.png);")
+      %p
+        #{(current_user.daily_fat_allotment - @totals[:fat]).round} g
+        %span Fat Left
+
+  .intakeprogress
+    .bigprogress(style="width: #{(@protein_percentage*160).round}px; background-image: url(/images/purpleprogress.png);")
+      %p
+        #{(current_user.daily_protein_allotment - @totals[:protein]).round} g
+        %span Protein Left
+
+#tabledata
+  %h2
+    - if @date == Time.zone.now.to_date
+      Today's Intake Log
+    - else
+      Intake Log for #{@date.to_s(:long)}
+  %table#intakelog(summary="This week's expenditure log")
+    %thead
+      %tr
+        %th.time(scope="col") Meal
+        %th.item(scope="col") Item
+        %th.servings(scope="col") Servings
+        %th.calories(scope="col") Cals
+        %th.carbohydrates(scope="col") Carbs
+        %th.fat(scope="col") Fat
+        %th.protein(scope="col") Protein
+        %th.sugar(scope="col") Sugar
+        %th.modify(scope="col") Modify
+    %tbody
+      = render :partial => 'meal', :collection => @meals
+
+      %tr.totals
+        %td.description(colspan = '3') Intake Log Totals
+        %td.calories= @totals[:calories]
+        %td.carbohydrates= @totals[:carbohydrates]
+        %td.fat= @totals[:fat]
+        %td.protein= @totals[:protein]
+        %td.sugar= @totals[:sugar]
+        %td.modify
+
+= link_to((@date - 1.day).to_s(:long), food_log_path((@date - 1.day).to_s), {:class => 'prevdate'})
+
+- if @date < Time.zone.now.to_date
+  = link_to((@date + 1.day).to_s(:long), food_log_path((@date + 1.day).to_s), {:class => 'nextdate'})

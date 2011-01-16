@@ -1,0 +1,22 @@
+= error_messages_for 'freeby'
+%fieldset
+  %legend New Freebie
+  - form_for [:admin, @freeby] do |f|
+    %table
+      %tr
+        %th email
+        %td= f.text_field :email
+      %tr
+        %th type
+        %td= select(:freeby, :membership_type, ["basic","premium"])
+      %tr
+        %th subject
+        %td= text_field_tag :subject, nil, {:size => "30"}
+      %tr
+        %th body
+        %td= text_area_tag :body, nil, {:cols => "30", :rows => "10"}
+      %tr
+        %td(colspan="2")
+          = submit_tag
+          = link_to "Cancel", :action => "index"
+ 

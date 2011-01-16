@@ -1,0 +1,10 @@
+- if favorite_link['meal_id']
+  - if ff = FoodItem.find_by_user_id_and_meal_id(current_user.id, favorite_link['meal_id'])
+    = link_to_remote "", {:method => :delete, :url => favorite_food_path(:id => ff.favorite_food_id), :with => "'meal_id=#{favorite_link['meal_id']}'",  :confirm => 'Are you sure you want to unfavorite this food?'}, {:class => 'favorite'}
+  -else
+    = link_to_remote "", {:method => :post, :url => favorite_foods_path, :with => "'meal_id=#{favorite_link['meal_id']}'" }, {:class => 'unfavorite'}
+-elsif favorite_link['food_id']
+  - if ff = current_user.has_favorite_food?(favorite_link['food_id'])
+    = link_to_remote "", {:method => :delete, :url => favorite_food_path(:id => ff), :with => "'food_id=#{favorite_link['food_id']}'",  :confirm => 'Are you sure you want to unfavorite this food?'}, {:class => 'favorite'}
+  - else
+    = link_to_remote "", {:method => :post, :url => favorite_foods_path, :with => "'id=#{favorite_link['food_id']}'" }, {:class => 'unfavorite'}

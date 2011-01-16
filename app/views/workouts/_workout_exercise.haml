@@ -1,0 +1,13 @@
+%div(class="exercise #{workout_exercise.exercise.musclegroup.name.downcase}") 
+  %p
+    = workout_exercise.exercise.name
+    %span.reps
+      -if workout_exercise.weight?
+        Weight:
+        = workout_exercise.weight
+        lbs | Reps:
+        = workout_exercise.exercise_clip.reps
+      - else
+        Reps:
+        = workout_exercise.exercise_clip.reps
+    %span.type= workout_exercise.exercise.musclegroup.name

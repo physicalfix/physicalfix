@@ -1,0 +1,17 @@
+free_user_sub:
+  product: free
+  user: free_user
+  state: active
+  
+basic_user_sub:
+  product: basic
+  user: basic_user
+  state: active
+  chargify_id: 1234
+
+premium_user_sub:
+  product: premium
+  user: premium_user
+  state: active
+  chargify_id: 1234
+  

@@ -1,0 +1,39 @@
+back:
+  name: Back
+  id: "2"
+
+chest:
+  name: Chest
+  id: "1"
+
+biceps:
+  name: Biceps
+  id: "4"
+
+shoulders:
+  name: Shoulders
+  id: "3"
+
+triceps:
+  name: Triceps
+  id: "5"
+
+legs:
+  name: Legs
+  id: "6"
+
+abs:
+  name: Abs
+  id: "7"
+
+core:
+  name: Core
+  id: "8"
+
+power:
+  name: Power
+  id: "9"
+
+cardio:
+  name: Cardio
+  id: "10"

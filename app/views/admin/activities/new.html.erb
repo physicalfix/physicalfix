@@ -1,0 +1,20 @@
+<%= error_messages_for 'activity' %>
+<fieldset>
+	<legend>Edit Activity</legend>
+    <% form_for [:admin, @activity] do |f| %>
+<table>
+	<tr>
+		<th>Name</th>
+		<td><%= f.text_field :name %></td>
+	</tr>
+	<tr>
+		<th>Cals Burned/Pound/Minute</th>
+		<td><%= f.text_field :calories_burned_per_pound_per_minute %></td>
+	<tr>
+		<td colspan="2"><%= submit_tag %><%= link_to "Cancel", :action => "index" %></td>
+	</tr>
+</table>
+<% end %>
+</fieldset>
+
+
