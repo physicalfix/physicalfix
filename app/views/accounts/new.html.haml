@@ -2,11 +2,14 @@
   #openbox
     #inner{:style => 'width:970px'}
       #box-wrapper
+        
+        // Maybe we'll need this for later:
+        
         / -if flash[:error]
         /          .billing_error
         /            = flash[:error]
         
-        - if session[:plan] == 'trial'
+        - if session[:plan] == Subscription::BASIC_14_TRIAL_SUBSCRIPTION
           %h2 Congrats! Your 14-day trial and a healthier lifestyle start here!
         - else
           %h2 Congrats! You've just taken the first step toward a healthier lifestyle!
@@ -17,35 +20,45 @@
               %p.info We just need to get a bit of information that will help us help you meet your goals.
               %ul
                 %li
-                  - label('First Name', @user, :first_name)
+                  - label("First Name", @user, :first_name)
                   = f.text_field :first_name
                 %li
-                  - label('Last Name', @user, :last_name)
+                  - label("Last Name", @user, :last_name)
                   = f.text_field :last_name
                 %li
-                  - label('Email Address', @user, :email)
+                  - label("Email Address", @user, :email)
                   = f.text_field :email
                 %li
-                  - label('Password', @user, :password)
+                  - label("Password", @user, :password)
                   = f.password_field :password
                 %li
-                  - label('Confirm Password', @user, :password_confirmation)
+                  - label("Confirm Password", @user, :password_confirmation)
                   = f.password_field :password_confirmation
-                - if session[:plan] == 'premium'
+                  
+                /////////////////////////
+                // Start: Premium fields
+                /////////////////////////
+                  
+                - if Subscription::VALID_PREMIUM_PLANS.include?(session[:plan])
                   %li
-                    - label('Home Phone', @user, :home_phone)
+                    - label("Home Phone", @user, :home_phone)
                     = f.text_field :home_phone
                   %li
-                    - label('Cell Phone', @user, :cell_phone)
+                    - label("Cell Phone", @user, :cell_phone)
                     = f.text_field :cell_phone
+                    
+                ///////////////////////
+                // End: Premium fields
+                ///////////////////////
+                    
                 %li
-                  - label('Date of Birth', @user, :birthday)
-                  = date_select :user, :birthday, :order => [:month, :day, :year], :start_year => Date.current.year, :end_year => Date.current.year - 110, :prompt => true
+                  - label("Date of Birth", @user, :birthday)
+                  = date_select_helper
                 %li
-                  - label('Sex', @user, :sex)
-                  = select :user, :sex, ['Male', 'Female']
+                  - label("Sex", @user, :sex)
+                  = select :user, :sex, ["Male", "Female"]
                 %li
-                  - label('Height', @user, :height)
+                  - label("Height", @user, :height)
                   %select(name="height_feet")
                     = options_for_select((4..7), @height_feet)
                   %span.annote Feet
@@ -53,15 +66,15 @@
                     = options_for_select((0..11), @height_inches)
                   %span.annote Inches
                 %li
-                  - label('Weight', @user, :weight)
+                  - label("Weight", @user, :weight)
                   = f.text_field :weight, :size => 3
                   %span.annote Lbs
                 %li
-                  - label('Target Weight', @user, :target_weight)
+                  - label("Target Weight", @user, :target_weight)
                   = f.text_field :target_weight, :size => 3
                   %span.annote Lbs
                 %li.option
-                  - label('Rate your general level of fitness:', @user, :fitness_level)
+                  - label("Rate your general level of fitness:", @user, :fitness_level)
                   %div{:style => 'float:left'}
                     %label
                       = f.radio_button :fitness_level, "Excellent"
@@ -73,12 +86,17 @@
                       = f.radio_button :fitness_level, "Poor"
                       Poor
                 %li
-                  - label('Fitness Goals', @user, :goals)
+                  - label("Fitness Goals", @user, :goals)
                   = f.text_area :goals, :rows => 4
                 %li
-                  - label('Time Zone', @user, :time_zone)
-                  = f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones, {:default => "Eastern Time (US & Canada)"}, {:style => 'width:290px'}
-            - if session[:plan] != 'free' && session[:plan] != 'trial' && !session[:key]
+                  - label("Time Zone", @user, :time_zone)
+                  = time_zone_select_helper(f)
+                  
+            ///////////////
+            // Credit Card
+            ///////////////
+            
+            - if subscription_free_and_freeby?
               %fieldset
                 = image_tag('lock.png', :id => 'lock')
                 %span#secure
@@ -99,54 +117,59 @@
                 %ul
                   - fields_for @credit_card do |c|
                     %li
-                      - label('Card Number', @credit_card, :card_number)
+                      - label("Card Number", @credit_card, :card_number)
                       = c.text_field :card_number, {:autocomplete => 'off', :size => 16}
                     %li
-                      - label('CVV', @credit_card, :cvv)
+                      - label("CVV", @credit_card, :cvv)
                       = c.text_field :cvv
                     %li
-                      - label('Expiration', @credit_card, :expiration)
-                      = c.date_select :expiration, {:order => [:month, :year], :user_month_numbers => true, :start_year => Time.now.year, :end_year => Time.now.year + 10}
+                      - label("Expiration", @credit_card, :expiration)
+                      = date_select_helper(c)
             %ul
               %li.option
-                - label('Terms', @user, :terms)
+                - label("Terms", @user, :terms)
                 %div{:style => 'float:left'}
                   %label
                     = f.check_box :terms
                     I agree to the
-                    = link_to('Terms and Conditions', {:controller => 'legal', :action => 'terms_and_conditions'}, :target => '_blank')
-                    - if session[:plan] == 'premium'
+                    = link_to("Terms and Conditions", {:controller => 'legal', :action => 'terms_and_conditions'}, :target => '_blank')
+                    - if Subscription::VALID_PREMIUM_PLANS.include?(session[:plan])
                       and the
-                      = link_to('User agreement', {:controller => 'legal', :action => 'user_agreement'}, :target => '_blank')
-
-            =submit_tag "Sign Up!", :class => "confirm"
-        - if !session[:key]
+                      = link_to("User agreement", {:controller => 'legal', :action => 'user_agreement'}, :target => '_blank')
+            = submit_tag "Sign Up!", :class => "confirm"
+        
+        /////////////////////////////////////////////
+        // Don't include right box if it's a freebie
+        /////////////////////////////////////////////
+        
+        - if subscription_freeby?
           #right-box
             #plan-box
               %h4 
                 You're signing up for the
-                -if session[:plan] == 'trial'
+                - if session[:plan] == Subscription::BASIC_14_TRIAL_SUBSCRIPTION
                   %strong 14-Day Trial
-                -else
+                - else
                   %strong= session[:plan].upcase
                 plan 
-                -if session[:plan] == 'basic'
+                - if Subscription::VALID_BASIC_PLANS.include?(session[:plan])
                   for $25/mo.
-                -if session[:plan] == 'premium'
+                - if Subscription::VALID_PREMIUM_PLANS.include?(session[:plan])
                   for $100/mo.
                 which includes:
               %ul
-                -if session[:plan] == 'basic' || session[:plan] == 'trial'
+                - if Subscription::VALID_BASIC_PLANS.include?(session[:plan])
                   %li 3 video workouts a week targeted to your goals
-                -elsif session[:plan] == 'premium'
+                - if Subscription::VALID_PREMIUM_PLANS.include?(session[:plan])
                   %li 24 hour access to a person trainer
                   %li 3 videos a week crafted by your own personal trainer
                 %li Food Journal with Calorie Counter
                 %li Personalized Activity Tracker
                 %li Visual Weight Tracker
-            -if session[:plan] == 'free'
+                
+            - if session[:plan] == Subscription::BASIC_14_TRIAL_SUBSCRIPTION
               #upgrade-box
-                =link_to('Upgrade to our BASIC plan', signup_path(:plan => 'basic'), :class => 'upgrade')
+                = link_to("Upgrade to our BASIC plan", signup_path(:plan => 'basic'), :class => 'upgrade')
                 #up-outer
                   #up-text
                     Add

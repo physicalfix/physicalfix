@@ -42,28 +42,28 @@ class Notifier < ActionMailer::Base
   end
   
   def basic_signup_notification(recipient)
-  recipients recipient.email
-  from  "PhysicalFix <admin@physicalfix.com>"
-  subject "Welcome to PhysicalFix"
-  body :account => recipient,
-    :home_page => url_for(:host => "www.physicalfix.com", :controller => 'welcome', :action => 'index')
+    recipients recipient.email
+    from  "PhysicalFix <admin@physicalfix.com>"
+    subject "Welcome to PhysicalFix"
+    body :account => recipient,
+      :home_page => url_for(:host => "www.physicalfix.com", :controller => 'welcome', :action => 'index')
   end
 
   def free_signup_notification(recipient)
-  recipients recipient.email
-  from  "PhysicalFix <admin@physicalfix.com>"
-  subject "Welcome to PhysicalFix"
-  body :account => recipient,
-    :home_page => url_for(:host => "www.physicalfix.com", :controller => 'welcome', :action => 'index')
+    recipients recipient.email
+    from  "PhysicalFix <admin@physicalfix.com>"
+    subject "Welcome to PhysicalFix"
+    body :account => recipient,
+      :home_page => url_for(:host => "www.physicalfix.com", :controller => 'welcome', :action => 'index')
   end
   
   def reminder_email(recipient)
-     recipients recipient.email
-     from  "PhysicalFix <admin@physicalfix.com>"
-     subject "Your PhysicalFix workouts are ready!"
-     body :account => recipient,
-        :start_date => Time.zone.now.beginning_of_week.to_date.strftime('%A %B %d, %Y'),
-        :home_page => url_for(:host => "www.physicalfix.com", :controller => 'workouts', :action => 'index')
+    recipients recipient.email
+    from  "PhysicalFix <admin@physicalfix.com>"
+    subject "Your PhysicalFix workouts are ready!"
+    body :account => recipient,
+      :start_date => Time.zone.now.beginning_of_week.to_date.strftime('%A %B %d, %Y'),
+      :home_page => url_for(:host => "www.physicalfix.com", :controller => 'workouts', :action => 'index')
   end
 
   def waitlist_welcome(recipient)
@@ -74,35 +74,35 @@ class Notifier < ActionMailer::Base
   
   def password_recovery(recipient, key)
     recipients recipient.email
-     from  "PhysicalFix <admin@physicalfix.com>"
-     subject "PhsyicalFix :: Password Recovery"
-     body :account => recipient,
-        :start_date => Time.zone.now.beginning_of_week.to_date.strftime('%A %B %d, %Y'),
-        :link => reset_password_path(key, :only_path => false)
+    from  "PhysicalFix <admin@physicalfix.com>"
+    subject "PhsyicalFix :: Password Recovery"
+    body :account => recipient,
+      :start_date => Time.zone.now.beginning_of_week.to_date.strftime('%A %B %d, %Y'),
+      :link => reset_password_path(key, :only_path => false)
   end
   
   def login_nag_email(recipient, days_since_last_login)
     recipients recipient.email
-     from  "PhysicalFix <admin@physicalfix.com>"
-     subject "physicalfix.com reminders"
-     body :account => recipient,
-        :days => days_since_last_login,
-        :home_page => url_for(:host => "www.physicalfix.com", :controller => 'welcome', :action => 'index')
+    from  "PhysicalFix <admin@physicalfix.com>"
+    subject "physicalfix.com reminders"
+    body :account => recipient,
+      :days => days_since_last_login,
+      :home_page => url_for(:host => "www.physicalfix.com", :controller => 'welcome', :action => 'index')
   end
   
   def nag_email(recipient, nag)
-     recipients recipient.email
-     from  "PhysicalFix <admin@physicalfix.com>"
-     subject "physicalfix.com reminders"
-     body :account => recipient,
-        :nags => nag,
-        :home_page => url_for(:host => "www.physicalfix.com", :controller => 'welcome', :action => 'index')
+    recipients recipient.email
+    from  "PhysicalFix <admin@physicalfix.com>"
+    subject "physicalfix.com reminders"
+    body :account => recipient,
+      :nags => nag,
+      :home_page => url_for(:host => "www.physicalfix.com", :controller => 'welcome', :action => 'index')
   end
   
   def nag_digest_email(lazy_people)
-     recipients ["podman@gmail.com", "jdz14@mac.com"]
-     from  "PhysicalFix <admin@physicalfix.com>"        
-     subject "physicalfix.com Lazy People"
-     body :lazy_people => lazy_people
+    recipients ["podman@gmail.com", "jdz14@mac.com"]
+    from  "PhysicalFix <admin@physicalfix.com>"        
+    subject "physicalfix.com Lazy People"
+    body :lazy_people => lazy_people
   end
 end

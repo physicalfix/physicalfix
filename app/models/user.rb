@@ -192,12 +192,12 @@ class User < ActiveRecord::Base
     subs.save
   end
   
-  def trial_expired?
+  def trial_expired?(the_subscription, num_days)
     subs = subscription
     return (subs &&
-      subs.product == Subscription::BASIC_SUBSCRIPTION && 
+      subs.product == the_subscription && 
       subs.state == Subscription::TRIAL_STATE &&
-      subs.created_at < 14.days.ago)
+      subs.created_at < num_days.days.ago)
   end
 
   # The number of days since the user has started a workout (used for nag emails)

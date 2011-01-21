@@ -4,7 +4,7 @@
   - if @subscription_plan == Subscription::TRIAL_SUBSCRIPTION
     %h3 Here are just a few of the things you can do with your 14-Day Trial:
   - else
-    %h3 Here are just a few of the things you can do with your account:s
+    %h3 Here are just a few of the things you can do with your account:
   - if @subscription_plan != Subscription::FREE_SUBSCRIPTION
     %p= link_to('Start a workout &raquo;', workouts_path)
   %p= link_to('Track your calories with the Food Journal &raquo;', food_log_index_path)

@@ -8,7 +8,7 @@
         %td= f.text_field :email
       %tr
         %th type
-        %td= select(:freeby, :membership_type, ["basic","premium"])
+        %td= select(:freeby, :membership_type, ["basic","premium", "vip-basic", "vip-premium"])
       %tr
         %th subject
         %td= text_field_tag :subject, nil, {:size => "30"}

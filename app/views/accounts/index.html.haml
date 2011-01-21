@@ -79,23 +79,21 @@
             \/ month
         %tr.last
           %td
-            
           %td
-            =link_to('Sign up!', signup_path(:plan => 'trial'), {:class => 'signupbutton'})
+            = link_to("Sign up!", signup_path(:plan => Subscription::BASIC_14_TRIAL_SUBSCRIPTION), {:class => 'signupbutton'})
           %td.centerbottom
-            =link_to('Sign up!', signup_path(:plan => 'basic'), {:class => 'signupbutton'})
+            = link_to("Sign up!", signup_path(:plan => Subscription::BASIC_STANDARD_SUBSCRIPTION), {:class => 'signupbutton'})
           %td
             - unless @num_pros >= 100
-              =link_to('Sign up!', signup_path(:plan => 'premium'), {:class => 'signupbutton'})
+              = link_to("Sign up!", signup_path(:plan => Subscription::PREMIUM_STANDARD_SUBSCRIPTION), {:class => 'signupbutton'})
             - else
               Sold Out
     #small_text
       We also offer a
-      =link_to('free', signup_path(:plan => 'free'))
+      = link_to('free', signup_path(:plan => Subscription::FREE_SUBSCRIPTION))
       membership (with the free membership you will have access to: food journal, exercise log, weight tracker-the workouts are not included in the free membership).
     #left
       %h2 Frequently Asked Questions
-      
       .faq.even
         %h3 What is physicalfix.com?
         %p physicalfix.com is a complete health and fitness system designed to help you reach your weight loss goals. physicalfix.com delivers customized workouts created specifically for you by a certified personal trainer. It provides a comprehensive food database containing the nutritional value of thousands of foods. And it offers an easy-to-use food journal so you can keep track of your caloric intake. Plus, physicalfix.com will chart your progress so you can see your hard work paying off.

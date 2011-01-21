@@ -3,11 +3,16 @@ class AccountsController < ApplicationController
   before_filter :find_user, :only => [:show, :edit, :update, :equipment, :workout_type, :notifications, :billing]
   ssl_required :edit, :new, :create
   ssl_allowed :show, :update
-
-  VALID_PLANS = ['trial', 'free', 'basic', 'premium']
+  
+  def get_num_premiums
+    User.all.count { |u| 
+       u.subscription &&
+      (u.subscription.product == Subscription::PREMIUM_STANDARD_SUBSCRIPTION || 
+       u.subscription.product == Subscription::PREMIUM_30_TRIAL_SUBSCRIPTION) }
+  end
   
   def index
-    @num_pros = User.all.count{|u| u.subscription && u.subscription.product == 'premium'}
+    @num_pros = get_num_premiums
     render :layout => 'splash'
   end
   
@@ -31,18 +36,13 @@ class AccountsController < ApplicationController
   end
   
   def billing
-    @num_pros = User.all.count{|u| u.subscription && u.subscription.product == 'premium'}
+    @num_pros = get_num_premiums
   end
   
   def new
-    
-    # grab key if it exists
     key = params[:k]
-    
-    # if we have a key find out what membership
     if key
       freeby = Freeby.find_by_key(key)
-      # make sure it's not been used
       if freeby && !freeby.used
         membership_type = freeby.membership_type
         session[:plan] = membership_type
@@ -53,7 +53,7 @@ class AccountsController < ApplicationController
       end
     end
       
-    if !key && params[:plan] && VALID_PLANS.include?(params[:plan])
+    if !key && params[:plan] && Subscription::VALID_NON_FREEBY_PLANS.include?(params[:plan])
       session[:plan] = params[:plan]
     end
       
@@ -61,7 +61,6 @@ class AccountsController < ApplicationController
     @height_feet = 5
     @height_inches = 0
     @credit_card = CreditCard.new
-    
     render :layout =>'splash'
   end
 
@@ -72,29 +71,18 @@ class AccountsController < ApplicationController
     params[:user][:height] = "#{params[:height_feet]}' #{params[:height_inches]}\""
 
     @user = User.new(params[:user])
-    
     @height_feet = params[:height_feet].to_i
     @height_inches = params[:height_inches].to_i
     
     key = session[:key]
     
-    if @user.valid? 
-    
-      if session[:plan] && session[:plan] == 'free'
-        @user.save
-        Subscription.create(:user_id => @user.id, :product => Subscription::FREE_SUBSCRIPTION, :state => Subscription::ACTIVE_STATE)
-        after_signup
-        
-      ##
-      ## Start: Free 14-Day Trial Modifications
-      ##
+    if @user.valid?
       
-      elsif session[:plan] == 'trial'
-        @user.save
-        Subscription.create(:user_id => @user.id, :product => Subscription::BASIC_SUBSCRIPTION, :state => Subscription::TRIAL_STATE)
-        after_signup
-
-      elsif key
+      ########################
+      ## Freeby Subscriptions
+      ########################
+      
+      if key
         # check key
         freeby = Freeby.find_by_key(key)
         if freeby 
@@ -103,16 +91,27 @@ class AccountsController < ApplicationController
           freeby.save
           session[:key] = nil
           @user.save
-          Subscription.create(:user_id => @user.id, :product => session[:plan], :state => Subscription::ACTIVE_STATE)
+          if Subscription::VALID_FREEBY_PLANS.include?(session[:plan])
+            Subscription.create(:user_id => @user.id, :product => session[:plan])
+          end     
           after_signup
         else
           redirect_to "/422.html" # invalid key
           return
         end
         
-      ##
-      ## End: Free 14-Day Trial Modifications
-      ##
+      #####################
+      ## Free Subscription
+      #####################
+        
+      elsif Subscription::VALID_FREE_PLANS.include?(session[:plan])
+        @user.save
+        Subscription.create(:user_id => @user.id, :product => session[:plan])
+        after_signup
+      
+      ########
+      ## Paid
+      ########
       
       else
         params[:credit_card][:first_name] = @user.first_name
@@ -120,12 +119,12 @@ class AccountsController < ApplicationController
         @credit_card = CreditCard.new(params[:credit_card])
     
         if @credit_card.valid?
-          if session[:plan] == 'basic'
-            product = 'basic-subscription'
-          elsif session[:plan] == 'premium'
-            product = 'premium-subscription'
+          
+          product = nil
+          if Subscription::VALID_PAID_PLANS.include?(session[:plan])
+            product = session[:plan]
           end
-    
+
           User.transaction do 
             @user.save
             @subscription = Subscription.create_subscription(@user, product, @credit_card)
@@ -141,11 +140,11 @@ class AccountsController < ApplicationController
             Subscription.create(
               :user_id => @user.id,
               :state => @subscription.state,
-              :product =>product.split('-')[0],
-              :chargify_id => @subscription.id
-            )
+              :product =>product.split('-')[0], # What is this?
+              :chargify_id => @subscription.id)
             after_signup
           end
+          
         else
           render :action => :new, :layout => 'splash'
         end
@@ -167,11 +166,10 @@ class AccountsController < ApplicationController
     params[:user][:equipment] = params[:user][:equipment].join("|") if params[:user][:equipment]
     params[:user][:cell_phone] = params[:user][:cell_phone].gsub(/\D/, '') if params[:user][:cell_phone]
     params[:user][:home_phone] = params[:user][:home_phone].gsub(/\D/, '') if params[:user][:home_phone]
-
     params[:user][:height] = params[:height_feet] + '\' ' + params[:height_inches] + '"' if params[:height_feet] && params[:height_inches]
 
     if @user.update_attributes(params[:user])
-      flash[:info] = "Your info has been updated"
+      flash[:info] = "Your info has been updated."
       if params[:update_user_bucket_on_workout]
         redirect_to workouts_path
       else
@@ -189,14 +187,11 @@ class AccountsController < ApplicationController
     User.transaction do
       # cancel the subscription if there is one
       @current_user.subscription.unsubscribe
-      
       #destroy the user record (do we want to do this?)
       @current_user.destroy
-      
       #log the user out
       session[:uid] = nil
       session[:logged_in_as] = nil
-
       redirect_to root_path
     end
   end
@@ -218,19 +213,13 @@ class AccountsController < ApplicationController
  
  def after_signup
    @user.reload
-   
    #login user
    session[:uid] = @user.id
-
    #set inital weight
    @user.user_weights << UserWeight.create(:user_id => @user.id, :weight => @user.weight)
-
-
    #send welcome email
    @user.send_signup_notification
-   
    redirect_to thank_you_path
  end
- 
  
 end

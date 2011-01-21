@@ -15,25 +15,40 @@ class SessionsController < ApplicationController
       @user.update_attribute(:last_logged_in_at, Time.now)
       session[:uid] = @user.id
       
-      ##
-      ## Start: Free 14-Day Trial Modifications
-      ##
+      ###################################
+      ## Start: Free Trial Modifications
+      ###################################
     
       # Get rid of "logout" flash message
       flash.discard
 
-      if @user.trial_expired?
+      # if 14-day trial is up...
+      if @user.trial_expired?(Subscription::BASIC_SUBSCRIPTION, 14)
         @user.downgrade_to_free 
         flash[:error] = "Your 14-day trial has expired. To continue receiving workouts, please upgrade now..."
         redirect_to billing_account_path
         return
+        
+      # if 30-day vip basic trial is up...
+      elsif @user.trial_expired?(Subscription::BASIC_TRIAL_30, 30)
+        @user.downgrade_to_free
+        flash[:error] = "Your 30-day VIP Basic trial has expired. To continue receiving workouts, please upgrade now..."
+        redirect_to billing_account_path
+        return
+        
+      # if 30-day vip premium trial is up...
+      elsif @user.trial_expired?(Subscription::PREMIUM_TRIAL_30, 30)
+        @user.downgrade_to_free
+        flash[:error] = "Your 30-day VIP Premium trial has expired. To continue receiving workouts, please upgrade now..."
+        redirect_to billing_account_path
+        return
       end
 
-      ##
-      ## End: Free 14-Day Trial Modifications
-      ##
+      #################################
+      ## End: Free Trial Modifications
+      #################################
       
-      #check for credit card state
+      # check for credit card state
       if @user.subscription && Subscription::PROBLEM_STATES.include?(current_user.subscription.state)
         session[:cc_problem] = true
       end

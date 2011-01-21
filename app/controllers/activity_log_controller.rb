@@ -20,6 +20,8 @@ class ActivityLogController < ApplicationController
     else
       if @ua.errors.on(:duration)
         flash[:error] = "Please enter a valid duration"
+      elsif @ua.errors.on(:activity)
+        flash[:error] = "Please select an activity"
       end
     end
     redirect_to activity_log_index_path
