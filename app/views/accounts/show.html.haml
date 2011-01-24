@@ -9,6 +9,9 @@
         %li
           - label('Last Name', @user, :last_name)
           = f.text_field :last_name
+        %li
+          - label('Email', @user, :email)
+          = f.text_field :email
         - if session[:plan] == 'premium'
           %li
             - label('Home Phone', @user, :home_phone)
