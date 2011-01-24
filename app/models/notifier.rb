@@ -105,4 +105,10 @@ class Notifier < ActionMailer::Base
      subject "physicalfix.com Lazy People"
      body :lazy_people => lazy_people
   end
+  
+  def progress_email(user)
+    recipients user.email
+    from "PhysicalFix <admin@physicalfix.com>"
+    subject "physicalfix.com progress reminder"
+  end
 end
