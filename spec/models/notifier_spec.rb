@@ -22,5 +22,13 @@ describe Notifier do
       Notifier.deliver_premium_signup_notification(@user)
     end
   end
+  
+  describe "progress_email_notification" do
+    it "should send email" do
+      @user = mock_model(User, :email => 'test@example.com', :first_name => 'test')
+      Notifier.deliver_progress_email(@user)
+    end
+  end
+  
 end
 
