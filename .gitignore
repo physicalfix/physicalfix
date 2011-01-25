@@ -9,3 +9,4 @@ public/vids/*
 .idea
 .idea/*
 solr/data
+.rvmrc

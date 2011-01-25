@@ -1,13 +1,23 @@
 = render :partial => 'account_menu', :locals => {:section => :billing}
 %table.upgrades
   %tbody
+    
+    ///////////
+    // HEADER
+    ///////////
+    
     %tr
       %th Plan
       %th Streaming Video Workouts
       %th.bool Food, Activity &amp; Weight Logs
       %th.bool 24/7 access to Personal Trainer
       %th 
-    %tr{:class => @current_user.subscription.product == Subscription::PREMIUM_SUBSCRIPTION ? 'current' : ''}
+      
+    /////////////////////////////////
+    // PREMIUM_STANDARD_SUBSCRIPTION
+    /////////////////////////////////
+    
+    %tr{:class => @product == Subscription::PREMIUM_STANDARD_SUBSCRIPTION ? 'current' : ''}
       %td.name 
         Premium
         %em
@@ -16,7 +26,30 @@
       %td.bool YES
       %td.bool YES
       %td.action
-        - if @current_user.subscription.product == Subscription::BASIC_SUBSCRIPTION
+        - if !Subscription.premium?(@product)
+          - unless @num_pros >= 100
+            = button_to "Upgrade!", new_subscription_path(:plan => 'premium'), :class=> 'small_button'
+          - else
+            Sold Out
+        - elsif @current_user.subscription.product == Subscription::BASIC_SUBSCRIPTION && @current_user.subscription.state == Subscription::TRIAL_STATE 
+          = button_to 'Downgrade', new_subscription_path(:plan => 'basic'), :class=> 'small_button'
+        -else
+          Your Plan
+          
+    /////////////////////////////////
+    // PREMIUM_STANDARD_SUBSCRIPTION
+    /////////////////////////////////
+          
+    %tr{:class => @current_user.subscription.product == Subscription::PREMIUM_STANDARD_SUBSCRIPTION ? 'current' : ''}
+      %td.name 
+        Premium
+        %em
+          ($100/month)
+      %td 3/week Personalized
+      %td.bool YES
+      %td.bool YES
+      %td.action
+        - if @current_user.subscription.product == Subscription::BASIC_STANDARD_SUBSCRIPTION
           - unless @num_pros >= 100
             = button_to "Upgrade!", new_subscription_path(:plan => 'premium'), :class=>'small_button'
           - else
@@ -26,11 +59,11 @@
             = button_to 'Upgrade!', new_subscription_path(:plan => 'premium'), :class=>'small_button'
           - else
             Sold Out
-        - elsif @current_user.subscription.product == Subscription::BASIC_SUBSCRIPTION && @current_user.subscription.state == Subscription::TRIAL_STATE 
+        - elsif @current_user.subscription.product == Subscription::BASIC_STANDARD_SUBSCRIPTION && @current_user.subscription.state == Subscription::TRIAL_STATE 
           = button_to 'Downgrade', new_subscription_path(:plan => 'basic'), :class=>'small_button'
         -else
           Your Plan
-    %tr{:class => @current_user.subscription.product == Subscription::BASIC_SUBSCRIPTION && @current_user.subscription.state == Subscription::ACTIVE_STATE ? 'current' : ''}
+    %tr{:class => @current_user.subscription.product == Subscription::BASIC_STANDARD_SUBSCRIPTION && @current_user.subscription.state == Subscription::ACTIVE_STATE ? 'current' : ''}
       %td.name
         Basic
         %em
@@ -39,16 +72,16 @@
       %td.bool YES
       %td.bool NO
       %td.action
-        - if @current_user.subscription.product == Subscription::PREMIUM_SUBSCRIPTION
+        - if @current_user.subscription.product == Subscription::PREMIUM_STANDARD_SUBSCRIPTION
           = button_to "Downgrade", {:controller => 'subscriptions', :action => 'update', :method => :put, :product => 'basic'}, :confirm => 'Are you sure you wish to downgrade to the basic account?', :class=>'small_button'
         - elsif @current_user.subscription.product == Subscription::FREE_SUBSCRIPTION
           = button_to 'Upgrade!', new_subscription_path(:plan => 'basic'), :class=>'small_button'
-        - elsif @current_user.subscription.product == Subscription::BASIC_SUBSCRIPTION && @current_user.subscription.state == Subscription::TRIAL_STATE 
+        - elsif @current_user.subscription.product == Subscription::BASIC_STANDARD_SUBSCRIPTION && @current_user.subscription.state == Subscription::TRIAL_STATE 
           = button_to 'Upgrade!', new_subscription_path(:plan => 'basic'), :class=>'small_button'
         - else
           Your Plan
-    - if @current_user.subscription.product == Subscription::BASIC_SUBSCRIPTION && @current_user.subscription.state == Subscription::TRIAL_STATE
-      %tr{:class => @current_user.subscription.product == Subscription::BASIC_SUBSCRIPTION && @current_user.subscription.state == Subscription::TRIAL_STATE ? 'current' : ''}
+    - if @current_user.subscription.product == Subscription::BASIC_STANDARD_SUBSCRIPTION && @current_user.subscription.state == Subscription::TRIAL_STATE
+      %tr{:class => @current_user.subscription.product == Subscription::BASIC_STANDARD_SUBSCRIPTION && @current_user.subscription.state == Subscription::TRIAL_STATE ? 'current' : ''}
         %td.name
           14-Day Trial
           %em

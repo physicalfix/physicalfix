@@ -1,34 +1,34 @@
 class SubscriptionsController < ApplicationController
   ssl_required :edit, :new, :create
   def index
-    
+
   end
 
   def new
     @credit_card = session[:cc] || CreditCard.new
     @subscription = session[:subscription]
-    
+
     session.delete(:cc)
     session.delete(:subscription)
-    
+
     if params[:plan]
       session[:upgrade] = true
       session[:plan] = params[:plan]
     end
 
     @plan = session[:plan]
-    
+
     unless @plan
       redirect_to root_path
       return
     end
-    
+
     render :layout =>'splash'
   end
 
   def create
     @credit_card = CreditCard.new(params[:credit_card])
-        
+
     if @credit_card.valid?
       # set the proper chargify plan based on the user's subscription_type
       if params[:plan]
@@ -39,8 +39,8 @@ class SubscriptionsController < ApplicationController
         plan = "#{params[:plan]}-subscription"
       else
         plan = case current_user.subscription.product
-          when Subscription::BASIC_SUBSCRIPTION then 'basic-subscription'
-          when Subscription::PREMIUM_SUBSCRIPTION then 'premium-subscription'
+        when Subscription::BASIC_SUBSCRIPTION then 'basic-subscription'
+        when Subscription::PREMIUM_SUBSCRIPTION then 'premium-subscription'
         end
       end
 
@@ -48,18 +48,18 @@ class SubscriptionsController < ApplicationController
 
       # create the subscription using the subscription manager
       @subscription = Subscription.create_subscription(
-              current_user,
-              plan,
-              @credit_card)
+        current_user,
+        plan,
+      @credit_card)
 
       if !@subscription.errors.errors.empty?
         session[:cc] = @credit_card
         session[:subscription] = @subscription
         redirect_to new_subscription_path
       else
-        Subscription.create(  :user_id => current_user.id, 
-                              :state => @subscription.state, 
-                              :product =>plan.split('-')[0], 
+        Subscription.create(  :user_id => current_user.id,
+                              :state => @subscription.state,
+                              :product =>plan.split('-')[0],
                               :chargify_id => @subscription.id)
         @current_user.reload
         session[:subscription_plan] = session[:plan]
@@ -70,7 +70,7 @@ class SubscriptionsController < ApplicationController
           flash[:info] = 'Thank you for upgrading!'
           redirect_to workouts_path
         end
-          
+
       end
     else
       session[:cc] = @credit_card
@@ -79,7 +79,7 @@ class SubscriptionsController < ApplicationController
   end
 
   def edit
-    
+
   end
 
   def update

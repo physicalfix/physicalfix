@@ -9,8 +9,10 @@
         /          .billing_error
         /            = flash[:error]
         
-        - if session[:plan] == Subscription::BASIC_14_TRIAL_SUBSCRIPTION
+        - if Subscription.day_14_trial?(session[:plan])
           %h2 Congrats! Your 14-day trial and a healthier lifestyle start here!
+        - elsif Subscription.day_30_trial?(session[:plan])
+          %h2 Congrats! Your 30-day trial and a healthier lifestyle start here!
         - else
           %h2 Congrats! You've just taken the first step toward a healthier lifestyle!
 
@@ -39,7 +41,7 @@
                 // Start: Premium fields
                 /////////////////////////
                   
-                - if Subscription::VALID_PREMIUM_PLANS.include?(session[:plan])
+                - if Subscription.premium?(session[:plan])
                   %li
                     - label("Home Phone", @user, :home_phone)
                     = f.text_field :home_phone
@@ -96,7 +98,7 @@
             // Credit Card
             ///////////////
             
-            - if subscription_free_and_freeby?
+            - if Subscription.paid?(session[:plan])
               %fieldset
                 = image_tag('lock.png', :id => 'lock')
                 %span#secure
@@ -133,7 +135,7 @@
                     = f.check_box :terms
                     I agree to the
                     = link_to("Terms and Conditions", {:controller => 'legal', :action => 'terms_and_conditions'}, :target => '_blank')
-                    - if Subscription::VALID_PREMIUM_PLANS.include?(session[:plan])
+                    - if Subscription.premium?(session[:plan])
                       and the
                       = link_to("User agreement", {:controller => 'legal', :action => 'user_agreement'}, :target => '_blank')
             = submit_tag "Sign Up!", :class => "confirm"
@@ -142,32 +144,34 @@
         // Don't include right box if it's a freebie
         /////////////////////////////////////////////
         
-        - if subscription_freeby?
+        - if !Subscription.freeby?(session[:plan])
           #right-box
             #plan-box
               %h4 
                 You're signing up for the
-                - if session[:plan] == Subscription::BASIC_14_TRIAL_SUBSCRIPTION
+                - if Subscription.day_14_trial?(session[:plan])
                   %strong 14-Day Trial
+                - elsif Subscription.day_30_trial?(session[:plan])
+                  %strong 30-Day VIP Trial
                 - else
                   %strong= session[:plan].upcase
                 plan 
-                - if Subscription::VALID_BASIC_PLANS.include?(session[:plan])
+                - if Subscription.basic?(session[:plan]) && Subscription.paid?(session[:plan])
                   for $25/mo.
-                - if Subscription::VALID_PREMIUM_PLANS.include?(session[:plan])
+                - elsif Subscription.premium?(session[:plan]) && Subscription.paid?(session[:plan])
                   for $100/mo.
                 which includes:
               %ul
-                - if Subscription::VALID_BASIC_PLANS.include?(session[:plan])
+                - if Subscription.basic?(session[:plan])
                   %li 3 video workouts a week targeted to your goals
-                - if Subscription::VALID_PREMIUM_PLANS.include?(session[:plan])
+                - elsif Subscription.premium?(session[:plan])
                   %li 24 hour access to a person trainer
                   %li 3 videos a week crafted by your own personal trainer
                 %li Food Journal with Calorie Counter
                 %li Personalized Activity Tracker
                 %li Visual Weight Tracker
                 
-            - if session[:plan] == Subscription::BASIC_14_TRIAL_SUBSCRIPTION
+            - if Subscription.free?(session[:plan])
               #upgrade-box
                 = link_to("Upgrade to our BASIC plan", signup_path(:plan => 'basic'), :class => 'upgrade')
                 #up-outer

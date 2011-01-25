@@ -1,11 +1,15 @@
 class Admin::FreebiesController < AdminAreaController
-  
+
   def index
     @freebies = Freeby.all
   end
-  
+
   def new
     @freeby = Freeby.new
+    @basic_free = Subscription::BASIC_FREE_SUBSCRIPTION
+    @premium_free = Subscription::PREMIUM_FREE_SUBSCRIPTION
+    @basic_30 = Subscription::BASIC_30_TRIAL_SUBSCRIPTION
+    @premium_30 = Subscription::PREMIUM_30_TRIAL_SUBSCRIPTION
   end
 
   def create

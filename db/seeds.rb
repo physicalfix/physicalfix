@@ -1,8 +1,8 @@
 class Exercise < ActiveRecord::Base
- private
- def attributes_protected_by_default
-   []
- end
+  private
+    def attributes_protected_by_default
+      []
+    end
 end
 
 Exercise.create(:id =>3, :name=>'Band Bentover Row', :musclegroup_id => 2)
@@ -54,11 +54,11 @@ Exercise.create(:id =>48, :name=>'Dumbbell Biceps Curl to Press', :musclegroup_i
 
 class UserBucket < ActiveRecord::Base
 
- private
+  private
 
- def attributes_protected_by_default
-   []
- end
+    def attributes_protected_by_default
+      []
+    end
 end
 
 UserBucket.create(:id => 1, :name => 'Elite Level-Standard Length', :description => 'These workouts are designed for the experienced individual (currently doing 4-5 strenuous workouts per week on their own) with no physical limitations.  These workouts will be longer in nature, averaging roughly 40 minutes.', :approved => true)
@@ -77,11 +77,11 @@ UserBucket.create(:id => 13, :name => 'All Levels-No Equipment', :description =>
 
 class WorkoutSkeleton < ActiveRecord::Base
 
- private
+  private
 
- def attributes_protected_by_default
-   []
- end
+    def attributes_protected_by_default
+      []
+    end
 end
 
 WorkoutSkeleton.create(:id => 1, :user_bucket_id => 1, :name => 'Workout #1', :description => "As far as strength goes, this workout was designed to focus primarily on your chest, back, and arms.  I've used the cardio and power exercises to bring your heart rate up in segments. This is a fun, but tough workout.")
@@ -123,11 +123,11 @@ WorkoutSkeleton.create(:id => 37, :user_bucket_id => 13, :name => 'Workout #3', 
 
 class WorkoutSkeletonMusclegroup < ActiveRecord::Base
 
- private
+  private
 
- def attributes_protected_by_default
-   []
- end
+    def attributes_protected_by_default
+      []
+    end
 end
 
 WorkoutSkeletonMusclegroup.create(:id=>1,:workout_skeleton_id=>1, :musclegroup_id=>7, :display_order=>0)
@@ -1344,9 +1344,9 @@ WorkoutSkeletonMusclegroup.create(:id=>1225,:workout_skeleton_id=>3, :musclegrou
 
 class ExerciseClip < ActiveRecord::Base
   private
-  def attributes_protected_by_default
-    []
-  end
+    def attributes_protected_by_default
+      []
+    end
 end
 ExerciseClip.create(:id => 5, :exercise_id => 3, :clip_file_name => 'Band_Bentover_Row-20_Reps.mov.ff.mp4', :clip_content_type => 'video/mp4', :reps => '20', :clip_file_size =>3665763, :seconds => 49)
 ExerciseClip.create(:id => 6, :exercise_id => 3, :clip_file_name => 'Band_Bentover_Row-60_Seconds.mov.ff.mp4', :clip_content_type => 'video/mp4', :reps => '60s', :clip_file_size =>5493773, :seconds => 73)

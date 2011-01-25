@@ -17,13 +17,13 @@ class User < ActiveRecord::Base
   has_one :medical_history
 
   validates_format_of :password, :with => /^([\x20-\x7E]){4,16}$/,
-                        :message => "must be 4 to 16 characters",
-                        :unless => :password_is_not_being_updated?
-                        
+    :message => "must be 4 to 16 characters",
+    :unless => :password_is_not_being_updated?
+
   validates_presence_of :first_name, :last_name, :email, :weight, :target_weight, :height, :birthday, :goals, :fitness_level
   validates_uniqueness_of :email, :case_sensitive => false
   validates_confirmation_of :password, :email, :on => :create
-  
+
   validates_numericality_of :weight, :target_weight
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
 
@@ -32,9 +32,9 @@ class User < ActiveRecord::Base
 
   validates_length_of :home_phone, :within => 5..16, :if => Proc.new {|user| user.home_phone && user.home_phone.length > 0}
   validates_format_of :home_phone, :with => /^[+\/\- () 0-9]+$/, :if => Proc.new {|user| user.home_phone && user.home_phone.length > 0}
-  
+
   validates_acceptance_of :terms
-  
+
   attr_reader :password
 
   # TODO: move to notifier.rb?
@@ -46,7 +46,9 @@ class User < ActiveRecord::Base
     :activity => "Our system shows that you haven’t entered any activities in {days} days.\nConsistency is key in any exercise regimen and keeping track of the number of days you get in your workouts is an important motivational key!\nFollow this link to go directly to your activity log: {activity_link}"
   }
 
-  # roles ==========================================================================================
+  #########
+  ## Roles
+  #########
   def has_role?(role)
     roles.count(:conditions => ['name = ?', role]) > 0
   end
@@ -54,12 +56,12 @@ class User < ActiveRecord::Base
   def roles_string
     user_roles.collect{ |ur| "#{ur.role.name},"}.to_s.chop
   end
-  
+
   def add_role(role)
     return if has_role?(role)
     roles << Role.find_by_name(role)
   end
-  
+
   def remove_role(role)
     return if !has_role?(role)
     r = Role.find_by_name(role)
@@ -68,39 +70,45 @@ class User < ActiveRecord::Base
     end
   end
 
-  #password ========================================================================================
-  # if the password isn't being updated, don't run the validation
+  ############
+  ## Password
+  ############
+
+  # If the password isn't being updated, don't run the validation.
   def password_is_not_being_updated?
-      self.id and !self.password
+    self.id and !self.password
   end
-  
+
   def password=(pw)
-    @password = pw #used by confirmation validator
+    @password = pw # Used by confirmation validator
     unless password_is_not_being_updated?
-      salt = [Array.new(6){rand(256).chr}.join].pack('m').chomp #2^48 combos
+      salt = [Array.new(6){rand(256).chr}.join].pack('m').chomp # 2^48 combos
       self.password_salt, self.password_hash = salt, Digest::MD5.hexdigest(pw + salt)
     end
   end
-  
+
   def password_is?(pw)
     Digest::MD5.hexdigest(pw + password_salt) == password_hash
   end
 
-  # workouts =======================================================================================
-  # A user needs workouts if they don't have three workouts for the coming week and they meet the
-  # cutoff for receiving workouts for the coming week
+  ###########
+  # Workouts
+  ###########
+
+  # A user needs workouts if they don't have three workouts for the coming week
+  # and they meet the cutoff for receiving workouts for the coming week.
   def needs_workouts?
     meets_cutoff = true
     if created_at > 7.days.ago
       meets_cutoff = created_at < (Time.zone.now.end_of_week - 24.hours)
     end
     !has_role?('Admin') &&
-            subscription && subscription.product == Subscription::PREMIUM_SUBSCRIPTION &&
-            !medical_history.nil? && meets_cutoff &&
-            !has_all_workouts?
+      subscription && Subscription::VALID_PREMIUM_PLANS.include?(subscription.product) &&
+      !medical_history.nil? && meets_cutoff &&
+      !has_all_workouts?
   end
 
-  # A user has all workouts if they have three workouts for the coming week
+  # A user has all workouts if they have three workouts for the coming week.
   def has_all_workouts?
     week_start = (Time.zone.now + 1.week).beginning_of_week.to_date
     workouts.count(:conditions => ['week_of = ?', week_start.to_s(:db)]) >= 3
@@ -134,35 +142,36 @@ class User < ActiveRecord::Base
     }
     @completed
   end
-  
+
   def generate_workouts
-    # only basic users get generated workouts
-    return false unless subscription && subscription.product == Subscription::BASIC_SUBSCRIPTION
-    
-    # prevent getting stuck in look by double checking the equipment in a user bucket
+    # Only basic users get generated workouts.
+    return false unless subscription && Subscription::VALID_BASIC_PLANS.include?(subscription.product)
+
+    # Prevent getting stuck in loop by double checking the equipment in a user bucket.
     return 'bad bucket' unless user_bucket.enough_equipment?(equipment)
-    
-    # workouts are generate on login for the current week
+
+    # Workouts are generated on login for the current week.
     week = Time.zone.now.beginning_of_week
-    
+
     return if workouts.find_all_by_week_of(week.to_date).size >= user_bucket.workout_skeletons.size
-    
-    # loop through the skeletons and generate a workout for each one
+
+    # Loop through the skeletons and generate a workout for each one.
     user_bucket.workout_skeletons.each do |skeleton|
       skeleton.generate_workout(self, week)
     end
-    
   end
-  
-  # emails =========================================================================================
-  
-  # determines if a user will get a workout ready email
+
+  #########
+  # Emails
+  #########
+
+  # Determines if a user will get a workout ready email
   def get_reminder?
     signed_up_over_a_week_ago = created_at < 7.days.ago
     signed_up_before_cutoff = (created_at > 7.days.ago && created_at < Time.zone.now.end_of_week - 24.hours)
     return (signed_up_over_a_week_ago ||
-            signed_up_before_cutoff) &&
-            subscription && subscription.product != Subscription::FREE_SUBSCRIPTION
+    signed_up_before_cutoff) &&
+      subscription && subscription.product != Subscription::FREE_SUBSCRIPTION
   end
 
 
@@ -170,34 +179,21 @@ class User < ActiveRecord::Base
   # TODO: have this check to see if the user actually has all of their workouts?
   def self.send_reminders
     User.find(:all).each do |u|
-        Notifier.deliver_reminder_email(u) if u.get_reminder?
+      Notifier.deliver_reminder_email(u) if u.get_reminder?
     end
   end
-  
-  # trial =========================================================================================
-  
+
+  ########
+  # Trial
+  ########
+
   def self.check_expired_trials
     User.find(:all).each do |u|
-      if u.trial_expired?
-        u.downgrade_to_free
+      if u.trial_expired?(u.subscription.product)
+        u.subscription.unsubscribe
         Notifier.deliver_trial_expired_notification(u)
       end
     end
-  end
-  
-  def downgrade_to_free
-    subs = subscription
-    subs.product = Subscription::FREE_SUBSCRIPTION
-    subs.state = Subscription::ACTIVE_STATE
-    subs.save
-  end
-  
-  def trial_expired?(the_subscription, num_days)
-    subs = subscription
-    return (subs &&
-      subs.product == the_subscription && 
-      subs.state == Subscription::TRIAL_STATE &&
-      subs.created_at < num_days.days.ago)
   end
 
   # The number of days since the user has started a workout (used for nag emails)
@@ -249,9 +245,8 @@ class User < ActiveRecord::Base
 
   # Sends out all nag emails. A user will receive a nag after three, six, and nine days. After nine
   # days they will cease to receive an email. If the user hasn't logged in, they will only get the
-  # login nag, otherwise they will receive a digest of nags
+  # login nag, otherwise they will receive a digest of nags.
   def self.send_nag_emails
-    
     login_users = []
     workout_users = []
     weight_users = []
@@ -259,23 +254,22 @@ class User < ActiveRecord::Base
     activity_users = []
     
     User.all.each do |user|
-      # skip if the user has no subscription type
+      # Skip if the user has no subscription type
       next if user.subscription_type.nil?
       next if user.reminder_emails == false
       
       if user.days_since_last_login > 0 && user.days_since_last_login % 3 == 0 && user.days_since_last_login <= 9
-        # deliver nag email to user
+        # Deliver nag email to user.
         Notifier.deliver_login_nag_email(user, user.days_since_last_login)
 
-        # if it's been 9 days add it to the digest
+        # If it has been 9 days, add it to the digest...
         if user.days_since_last_login == 9
          login_users << user
         end
         
-        # don't worry about the rest of the nags. it's obvious if they haven't
-        # logged in yet.
+        # Don't worry about the rest of the nags. 
+        # It's obvious if they haven't logged in yet.
         next
-        
       end
           
       nags = ""
@@ -324,27 +318,34 @@ class User < ActiveRecord::Base
         :users_who_have_not_entered_an_activity_in_nine_days => activity_users
       })
     end
-    
-    
   end
 
-  # Sends out a welcome email based on the after_create filter
+  # Sends out a welcome email based on the after_create filter.
   # TODO: move to a background process
   # TODO: make HTML and pretty
   def send_signup_notification
     return unless subscription
-    if subscription.product == Subscription::PREMIUM_SUBSCRIPTION
-      Notifier.send_later(:deliver_premium_signup_notification, self)
-    elsif subscription.product == Subscription::BASIC_SUBSCRIPTION && subscription.state == Subscription::ACTIVE_STATE
-      Notifier.send_later(:deliver_basic_signup_notification, self)
-    elsif subscription.product == Subscription::BASIC_SUBSCRIPTION && subscription.state == Subscription::TRIAL_STATE
-      Notifier.send_later(:deliver_trial_signup_notification, self)
-    elsif subscription.product == Subscription::FREE_SUBSCRIPTION
-      Notifier.send_later(:deliver_free_signup_notification, self)
+  
+    case subscription.product
+      when Subscription::FREE_SUBSCRIPTION
+        Notifier.send_later(:deliver_free_signup_notification, self)
+      when Subscription::PREMIUM_FREE_SUBSCRIPTION, Subscription::PREMIUM_STANDARD_SUBSCRIPTION
+        Notifier.send_later(:deliver_premium_signup_notification, self)
+      when Subscription::BASIC_FREE_SUBSCRIPTION, Subscription::BASIC_STANDARD_SUBSCRIPTION
+        Notifier.send_later(:deliver_basic_signup_notification, self)
+      when Subscription::BASIC_14_TRIAL_SUBSCRIPTION
+        Notifier.send_later(:deliver_basic_14_trial_signup_notification, self)
+      when Subscription::BASIC_30_TRIAL_SUSBCRIPTION
+        Notifier.send_later(:deliver_basic_30_trial_signup_notification, self)
+      when Subscription::PREMIUM_30_TRIAL_SUBSCRIPTION
+        Notifier.send_later(:deliver_basic_30_trial_signup_notification, self)
     end
   end
 
-  # weight =========================================================================================
+  #########
+  # Weight
+  #########
+  
   # The current weight of the user based on the last user_weight entered for that user
   def current_weight
     return weight if user_weights.length == 0
@@ -353,57 +354,57 @@ class User < ActiveRecord::Base
 
   # The amount of weight gained or lost for a given date. This is based on the number of calories
   # ingested minus the number of calories burned divided by 3500. 3500 calories burned should be
-  # about one pound weight loss
+  # about one pound weight loss.
   def weight_balance(date = Time.zone.now)
     return calorie_balance(date) / 3500
-  end
+              end
 
-  # The average amount of weight gained or lost over a given range based on calorie balance alone
-  def average_weight_balance(range = 1.week.ago.to_date..Time.zone.now.to_date)
-    return average_calorie_balance(range) / 3500
-  end
+              # The average amount of weight gained or lost over a given range based on calorie balance alone
+              def average_weight_balance(range = 1.week.ago.to_date..Time.zone.now.to_date)
+                return average_calorie_balance(range) / 3500
+              end
 
-  # Returns a hash of weight stats that tell how much weight was gained or lost over the month, year
-  # month or all time
-  def weight_stats
-    if user_weights.size > 0
-      curr_weight = user_weights.find(:all, :order => 'user_weights.created_at DESC', :limit => 1)[0].weight
+              # Returns a hash of weight stats that tell how much weight was gained or lost
+              # over the month, year month, or all time.
+              def weight_stats
+                if user_weights.size > 0
+                  curr_weight = user_weights.find(:all, :order => 'user_weights.created_at DESC', :limit => 1)[0].weight
 
-      wya = user_weights.find(:all, :conditions => ["user_weights.created_at > ?", 1.year.ago], :order => 'user_weights.created_at ASC', :limit =>1)
-      weight_year_ago = wya.size > 0 ? wya[0].weight : weight
+                  wya = user_weights.find(:all, :conditions => ["user_weights.created_at > ?", 1.year.ago], :order => 'user_weights.created_at ASC', :limit =>1)
+                  weight_year_ago = wya.size > 0 ? wya[0].weight : weight
 
-      wma = user_weights.find(:all, :conditions => ["user_weights.created_at > ?", 1.month.ago], :order => 'user_weights.created_at ASC', :limit =>1)
-      weight_month_ago = wma.size > 0 ? wma[0].weight : weight
-    else
-      curr_weight = weight_year_ago = weight_month_ago = weight
-    end
-    {
-      :all => {
-        :lbs => (curr_weight - weight),
-        :percent =>  sprintf("%.2f",((curr_weight.to_f - weight.to_f)/weight.to_f)*100)
+                  wma = user_weights.find(:all, :conditions => ["user_weights.created_at > ?", 1.month.ago], :order => 'user_weights.created_at ASC', :limit =>1)
+                  weight_month_ago = wma.size > 0 ? wma[0].weight : weight
+                else
+                  curr_weight = weight_year_ago = weight_month_ago = weight
+                end
+
+                {
+                  :all => {
+                    :lbs => (curr_weight - weight),
+                    :percent =>  sprintf("%.2f",((curr_weight.to_f - weight.to_f)/weight.to_f)*100)
       },
       :ytd => {
         :lbs => (curr_weight - weight_year_ago),
         :percent => sprintf("%.2f",((curr_weight.to_f - weight_year_ago.to_f)/ weight_year_ago.to_f)*100)
-      },
-      :mtd => {
-        :lbs => (curr_weight - weight_month_ago),
-        :percent => sprintf("%.2f",((curr_weight.to_f - weight_month_ago.to_f)/weight_month_ago.to_f)*100)
+                  },
+                  :mtd => {
+                    :lbs => (curr_weight - weight_month_ago),
+                    :percent => sprintf("%.2f",((curr_weight.to_f - weight_month_ago.to_f)/weight_month_ago.to_f)*100)
       }
     }
+    
   end
 
   # Returns a hash of weights and body pictures formatted for a google annotated timeline
   def weight_graph
     if user_weights.size > 0
       start_day = [1.month.ago.to_date, created_at.to_date].min
-
       uw = user_weights.group_by{|w| w.created_at.to_date}
-
       weights = Hash.new
       images = Hash.new
-
       last_weight = weight
+      
       (start_day..Time.zone.now.to_date).sort.each do |d|
         if uw[d] == nil
           weights[d] = {:weight => last_weight}
@@ -412,11 +413,11 @@ class User < ActiveRecord::Base
           images[d] = ['Picture Update', "<a href='#{weight_tracker_path(uw[d][0])}' id='#{d}'><img src='#{uw[d][0].weight_image.url(:thumb)}' /></a>"] if !uw[d][0].weight_image.path.nil?
           last_weight = uw[d][0].weight
         end
-
       end
 
       days = 1
       awb = average_weight_balance
+      
       (Time.zone.now.to_date..Time.zone.now.to_date+1.week).each do |d|
         fw = {:forecasted_weight => last_weight + (awb * days)}
         if weights[d]
@@ -424,17 +425,19 @@ class User < ActiveRecord::Base
         else
           weights[d] = fw
         end
-
         days += 1
-      end
-
-      { :weights => weights, :images => images}
+      end  
+      { :weights => weights, :images => images }
+      
     else
       { :weights => {}, :images => {} }
     end
   end
 
-  # nutrition ======================================================================================
+  ############
+  # Nutrition
+  ############ 
+  
   # The amount of calories ingested minus the amount of calories burned for a given day
   def calorie_balance(date = Time.zone.now.to_date)
     ci = calorie_intake(date)
@@ -474,15 +477,13 @@ class User < ActiveRecord::Base
 
   # Sets the tdee for a user for a given date. Only one tdee can be set per day
   def set_tdee(date = Time.now)
-    tdee_today = user_activities.find_by_name('Daily Energy Expenditure', :conditions => ['activity_date = ?', Time.now.beginning_of_day.utc])
-    
+    tdee_today = user_activities.find_by_name('Daily Energy Expenditure', :conditions => ['activity_date = ?', Time.now.beginning_of_day.utc])  
     if !tdee_today && calorie_intake > 0
       UserActivity.create(:user_id => id, :name => 'Daily Energy Expenditure', :activity_date => Time.now.beginning_of_day, :calories_burned => tdee, :duration => 0)
     end
-    
   end
 
-  # Calculated the tdee for a given user
+  # Calculates the tdee for a given user
   def tdee
     return 0 unless current_weight
 
@@ -502,10 +503,10 @@ class User < ActiveRecord::Base
     end
   end
 
-  # Calculates the amount of calories a person should eat. A calorie restricted diet is give to
-  # people trying to lose weight
+  # Calculates the amount of calories a person should eat. A calorie restricted diet is given to
+  # people trying to lose weight.
   def daily_calorie_allotment
-    #give the user a restricted calorie allotment if the user is trying to lose weight
+    # Give the user a restricted calorie allotment if the user is trying to lose weight.
     if self.target_weight < self.weight
       tdee - 650
     else
@@ -528,7 +529,10 @@ class User < ActiveRecord::Base
     self.daily_calorie_allotment * 0.025
   end
 
-  # static functions ===============================================================================
+  ####################
+  ## Static Functions
+  ####################
+  
   # The number of users that signed up this month
   def self.new_users_month_count
     User.count(:conditions => ['created_at > ?', 1.month.ago])
@@ -551,8 +555,11 @@ class User < ActiveRecord::Base
     result
   end
 
-  # misc ===========================================================================================
-  # returns true if the users has a food as one of their favorites otherwise return false
+  #######
+  # Misc
+  #######
+  
+  # Returns true if the users has a food as one of their favorites otherwise return false
   def has_favorite_food?(food_id)
     if fi = food_items.find_by_food_id(food_id)
       return fi.favorite_food_id
@@ -568,8 +575,8 @@ class User < ActiveRecord::Base
   end
 
   # The user's full name
-  def full_name
-    return "#{first_name} #{last_name}"
-  end
+                                                def full_name
+                                                  return "#{first_name} #{last_name}"
+                                                end
 
-end
+                                                end

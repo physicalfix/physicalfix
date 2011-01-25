@@ -34,21 +34,21 @@ module ApplicationHelper
   end
 
   def login_box
-   output = '<div id="login_logout"><h3>'
-   unless session[:uid].blank?
-     output << 'Hello '
-     output << User.find(session[:uid]).first_name
-     output << '<em> '
-     output << link_to("(Logout)", logout_path)
-     output << '</em>'
+    output = '<div id="login_logout"><h3>'
+    unless session[:uid].blank?
+      output << 'Hello '
+      output << User.find(session[:uid]).first_name
+      output << '<em> '
+      output << link_to("(Logout)", logout_path)
+      output << '</em>'
     else
-     output << '<em>Not logged in.</em> '
-     output << link_to('Login', login_path)
+      output << '<em>Not logged in.</em> '
+      output << link_to('Login', login_path)
     end
     output << '</h3></div>'
     output << '<div style="clear:both"></div>'
   end
-  
+
   def split_time(seconds)
     min = (seconds.to_f / 60.0).floor
     sec = (seconds.to_f % 60.0).round
@@ -63,7 +63,7 @@ module ApplicationHelper
     output = "#{min}m "
     output << "#{sec}s"
   end
-  
+
   def windowed_pagination_links(total_pages, current_page, options)
     link_to_current_page = options[:link_to_current_page]
     always_show_anchors = options[:always_show_anchors]
@@ -100,4 +100,4 @@ module ApplicationHelper
     end
 
   end
- end
+end

@@ -1,25 +1,43 @@
 %ul.account_tabs
-  -if section == :account
-    %li.selected= link_to 'Account Overview', account_path
-  -else
-    %li= link_to 'Account Overview', account_path
-
-  -if section == :notifications
-    %li.selected= link_to 'Notifications'
-  -else
-    %li= link_to 'Notifications', notifications_account_path
-  -if @current_user.subscription.product != Subscription::FREE_SUBSCRIPTION
-    -if section == :equipment
-      %li.selected= link_to 'Equipment', equipment_account_path
-    -else
-      %li= link_to 'Equipment', equipment_account_path
-  -if @current_user.subscription.product == Subscription::BASIC_SUBSCRIPTION
-    -if section == :workout_type
-      %li.selected= link_to 'Workout Type', workout_type_account_path
-    -else
-      %li= link_to 'Workout Type', workout_type_account_path
   
-  -if section == :billing
-    %li.selected= link_to 'Plans &amp; Billing', billing_account_path
-  -else
-    %li= link_to 'Plans &amp; Billing', billing_account_path
+  ////////////////////////
+  // Account Overview Tab
+  ////////////////////////
+  - if section == :account
+    %li.selected= link_to "Account Overview", account_path
+  - else
+    %li= link_to "Account Overview", account_path
+
+  /////////////////////
+  // Notifications Tab
+  /////////////////////
+  - if section == :notifications
+    %li.selected= link_to "Notifications"
+  - else
+    %li= link_to "Notifications", notifications_account_path
+    
+  /////////////
+  // Equipment
+  /////////////
+  - if !Subscription.free?(@current_user.subscription.product)
+    - if section == :equipment
+      %li.selected= link_to "Equipment", equipment_account_path
+    - else
+      %li= link_to "Equipment", equipment_account_path
+      
+  ////////////////////
+  // Workout Type Tab
+  ////////////////////    
+  - if Subscription.basic?(@current_user.subscription.product)
+    - if section == :workout_type
+      %li.selected= link_to "Workout Type", workout_type_account_path
+    - else
+      %li= link_to "Workout Type", workout_type_account_path
+  
+  ///////////////////////
+  // Plans & Billing Tab
+  ///////////////////////
+  - if section == :billing
+    %li.selected= link_to "Plans &amp; Billing", billing_account_path
+  - else
+    %li= link_to "Plans &amp; Billing", billing_account_path
