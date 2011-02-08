@@ -2,6 +2,7 @@ log/*.log
 log/**/*
 tmp/**/*
 .DS_Store
+.rvmrc
 nbproject/
 coverage/
 public/system/clips/**/*
