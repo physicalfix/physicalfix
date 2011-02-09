@@ -246,6 +246,14 @@ class User < ActiveRecord::Base
       return 0
     end
   end
+  
+  # Sends out a progress email. A user will receive a generated progress email after 2 months of 
+  # using the service
+  def self.send_progress_email
+    User.all.each do |user|
+      Notifier.deliver_progress_email(user) if user.created_at.to_date == (Date.today - 2.months)
+    end
+  end
 
   # Sends out all nag emails. A user will receive a nag after three, six, and nine days. After nine
   # days they will cease to receive an email. If the user hasn't logged in, they will only get the

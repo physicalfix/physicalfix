@@ -579,6 +579,14 @@ describe User do
       User.send_nag_emails
     end
       
+    it "should send a progress email after 2 months" do
+      user_one = mock_model(User, :created_at => Date.today - 2.months)
+      user_two = mock_model(User, :created_at => Date.today - 1.month)
+      user_three = mock_model(User, :created_at => Date.today - 3.months)
+      User.stub!(:all).and_return([user_one, user_two, user_three])
+      Notifier.should_receive(:deliver_progress_email).once
+      User.send_progress_email
+    end
     
   end
 
