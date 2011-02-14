@@ -88,7 +88,7 @@ package {
 				} else {
 					trace('attaching net stream.');
 					vid.attachNetStream(ns);
-					ns.play("https://s3.amazonaws.com/myfitstream/webcam/" + escape(fileName) + ".flv");
+					ns.play("https://s3.amazonaws.com/physicalfix/webcam/" + escape(fileName) + ".flv");
 				}
 			}
 		}
