@@ -32,23 +32,34 @@ Rails::Initializer.run do |config|
   # (by default production uses :info, the others :debug)
   # config.log_level = :debug'
   
-  #config.gem 'aws-s3', :version => "0.6.2" # don't include aws-s3 it crashes startup. probably loaded elsewhere
-  config.gem 'chargify_api_ares', :version => '0.3.4'
-  config.gem 'chronic', :version => '0.2.3'
-  config.gem 'god', :version => '0.10.1'
   config.gem 'haml', :version => '3.0.9'
-  config.gem 'httparty', :version => '0.5.2'
-  config.gem 'metric_fu', :version => '1.3.0'
-  config.gem 'mongo_mapper' # updated this from 0.7.6 to 0.8.6 for use with new mongo db
-  config.gem 'rails', :version => '2.3.4'
-  config.gem 'raspell', :version => '1.1'
-  config.gem 'right_aws', :version => '2.0.0'
-  config.gem 'sinatra', :version => '1.0'
-  config.gem 'sunspot_rails', :version => '1.1.0', :lib => 'sunspot/rails' # be sure to include :lib
-  config.gem 'thin', :version => '1.2.7'
+  config.gem 'chronic', :version => '0.2.3'
   config.gem 'whenever', :version => '0.4.2'
+  config.gem 'httparty', :version => '0.5.2'
+  config.gem 'raspell', :version => '1.1'
+  config.gem 'chargify_api_ares', :version => '0.3.4'
   config.gem 'will_paginate', :version => '2.3.14'
-  config.gem 'mysql'
+  config.gem 'sunspot_rails', :version => '1.1.0', :lib => 'sunspot/rails'
+  config.gem 'mongo_mapper' # update this one
+  
+  
+  # config.gem 'aws-s3', :version => "0.6.2" # don't include aws-s3 it crashes startup. probably loaded elsewhere
+  # config.gem 'chargify_api_ares', :version => '0.3.4'
+  # config.gem 'chronic', :version => '0.2.3'
+  # config.gem 'god', :version => '0.10.1'
+  # config.gem 'haml', :version => '3.0.9'
+  # config.gem 'httparty', :version => '0.5.2'
+  # config.gem 'metric_fu', :version => '1.3.0'
+  # config.gem 'mongo_mapper' # updated this from 0.7.6 to 0.8.6 for use with new mongo db
+  # config.gem 'rails', :version => '2.3.4'
+  # config.gem 'raspell', :version => '1.1'
+  # config.gem 'right_aws', :version => '2.0.0'
+  # config.gem 'sinatra', :version => '1.0'
+  # config.gem 'sunspot_rails', :version => '1.1.0', :lib => 'sunspot/rails' # be sure to include :lib
+  # config.gem 'thin', :version => '1.2.7'
+  # config.gem 'whenever', :version => '0.4.2'
+  # config.gem 'will_paginate', :version => '2.3.14'
+  # config.gem 'mysql'
   
   # Your secret key for verifying cookie session data integrity.
   # If you change this key, all old sessions will become invalid!
