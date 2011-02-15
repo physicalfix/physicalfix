@@ -24,7 +24,7 @@ module WorkoutHelper
     days = days_of_week_between(day_of_week, start_date, end_date)
     case days
     when 1
-      if (start_date == end_date) && (start_date.wday == day_of_week) && (end_date.wday == day_of_week)
+      if start_date.wday == day_of_week
         return 1
       else
         return 2

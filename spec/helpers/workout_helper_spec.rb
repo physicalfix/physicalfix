@@ -45,6 +45,7 @@ describe WorkoutHelper do
       helper.trial_week_number(1, "Feb 15, 2011".to_date, "Feb 15, 2011".to_date).should == 1
       helper.trial_week_number(1, "Feb 16, 2011".to_date, "Feb 18, 2011".to_date).should == 1
       helper.trial_week_number(1, "Feb 14, 2011".to_date, "Feb 14, 2011".to_date).should == 1
+      helper.trial_week_number(1, "Feb 14, 2011".to_date, "Feb 15, 2011".to_date).should == 1
       helper.trial_week_number(1, "Feb 16, 2011".to_date, "Feb 16, 2011".to_date).should == 1
       helper.trial_week_number(1, "Mar 23, 2011".to_date, "Mar 23, 2011".to_date).should == 1
       helper.trial_week_number(1, "Feb 10, 2011".to_date, "Feb 15, 2011".to_date).should == 2
