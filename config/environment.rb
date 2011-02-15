@@ -34,7 +34,7 @@ Rails::Initializer.run do |config|
 
   # If you include more than the below, you get:
   # A copy of NewRelic::Agent::Agent has been removed from the module tree but is still active! (ArgumentError)
-  config.gem 'rspec', :version => '1.3.1'
+  #config.gem 'rspec', :version => '1.3.1'
   config.gem 'haml', :version => '3.0.9'
   config.gem 'chronic', :version => '0.2.3'
   config.gem 'whenever', :version => '0.4.2'
