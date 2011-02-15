@@ -39,6 +39,17 @@ describe WorkoutHelper do
     end
   end
 
+  describe "trial week number" do
+    it "should return the week of the trial" do
+      helper.trial_week_number(1, "Feb 15, 2011".to_date, "Feb 14, 2011".to_date).should == 1
+      helper.trial_week_number(1, "Feb 16, 2011".to_date, "Feb 18, 2011".to_date).should == 1
+      helper.trial_week_number(1, "Feb 10, 2011".to_date, "Feb 15, 2011".to_date).should == 1
+      helper.trial_week_number(1, "Feb 14, 2011".to_date, "Feb 14, 2011".to_date).should == 1
+      helper.trial_week_number(1, "Jan 31, 2011".to_date, "Feb 8, 2011".to_date).should == 2
+      helper.trial_week_number(1, "Feb 9, 2011".to_date, "Aug 11, 2011".to_date).should == 26
+    end
+  end
+
   describe "days of week between" do
     it "should return number of occurences of a given day between a start date and an end date" do
       helper.days_of_week_between(1, "Feb 15, 2011".to_date, "Feb 14, 2011".to_date).should == 0
