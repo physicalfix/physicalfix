@@ -20,7 +20,7 @@ Rails::Initializer.run do |config|
   # To use Rails without a database, you must remove the Active Record framework
   # config.frameworks -= [ :active_record, :active_resource, :action_mailer ]
 
-  # Only load the plugins named here, in the order given. By default, all plugins 
+  # Only load the plugins named here, in the order given. By default, all plugins
   # in vendor/plugins are loaded in alphabetical order.
   # :all can be used as a placeholder for all plugins not explicitly named
   # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
@@ -31,7 +31,10 @@ Rails::Initializer.run do |config|
   # Force all environments to use the same logger level
   # (by default production uses :info, the others :debug)
   # config.log_level = :debug'
-  
+
+  # If you include more than the below, you get:
+  # A copy of NewRelic::Agent::Agent has been removed from the module tree but is still active! (ArgumentError)
+  config.gem 'rspec', :version => '1.3.1'
   config.gem 'haml', :version => '3.0.9'
   config.gem 'chronic', :version => '0.2.3'
   config.gem 'whenever', :version => '0.4.2'
@@ -40,30 +43,19 @@ Rails::Initializer.run do |config|
   config.gem 'chargify_api_ares', :version => '0.3.4'
   config.gem 'will_paginate', :version => '2.3.14'
   config.gem 'sunspot_rails', :version => '1.1.0', :lib => 'sunspot/rails'
-  config.gem 'mongo_mapper' # update this one
-  
-  
+  config.gem 'metric_fu', :version => '1.3.0'
+  config.gem 'mongo_mapper' # updated this from 0.7.6 to 0.8.6 for use with new mongo db
+
   # config.gem 'aws-s3', :version => "0.6.2" # don't include aws-s3 it crashes startup. probably loaded elsewhere
-  # config.gem 'chargify_api_ares', :version => '0.3.4'
-  # config.gem 'chronic', :version => '0.2.3'
   # config.gem 'god', :version => '0.10.1'
-  # config.gem 'haml', :version => '3.0.9'
-  # config.gem 'httparty', :version => '0.5.2'
-  # config.gem 'metric_fu', :version => '1.3.0'
-  # config.gem 'mongo_mapper' # updated this from 0.7.6 to 0.8.6 for use with new mongo db
-  # config.gem 'rails', :version => '2.3.4'
-  # config.gem 'raspell', :version => '1.1'
   # config.gem 'right_aws', :version => '2.0.0'
   # config.gem 'sinatra', :version => '1.0'
-  # config.gem 'sunspot_rails', :version => '1.1.0', :lib => 'sunspot/rails' # be sure to include :lib
   # config.gem 'thin', :version => '1.2.7'
-  # config.gem 'whenever', :version => '0.4.2'
-  # config.gem 'will_paginate', :version => '2.3.14'
   # config.gem 'mysql'
-  
+
   # Your secret key for verifying cookie session data integrity.
   # If you change this key, all old sessions will become invalid!
-  # Make sure the secret is at least 30 characters and all random, 
+  # Make sure the secret is at least 30 characters and all random,
   # no regular words or you'll be exposed to dictionary attacks.
   config.action_controller.session = {
     :session_key => '_physicalfix_session',
@@ -98,12 +90,12 @@ Rails::Initializer.run do |config|
 end
 
 class ActiveRecord::Base
- include ActionController::UrlWriter
+  include ActionController::UrlWriter
 end
 
 chargify_config = YAML::load_file(File.join(File.dirname(__FILE__), '..', 'config', 'chargify.yml'))
 
-ENV['RAILS_ENV'] ||= 'development' 
+ENV['RAILS_ENV'] ||= 'development'
 
 Chargify.configure do |c|
   c.subdomain = chargify_config[ENV['RAILS_ENV']]['subdomain']

@@ -12,7 +12,12 @@
   - else
     #workout_week
       %div
-        %h2{:style => 'width:auto; padding: 0;'} 14-Day Trial Week #{((date = Time.now - @user.subscription.created_at) / 1.week).round + 1}
+        %h2{:style => 'width:auto; padding: 0;'}
+         // Check that week number is showing up correctly.
+         // Check that paid users aren't receiving this message.
+         // Check Josh and Karen
+          - if @user.subscription.product == Subscription::BASIC_SUBSCRIPTION && @user.subscription.state == Subscription::TRIAL_STATE
+            = "14-Day Trial Week #{days_of_week_between(1, @user.subscription.created_at, Time.now) + 1}"
     #workout_header
       %div
         %h2{:style => 'width:auto;'} Your workouts for the week of #{@week_start.strftime "%B %d, %Y"}
