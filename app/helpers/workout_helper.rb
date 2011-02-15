@@ -20,6 +20,12 @@ module WorkoutHelper
     end
   end
 
+  def trial_week_number(day_of_week, start_date, end_date)
+    days = days_of_week_between(day_of_week, start_date, end_date)
+    return days == 0 ? 1 : days
+  end
+
+  # Make sure dates passed are actually dates.
   def days_of_week_between(day_of_week, start_date, end_date)
     ((start_date..end_date).select{ |d| d.wday == day_of_week }).count
   end
