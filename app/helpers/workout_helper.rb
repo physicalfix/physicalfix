@@ -1,5 +1,5 @@
 module WorkoutHelper
-  
+
   def workout_class(workout)
     if workout.viewed == 0
       return 'waiting'
@@ -9,7 +9,7 @@ module WorkoutHelper
       return 'complete'
     end
   end
-  
+
   def workout_state(workout)
     if workout.viewed == 0
       return 'Ready'
@@ -19,5 +19,9 @@ module WorkoutHelper
       return 'Completed'
     end
   end
-  
+
+  def days_of_week_between(day_of_week, start_date, end_date)
+    ((start_date..end_date).select{ |d| d.wday == day_of_week }).count
+  end
+
 end
