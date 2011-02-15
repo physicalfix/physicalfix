@@ -6,11 +6,16 @@
 		<%=user.email%>
 	</td>
 	<td>
-		<% if !user.roles_string.empty? %>
-		<%= user.roles_string %>
-		<% elsif user.subscription %>
+		<%- if !user.roles_string.empty? %>
+		<%=	user.roles_string %>
+		<%- elsif user.subscription %>
+		<!-- TODO: temporary fix to show who is on trial -->
+		<%- if user.subscription.product == "basic" && user.subscription.state == "trialing" %> 
+		trial
+		<%- else %>
 		<%= user.subscription.product %>
-		<% end %>
+		<%- end %>
+		<%- end %>
 	</td>
 	<td>
 		<%=user.created_at.to_s :long%>

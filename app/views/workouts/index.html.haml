@@ -13,9 +13,10 @@
     #workout_week
       %div
         %h2{:style => 'width:auto; padding: 0;'}
+          // TODO: temporary fix to show for trials only
           - if @user.subscription.product == Subscription::BASIC_SUBSCRIPTION && @user.subscription.state == Subscription::TRIAL_STATE
             14-Day Trial Week
-            = trial_week_number(1, @user.subscription.created_at.to_date, Time.now.to_date)
+            = trial_week_number(1, @user.created_at.to_date, Time.now.to_date)
     #workout_header
       %div
         %h2{:style => 'width:auto;'} Your workouts for the week of #{@week_start.strftime "%B %d, %Y"}

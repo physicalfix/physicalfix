@@ -42,6 +42,7 @@ describe WorkoutHelper do
   describe "trial week number" do
     it "should return the week of the trial" do
       helper.trial_week_number(1, "Feb 15, 2011".to_date, "Feb 14, 2011".to_date).should == 1
+      helper.trial_week_number(1, "Feb 15, 2011".to_date, "Feb 15, 2011".to_date).should == 1
       helper.trial_week_number(1, "Feb 16, 2011".to_date, "Feb 18, 2011".to_date).should == 1
       helper.trial_week_number(1, "Feb 14, 2011".to_date, "Feb 14, 2011".to_date).should == 1
       helper.trial_week_number(1, "Feb 16, 2011".to_date, "Feb 16, 2011".to_date).should == 1
