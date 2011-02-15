@@ -43,10 +43,14 @@ describe WorkoutHelper do
     it "should return the week of the trial" do
       helper.trial_week_number(1, "Feb 15, 2011".to_date, "Feb 14, 2011".to_date).should == 1
       helper.trial_week_number(1, "Feb 16, 2011".to_date, "Feb 18, 2011".to_date).should == 1
-      helper.trial_week_number(1, "Feb 10, 2011".to_date, "Feb 15, 2011".to_date).should == 1
       helper.trial_week_number(1, "Feb 14, 2011".to_date, "Feb 14, 2011".to_date).should == 1
-      helper.trial_week_number(1, "Jan 31, 2011".to_date, "Feb 8, 2011".to_date).should == 2
-      helper.trial_week_number(1, "Feb 9, 2011".to_date, "Aug 11, 2011".to_date).should == 26
+      helper.trial_week_number(1, "Feb 16, 2011".to_date, "Feb 16, 2011".to_date).should == 1
+      helper.trial_week_number(1, "Mar 23, 2011".to_date, "Mar 23, 2011".to_date).should == 1
+      helper.trial_week_number(1, "Feb 10, 2011".to_date, "Feb 15, 2011".to_date).should == 2
+      helper.trial_week_number(1, "Jan 31, 2011".to_date, "Feb 8, 2011".to_date).should == 3
+      helper.trial_week_number(1, "Feb 9, 2011".to_date, "Feb 14, 2011".to_date).should == 2
+      helper.trial_week_number(1, "Feb 9, 2011".to_date, "Aug 11, 2011".to_date).should == 27
+
     end
   end
 
