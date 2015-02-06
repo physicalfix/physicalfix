@@ -1,7 +1,13 @@
 development:
+		bucket: "physicalfix-test"
     access_key_id: "AKIAJ6AI2V7EE75PRLSA"
     secret_access_key: "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"
 test:
+		bucket: "physicalfix-test"
+    access_key_id: "AKIAJ6AI2V7EE75PRLSA"
+    secret_access_key: "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"
+staging:
+		bucket: "physicalfix-test"
     access_key_id: "AKIAJ6AI2V7EE75PRLSA"
     secret_access_key: "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"
 production:
