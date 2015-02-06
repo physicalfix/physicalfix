@@ -2,26 +2,36 @@
 = javascript_include_tag 'control_suite/object.event.1.0.0.js'
 = javascript_include_tag 'control_suite/control.modal.2.2.3.js'
 = javascript_include_tag 'control_suite/control.tabs.2.1.1'
-#navigation
-  .inner{:style => 'width:984px;'}
-    %p.navtabs
-      Reasons to join:
-      %ul.tabs#tabs
-        %li= link_to('About Us', '#about')
-        %li= link_to('Your Trainer', '#trainer')
-        %li= link_to('Workouts', '#workouts')
-        %li= link_to('Nutrition', '#nutrition')
-        %li= link_to('Activities', '#activities')
-        %li= link_to('Weight Chart', '#weight_chart')
+/ #navigation
+/   .inner{:style => 'width:984px;'}
+/     %p.navtabs
+/       Reasons to join:
+/       %ul.tabs#tabs
+/         %li= link_to('About Us', '#about')
+/         %li= link_to('Your Trainer', '#trainer')
+/         %li= link_to('Workouts', '#workouts')
+/         %li= link_to('Nutrition', '#nutrition')
+/         %li= link_to('Activities', '#activities')
+/         %li= link_to('Weight Chart', '#weight_chart')
+
 #items
   .inner
     .panes
       #about
-        .screenshot
-          %a#demo_link(href="#demo_video")
-            = image_tag('splash/viewdemo.png')
-            %p
-              %span View physicalfix demonstration
+        #enteruserinfo{:style => "margin-top:80px"}
+          - unless session[:uid]
+            - form_tag sessions_path, {:class => 'search'} do
+              %ul
+                %li
+                  %p(class = "type")Email
+                  = text_field_tag :email, params[:email], :class => 'email'
+                %li
+                  %p(class = "type")Password
+                  = password_field_tag :password, params[:password], :class => 'password'
+                  %div{:style => "text-align: right"}
+                    = link_to('Forgot your password?', forgot_password_path, {:class => 'forgot', :style => "color: #fff;font-size: 18px;font-weight: bold"})
+                %li
+                  %input.loginbutton(type="submit" value="Login" class="confirm")
         .description
           %h2 physicalfix.com
           %h4 Fitness that Fits
@@ -161,4 +171,3 @@
         new Control.Modal($('testimonial_2'), {containerClassName: 'window', width:630, opacity:0.75});
         new Control.Modal($('testimonial_3'), {containerClassName: 'window', width:630, opacity:0.75});
     });
-
