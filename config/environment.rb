@@ -9,7 +9,16 @@ RAILS_GEM_VERSION = '2.3.4' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
-
+if Gem::VERSION >= "1.3.6" 
+  module Rails
+    class GemDependency
+      def requirement
+        r = super
+        (r == Gem::Requirement.default) ? nil : r
+      end
+    end
+  end
+end
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
@@ -43,8 +52,23 @@ Rails::Initializer.run do |config|
   config.gem 'chargify_api_ares', :version => '0.3.4'
   config.gem 'will_paginate', :version => '2.3.14'
   config.gem 'sunspot_rails', :version => '1.1.0', :lib => 'sunspot/rails'
+
+  config.gem 'saikuro', :version => '1.1.0'
+  config.gem 'sexp_processor', :version => '4.4.5'
+  config.gem 'rake', :version => '0.8.3'
+  config.gem 'rcov', :version => '1.0.0'
+  config.gem 'right_aws', :version => '2.0.0'
+  config.gem 'mysql', :version => '2.9.1'
+  config.gem 'flog', :version => '2.2.0'
+  config.gem 'flay', :version => '2.6.1'
+  config.gem 'i18n', :version => '0.6.11'
+  config.gem 'chronic', :version => '0.6.2'
+  config.gem 'churn', :version => '0.0.15'
+  config.gem 'crack', :version => '0.1.6'
+
   config.gem 'metric_fu', :version => '1.3.0'
   config.gem 'mongo_mapper' # updated this from 0.7.6 to 0.8.6 for use with new mongo db
+  config.gem 'rake', :version => '0.8.3'
 
   # config.gem 'aws-s3', :version => "0.6.2" # don't include aws-s3 it crashes startup. probably loaded elsewhere
   # config.gem 'god', :version => '0.10.1'
