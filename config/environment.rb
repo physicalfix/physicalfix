@@ -68,8 +68,8 @@ Rails::Initializer.run do |config|
   config.gem 'mime-types', :version => '1.16'
   config.gem 'mongo_mapper' # updated this from 0.7.6 to 0.8.6 for use with new mongo db
   config.gem 'rake', :version => '0.8.3'
-  config.gem 'rest-client'
-  config.gem 'metric_fu'
+  config.gem 'rest-client', :version => '0.9.2'
+  config.gem 'metric_fu', :version => '1.3.0'
 
   # config.gem 'aws-s3', :version => "0.6.2" # don't include aws-s3 it crashes startup. probably loaded elsewhere
   # config.gem 'god', :version => '0.10.1'
