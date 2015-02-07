@@ -61,12 +61,12 @@ Rails::Initializer.run do |config|
   config.gem 'flog', :version => '2.2.0'
   config.gem 'flay', :version => '2.6.1'
   config.gem 'sexp_processor', :version => '3.0.7'
-  #config.gem 'rest-client', :version => '0.9.2'
   config.gem 'i18n', :version => '0.6.11'
   config.gem 'chronic', :version => '0.6.2'
   config.gem 'churn', :version => '0.0.15'
   config.gem 'crack', :version => '0.1.6'
-
+  config.gem 'mime-types', :version => '1.16'
+  config.gem 'rest-client', :version => '0.9.2'
   config.gem 'metric_fu', :version => '1.3.0'
   config.gem 'mongo_mapper' # updated this from 0.7.6 to 0.8.6 for use with new mongo db
   config.gem 'rake', :version => '0.8.3'
