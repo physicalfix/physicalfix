@@ -54,7 +54,7 @@ Rails::Initializer.run do |config|
   config.gem 'sunspot_rails', :version => '1.1.0', :lib => 'sunspot/rails'
 
   config.gem 'saikuro', :version => '1.1.0'
-  config.gem 'sexp_processor', :version => '4.4.5'
+  config.gem 'sexp_processor', :version => '3.0.7'
   config.gem 'rake', :version => '0.8.3'
   config.gem 'rcov', :version => '1.0.0'
   config.gem 'right_aws', :version => '2.0.0'
