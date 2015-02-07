@@ -44,6 +44,7 @@ Rails::Initializer.run do |config|
   # If you include more than the below, you get:
   # A copy of NewRelic::Agent::Agent has been removed from the module tree but is still active! (ArgumentError)
   # config.gem 'rspec', :version => '1.3.1'
+  config.gem 'rest-client', :version => '0.9.2'
   config.gem 'haml', :version => '3.0.9'
   config.gem 'chronic', :version => '0.2.3'
   config.gem 'whenever', :version => '0.4.2'
@@ -68,7 +69,6 @@ Rails::Initializer.run do |config|
   config.gem 'mime-types', :version => '1.16'
   config.gem 'mongo_mapper' # updated this from 0.7.6 to 0.8.6 for use with new mongo db
   config.gem 'rake', :version => '0.8.3'
-  config.gem 'rest-client', :version => '0.9.2'
   config.gem 'metric_fu', :version => '1.3.0'
 
   # config.gem 'aws-s3', :version => "0.6.2" # don't include aws-s3 it crashes startup. probably loaded elsewhere
