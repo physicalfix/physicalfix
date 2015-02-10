@@ -11,3 +11,4 @@ public/vids/*
 .idea/*
 solr/data
 config/s3.yml
+config/database.yml
