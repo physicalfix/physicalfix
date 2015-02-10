@@ -9,3 +9,7 @@ production:
 test:
   subdomain: physicalfix-test
   api_key: doFKQcW9LfXHtYyIzEQN
+
+staging:
+  subdomain: physicalfix-test
+  api_key: doFKQcW9LfXHtYyIzEQN

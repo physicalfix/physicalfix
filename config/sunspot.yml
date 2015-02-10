@@ -15,4 +15,10 @@ test:
     hostname: localhost
     port: 8981
     log_level: WARNING
+
+staging:
+  solr:
+    hostname: localhost
+    port: 8983
+    log_level: WARNING
     
