@@ -16,4 +16,4 @@ config.action_controller.perform_caching             = true
 
 # Disable delivery errors, bad email addresses will be ignored
 # config.action_mailer.raise_delivery_errors = false
-ActionMailer::Base.default_url_options[:host] = "physicalfix.com"
+ActionMailer::Base.default_url_options[:host] = "66.175.219.45:3000"

@@ -2,7 +2,7 @@ class ExerciseClip < ActiveRecord::Base
   has_attached_file :clip,
                     :storage => :s3,
                     :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
-                    :bucket => "physicalfix",
+                    :bucket => "physicalfix-test",
                     :path => ":class/:id.:extension"
 
     
