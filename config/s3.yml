@@ -1,15 +1,15 @@
 development:
-   bucket: "physicalfix-test"
-    access_key_id: "AKIAJ6AI2V7EE75PRLSA"
-    secret_access_key: "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"
+		bucket: "physicalfix-test"
+    access_key_id: "AKIAJWGPFA7MQ4NNOD5A"
+    secret_access_key: "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"
 test:
-    bucket: "physicalfix-test"
-    access_key_id: "AKIAJ6AI2V7EE75PRLSA"
-    secret_access_key: "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"
+		bucket: "physicalfix-test"
+    access_key_id: "AKIAJWGPFA7MQ4NNOD5A"
+    secret_access_key: "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"
 staging:
-    bucket: "physicalfix-test"
-    access_key_id: "AKIAJ6AI2V7EE75PRLSA"
-    secret_access_key: "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"
+		bucket: "physicalfix-test"
+    access_key_id: "AKIAJWGPFA7MQ4NNOD5A"
+    secret_access_key: "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"
 production:
-    access_key_id: "AKIAJ6AI2V7EE75PRLSA"
-    secret_access_key: "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"
+    access_key_id: "AKIAJWGPFA7MQ4NNOD5A"
+    secret_access_key: "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"
