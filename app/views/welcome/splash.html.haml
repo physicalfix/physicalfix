@@ -2,26 +2,36 @@
 = javascript_include_tag 'control_suite/object.event.1.0.0.js'
 = javascript_include_tag 'control_suite/control.modal.2.2.3.js'
 = javascript_include_tag 'control_suite/control.tabs.2.1.1'
-#navigation
-  .inner{:style => 'width:984px;'}
-    %p.navtabs
-      Reasons to join:
-      %ul.tabs#tabs
-        %li= link_to('About Us', '#about')
-        %li= link_to('Your Trainer', '#trainer')
-        %li= link_to('Workouts', '#workouts')
-        %li= link_to('Nutrition', '#nutrition')
-        %li= link_to('Activities', '#activities')
-        %li= link_to('Weight Chart', '#weight_chart')
+/ #navigation
+/   .inner{:style => 'width:984px;'}
+/     %p.navtabs
+/       Reasons to join:
+/       %ul.tabs#tabs
+/         %li= link_to('About Us', '#about')
+/         %li= link_to('Your Trainer', '#trainer')
+/         %li= link_to('Workouts', '#workouts')
+/         %li= link_to('Nutrition', '#nutrition')
+/         %li= link_to('Activities', '#activities')
+/         %li= link_to('Weight Chart', '#weight_chart')
+
 #items
   .inner
     .panes
       #about
-        .screenshot
-          %a#demo_link(href="#demo_video")
-            = image_tag('splash/viewdemo.png')
-            %p
-              %span View physicalfix demonstration
+        #enteruserinfo{:style => "margin-top:80px"}
+          - unless session[:uid]
+            - form_tag sessions_path, {:class => 'search'} do
+              %ul
+                %li
+                  %p(class = "type")Email
+                  = text_field_tag :email, params[:email], :class => 'email'
+                %li
+                  %p(class = "type")Password
+                  = password_field_tag :password, params[:password], :class => 'password'
+                  %div{:style => "text-align: right"}
+                    = link_to('Forgot your password?', forgot_password_path, {:class => 'forgot', :style => "color: #fff;font-size: 18px;font-weight: bold"})
+                %li
+                  %input.loginbutton(type="submit" value="Login" class="confirm")
         .description
           %h2 physicalfix.com
           %h4 Fitness that Fits
@@ -104,7 +114,7 @@
     .window_close#window_close(onclick="Control.Modal.close();")
     .window_title &nbsp;
   :plain
-    <object id="video-1c98d2bb1413e1c894" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="630" height="354"><param name="movie" value="http://www.sproutvideo.com/flash/MediaPlayer.swf" /><param name="allowScriptAccess" value="always"><param name="allowFullscreen" value="true"><param name="flashvars" value="id=1c98d2bb1413e1c894&st=065dceaa432eacae&type=sd&autoplay=true"><!--[if !IE]>--><object type="application/x-shockwave-flash" allowScriptAccess="always" allowFullscreen="true" data="http://www.sproutvideo.com/flash/MediaPlayer.swf" width="630" height="354" flashvars="id=1c98d2bb1413e1c894&st=065dceaa432eacae&type=sd&autoplay=true"><!--<![endif]--><video width="630" height="354" poster="http://sproutvideo.s3.amazonaws.com/3d5944db5f9674463ce0e4ab256c39b5/posterframes/ab01d422a4ebacb265cb383f73e2e83f/frame_0000.png" controls preload="none"><source src="http://sproutvideo.s3.amazonaws.com/3d5944db5f9674463ce0e4ab256c39b5/videos/iphone/ab01d422a4ebacb265cb383f73e2e83f.mp4" type="video/mp4; codecs="avc1.42E01E, mp4a.40.2""/></video><!--[if !IE]>--></object><!--<![endif]--></object>
+    <object id="video-1c98d2bb1413e1c894" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="630" height="354"><param name="movie" value="http://www.sproutvideo.com/flash/MediaPlayer.swf" /><param name="allowScriptAccess" value="always"><param name="allowFullscreen" value="true"><param name="flashvars" value="id=1c98d2bb1413e1c894&st=065dceaa432eacae&type=sd&autoplay=false"><!--[if !IE]>--><object type="application/x-shockwave-flash" allowScriptAccess="always" allowFullscreen="true" data="http://www.sproutvideo.com/flash/MediaPlayer.swf" width="630" height="354" flashvars="id=1c98d2bb1413e1c894&st=065dceaa432eacae&type=sd&autoplay=false"><!--<![endif]--><video width="630" height="354" poster="http://sproutvideo.s3.amazonaws.com/3d5944db5f9674463ce0e4ab256c39b5/posterframes/ab01d422a4ebacb265cb383f73e2e83f/frame_0000.png" controls preload="none"><source src="http://sproutvideo.s3.amazonaws.com/3d5944db5f9674463ce0e4ab256c39b5/videos/iphone/ab01d422a4ebacb265cb383f73e2e83f.mp4" type="video/mp4; codecs="avc1.42E01E, mp4a.40.2""/></video><!--[if !IE]>--></object><!--<![endif]--></object>
     
 #bio{:style => 'display:none'}
   .window_header
@@ -129,26 +139,26 @@
     .window_close#window_close(onclick="Control.Modal.close();")
     .window_title &nbsp;
   :plain
-    <iframe class='sproutvideo-player' type='text/html' src='http://videos.sproutvideo.com/embed/1898d2ba191fe1c590/69bbf5c769893055?type=sd&autoplay=true' width='630' height='352' frameborder='0'></iframe>
+    <iframe class='sproutvideo-player' type='text/html' src='http://videos.sproutvideo.com/embed/1898d2ba191fe1c590/69bbf5c769893055?type=sd&autoplay=false' width='630' height='352' frameborder='0'></iframe>
 
 #test1{:style => 'display:none'}
   .window_header
     .window_close#window_close(onclick="Control.Modal.close();")
     .window_title &nbsp;
   :plain
-    <object id="video-a098d2bb1413e1c328" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="630" height="354"><param name="movie" value="http://www.sproutvideo.com/flash/MediaPlayer.swf" /><param name="allowScriptAccess" value="always"><param name="allowFullscreen" value="true"><param name="flashvars" value="id=a098d2bb1413e1c328&st=7ca00d66da2a8e8d&type=sd&autoplay=true"><!--[if !IE]>--><object type="application/x-shockwave-flash" allowScriptAccess="always" allowFullscreen="true" data="http://www.sproutvideo.com/flash/MediaPlayer.swf" width="630" height="354" flashvars="id=a098d2bb1413e1c328&st=7ca00d66da2a8e8d&type=sd&autoplay=true"><!--<![endif]--><video width="630" height="354" poster="http://sproutvideo.s3.amazonaws.com/3d5944db5f9674463ce0e4ab256c39b5/posterframes/d2746e08d99b1ba8d72da272bc4f553d/frame_0000.png" controls preload="none"><source src="http://sproutvideo.s3.amazonaws.com/3d5944db5f9674463ce0e4ab256c39b5/videos/iphone/d2746e08d99b1ba8d72da272bc4f553d.mp4" type="video/mp4; codecs="avc1.42E01E, mp4a.40.2""/></video><!--[if !IE]>--></object><!--<![endif]--></object>
+    <object id="video-a098d2bb1413e1c328" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="630" height="354"><param name="movie" value="http://www.sproutvideo.com/flash/MediaPlayer.swf" /><param name="allowScriptAccess" value="always"><param name="allowFullscreen" value="true"><param name="flashvars" value="id=a098d2bb1413e1c328&st=7ca00d66da2a8e8d&type=sd&autoplay=false"><!--[if !IE]>--><object type="application/x-shockwave-flash" allowScriptAccess="always" allowFullscreen="true" data="http://www.sproutvideo.com/flash/MediaPlayer.swf" width="630" height="354" flashvars="id=a098d2bb1413e1c328&st=7ca00d66da2a8e8d&type=sd&autoplay=false"><!--<![endif]--><video width="630" height="354" poster="http://sproutvideo.s3.amazonaws.com/3d5944db5f9674463ce0e4ab256c39b5/posterframes/d2746e08d99b1ba8d72da272bc4f553d/frame_0000.png" controls preload="none"><source src="http://sproutvideo.s3.amazonaws.com/3d5944db5f9674463ce0e4ab256c39b5/videos/iphone/d2746e08d99b1ba8d72da272bc4f553d.mp4" type="video/mp4; codecs="avc1.42E01E, mp4a.40.2""/></video><!--[if !IE]>--></object><!--<![endif]--></object>
 #test2{:style => 'display:none'}
   .window_header
     .window_close#window_close(onclick="Control.Modal.close();")
     .window_title &nbsp;
   :plain
-    <object id="video-e898d2bb1413e1c960" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="630" height="354"><param name="movie" value="http://www.sproutvideo.com/flash/MediaPlayer.swf" /><param name="allowScriptAccess" value="always"><param name="allowFullscreen" value="true"><param name="flashvars" value="id=e898d2bb1413e1c960&st=01b52a69a96ffe3e&type=sd&autoplay=true"><!--[if !IE]>--><object type="application/x-shockwave-flash" allowScriptAccess="always" allowFullscreen="true" data="http://www.sproutvideo.com/flash/MediaPlayer.swf" width="630" height="354" flashvars="id=e898d2bb1413e1c960&st=01b52a69a96ffe3e&type=sd&autoplay=true"><!--<![endif]--><video width="630" height="354" poster="http://sproutvideo.s3.amazonaws.com/3d5944db5f9674463ce0e4ab256c39b5/posterframes/30d82ac1c4da385e40dc6a43e2a86e7b/frame_0000.png" controls preload="none"><source src="http://sproutvideo.s3.amazonaws.com/3d5944db5f9674463ce0e4ab256c39b5/videos/iphone/30d82ac1c4da385e40dc6a43e2a86e7b.mp4" type="video/mp4; codecs="avc1.42E01E, mp4a.40.2""/></video><!--[if !IE]>--></object><!--<![endif]--></object>
+    <object id="video-e898d2bb1413e1c960" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="630" height="354"><param name="movie" value="http://www.sproutvideo.com/flash/MediaPlayer.swf" /><param name="allowScriptAccess" value="always"><param name="allowFullscreen" value="true"><param name="flashvars" value="id=e898d2bb1413e1c960&st=01b52a69a96ffe3e&type=sd&autoplay=false"><!--[if !IE]>--><object type="application/x-shockwave-flash" allowScriptAccess="always" allowFullscreen="true" data="http://www.sproutvideo.com/flash/MediaPlayer.swf" width="630" height="354" flashvars="id=e898d2bb1413e1c960&st=01b52a69a96ffe3e&type=sd&autoplay=false"><!--<![endif]--><video width="630" height="354" poster="http://sproutvideo.s3.amazonaws.com/3d5944db5f9674463ce0e4ab256c39b5/posterframes/30d82ac1c4da385e40dc6a43e2a86e7b/frame_0000.png" controls preload="none"><source src="http://sproutvideo.s3.amazonaws.com/3d5944db5f9674463ce0e4ab256c39b5/videos/iphone/30d82ac1c4da385e40dc6a43e2a86e7b.mp4" type="video/mp4; codecs="avc1.42E01E, mp4a.40.2""/></video><!--[if !IE]>--></object><!--<![endif]--></object>
 #test3{:style => 'display:none'}
   .window_header
     .window_close#window_close(onclick="Control.Modal.close();")
     .window_title &nbsp;
   :plain
-    <object id="video-1898d2bb1413e1c590" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="630" height="421"><param name="movie" value="http://www.sproutvideo.com/flash/MediaPlayer.swf" /><param name="allowScriptAccess" value="always"><param name="allowFullscreen" value="true"><param name="flashvars" value="id=1898d2bb1413e1c590&st=a6363fb7c5c17e1d&type=sd&autoplay=true"><!--[if !IE]>--><object type="application/x-shockwave-flash" allowScriptAccess="always" allowFullscreen="true" data="http://www.sproutvideo.com/flash/MediaPlayer.swf" width="630" height="421" flashvars="id=1898d2bb1413e1c590&st=a6363fb7c5c17e1d&type=sd&autoplay=true"><!--<![endif]--><video width="630" height="421" poster="http://sproutvideo.s3.amazonaws.com/3d5944db5f9674463ce0e4ab256c39b5/posterframes/3c8ccd1e0e9a113f134dab060d20e9bc/frame_0000.png" controls preload="none"><source src="http://sproutvideo.s3.amazonaws.com/3d5944db5f9674463ce0e4ab256c39b5/videos/iphone/3c8ccd1e0e9a113f134dab060d20e9bc.mp4" type="video/mp4; codecs="avc1.42E01E, mp4a.40.2""/></video><!--[if !IE]>--></object><!--<![endif]--></object>
+    <object id="video-1898d2bb1413e1c590" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="630" height="421"><param name="movie" value="http://www.sproutvideo.com/flash/MediaPlayer.swf" /><param name="allowScriptAccess" value="always"><param name="allowFullscreen" value="true"><param name="flashvars" value="id=1898d2bb1413e1c590&st=a6363fb7c5c17e1d&type=sd&autoplay=false"><!--[if !IE]>--><object type="application/x-shockwave-flash" allowScriptAccess="always" allowFullscreen="true" data="http://www.sproutvideo.com/flash/MediaPlayer.swf" width="630" height="421" flashvars="id=1898d2bb1413e1c590&st=a6363fb7c5c17e1d&type=sd&autoplay=false"><!--<![endif]--><video width="630" height="421" poster="http://sproutvideo.s3.amazonaws.com/3d5944db5f9674463ce0e4ab256c39b5/posterframes/3c8ccd1e0e9a113f134dab060d20e9bc/frame_0000.png" controls preload="none"><source src="http://sproutvideo.s3.amazonaws.com/3d5944db5f9674463ce0e4ab256c39b5/videos/iphone/3c8ccd1e0e9a113f134dab060d20e9bc.mp4" type="video/mp4; codecs="avc1.42E01E, mp4a.40.2""/></video><!--[if !IE]>--></object><!--<![endif]--></object>
 
 :javascript
   Event.observe(window, 'load', function() {
@@ -161,4 +171,3 @@
         new Control.Modal($('testimonial_2'), {containerClassName: 'window', width:630, opacity:0.75});
         new Control.Modal($('testimonial_3'), {containerClassName: 'window', width:630, opacity:0.75});
     });
-
