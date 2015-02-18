@@ -1,0 +1,15 @@
+development:
+    bucket: "physicalfix-test"
+    access_key_id: ""
+    secret_access_key: ""
+test:
+    bucket: "physicalfix-test"
+    access_key_id: ""
+    secret_access_key: ""
+staging:
+    bucket: "physicalfix-test"
+    access_key_id: ""
+    secret_access_key: ""
+production:
+    access_key_id: ""
+    secret_access_key: ""
