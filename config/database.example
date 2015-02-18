@@ -15,8 +15,9 @@ development:
   adapter: mysql
   database: FitStream_development
   username: root
-  password:
-  socket: /tmp/mysql.sock
+  password: nikhil
+  socket:
+  host: localhost
 
 # Warning: The database defined as 'test' will be erased and
 # re-generated from your development database when you run 'rake'.
@@ -25,12 +26,13 @@ test:
   adapter: mysql
   database: FitStream_test
   username: root
-  password:
-  socket: /tmp/mysql.sock
+  password: nikhil
+  socket: /opt/local/var/run/mysql5/mysqld.sock
 
+  
 production:
   adapter: mysql
   database: FitStream_production
   username: root
-  password: 
-  socket: /tmp/mysql.sock
+  password:  nikhil
+  socket: /opt/local/var/run/mysql5/mysqld.sock
