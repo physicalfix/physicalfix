@@ -87,6 +87,7 @@ Rails::Initializer.run do |config|
   }
   config.cache_store = :mem_cache_store
   config.time_zone = 'UTC'
+  config.middleware.use "ForceSSL"
 end
 
 class ActiveRecord::Base
