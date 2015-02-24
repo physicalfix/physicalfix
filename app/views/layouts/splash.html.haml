@@ -23,6 +23,19 @@
           %a(href="/")
             %h1
               %span PhysicalFix
+          - if (request[:controller] == "accounts" && request[:action] == "index")
+            - unless session[:uid]
+              - form_tag sessions_path, {:class => 'search'} do
+                %ul
+                  %li
+                    %label(for="email") Email
+                    = text_field_tag :email, params[:email], :class => 'email'
+                  %li
+                    %label(for="password") Password
+                    = password_field_tag :password, params[:password], :class => 'password'
+                    = link_to('Forgot?', forgot_password_path, {:class => 'forgot'})
+                  %li
+                    %input.loginbutton(type="submit" value="Login")
       = yield
       
       #footer
