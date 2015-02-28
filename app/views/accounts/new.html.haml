@@ -128,7 +128,7 @@
                 -if session[:plan] == 'trial'
                   %strong 14-Day Trial
                 -else
-                  %strong= session[:plan].try(:upcase)
+                  %strong= session[:plan]
                 plan 
                 -if session[:plan] == 'basic'
                   for $25/mo.
