@@ -138,7 +138,7 @@ class AccountsController < ApplicationController
           end
         
           if !@subscription.errors.errors.empty?
-            @user = ` || User.new(params[:user])
+            @user = @current_user || User.new(params[:user])
             flash[:error] = @subscription.errors.full_messages.join(', ')
             render :action => :new, :layout => 'splash'
             return
