@@ -8,9 +8,9 @@ class AccountsController < ApplicationController
   
   def index
     @num_pros = User.all.count{|u| u.subscription && u.subscription.product == 'premium'}
-    Rails.logger.warn "=======================#{request.referer}========================"
+    Rails.logger.warn "=============#{@current_user.inspect}==========#{request.referer}========================"
     Rails.logger.info "=======================#{request.referer}========================"
-    if request.referer == "http://www.physicalfix.com/"
+    if request.referer == "http://www.physicalfix.com/" && @current_user.present?
       redirect_to workouts_path
     else
       render :layout => 'splash'
@@ -139,7 +139,7 @@ class AccountsController < ApplicationController
           end
         
           if !@subscription.errors.errors.empty?
-            @user = @current_user || User.new(params[:user])
+            @user = ` || User.new(params[:user])
             flash[:error] = @subscription.errors.full_messages.join(', ')
             render :action => :new, :layout => 'splash'
             return
