@@ -7,7 +7,7 @@ class AccountsController < ApplicationController
   VALID_PLANS = ['trial', 'free', 'basic', 'premium']
   
   def index
-    if current_user.present? && (request.referer.include? "http://www.physicalfix.com/")
+    if logged_in? && (request.referer.include? "http://www.physicalfix.com/")
        Rails.logger.warn "======#{current_user.inspect}=====#{current_user.present?}==#{@current_user.inspect}==========#{request.referer}========================"
       redirect_to workouts_path
     else
