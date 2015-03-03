@@ -8,7 +8,13 @@ class AccountsController < ApplicationController
   
   def index
     @num_pros = User.all.count{|u| u.subscription && u.subscription.product == 'premium'}
-    render :layout => 'splash'
+    Rails.logger.warn "=======================#{request.referer}========================"
+    Rails.logger.info "=======================#{request.referer}========================"
+    if request.referer == "http://www.physicalfix.com/"
+      redirect_to workouts_path
+    else
+      render :layout => 'splash'
+    end
   end
   
   def show
