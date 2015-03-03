@@ -7,10 +7,11 @@ class AccountsController < ApplicationController
   VALID_PLANS = ['trial', 'free', 'basic', 'premium']
   
   def index
-    Rails.logger.warn "======#{current_user.inspect}=====#{current_user.present?}==#{@current_user.inspect}==========#{request.referer}========================"
     if current_user.present? && (request.referer.include? "http://www.physicalfix.com/")
+       Rails.logger.warn "======#{current_user.inspect}=====#{current_user.present?}==#{@current_user.inspect}==========#{request.referer}========================"
       redirect_to workouts_path
     else
+       Rails.logger.warn "======else========================"
       @num_pros = User.all.count{|u| u.subscription && u.subscription.product == 'premium'}
       render :layout => 'splash'
     end
