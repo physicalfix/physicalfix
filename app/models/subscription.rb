@@ -25,7 +25,8 @@ class Subscription < ActiveRecord::Base
   PROBLEM_STATES = ['soft_failure','past_due']
   EOL_STATES = ['canceled','expired','suspended']
   
-  def self.create_subscription(user, product, credit_card)
+  def self.create_subscription(user, product, credit_card,coupon_code="")
+    puts "------------#{coupon_code}---------------------"
     Chargify::Subscription.create(
       :product_handle => product,
       :customer_attributes => {
@@ -41,7 +42,8 @@ class Subscription < ActiveRecord::Base
         :expiration_year => credit_card.expiration.year,
         :full_number => credit_card.card_number,
         :cvv => credit_card.cvv 
-      }
+      },
+      :coupon_code => coupon_code
     )
   end
   

@@ -70,30 +70,22 @@ class AccountsController < ApplicationController
     params[:user][:cell_phone] = params[:user][:cell_phone].gsub(/\D/, '') if params[:user][:cell_phone]
     params[:user][:home_phone] = params[:user][:home_phone].gsub(/\D/, '') if params[:user][:home_phone]
     params[:user][:height] = "#{params[:height_feet]}' #{params[:height_inches]}\""
-
-    @user = User.new(params[:user])
-    
+    @user = User.new(params[:user])    
     @height_feet = params[:height_feet].to_i
-    @height_inches = params[:height_inches].to_i
-    
-    key = session[:key]
-    
-    if @user.valid? 
-    
+    @height_inches = params[:height_inches].to_i    
+    key = session[:key]    
+    if @user.valid?    
       if session[:plan] && session[:plan] == 'free'
         @user.save
         Subscription.create(:user_id => @user.id, :product => Subscription::FREE_SUBSCRIPTION, :state => Subscription::ACTIVE_STATE)
-        after_signup
-        
+        after_signup        
       ##
       ## Start: Free 14-Day Trial Modifications
-      ##
-      
+      ##      
       elsif session[:plan] == 'trial'
         @user.save
         Subscription.create(:user_id => @user.id, :product => Subscription::BASIC_SUBSCRIPTION, :state => Subscription::TRIAL_STATE)
         after_signup
-
       elsif key
         # check key
         freeby = Freeby.find_by_key(key)
@@ -108,30 +100,25 @@ class AccountsController < ApplicationController
         else
           redirect_to "/422.html" # invalid key
           return
-        end
-        
+        end        
       ##
       ## End: Free 14-Day Trial Modifications
-      ##
-      
+      ##      
       else
         params[:credit_card][:first_name] = @user.first_name
         params[:credit_card][:last_name] = @user.last_name
-        @credit_card = CreditCard.new(params[:credit_card])
-    
+        @credit_card = CreditCard.new(params[:credit_card])    
         if @credit_card.valid?
           if session[:plan] == 'basic'
             product = 'basic-subscription'
           elsif session[:plan] == 'premium'
             product = 'premium-subscription'
-          end
-    
+          end    
           User.transaction do 
             @user.save
-            @subscription = Subscription.create_subscription(@user, product, @credit_card)
+            @subscription = Subscription.create_subscription(@user, product, @credit_card,@user.coupon_code)
             raise ActiveRecord::Rollback if !@subscription.errors.errors.empty?
-          end
-        
+          end        
           if !@subscription.errors.errors.empty?
             @user = @current_user || User.new(params[:user])
             flash[:error] = @subscription.errors.full_messages.join(', ')
@@ -142,7 +129,8 @@ class AccountsController < ApplicationController
               :user_id => @user.id,
               :state => @subscription.state,
               :product =>product.split('-')[0],
-              :chargify_id => @subscription.id
+              :chargify_id => @subscription.id,
+              :coupon_code => @user.coupon_code
             )
             after_signup
           end

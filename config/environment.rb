@@ -50,7 +50,7 @@ Rails::Initializer.run do |config|
   config.gem 'whenever', :version => '0.4.2'
   config.gem 'httparty', :version => '0.5.2'
   config.gem 'raspell', :version => '1.1'
-  config.gem 'chargify_api_ares', :version => '0.3.4'
+  config.gem 'chargify_api_ares', :version => '0.4.4'
   config.gem 'will_paginate', :version => '2.3.14'
   config.gem 'sunspot_rails', :version => '1.1.0', :lib => 'sunspot/rails'
 
@@ -117,11 +117,11 @@ class ActiveRecord::Base
   include ActionController::UrlWriter
 end
 
-chargify_config = YAML::load_file(File.join(File.dirname(__FILE__), '..', 'config', 'chargify.yml'))
+CHARGIFY_CONFIG = YAML::load_file(File.join(File.dirname(__FILE__), '..', 'config', 'chargify.yml'))
 
 ENV['RAILS_ENV'] ||= 'development'
 
 Chargify.configure do |c|
-  c.subdomain = chargify_config[ENV['RAILS_ENV']]['subdomain']
-  c.api_key   = chargify_config[ENV['RAILS_ENV']]['api_key']
+  c.subdomain = CHARGIFY_CONFIG[ENV['RAILS_ENV']]['subdomain']
+  c.api_key   = CHARGIFY_CONFIG[ENV['RAILS_ENV']]['api_key']
 end

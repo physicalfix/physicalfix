@@ -34,8 +34,9 @@ class User < ActiveRecord::Base
   validates_format_of :home_phone, :with => /^[+\/\- () 0-9]+$/, :if => Proc.new {|user| user.home_phone && user.home_phone.length > 0}
   
   validates_acceptance_of :terms
-  
+  validate :validate_coupon_code
   attr_reader :password
+  attr_accessor :coupon_code
 
   # TODO: move to notifier.rb?
   NAGS = {
@@ -65,6 +66,17 @@ class User < ActiveRecord::Base
     r = Role.find_by_name(role)
     user_roles.find_all_by_role_id(r.id).each do |ur|
       ur.destroy
+    end
+  end
+
+  def validate_coupon_code
+    begin
+      c = Chargify::Coupon.find_by_product_family_id_and_code(CHARGIFY_CONFIG[ENV['RAILS_ENV']]['product_family_id'],self.coupon_code)
+      if !(c.present?)
+        self.errors.add("Invalid Coupon Code")
+      end
+    rescue Exception => e
+      self.errors.add(:coupon_code,"is invalid.")
     end
   end
 

@@ -79,6 +79,9 @@
                   - label('Time Zone', @user, :time_zone)
                   = f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones, {:default => "Eastern Time (US & Canada)"}, {:style => 'width:290px'}
             - if session[:plan] != 'free' && session[:plan] != 'trial' && !session[:key]
+              %li
+                - label('Coupon Code', @user, :coupon_code)
+                = f.text_field :coupon_code
               %fieldset
                 = image_tag('lock.png', :id => 'lock')
                 %span#secure

@@ -1,15 +1,16 @@
 development:
   subdomain: physicalfix-test
   api_key: doFKQcW9LfXHtYyIzEQN
-
+  product_family_id: 6785
 production:
   subdomain: physicalfix
   api_key: doFKQcW9LfXHtYyIzEQN
-
+  product_family_id: 1838
 test:
   subdomain: physicalfix-test
   api_key: doFKQcW9LfXHtYyIzEQN
-
+  product_family_id: 6785
 staging:
   subdomain: physicalfix-test
   api_key: doFKQcW9LfXHtYyIzEQN
+  product_family_id: 6785
