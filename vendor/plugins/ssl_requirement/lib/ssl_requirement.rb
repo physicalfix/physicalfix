@@ -38,6 +38,7 @@ module SslRequirement
   protected
     # Returns true if the current action is supposed to run as SSL
     def ssl_required?
+
       (self.class.read_inheritable_attribute(:ssl_required_actions) || []).include?(action_name.to_sym)
     end
     
@@ -49,14 +50,30 @@ module SslRequirement
     def ensure_proper_protocol
       return true #if ssl_allowed?
 
-      #if ssl_required? && !request.ssl?
-      #  redirect_to "https://" + request.host + request.request_uri
-      #  flash.keep
-      #  return false
+      if ssl_required? && !request.ssl?
+        #return true #if ssl_allowed?
+        if !request.ssl?
+          redirect_to "https://" + request.host + request.request_uri
+          flash.keep
+          return false
+        elsif request.ssl? && !ssl_required?
+          redirect_to "http://" + request.host + request.request_uri
+          flash.keep
+          return false
       #elsif request.ssl? && !ssl_required?
       #  redirect_to "http://" + request.host + request.request_uri
       #  flash.keep
       #  return false
-      #send
+      end
+      return true
+      # if ssl_required? && !request.ssl?
+      #   redirect_to "https://" + request.host + request.request_uri
+      #   flash.keep
+      #   return false
+      # elsif request.ssl? && !ssl_required?
+      #   redirect_to "http://" + request.host + request.request_uri
+      #   flash.keep
+      #   return false
+      # end
     end
 end
