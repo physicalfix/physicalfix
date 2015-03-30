@@ -73,7 +73,8 @@ class AccountsController < ApplicationController
     @user = User.new(params[:user])    
     @height_feet = params[:height_feet].to_i
     @height_inches = params[:height_inches].to_i    
-    key = session[:key]    
+    key = session[:key]
+    puts "--------#{key}" 
     if @user.valid?    
       if session[:plan] && session[:plan] == 'free'
         @user.save
@@ -90,6 +91,7 @@ class AccountsController < ApplicationController
         # check key
         freeby = Freeby.find_by_key(key)
         if freeby 
+          puts "====================#{@user.errors.full_messages}"
           # mark freeby used
           freeby.used = true
           freeby.save
@@ -140,6 +142,7 @@ class AccountsController < ApplicationController
       end
     else
       @credit_card = CreditCard.new
+      puts "====================#{@user.errors.full_messages}"
       render :action => :new, :layout => 'splash'
     end
   end

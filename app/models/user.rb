@@ -70,13 +70,15 @@ class User < ActiveRecord::Base
   end
 
   def validate_coupon_code
-    begin
-      c = Chargify::Coupon.find_by_product_family_id_and_code(CHARGIFY_CONFIG[ENV['RAILS_ENV']]['product_family_id'],self.coupon_code)
-      if !(c.present?)
-        self.errors.add("Invalid Coupon Code")
+    if self.coupon_code.present?
+      begin
+        c = Chargify::Coupon.find_by_product_family_id_and_code(CHARGIFY_CONFIG[ENV['RAILS_ENV']]['product_family_id'],self.coupon_code)
+        if !(c.present?)
+          self.errors.add("Invalid Coupon Code")
+        end
+      rescue Exception => e
+        self.errors.add(:coupon_code,"is invalid.")
       end
-    rescue Exception => e
-      self.errors.add(:coupon_code,"is invalid.")
     end
   end
 
