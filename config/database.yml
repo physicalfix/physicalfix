@@ -32,9 +32,8 @@ production:
   adapter: mysql
   database: FitStream_production
   username: root
-  password: cspl
-#  socket: /var/run/mysqld/mysqld.sock
-  host: localhost
+  password:
+  socket: /opt/local/var/run/mysql5/mysqld.sock
 
 staging:
   adapter: mysql
@@ -43,4 +42,3 @@ staging:
   password: cspl
 #  socket: /var/run/mysqld/mysqld.sock
   host: localhost
-
