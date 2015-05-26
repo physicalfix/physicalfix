@@ -8,10 +8,8 @@ class AccountsController < ApplicationController
   
   def index
     if logged_in? && (request.referer.include? "http://www.physicalfix.com/")
-       Rails.logger.warn "======#{current_user.inspect}=====#{current_user.present?}==#{@current_user.inspect}==========#{request.referer}========================"
       redirect_to workouts_path
     else
-       Rails.logger.warn "======else========================"
       @num_pros = User.all.count{|u| u.subscription && u.subscription.product == 'premium'}
       render :layout => 'splash'
     end
@@ -62,7 +60,12 @@ class AccountsController < ApplicationController
     if !key && params[:plan] && VALID_PLANS.include?(params[:plan])
       session[:plan] = params[:plan]
     end
-      
+    
+    if params[:code] && params[:code] = "123"
+      session[:code] = params[:code]
+      session[:plan] = "trial"
+    end
+    
     @user = User.new
     @height_feet = 5
     @height_inches = 0
@@ -80,7 +83,6 @@ class AccountsController < ApplicationController
     @height_feet = params[:height_feet].to_i
     @height_inches = params[:height_inches].to_i    
     key = session[:key]
-    puts "--------#{key}" 
     if @user.valid?    
       if session[:plan] && session[:plan] == 'free'
         @user.save
@@ -91,13 +93,16 @@ class AccountsController < ApplicationController
       ##      
       elsif session[:plan] == 'trial'
         @user.save
-        Subscription.create(:user_id => @user.id, :product => Subscription::BASIC_SUBSCRIPTION, :state => Subscription::TRIAL_STATE)
+        if session[:code] && session[:code] = "123"
+          Subscription.create(:user_id => @user.id, :product => Subscription::BASIC_SUBSCRIPTION, :state => Subscription::TRIAL_STATE, :trial_code => "1 month")    
+        else         
+          Subscription.create(:user_id => @user.id, :product => Subscription::BASIC_SUBSCRIPTION, :state => Subscription::TRIAL_STATE)
+        end
         after_signup
       elsif key
         # check key
         freeby = Freeby.find_by_key(key)
         if freeby 
-          puts "====================#{@user.errors.full_messages}"
           # mark freeby used
           freeby.used = true
           freeby.save
@@ -218,7 +223,7 @@ class AccountsController < ApplicationController
    
    #login user
    session[:uid] = @user.id
-
+  session.delete(:code)
    #set inital weight
    @user.user_weights << UserWeight.create(:user_id => @user.id, :weight => @user.weight)
 

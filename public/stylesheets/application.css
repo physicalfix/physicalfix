@@ -107,7 +107,7 @@ a img {
 /* navbar ! */
 #navigation {
   background: #1F5084 url(/images/navbg.png) top center repeat-x;
-  height: 65px; }
+  height: 91px; }
   #navigation #inner {
     display: block;
     margin: 0 auto;
@@ -116,7 +116,7 @@ a img {
   #navigation ul {
     list-style-type: none;
     position: absolute;
-    top: 24px;
+    top: 50px;
     left: 0px; }
   #navigation li {
     display: list-item;

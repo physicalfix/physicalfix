@@ -53,6 +53,8 @@
           %script(type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js")
       #navigation
         #inner
+          -if current_user.last_7_days_remaning?
+            .info_flash= "hiiiiiiiiiiiiiii"
           %ul
             - unless @current_user && @current_user.subscription && @current_user.subscription.product == Subscription::FREE_SUBSCRIPTION
               - nav_tab('Workouts', workouts_path, 'workouts', controller)
