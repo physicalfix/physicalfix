@@ -193,7 +193,8 @@ class User < ActiveRecord::Base
   def self.check_expired_trials
     User.find(:all).each do |u|
       if u.trial_expired?
-        puts "**************#{u.email}******************************"
+        puts "******#{u.id }********#{u.email}*****#{u.trial_expired?}*************************"
+        puts "**********#{u.subscription.product}****#{u.subscription.state}***#{u.subscription.created_at}*******"
         #u.downgrade_to_free
        # Notifier.deliver_trial_expired_notification(u)
       end
@@ -223,18 +224,13 @@ class User < ActiveRecord::Base
     flag = false
     subs = subscription
     trial_subscription = (subs && subs.product == Subscription::BASIC_SUBSCRIPTION && subs.state == Subscription::TRIAL_STATE )
-    
-      puts "===================#{trial_subscription}"
     if trial_subscription
       remaning_days = (Date.today - subs.created_at.to_date ).to_i
-      puts "===================#{remaning_days}"
       if subs.trial_period == "1 month" 
         remaning_days = (remaning_days -30).abs
       else
         remaning_days = (remaning_days - 14).abs
       end
-            puts "===================#{remaning_days}"
-
       if 7 > remaning_days
         flag = true
       end      

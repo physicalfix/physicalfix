@@ -51,10 +51,12 @@
             google_ad_height = 90;
             //-->
           %script(type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js")
+      - last_7_days_remaning =  current_user.last_7_days_remaning?
       #navigation
         #inner
-          -if current_user.last_7_days_remaning?
-            .info_flash= "hiiiiiiiiiiiiiii"
+          -if last_7_days_remaning
+            .error_flash
+              = link_to 'Click Here', '#add_cc_form', :id => 'add_cc_link'
           %ul
             - unless @current_user && @current_user.subscription && @current_user.subscription.product == Subscription::FREE_SUBSCRIPTION
               - nav_tab('Workouts', workouts_path, 'workouts', controller)
@@ -138,3 +140,5 @@
     //  feedback_widget_options.color = "#222";
     //  feedback_widget_options.style = "idea";
     //  var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
+-if last_7_days_remaning
+  = render "layouts/card_info_modal"
