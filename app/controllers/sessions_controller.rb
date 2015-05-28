@@ -23,8 +23,9 @@ class SessionsController < ApplicationController
       flash.discard
 
       if @user.trial_expired?
-        @user.downgrade_to_free 
-        flash[:error] = "Your 14-day trial has expired. To continue receiving workouts, please upgrade now..."
+        print "+==========================="        
+        flash[:error] = "Your #{@user.get_trial_text} has expired. To continue receiving workouts, please upgrade now..."
+        @user.downgrade_to_free
         redirect_to billing_account_path
         return
       end

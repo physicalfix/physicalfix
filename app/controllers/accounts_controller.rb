@@ -66,7 +66,6 @@ class AccountsController < ApplicationController
     if !key && params[:plan] && VALID_PLANS.include?(params[:plan])
       session[:plan] = params[:plan]
     end
-    print "******in codeeeeeeeeeee***#{ENV["CODE"]}******************"
     if params[:code]
       session[:code] = params[:code]
       if params[:code] == ENV["CODE"]
@@ -161,7 +160,6 @@ class AccountsController < ApplicationController
       end
     else
       @credit_card = CreditCard.new
-      puts "====================#{@user.errors.full_messages}"
       render :action => :new, :layout => 'splash'
     end
   end

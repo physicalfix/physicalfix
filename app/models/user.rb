@@ -249,14 +249,18 @@ class User < ActiveRecord::Base
   end
   
   def get_trial_text
+    print "=========#{subscription.inspect}=================="
     begin
-      if subscription.present?
-        if (subscription.product == Subscription::BASIC_SUBSCRIPTION && subscription.state == Subscription::TRIAL_STATE)
-          return "#{subscription.trial_period.humanize}"+" Trial"
-        end
+      if (subscription.present? && subscription.product == Subscription::BASIC_SUBSCRIPTION && subscription.state == Subscription::TRIAL_STATE)
+        puts "iffffffffffffffff"
+        return "#{subscription.trial_period.humanize}"+" trial"
+      else
+        puts "elseeeeeeeee"
+        return "trial"
       end
     rescue Exception => e
-      puts "=======#{e.message}"
+      puts "elseeeeeeeee"
+      return "trial"
     end
   end
 
