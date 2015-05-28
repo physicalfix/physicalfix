@@ -104,7 +104,7 @@ class AccountsController < ApplicationController
         if session[:code] && session[:code] == ENV["CODE"]
           Subscription.create(:user_id => @user.id, :product => Subscription::BASIC_SUBSCRIPTION, :state => Subscription::TRIAL_STATE, :trial_period => "1 month")    
         else         
-          Subscription.create(:user_id => @user.id, :product => Subscription::BASIC_SUBSCRIPTION, :state => Subscription::TRIAL_STATE)
+          Subscription.create(:user_id => @user.id, :product => Subscription::BASIC_SUBSCRIPTION, :state => Subscription::TRIAL_STATE, :trial_period => "14 days")
         end
         after_signup
       elsif key
