@@ -2,7 +2,7 @@
   %div{:style=>'float:right'}=image_tag('thank_you.png')
   %h2 Thanks for signing up for physicalfix.com!
   - if @subscription_plan == Subscription::TRIAL_SUBSCRIPTION
-    %h3 Here are just a few of the things you can do with your 14-Day Trial:
+    %h3 Here are just a few of the things you can do with your = current_user.get_trial_text
   - else
     %h3 Here are just a few of the things you can do with your account:s
   - if @subscription_plan != Subscription::FREE_SUBSCRIPTION

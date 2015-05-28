@@ -30,8 +30,14 @@ class AccountsController < ApplicationController
   end
   
   def workout_type
-    @user_buckets = UserBucket.approved.group_by{|ub| ub.enough_equipment?(@user.equipment).to_s}
-    render :template => '/accounts/edit_user_buckets'
+    begin
+      @user_buckets = UserBucket.approved.group_by{|ub| ub.enough_equipment?(@user.equipment).to_s}
+      render :template => '/accounts/edit_user_buckets'
+    rescue Exception => exc
+      logger.error("Message for the log file #{exc.message}")
+      flash[:notice] = "Store error message"
+      redirect_to(:action => 'index')
+   end
   end
   
   def billing
@@ -94,7 +100,7 @@ class AccountsController < ApplicationController
       elsif session[:plan] == 'trial'
         @user.save
         if session[:code] && session[:code] = "123"
-          Subscription.create(:user_id => @user.id, :product => Subscription::BASIC_SUBSCRIPTION, :state => Subscription::TRIAL_STATE, :trial_code => "1 month")    
+          Subscription.create(:user_id => @user.id, :product => Subscription::BASIC_SUBSCRIPTION, :state => Subscription::TRIAL_STATE, :trial_period => "1 month")    
         else         
           Subscription.create(:user_id => @user.id, :product => Subscription::BASIC_SUBSCRIPTION, :state => Subscription::TRIAL_STATE)
         end

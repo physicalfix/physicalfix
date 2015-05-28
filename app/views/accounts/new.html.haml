@@ -130,7 +130,10 @@
               %h4 
                 You're signing up for the
                 -if session[:plan] == 'trial'
-                  %strong 14-Day Trial
+                  -if session[:code] && session[:code] == "123"
+                    %strong 1-Month Trial
+                  -else
+                    %strong 14-Day Trial
                 -else
                   %strong= session[:plan]
                 plan 

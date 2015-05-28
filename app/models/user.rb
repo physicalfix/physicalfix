@@ -193,8 +193,8 @@ class User < ActiveRecord::Base
   def self.check_expired_trials
     User.find(:all).each do |u|
       if u.trial_expired?
-        puts "******#{u.id }********#{u.email}*****#{u.trial_expired?}*************************"
-        puts "**********#{u.subscription.product}****#{u.subscription.state}***#{u.subscription.created_at}*******"
+        print "***#{u.email}***"
+        #u.subscription.update_attribute("created_at",(Date.today - 7.days))
         #u.downgrade_to_free
        # Notifier.deliver_trial_expired_notification(u)
       end
@@ -224,8 +224,10 @@ class User < ActiveRecord::Base
     flag = false
     subs = subscription
     trial_subscription = (subs && subs.product == Subscription::BASIC_SUBSCRIPTION && subs.state == Subscription::TRIAL_STATE )
+    puts "====#{trial_subscription}=="
     if trial_subscription
       remaning_days = (Date.today - subs.created_at.to_date ).to_i
+      puts "====#{remaning_days}=="
       if subs.trial_period == "1 month" 
         remaning_days = (remaning_days -30).abs
       else
@@ -236,6 +238,18 @@ class User < ActiveRecord::Base
       end      
     end
     return flag
+  end
+  
+  def get_trial_text
+    begin
+      if subscription.present?
+        if (subscription.product == Subscription::BASIC_SUBSCRIPTION && subscription.state == Subscription::TRIAL_STATE)
+          return "#{subscription.trial_period.humanize}"+" Trial"
+        end
+      end
+    rescue Exception => e
+      puts "=======#{e.message}"
+    end
   end
 
   # The number of days since the user has started a workout (used for nag emails)
