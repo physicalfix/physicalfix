@@ -130,7 +130,8 @@
               %h4 
                 You're signing up for the
                 -if session[:plan] == 'trial'
-                  -if session[:code] && session[:code] == "123"
+                  = print "-------------#{session[:code]}------------------"
+                  -if session[:code] && session[:code] == ENV["CODE"]
                     %strong 1-Month Trial
                   -else
                     %strong 14-Day Trial

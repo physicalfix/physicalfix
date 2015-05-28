@@ -66,10 +66,12 @@ class AccountsController < ApplicationController
     if !key && params[:plan] && VALID_PLANS.include?(params[:plan])
       session[:plan] = params[:plan]
     end
-    
-    if params[:code] && params[:code] = "123"
+    print "******in codeeeeeeeeeee***#{ENV["CODE"]}******************"
+    if params[:code]
       session[:code] = params[:code]
-      session[:plan] = "trial"
+      if params[:code] == ENV["CODE"]
+        session[:plan] = "trial"
+      end
     end
     
     @user = User.new
@@ -99,7 +101,7 @@ class AccountsController < ApplicationController
       ##      
       elsif session[:plan] == 'trial'
         @user.save
-        if session[:code] && session[:code] = "123"
+        if session[:code] && session[:code] == ENV["CODE"]
           Subscription.create(:user_id => @user.id, :product => Subscription::BASIC_SUBSCRIPTION, :state => Subscription::TRIAL_STATE, :trial_period => "1 month")    
         else         
           Subscription.create(:user_id => @user.id, :product => Subscription::BASIC_SUBSCRIPTION, :state => Subscription::TRIAL_STATE)

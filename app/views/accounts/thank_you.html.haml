@@ -2,9 +2,9 @@
   %div{:style=>'float:right'}=image_tag('thank_you.png')
   %h2 Thanks for signing up for physicalfix.com!
   - if @subscription_plan == Subscription::TRIAL_SUBSCRIPTION
-    %h3 Here are just a few of the things you can do with your = current_user.get_trial_text
+    %h3 Here are just a few of the things you can do with your #{current_user.get_trial_text}
   - else
-    %h3 Here are just a few of the things you can do with your account:s
+    %h3 Here are just a few of the things you can do with your accounts
   - if @subscription_plan != Subscription::FREE_SUBSCRIPTION
     %p= link_to('Start a workout &raquo;', workouts_path)
   %p= link_to('Track your calories with the Food Journal &raquo;', food_log_index_path)

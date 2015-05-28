@@ -26,14 +26,15 @@ class Subscription < ActiveRecord::Base
   EOL_STATES = ['canceled','expired','suspended']
   
   def self.create_subscription(user, product, credit_card,coupon_code="")
-    puts "------------#{coupon_code}-----#{user.subscription.inspect}---#{self.get_next_billing_date(user.subscription)}-------------"
+    puts "-----------#{user.id}--#{self.get_next_billing_date(user.subscription)}-------------"
+    
     Chargify::Subscription.create(
       :product_handle => product,
       :customer_attributes => {
         :first_name => user.first_name,
         :last_name => user.last_name,
         :email => user.email,
-        :reference => Array.new(5){rand 10}.join 
+        :reference => user.id
       },
       :credit_card_attributes => {
         :first_name => credit_card.first_name,
