@@ -30,7 +30,6 @@ class SubscriptionsController < ApplicationController
     @credit_card = CreditCard.new(params[:credit_card])
         
     if @credit_card.valid?
-      puts "--------------------"
       # set the proper chargify plan based on the user's subscription_type
       if params[:plan]
         unless %w{basic premium}.include?(params[:plan])
@@ -58,6 +57,7 @@ class SubscriptionsController < ApplicationController
         session[:subscription] = @subscription
         if request.xhr?
           @errors = @subscription.errors.full_messages
+          @errors = @errors.join(",").gsub("Credit card: cannot be expired.","Invalid card information. Please re-enter.").split(",")
           render :update do |page|
             page.replace_html("errors", :partial => "layouts/flash_errors")
           end
@@ -79,7 +79,7 @@ class SubscriptionsController < ApplicationController
             redirect_to thank_you_path
           end
         else
-          flash[:info] = 'Thank you for upgrading!'
+          flash[:info] = 'Congratulations! Your plan has been updated!'
           if request.xhr?
             render(:update) {|page| page.redirect_to(workouts_path)}
           else
@@ -92,6 +92,7 @@ class SubscriptionsController < ApplicationController
       session[:cc] = @credit_card
       if request.xhr?
         @errors = @credit_card.errors.full_messages
+        @errors = @errors.join(",").gsub("Credit card: cannot be expired.","Invalid card information. Please re-enter.").split(",")
         render :update do |page|
           page.replace_html("errors", :partial => "layouts/flash_errors")
         end

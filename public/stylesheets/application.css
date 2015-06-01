@@ -2016,3 +2016,7 @@ span.annote {
 #enteruserinfo textarea {
   width: 280px;
   height: 180px; }
+
+#enterbillinginfo > #errors > .error_flash{
+  font-size: 1.5em !important;
+}
