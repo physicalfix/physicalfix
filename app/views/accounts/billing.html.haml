@@ -50,7 +50,7 @@
     - if @current_user.subscription.product == Subscription::BASIC_SUBSCRIPTION && @current_user.subscription.state == Subscription::TRIAL_STATE
       %tr{:class => @current_user.subscription.product == Subscription::BASIC_SUBSCRIPTION && @current_user.subscription.state == Subscription::TRIAL_STATE ? 'current' : ''}
         %td.name
-          14-Day Trial
+          = current_user.get_trial_text
           %em
             (free)
         %td 3/week Targeted to your goals

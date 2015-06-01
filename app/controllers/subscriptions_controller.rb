@@ -55,7 +55,15 @@ class SubscriptionsController < ApplicationController
       if !@subscription.errors.errors.empty?
         session[:cc] = @credit_card
         session[:subscription] = @subscription
-        redirect_to new_subscription_path
+        if request.xhr?
+          @errors = @subscription.errors.full_messages
+          @errors = @errors.join(",").gsub("Credit card: cannot be expired.","Invalid card information. Please re-enter.").split(",")
+          render :update do |page|
+            page.replace_html("errors", :partial => "layouts/flash_errors")
+          end
+        else
+          redirect_to new_subscription_path
+        end
       else
         Subscription.create(  :user_id => current_user.id, 
                               :state => @subscription.state, 
@@ -65,16 +73,32 @@ class SubscriptionsController < ApplicationController
         session[:subscription_plan] = session[:plan]
         session.delete(:plan)
         unless session[:upgrade] == true
-          redirect_to thank_you_path
+          if request.xhr?
+            render(:update) {|page| page.redirect_to(thank_you_path)}
+          else
+            redirect_to thank_you_path
+          end
         else
-          flash[:info] = 'Thank you for upgrading!'
-          redirect_to workouts_path
+          flash[:info] = 'Congratulations! Your plan has been updated!'
+          if request.xhr?
+            render(:update) {|page| page.redirect_to(workouts_path)}
+          else
+            redirect_to workouts_path
+          end
         end
           
       end
     else
       session[:cc] = @credit_card
-      redirect_to new_subscription_path
+      if request.xhr?
+        @errors = @credit_card.errors.full_messages
+        @errors = @errors.join(",").gsub("Credit card: cannot be expired.","Invalid card information. Please re-enter.").split(",")
+        render :update do |page|
+          page.replace_html("errors", :partial => "layouts/flash_errors")
+        end
+      else
+        redirect_to new_subscription_path
+      end
     end
   end
 

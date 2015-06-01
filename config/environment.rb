@@ -120,7 +120,7 @@ end
 CHARGIFY_CONFIG = YAML::load_file(File.join(File.dirname(__FILE__), '..', 'config', 'chargify.yml'))
 
 ENV['RAILS_ENV'] ||= 'development'
-
+ENV["CODE"] = "d5c8b0ef0f10"
 Chargify.configure do |c|
   c.subdomain = CHARGIFY_CONFIG[ENV['RAILS_ENV']]['subdomain']
   c.api_key   = CHARGIFY_CONFIG[ENV['RAILS_ENV']]['api_key']

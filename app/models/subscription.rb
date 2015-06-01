@@ -26,7 +26,8 @@ class Subscription < ActiveRecord::Base
   EOL_STATES = ['canceled','expired','suspended']
   
   def self.create_subscription(user, product, credit_card,coupon_code="")
-    puts "------------#{coupon_code}---------------------"
+    puts "-----------#{user.id}--#{self.get_next_billing_date(user.subscription)}-------------"
+    
     Chargify::Subscription.create(
       :product_handle => product,
       :customer_attributes => {
@@ -43,8 +44,29 @@ class Subscription < ActiveRecord::Base
         :full_number => credit_card.card_number,
         :cvv => credit_card.cvv 
       },
+      :next_billing_at => self.get_next_billing_date(user.subscription),
       :coupon_code => coupon_code
     )
+  end
+  
+  def self.get_next_billing_date(subscription)
+    puts "==get_next_billing_date===================="
+    billing_date = Date.today
+    if (subscription.product == Subscription::BASIC_SUBSCRIPTION && subscription.state == Subscription::TRIAL_STATE)
+      if subscription.trial_period == "14 days"
+        remaning_days = (Date.today - subscription.created_at.to_date).to_i
+        if remaning_days <= 14
+          billing_date = (14 - remaning_days).days.from_now
+        end        
+      elsif subscription.trial_period == "1 month"
+        remaning_days = (Date.today - subscription.created_at.to_date).to_i
+        if remaning_days <= 30
+          billing_date = (30 - remaning_days).days.from_now
+        end        
+      end
+    end
+    puts "==get_next_billing_date=========#{billing_date}==========="
+    billing_date
   end
   
   def migrate(product)

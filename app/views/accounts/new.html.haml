@@ -5,8 +5,9 @@
         / -if flash[:error]
         /          .billing_error
         /            = flash[:error]
-        
-        - if session[:plan] == 'trial'
+        -if session[:code]
+          %h2 Congrats! 1 month trial VIP Signup!!
+        - elsif session[:plan] == 'trial'
           %h2 Congrats! Your 14-day trial and a healthier lifestyle start here!
         - else
           %h2 Congrats! You've just taken the first step toward a healthier lifestyle!
@@ -129,7 +130,10 @@
               %h4 
                 You're signing up for the
                 -if session[:plan] == 'trial'
-                  %strong 14-Day Trial
+                  -if session[:code] && session[:code] == ENV["CODE"]
+                    %strong 1-Month Trial
+                  -else
+                    %strong 14-Day Trial
                 -else
                   %strong= session[:plan]
                 plan 

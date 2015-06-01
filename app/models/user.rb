@@ -191,8 +191,12 @@ class User < ActiveRecord::Base
   # trial =========================================================================================
   
   def self.check_expired_trials
-    User.find(:all).each do |u|
+    User.find(:all).each_with_index do |u,index|
+      #u.update_attribute("email","user#{index+1}@yopmail.com")
+      #u.update_attribute("password","password")
       if u.trial_expired?
+        print "***#{u.email}***"
+        #u.subscription.update_attribute("created_at",(Date.today - 7.days))
         u.downgrade_to_free
         Notifier.deliver_trial_expired_notification(u)
       end
@@ -208,10 +212,54 @@ class User < ActiveRecord::Base
   
   def trial_expired?
     subs = subscription
-    return (subs &&
-      subs.product == Subscription::BASIC_SUBSCRIPTION && 
-      subs.state == Subscription::TRIAL_STATE &&
-      subs.created_at < 14.days.ago)
+    if (subs && subs.product == Subscription::BASIC_SUBSCRIPTION && subs.state == Subscription::TRIAL_STATE)
+      if (subs.trial_period == "1 month")
+        return (subs.created_at < 1.month.ago)
+      else
+        return (subs.created_at < 14.days.ago)
+      end
+    else
+      false
+    end
+    #
+    #return ((subs &&
+    #  subs.product == Subscription::BASIC_SUBSCRIPTION && 
+    #  subs.state == Subscription::TRIAL_STATE &&
+    #  subs.trial_period == "1 month" &&
+    #  subs.created_at < 1.month.ago) || (subs &&
+    #  subs.product == Subscription::BASIC_SUBSCRIPTION && 
+    #  subs.state == Subscription::TRIAL_STATE &&  
+    #  subs.created_at < 14.days.ago))
+  end
+  
+  def last_7_days_remaning?
+    flag = false
+    subs = subscription
+    trial_subscription = (subs && subs.product == Subscription::BASIC_SUBSCRIPTION && subs.state == Subscription::TRIAL_STATE )
+    if trial_subscription
+      remaning_days = (Date.today - subs.created_at.to_date ).to_i
+      if subs.trial_period == "1 month" 
+        remaning_days = (remaning_days -30).abs
+      else
+        remaning_days = (remaning_days - 14).abs
+      end
+      if 7 > remaning_days
+        flag = true
+      end      
+    end
+    return flag
+  end
+  
+  def get_trial_text
+    begin
+      if (subscription.present? && subscription.product == Subscription::BASIC_SUBSCRIPTION && subscription.state == Subscription::TRIAL_STATE)
+        return "#{subscription.trial_period.humanize}"+" trial"
+      else
+        return "trial"
+      end
+    rescue Exception => e
+      return "trial"
+    end
   end
 
   # The number of days since the user has started a workout (used for nag emails)
