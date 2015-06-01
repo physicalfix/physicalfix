@@ -2019,4 +2019,6 @@ span.annote {
 
 #enterbillinginfo > #errors > .error_flash{
   font-size: 1.5em !important;
+  min-height: 100%;
+  height: auto !important;
 }
