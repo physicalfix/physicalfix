@@ -58,6 +58,7 @@ class SubscriptionsController < ApplicationController
         if request.xhr?
           @errors = @subscription.errors.full_messages
           @errors = @errors.join(",").gsub("Credit card: cannot be expired.","Invalid card information. Please re-enter.").split(",")
+          @errors = @errors.join(",").gsub("Credit card number: must be a valid credit card number.","Invalid card information. Please re-enter.").split(",")
           render :update do |page|
             page.replace_html("errors", :partial => "layouts/flash_errors")
           end
@@ -93,6 +94,7 @@ class SubscriptionsController < ApplicationController
       if request.xhr?
         @errors = @credit_card.errors.full_messages
         @errors = @errors.join(",").gsub("Credit card: cannot be expired.","Invalid card information. Please re-enter.").split(",")
+        @errors = @errors.join(",").gsub("Credit card number: must be a valid credit card number.","Invalid card information. Please re-enter.").split(",")        
         render :update do |page|
           page.replace_html("errors", :partial => "layouts/flash_errors")
         end
