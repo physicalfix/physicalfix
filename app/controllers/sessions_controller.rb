@@ -22,8 +22,7 @@ class SessionsController < ApplicationController
       # Get rid of "logout" flash message
       flash.discard
 
-      if @user.trial_expired?
-        print "+==========================="        
+      if @user.trial_expired?    
         flash[:error] = "Your #{@user.get_trial_text} has expired. To continue receiving workouts, please upgrade now..."
         @user.downgrade_to_free
         redirect_to billing_account_path

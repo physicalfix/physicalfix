@@ -32,3 +32,6 @@
   #thank_you
     %h2 Thank you for becoming a member of PhysicalFix.
     %h3 Since we handcraft each of your workouts especially for you, it will take about a week for you to get your first workouts. Check back on #{(@week_start + 1.week).to_s(:long)} for your first workout!</h3>
+    
+- if session[:ss_message].present?
+  = render "workouts/show_cc_modal"

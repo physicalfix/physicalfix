@@ -18,3 +18,6 @@
       = text_area_tag "user[equipment][]", @ue, :size => "40x10"
       = hidden_field_tag "update_user_bucket_on_workout", 'true'
       %a.form_submit(href="\#" onclick="document.forms[0].submit()") Save Equipment
+      
+- if session[:ss_message].present?
+  = render "workouts/show_cc_modal"

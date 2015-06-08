@@ -74,16 +74,18 @@ class SubscriptionsController < ApplicationController
         session[:subscription_plan] = session[:plan]
         session.delete(:plan)
         unless session[:upgrade] == true
-          if request.xhr?
+          if request.xhr?            
+            session[:ss_message] = 'Congratulations! Your plan has been updated!'
             render(:update) {|page| page.redirect_to(thank_you_path)}
           else
             redirect_to thank_you_path
           end
         else
-          flash[:info] = 'Congratulations! Your plan has been updated!'
           if request.xhr?
+            session[:ss_message] = 'Congratulations! Your plan has been updated!'
             render(:update) {|page| page.redirect_to(workouts_path)}
           else
+            flash[:info] = 'Congratulations! Your plan has been updated!'
             redirect_to workouts_path
           end
         end
