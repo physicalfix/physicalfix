@@ -58,7 +58,7 @@
             .error_flash
               Your trial is about to expire,
               = link_to 'Click Here', '#add_cc_form', :id => 'add_cc_link'
-              to update your plan              
+              to upgrade
           %ul
             - unless @current_user && @current_user.subscription && @current_user.subscription.product == Subscription::FREE_SUBSCRIPTION
               - nav_tab('Workouts', workouts_path, 'workouts', controller)
