@@ -6,6 +6,7 @@ class WorkoutsController < ApplicationController
   before_filter :require_requirements
   
   def index
+    puts "===in sessionnnnnnnnnnnnn**********==============#{session[:ss_message]}"
     @title = 'Workout'
     @user = current_user
     
@@ -31,7 +32,6 @@ class WorkoutsController < ApplicationController
         @user_buckets = UserBucket.approved.group_by{|ub| ub.enough_equipment?(@user.equipment).to_s}
       end
     end
-    
     respond_to do |wants|
       wants.html
       wants.xml { render :xml => @workouts.to_xml }
@@ -170,6 +170,7 @@ class WorkoutsController < ApplicationController
   end
   
   def require_requirements
+    puts "===in session**********==============#{session[:ss_message]}"
     if @current_user.subscription && @current_user.subscription.product != Subscription::FREE_SUBSCRIPTION
       if @current_user.user_bucket.nil?
         if @current_user.equipment.nil?

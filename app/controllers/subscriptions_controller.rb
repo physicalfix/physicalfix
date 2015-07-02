@@ -58,6 +58,7 @@ class SubscriptionsController < ApplicationController
         if request.xhr?
           @errors = @subscription.errors.full_messages
           @errors = @errors.join(",").gsub("Credit card: cannot be expired.","Invalid card information. Please re-enter.").split(",")
+          @errors = @errors.join(",").gsub("Credit card number: must be a valid credit card number.","Invalid card information. Please re-enter.").split(",")
           render :update do |page|
             page.replace_html("errors", :partial => "layouts/flash_errors")
           end
@@ -73,16 +74,18 @@ class SubscriptionsController < ApplicationController
         session[:subscription_plan] = session[:plan]
         session.delete(:plan)
         unless session[:upgrade] == true
-          if request.xhr?
+          if request.xhr?            
+            session[:ss_message] = 'Congratulations! Your plan has been updated!'
             render(:update) {|page| page.redirect_to(thank_you_path)}
           else
             redirect_to thank_you_path
           end
         else
-          flash[:info] = 'Congratulations! Your plan has been updated!'
           if request.xhr?
+            session[:ss_message] = 'Congratulations! Your plan has been updated!'
             render(:update) {|page| page.redirect_to(workouts_path)}
           else
+            flash[:info] = 'Congratulations! Your plan has been updated!'
             redirect_to workouts_path
           end
         end
@@ -93,6 +96,7 @@ class SubscriptionsController < ApplicationController
       if request.xhr?
         @errors = @credit_card.errors.full_messages
         @errors = @errors.join(",").gsub("Credit card: cannot be expired.","Invalid card information. Please re-enter.").split(",")
+        @errors = @errors.join(",").gsub("Credit card number: must be a valid credit card number.","Invalid card information. Please re-enter.").split(",")        
         render :update do |page|
           page.replace_html("errors", :partial => "layouts/flash_errors")
         end

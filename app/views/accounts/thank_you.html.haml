@@ -11,3 +11,5 @@
   %p= link_to("Log your activities and calories burned &raquo;", activity_log_index_path)
   %p= link_to("Track your weight with the Weight Tracker &raquo;", weight_tracker_index_path)
 
+- if session[:ss_message].present?
+  = render "workouts/show_cc_modal"
