@@ -192,11 +192,7 @@ class User < ActiveRecord::Base
   
   def self.check_expired_trials
     User.find(:all).each_with_index do |u,index|
-      #u.update_attribute("email","user#{index+1}@yopmail.com")
-      #u.update_attribute("password","password")
       if u.trial_expired?
-        print "***#{u.email}***"
-        #u.subscription.update_attribute("created_at",(Date.today - 7.days))
         u.downgrade_to_free
         Notifier.deliver_trial_expired_notification(u)
       end
