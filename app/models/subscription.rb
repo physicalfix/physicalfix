@@ -52,17 +52,19 @@ class Subscription < ActiveRecord::Base
   def self.get_next_billing_date(subscription)
     puts "==get_next_billing_date===================="
     billing_date = Date.today
-    if (subscription.product == Subscription::BASIC_SUBSCRIPTION && subscription.state == Subscription::TRIAL_STATE)
-      if subscription.trial_period == "14 days"
-        remaning_days = (Date.today - subscription.created_at.to_date).to_i
-        if remaning_days <= 14
-          billing_date = (14 - remaning_days).days.from_now
-        end        
-      elsif subscription.trial_period == "1 month"
-        remaning_days = (Date.today - subscription.created_at.to_date).to_i
-        if remaning_days <= 30
-          billing_date = (30 - remaning_days).days.from_now
-        end        
+    if (subscription.present?)
+      if (subscription.product == Subscription::BASIC_SUBSCRIPTION && subscription.state == Subscription::TRIAL_STATE)
+        if subscription.trial_period == "14 days"
+          remaning_days = (Date.today - subscription.created_at.to_date).to_i
+          if remaning_days <= 14
+            billing_date = (14 - remaning_days).days.from_now
+          end        
+        elsif subscription.trial_period == "1 month"
+          remaning_days = (Date.today - subscription.created_at.to_date).to_i
+          if remaning_days <= 30
+            billing_date = (30 - remaning_days).days.from_now
+          end        
+        end
       end
     end
     puts "==get_next_billing_date=========#{billing_date}==========="
