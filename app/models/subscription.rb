@@ -26,6 +26,8 @@ class Subscription < ActiveRecord::Base
   EOL_STATES = ['canceled','expired','suspended']
   
   def self.create_subscription(user, product, credit_card,coupon_code="")
+    puts("=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
+    puts(user.inspect)
     puts "-----------#{user.id}--#{self.get_next_billing_date(user.subscription)}-------------"
     
     Chargify::Subscription.create(
@@ -50,6 +52,8 @@ class Subscription < ActiveRecord::Base
   end
   
   def self.get_next_billing_date(subscription)
+    puts("------------------------")
+    puts(subscription)
     puts "==get_next_billing_date===================="
     billing_date = Date.today
     if (subscription.present?)
@@ -66,6 +70,8 @@ class Subscription < ActiveRecord::Base
           end        
         end
       end
+    else
+      billing_date = (30).days.from_now  
     end
     puts "==get_next_billing_date=========#{billing_date}==========="
     billing_date
