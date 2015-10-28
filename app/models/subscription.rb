@@ -27,6 +27,7 @@ class Subscription < ActiveRecord::Base
   
   def self.create_subscription(user, product, credit_card,coupon_code="")
     puts("=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
+    puts(product)
     puts(user.inspect)
     puts "-----------#{user.id}--#{self.get_next_billing_date(user.subscription)}-------------"
     
