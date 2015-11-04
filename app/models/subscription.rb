@@ -29,33 +29,54 @@ class Subscription < ActiveRecord::Base
     puts("=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
     puts(product)
     puts(user.inspect)
-    puts "-----------#{user.id}--#{self.get_next_billing_date(user.subscription)}-------------"
-    
-    Chargify::Subscription.create(
-      :product_handle => product,
-      :customer_attributes => {
-        :first_name => user.first_name,
-        :last_name => user.last_name,
-        :email => user.email,
-        :reference => user.id
-      },
-      :credit_card_attributes => {
-        :first_name => credit_card.first_name,
-        :last_name => credit_card.last_name,
-        :expiration_month => credit_card.expiration.month,
-        :expiration_year => credit_card.expiration.year,
-        :full_number => credit_card.card_number,
-        :cvv => credit_card.cvv 
-      },
-      :next_billing_at => self.get_next_billing_date(user.subscription),
-      :coupon_code => coupon_code
-    )
+    #puts "-----------#{user.id}--#{self.get_next_billing_date(user.subscription)}-------------"
+    if Date.today == self.get_next_billing_date(user.subscription)
+      Chargify::Subscription.create(
+        :product_handle => product,
+        :customer_attributes => {
+          :first_name => user.first_name,
+          :last_name => user.last_name,
+          :email => user.email,
+          :reference => user.id
+        },
+        :credit_card_attributes => {
+          :first_name => credit_card.first_name,
+          :last_name => credit_card.last_name,
+          :expiration_month => credit_card.expiration.month,
+          :expiration_year => credit_card.expiration.year,
+          :full_number => credit_card.card_number,
+          :cvv => credit_card.cvv 
+        },
+        #:next_billing_at => self.get_next_billing_date(user.subscription),
+        :coupon_code => coupon_code
+      )
+    else
+      Chargify::Subscription.create(
+        :product_handle => product,
+        :customer_attributes => {
+          :first_name => user.first_name,
+          :last_name => user.last_name,
+          :email => user.email,
+          :reference => user.id
+        },
+        :credit_card_attributes => {
+          :first_name => credit_card.first_name,
+          :last_name => credit_card.last_name,
+          :expiration_month => credit_card.expiration.month,
+          :expiration_year => credit_card.expiration.year,
+          :full_number => credit_card.card_number,
+          :cvv => credit_card.cvv 
+        },
+        :next_billing_at => self.get_next_billing_date(user.subscription),
+        :coupon_code => coupon_code
+      )
+    end
   end
   
   def self.get_next_billing_date(subscription)
     puts("------------------------")
     puts(subscription)
-    puts "==get_next_billing_date===================="
+    #puts "==get_next_billing_date===================="
     billing_date = Date.today
     if (subscription.present?)
       if (subscription.product == Subscription::BASIC_SUBSCRIPTION && subscription.state == Subscription::TRIAL_STATE)
@@ -71,10 +92,10 @@ class Subscription < ActiveRecord::Base
           end        
         end
       end
-    else
-      billing_date = (30).days.from_now  
+    #else
+      #billing_date = (30).days.from_now  
     end
-    puts "==get_next_billing_date=========#{billing_date}==========="
+    puts "---==get_next_billing_date=========#{billing_date}==========="
     billing_date
   end
   

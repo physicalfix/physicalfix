@@ -51,8 +51,10 @@ class SubscriptionsController < ApplicationController
               current_user,
               plan,
               @credit_card)
-
+      puts("-=-=-=-=-=-=-==-=-=-=")
+      puts(@subscription.inspect)
       if !@subscription.errors.errors.empty?
+        puts("if-=-=-=-=-=-=-==-=-=-=")
         session[:cc] = @credit_card
         session[:subscription] = @subscription
         if request.xhr?
@@ -66,6 +68,7 @@ class SubscriptionsController < ApplicationController
           redirect_to new_subscription_path
         end
       else
+        puts("else-=-=-=-=-=-=-==-=-=-=")
         Subscription.create(  :user_id => current_user.id, 
                               :state => @subscription.state, 
                               :product =>plan.split('-')[0], 
