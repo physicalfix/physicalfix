@@ -155,7 +155,6 @@ class AccountsController < ApplicationController
             after_signup
           end
         else
-          logger.warn("---------#{@subscription.errors.full_messages}")
           render :action => :new, :layout => 'splash'
         end
       end
