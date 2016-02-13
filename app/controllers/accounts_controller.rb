@@ -129,10 +129,10 @@ class AccountsController < ApplicationController
         params[:credit_card][:last_name] = @user.last_name
         @credit_card = CreditCard.new(params[:credit_card])    
         if @credit_card.valid?
-          if session[:plan] == 'basic'
-            product = 'basic-subscription'
-          elsif session[:plan] == 'premium'
-            product = 'premium-subscription'
+          if session[:plan] == "basic"
+            product = "basic-subscription"
+          elsif session[:plan] == "premium"
+            product = "premium-subscription"
           end    
           User.transaction do 
             @user.save
