@@ -137,6 +137,7 @@ class AccountsController < ApplicationController
           User.transaction do 
             @user.save
             @subscription = Subscription.create_subscription(@user, product, @credit_card,@user.coupon_code)
+            logger.warn("---subscription----#{@subscription.inspect}----")
             raise ActiveRecord::Rollback if !@subscription.errors.empty?
           end        
           if !@subscription.errors.empty?
