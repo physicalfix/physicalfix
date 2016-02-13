@@ -48,7 +48,7 @@ class Subscription < ActiveRecord::Base
           :coupon_code => coupon_code
         )        
       rescue Exception => e
-        logger.warn("#{e.inspect}")
+        logger.warn("#{e}")
       end
     else
       Chargify::Subscription.create(

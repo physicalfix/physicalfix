@@ -137,9 +137,9 @@ class AccountsController < ApplicationController
           User.transaction do 
             @user.save
             @subscription = Subscription.create_subscription(@user, product, @credit_card,@user.coupon_code)
-            raise ActiveRecord::Rollback if !@subscription.errors.errors.empty?
+            raise ActiveRecord::Rollback if !@subscription.errors.empty?
           end        
-          if !@subscription.errors.errors.empty?
+          if !@subscription.errors.empty?
             @user = @current_user || User.new(params[:user])
             flash[:error] = @subscription.errors.full_messages.join(', ')
             render :action => :new, :layout => 'splash'
