@@ -26,8 +26,6 @@ class Subscription < ActiveRecord::Base
   EOL_STATES = ['canceled','expired','suspended']
   
   def self.create_subscription(user, product, credit_card,coupon_code="")
-    puts("=-=-=-=-=-=-=-=-=-=-=-=-=-=-")
-    puts "-----------#{user.id}--#{self.get_next_billing_date(user.subscription)}-------------"
     if Date.today == self.get_next_billing_date(user.subscription)
       Chargify::Subscription.create(
         :product_handle => product,
