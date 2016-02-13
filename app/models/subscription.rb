@@ -27,25 +27,29 @@ class Subscription < ActiveRecord::Base
   
   def self.create_subscription(user, product, credit_card,coupon_code="")
     if Date.today == self.get_next_billing_date(user.subscription)
-      Chargify::Subscription.create(
-        :product_handle => product,
-        :customer_attributes => {
-          :first_name => user.first_name,
-          :last_name => user.last_name,
-          :email => user.email,
-          :reference => user.id
-        },
-        :credit_card_attributes => {
-          :first_name => credit_card.first_name,
-          :last_name => credit_card.last_name,
-          :expiration_month => credit_card.expiration.month,
-          :expiration_year => credit_card.expiration.year,
-          :full_number => credit_card.card_number,
-          :cvv => credit_card.cvv 
-        },
-        #:next_billing_at => self.get_next_billing_date(user.subscription),
-        :coupon_code => coupon_code
-      )
+      begin
+        Chargify::Subscription.create(
+          :product_handle => product,
+          :customer_attributes => {
+            :first_name => user.first_name,
+            :last_name => user.last_name,
+            :email => user.email,
+            :reference => user.id
+          },
+          :credit_card_attributes => {
+            :first_name => credit_card.first_name,
+            :last_name => credit_card.last_name,
+            :expiration_month => credit_card.expiration.month,
+            :expiration_year => credit_card.expiration.year,
+            :full_number => credit_card.card_number,
+            :cvv => credit_card.cvv 
+          },
+          #:next_billing_at => self.get_next_billing_date(user.subscription),
+          :coupon_code => coupon_code
+        )        
+      rescue Exception => e
+        logger.warn("#{e.inspect}")
+      end
     else
       Chargify::Subscription.create(
         :product_handle => product,
